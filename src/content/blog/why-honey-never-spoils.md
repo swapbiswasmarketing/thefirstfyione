@@ -6,6 +6,15 @@ category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-003"
 featured: false
+faqs:
+  - q: "Why does honey never spoil?"
+    a: "Honey has very little water, high acidity, and natural traces of hydrogen peroxide, making it a hostile place for microbes. Sealed and dry, it can last indefinitely."
+  - q: "Can you really eat 3,000-year-old honey?"
+    a: "Honey found in ancient Egyptian tombs was reportedly still edible. Its chemistry preserves it for an extraordinarily long time as long as it stays sealed."
+  - q: "Does honey ever go bad?"
+    a: "If water gets in, honey can ferment. Crystallizing, when it turns grainy and pale, is not spoiling; gently warming it restores the flow."
+  - q: "Why can't babies eat honey?"
+    a: "Honey can contain dormant Clostridium botulinum spores that are harmless to adults but dangerous to infants under one year old."
 ---
 
 When archaeologists opened ancient Egyptian tombs, they found the usual treasures - gold, artifacts, and, remarkably, pots of honey thousands of years old that were reportedly still edible. Leave bread out for a week and it's a science experiment. Leave honey out for three millennia and it's... breakfast.

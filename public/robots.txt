@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://strictly.fyi/sitemap-index.xml
+Sitemap: https://www.strictly.fyi/sitemap-index.xml

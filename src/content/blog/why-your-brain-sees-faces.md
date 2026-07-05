@@ -6,6 +6,15 @@ category: "science"
 readingTime: "5 min read"
 filecode: "FYI-002"
 featured: false
+faqs:
+  - q: "Why do I see faces in objects?"
+    a: "It is called pareidolia. Your brain has a fast, hair-trigger face-detection system that would rather flag a false face than risk missing a real one."
+  - q: "What is pareidolia?"
+    a: "Pareidolia is the tendency to perceive meaningful patterns, especially faces, in random or ambiguous things like electrical outlets, clouds, or car grilles."
+  - q: "Why did we evolve to see faces everywhere?"
+    a: "Missing a real face, like a rival or predator, was far more costly than a harmless false alarm, so evolution tuned our brains toward over-detecting faces."
+  - q: "What part of the brain detects faces?"
+    a: "A region in the fusiform gyrus, often called the fusiform face area, specializes in recognizing faces and responds within a fraction of a second."
 ---
 
 There's a face on the front of your car. There's one in the electrical outlet on the wall. There's one in the froth of your coffee, the pattern of the tiles, the burnt bit of your toast. You see them instantly, involuntarily, and often can't un-see them.

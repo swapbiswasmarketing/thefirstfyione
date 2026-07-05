@@ -6,6 +6,15 @@ category: "history"
 readingTime: "5 min read"
 filecode: "FYI-001"
 featured: true
+faqs:
+  - q: "Why are airplane windows round?"
+    a: "Rounded corners spread stress evenly and prevent the stress concentration that builds at sharp corners. That stops the fatigue cracks that could cause catastrophic failure."
+  - q: "What happened to the de Havilland Comet?"
+    a: "Several early Comet jetliners broke apart mid-air in the 1950s due to metal fatigue cracks that started at the corners of square-ish fuselage cutouts, including windows."
+  - q: "What is stress concentration?"
+    a: "It is when force flowing through a material piles up at a sharp corner, sometimes to several times the average stress, creating a starting point for cracks."
+  - q: "Why do other things have rounded corners too?"
+    a: "Ship portholes, phone screens, and spacecraft windows use rounded corners for the same reason: to avoid stress concentration and survive repeated flexing or impact."
 ---
 
 Look out the window next time you fly. The window is a rounded rectangle - soft, cornerless, almost like a lozenge. That shape isn't a design flourish. It's a memorial to a disaster, and one of the most elegant ideas in engineering.
