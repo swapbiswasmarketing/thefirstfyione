@@ -10,7 +10,7 @@ export async function GET(context) {
   return rss({
     title: "Strictly FYI",
     description:
-      "The no-fluff go-to-market brief. Signal, not noise — positioning, launches, and messaging for product marketers.",
+      "Interesting things, strictly for your information. A general-interest field guide to the fascinating - science, history, tech, culture, and everyday curiosities worth knowing.",
     site: context.site,
     items: sorted.map((post) => ({
       title: post.data.title,

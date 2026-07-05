@@ -1,23 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const standards = [
-  { k: "SOURCING", t: "Claims carry receipts", d: "If we say a launch worked, we link the numbers. If we cite a framework, we show the example. Thought leadership without evidence is just confident guessing." },
-  { k: "BREVITY", t: "Your time is the product", d: "The whole promise is compression. If a sentence isn't pulling its weight, it's cut before it reaches you. A brief that takes twenty minutes isn't a brief." },
-  { k: "STANCE", t: "We take a position", d: "Neutrality is a way of saying nothing at length. You'll get a clear point of view - and the reasoning behind it, so you can disagree productively." },
-  { k: "INDEPENDENCE", t: "No pay-to-play", d: "Sponsors don't pick the stories and never will. When something's an ad, it's stamped as one. Trust is the only asset a brief has." },
+const principles = [
+  { icon: "🎯", t: "Short and complete", d: "Every story earns its length. We explain the whole idea, then stop. No 2,000-word warm-ups to find the one interesting paragraph." },
+  { icon: "🔍", t: "Actually true", d: "We chase down the real explanation, not the fun-sounding myth. If something's disputed or simplified, we say so." },
+  { icon: "🧠", t: "Plain English", d: "You shouldn't need a degree to enjoy a good fact. We translate the science, history, and jargon into things a curious human can hold." },
+  { icon: "✨", t: "The 'huh' test", d: "One rule for what we publish: does it make you go 'huh, I didn't know that'? If not, it doesn't run." },
 ];
 ---
 
-<Layout title="Editorial Standard — Strictly FYI" description="What Strictly FYI is, who it's for, and the standard every filing is held to.">
+<Layout title="About · Strictly FYI" description="What Strictly FYI is: a general-interest field guide to the fascinating, written for curious people who like knowing how things really work.">
   <section class="ab-hero">
     <div class="wrap-narrow">
-      <p class="tag tag-signal">// the editorial standard</p>
-      <h1>Most marketing content is <span class="redact" title="say it louder">noise dressed as insight</span>.</h1>
+      <p class="eyebrow">About</p>
+      <h1>A field guide to the <span class="hl">fascinating</span>.</h1>
       <p class="lede">
-        Strictly FYI is the correction. A tight, opinionated go-to-market brief for
-        product marketers and founders who are done skimming 2,000-word posts to find
-        the one useful paragraph.
+        Strictly FYI is for people who read the plaque at the museum, who fall down Wikipedia
+        rabbit holes, who want to know <em>why</em> the airplane window is round. It's the
+        good stuff - science, history, tech, culture, and everyday curiosities - decoded and
+        delivered in five minutes.
       </p>
     </div>
   </section>
@@ -25,39 +26,38 @@ const standards = [
   <section class="section">
     <div class="wrap-narrow story">
       <p>
-        Here's the problem. The go-to-market world produces an ocean of content -
-        threads, newsletters, "ultimate guides," conference talks - and maybe five percent
-        of it changes what you'd actually do on Monday. The rest is noise: recycled frameworks,
-        engagement bait, and takes so hedged they mean nothing.
+        The internet is drowning in content and starved of the good kind: short, true, and
+        genuinely interesting. Most "did you know" facts are either wrong, decades out of date,
+        or stretched into an endless article to sell you something at the bottom.
       </p>
       <p>
-        <strong>Strictly FYI does the filtering.</strong> Every week we read the firehose so
-        you don't have to, and file back the handful of things that genuinely matter for
-        positioning, launches, and messaging - with a point of view, with sources, and short
-        enough to finish before your coffee gets cold.
+        <strong>Strictly FYI is the antidote.</strong> We pick things that are genuinely,
+        provably fascinating - the chemistry that makes honey immortal, the disaster that
+        rounded every airplane window, the reason your brain sees faces in electrical outlets -
+        and we tell you the real story, plainly, and then we get out of your way.
       </p>
       <blockquote>
-        The value isn't in what we include. It's in the ninety-five percent we cut.
+        The name says it all: interesting things, strictly for your information.
       </blockquote>
       <p>
-        No gated PDFs. No "let's hop on a quick call." No influencer theatre. Just the brief -
-        strictly for your information.
+        No hot takes, no outrage, no algorithm-bait. Just the small, sturdy pleasure of
+        learning something true and thinking, <em>huh - I'm glad I know that now.</em>
       </p>
     </div>
   </section>
 
-  <section class="section std-section">
+  <section class="section principles-section">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="tag tag-signal">// what every filing is held to</p>
-        <h2>The four standards.</h2>
+        <p class="eyebrow">How we pick and write</p>
+        <h2>Four rules.</h2>
       </div>
-      <div class="std-grid">
-        {standards.map((s) => (
-          <div class="std reveal">
-            <span class="std-k mono">{s.k}</span>
-            <h3>{s.t}</h3>
-            <p>{s.d}</p>
+      <div class="pr-grid">
+        {principles.map((p) => (
+          <div class="pr reveal">
+            <span class="pr-icon">{p.icon}</span>
+            <h3>{p.t}</h3>
+            <p>{p.d}</p>
           </div>
         ))}
       </div>
@@ -65,38 +65,32 @@ const standards = [
   </section>
 
   <section class="section">
-    <div class="wrap-narrow who">
-      <p class="tag tag-signal">// clearance requirements</p>
-      <h2>Who this is for.</h2>
-      <ul class="who-list mono">
-        <li><span>✓</span> Product marketers who own positioning and launches</li>
-        <li><span>✓</span> Founders doing GTM themselves and short on time</li>
-        <li><span>✓</span> Growth &amp; demand folks who need the PMM view</li>
-        <li><span class="no">✕</span> Anyone looking for "10 ChatGPT prompts to 10x your funnel"</li>
-      </ul>
-      <a href="/#subscribe" class="btn btn-signal">Request access →</a>
+    <div class="wrap-narrow join">
+      <h2>Get five interesting things a week.</h2>
+      <p>The weekly FYI: a handful of genuinely fascinating, well-sourced things in your inbox. That's the whole pitch.</p>
+      <a href="/#subscribe" class="btn btn-primary">Subscribe →</a>
     </div>
   </section>
 </Layout>
 
 <style>
   .ab-hero { padding: clamp(3.5rem, 9vw, 6rem) 0 1rem; }
-  .ab-hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.02; margin-top: 0.6rem; }
-  .ab-hero .lede { font-size: 1.2rem; color: var(--muted); margin-top: 1.4rem; max-width: 58ch; }
-  .story p { font-size: 1.12rem; line-height: 1.75; margin: 1.2rem 0; color: #cfcfd4; }
+  .ab-hero h1 { font-size: clamp(2.4rem, 6.5vw, 4.2rem); margin-top: 0.6rem; }
+  .ab-hero .lede { font-size: 1.25rem; color: var(--ink-soft); margin-top: 1.3rem; }
+  .ab-hero em, .story em { font-family: var(--serif); font-style: italic; color: var(--ink); }
+  .story p { font-size: 1.15rem; line-height: 1.75; margin: 1.2rem 0; color: #2c2d34; }
   .story strong { color: var(--ink); }
-  .story blockquote { font-family: var(--grotesk); font-size: clamp(1.4rem, 4vw, 2rem); line-height: 1.25; color: var(--signal); text-align: center; margin: 2.5rem 0; padding: 0 1rem; border: none; }
-  .sec-head h2 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); margin-top: 0.5rem; }
-  .std-section { background: var(--panel); border-block: 1px solid var(--line); }
-  .std-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-  .std { background: var(--bg); padding: 2rem 1.8rem; }
-  .std-k { color: var(--signal); font-size: 0.72rem; letter-spacing: 0.14em; }
-  .std h3 { font-size: 1.3rem; margin: 0.6rem 0 0.5rem; }
-  .std p { color: var(--muted); }
-  .who h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); margin: 0.4rem 0 1.4rem; }
-  .who-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; font-size: 0.98rem; }
-  .who-list li { display: flex; gap: 0.7rem; align-items: baseline; color: #cfcfd4; }
-  .who-list span { color: var(--signal); font-weight: 700; }
-  .who-list .no { color: var(--danger); }
-  @media (max-width: 720px) { .std-grid { grid-template-columns: 1fr; } }
+  .story blockquote { font-family: var(--serif); font-style: italic; font-size: clamp(1.5rem, 4vw, 2.1rem); line-height: 1.3; color: var(--indigo-deep); text-align: center; margin: 2.5rem 0; padding: 0 1rem; border: none; }
+  .sec-head { text-align: center; max-width: 600px; margin: 0 auto 2.5rem; }
+  .sec-head h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); margin-top: 0.4rem; }
+  .principles-section { background: var(--paper-deep); border-block: 1px solid var(--line); }
+  .pr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .pr { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow); }
+  .pr-icon { font-size: 2rem; }
+  .pr h3 { font-size: 1.3rem; margin: 0.5rem 0; }
+  .pr p { color: var(--ink-soft); }
+  .join { text-align: center; }
+  .join h2 { font-size: clamp(1.9rem, 5vw, 2.8rem); }
+  .join p { color: var(--ink-soft); font-size: 1.12rem; margin: 0.8rem 0 1.6rem; }
+  @media (max-width: 720px) { .pr-grid { grid-template-columns: 1fr; } }
 </style>

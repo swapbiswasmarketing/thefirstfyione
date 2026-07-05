@@ -7,25 +7,22 @@ const posts = (await getCollection("blog")).sort(
 );
 
 const catLabel: Record<string, string> = {
-  positioning: "POSITIONING",
-  gtm: "GO-TO-MARKET",
-  launches: "LAUNCHES",
-  messaging: "MESSAGING",
-  brief: "THE BRIEF",
+  science: "🔬 Science", history: "📜 History", tech: "💡 Tech",
+  culture: "🎭 Culture", everyday: "☕ Everyday", curiosity: "🧩 Curiosity",
 };
-const cats = ["all", "positioning", "gtm", "launches", "messaging", "brief"];
+const cats = ["all", "science", "history", "tech", "culture", "everyday", "curiosity"];
 ---
 
-<Layout title="The Briefs — Strictly FYI" description="The full archive of Strictly FYI briefings on positioning, go-to-market, launches, and messaging.">
+<Layout title="Read · Strictly FYI" description="Every story from Strictly FYI - short, smart, well-sourced pieces on science, history, tech, culture, and everyday curiosities.">
   <section class="arch-hero">
     <div class="wrap">
-      <p class="tag tag-signal">// the archive</p>
-      <h1>The Briefs.</h1>
-      <p class="lede">Every filing, declassified. Filter by desk.</p>
-      <div class="filters" role="group" aria-label="Filter briefs by category">
+      <p class="eyebrow">The archive</p>
+      <h1>Everything worth knowing.</h1>
+      <p class="lede">Short, well-sourced stories on the fascinating. Filter by topic.</p>
+      <div class="filters" role="group" aria-label="Filter stories by topic">
         {cats.map((c) => (
-          <button class={`chip mono ${c === "all" ? "on" : ""}`} data-cat={c} type="button">
-            {c === "all" ? "ALL FILES" : catLabel[c]}
+          <button class={`chip ${c === "all" ? "on" : ""}`} data-cat={c} type="button">
+            {c === "all" ? "All stories" : catLabel[c]}
           </button>
         ))}
       </div>
@@ -34,69 +31,58 @@ const cats = ["all", "positioning", "gtm", "launches", "messaging", "brief"];
 
   <section class="section">
     <div class="wrap">
-      <div class="brief-list" id="brief-list">
-        {posts.map((post, i) => (
-          <a href={`/blog/${post.id}/`} class="brief-row" data-cat={post.data.category}>
-            <span class="brief-code mono">{post.data.filecode ?? `FYI-${String(posts.length - i).padStart(3, "0")}`}</span>
-            <div class="brief-main">
-              <span class="tag tag-signal">{catLabel[post.data.category]}</span>
-              <h2>{post.data.title}</h2>
-              <p>{post.data.description}</p>
-            </div>
-            <div class="brief-meta mono">
-              <span>{post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" })}</span>
-              <span>{post.data.readingTime ?? ""}</span>
-              <span class="brief-open">OPEN →</span>
-            </div>
+      <div class="story-grid" id="grid">
+        {posts.map((post) => (
+          <a href={`/blog/${post.id}/`} class="story" data-cat={post.data.category}>
+            <span class="cat">{catLabel[post.data.category] ?? "🧩 Curiosity"}</span>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+            <span class="story-meta mono">
+              {post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+              {post.data.readingTime ? ` · ${post.data.readingTime}` : ""}
+            </span>
           </a>
         ))}
       </div>
-      <p class="empty mono" id="empty" hidden>// NO FILES ON THIS DESK YET ▮</p>
+      <p class="empty" id="empty" hidden>No stories in this topic yet - check back soon.</p>
     </div>
   </section>
 </Layout>
 
 <style>
   .arch-hero { padding: clamp(3rem, 8vw, 5rem) 0 1.5rem; }
-  .arch-hero h1 { font-size: clamp(2.6rem, 8vw, 5rem); margin: 0.4rem 0; }
-  .arch-hero .lede { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
+  .arch-hero h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); margin: 0.4rem 0; }
+  .arch-hero .lede { color: var(--ink-soft); font-size: 1.1rem; margin-bottom: 2rem; }
   .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .chip { font-size: 0.72rem; letter-spacing: 0.08em; padding: 0.5rem 0.9rem; border-radius: 2px; cursor: pointer; background: var(--panel); border: 1px solid var(--line-2); color: var(--muted); transition: all 0.14s; }
-  .chip:hover { border-color: var(--signal); color: var(--signal); }
-  .chip.on { background: var(--signal); border-color: var(--signal); color: var(--bg); }
+  .chip { font-family: var(--sans); font-weight: 500; font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 999px; cursor: pointer; background: var(--paper-2); border: 1.5px solid var(--line-2); color: var(--ink-soft); transition: all 0.15s; }
+  .chip:hover { border-color: var(--indigo); color: var(--indigo-deep); }
+  .chip.on { background: var(--indigo); border-color: var(--indigo); color: #fff; }
 
-  .brief-list { border-top: 1px solid var(--line); }
-  .brief-row { display: grid; grid-template-columns: 90px 1fr auto; gap: 1.5rem; align-items: center; padding: 1.6rem 0.5rem; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: background 0.15s, padding 0.15s; }
-  .brief-row:hover { background: var(--panel); padding-inline: 1rem; }
-  .brief-code { color: var(--signal); font-size: 0.82rem; align-self: start; padding-top: 0.2rem; }
-  .brief-main .tag-signal { display: block; margin-bottom: 0.4rem; }
-  .brief-main h2 { font-size: 1.4rem; margin-bottom: 0.35rem; line-height: 1.15; }
-  .brief-main p { color: var(--muted); font-size: 0.95rem; max-width: 62ch; }
-  .brief-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; font-size: 0.72rem; color: var(--faint); text-align: right; }
-  .brief-open { color: var(--signal); }
-  .empty { color: var(--faint); padding: 3rem 0; text-align: center; letter-spacing: 0.1em; }
-  @media (max-width: 760px) {
-    .brief-row { grid-template-columns: 1fr; gap: 0.5rem; }
-    .brief-meta { flex-direction: row; align-items: center; gap: 1rem; }
-  }
+  .story-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .story { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.7rem; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 0.55rem; box-shadow: var(--shadow); transition: transform 0.18s, box-shadow 0.18s; }
+  .story:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+  .story .cat { align-self: flex-start; }
+  .story h2 { font-size: 1.5rem; line-height: 1.13; }
+  .story p { color: var(--ink-soft); font-size: 0.98rem; flex: 1; }
+  .story-meta { color: var(--ink-faint); font-size: 0.8rem; }
+  .empty { text-align: center; color: var(--ink-soft); font-size: 1.15rem; padding: 3rem 0; font-family: var(--serif); font-style: italic; }
+  @media (max-width: 760px) { .story-grid { grid-template-columns: 1fr; } }
 </style>
 
 <script>
   function apply(cat: string) {
-    const rows = document.querySelectorAll<HTMLElement>(".brief-row");
+    const cards = document.querySelectorAll<HTMLElement>(".story");
     let shown = 0;
-    rows.forEach((r) => {
-      const show = cat === "all" || r.dataset.cat === cat;
-      r.style.display = show ? "" : "none";
+    cards.forEach((c) => {
+      const show = cat === "all" || c.dataset.cat === cat;
+      c.style.display = show ? "" : "none";
       if (show) shown++;
     });
-    document.querySelectorAll(".chip").forEach((c) =>
-      c.classList.toggle("on", (c as HTMLElement).dataset.cat === cat)
-    );
+    document.querySelectorAll(".chip").forEach((ch) => ch.classList.toggle("on", (ch as HTMLElement).dataset.cat === cat));
     const empty = document.getElementById("empty");
     if (empty) (empty as HTMLElement).hidden = shown !== 0;
   }
-  document.querySelectorAll(".chip").forEach((c) =>
-    c.addEventListener("click", () => apply((c as HTMLElement).dataset.cat || "all"))
-  );
+  document.querySelectorAll(".chip").forEach((ch) => ch.addEventListener("click", () => apply((ch as HTMLElement).dataset.cat || "all")));
+  const initial = new URLSearchParams(location.search).get("cat");
+  if (initial) apply(initial);
 </script>
