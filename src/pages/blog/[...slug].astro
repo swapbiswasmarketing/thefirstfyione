@@ -1,0 +1,167 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const sorted = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, sorted },
+  }));
+}
+
+const { post, sorted } = Astro.props;
+const { Content } = await render(post);
+
+const catLabel: Record<string, string> = {
+  positioning: "POSITIONING",
+  gtm: "GO-TO-MARKET",
+  launches: "LAUNCHES",
+  messaging: "MESSAGING",
+  brief: "THE BRIEF",
+};
+
+const idx = sorted.findIndex((p) => p.id === post.id);
+const code = post.data.filecode ?? `FYI-${String(sorted.length - idx).padStart(3, "0")}`;
+const more = sorted.filter((p) => p.id !== post.id).slice(0, 2);
+
+const siteUrl = Astro.site ?? new URL("https://strictly.fyi");
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  author: { "@type": "Organization", name: "Strictly FYI" },
+  publisher: { "@type": "Organization", name: "Strictly FYI" },
+  mainEntityOfPage: new URL(`/blog/${post.id}/`, siteUrl).href,
+};
+---
+
+<Layout title={`${post.data.title} — Strictly FYI`} description={post.data.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleLd)} is:inline />
+  <div class="read-progress" aria-hidden="true"><span id="rp-bar"></span></div>
+  <button id="to-top" class="to-top" type="button" aria-label="Back to top" hidden>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <article class="post">
+    <div class="wrap-narrow">
+      <a href="/blog/" class="back mono">← ALL BRIEFS</a>
+
+      <div class="doc-head mono">
+        <span class="filecode">{code}</span>
+        <span class="tag tag-signal">{catLabel[post.data.category]}</span>
+        <span class="doc-date">
+          {post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "2-digit", year: "numeric" }).toUpperCase()}
+          {post.data.readingTime ? ` · ${post.data.readingTime}` : ""}
+        </span>
+      </div>
+
+      <h1>{post.data.title}</h1>
+      <p class="dek">{post.data.description}</p>
+      <hr class="rule" />
+    </div>
+
+    <div class="wrap-narrow prose">
+      <Content />
+    </div>
+
+    <div class="wrap-narrow">
+      <div class="filed mono">
+        <span>// END OF FILE ▮</span>
+        <span>FILED UNDER: {catLabel[post.data.category]}</span>
+      </div>
+
+      <div class="post-cta">
+        <p class="tag tag-signal">// don't miss the next filing</p>
+        <h3>Get the brief before your competitors do.</h3>
+        <a href="/#subscribe" class="btn btn-signal">Subscribe →</a>
+      </div>
+    </div>
+
+    {more.length > 0 && (
+      <div class="wrap keep">
+        <p class="tag tag-signal">// related filings</p>
+        <div class="more-grid">
+          {more.map((p, i) => (
+            <a href={`/blog/${p.id}/`} class="more-card">
+              <span class="more-code mono">{p.data.filecode ?? catLabel[p.data.category]}</span>
+              <h3>{p.data.title}</h3>
+              <p>{p.data.description}</p>
+              <span class="more-open mono">OPEN FILE →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </article>
+</Layout>
+
+<style>
+  .post { padding-top: clamp(2rem, 5vw, 3.5rem); }
+  .back { display: inline-block; text-decoration: none; color: var(--muted); font-size: 0.78rem; letter-spacing: 0.08em; margin-bottom: 1.8rem; }
+  .back:hover { color: var(--signal); }
+  .doc-head { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; font-size: 0.72rem; margin-bottom: 1.4rem; }
+  .doc-date { color: var(--faint); letter-spacing: 0.06em; }
+  .post h1 { font-size: clamp(2.1rem, 6vw, 3.6rem); line-height: 1.03; }
+  .dek { font-size: 1.2rem; color: var(--muted); margin-top: 1rem; max-width: 60ch; }
+  .rule { border: none; border-top: 1px solid var(--line); margin: 2rem 0 0; }
+
+  .prose { margin-top: 2rem; font-size: 1.1rem; line-height: 1.75; color: #d6d6da; }
+  .prose :global(h2) { font-family: var(--grotesk); color: var(--ink); font-size: clamp(1.5rem, 3.5vw, 2rem); margin: 2.6rem 0 0.8rem; padding-left: 0.9rem; border-left: 3px solid var(--signal); }
+  .prose :global(h3) { color: var(--ink); font-size: 1.3rem; margin: 2rem 0 0.6rem; }
+  .prose :global(p) { margin: 1.1rem 0; }
+  .prose :global(ul), .prose :global(ol) { margin: 1.1rem 0 1.1rem 1.3rem; }
+  .prose :global(li) { margin: 0.5rem 0; }
+  .prose :global(strong) { color: var(--ink); }
+  .prose :global(a) { color: var(--signal); }
+  .prose :global(blockquote) { margin: 1.8rem 0; padding: 1.1rem 1.4rem; border-left: 3px solid var(--signal); background: var(--panel); font-family: var(--grotesk); font-size: 1.2rem; color: var(--ink); }
+  .prose :global(blockquote p) { margin: 0; color: var(--ink); }
+  .prose :global(hr) { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+  .prose :global(code) { font-family: var(--mono); background: var(--panel-2); padding: 0.15em 0.4em; border-radius: 3px; font-size: 0.88em; color: var(--signal); }
+
+  .filed { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 2.5rem 0; padding-top: 1.2rem; border-top: 1px solid var(--line); font-size: 0.72rem; color: var(--faint); letter-spacing: 0.06em; }
+
+  .post-cta { text-align: center; border: 1px solid var(--line-2); border-radius: var(--radius); padding: 2.4rem; background: var(--panel); }
+  .post-cta h3 { font-size: 1.6rem; margin: 0.5rem 0 1.3rem; }
+
+  .keep { margin-top: 3.5rem; }
+  .keep .tag-signal { display: block; margin-bottom: 1rem; }
+  .more-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .more-card { border: 1px solid var(--line-2); border-radius: var(--radius); padding: 1.6rem; text-decoration: none; color: var(--ink); background: var(--panel); transition: border-color 0.15s, transform 0.15s; }
+  .more-card:hover { border-color: var(--signal); transform: translateY(-3px); }
+  .more-code { color: var(--signal); font-size: 0.72rem; letter-spacing: 0.08em; }
+  .more-card h3 { font-size: 1.25rem; margin: 0.5rem 0; }
+  .more-card p { color: var(--muted); font-size: 0.92rem; margin-bottom: 0.7rem; }
+  .more-open { color: var(--faint); font-size: 0.72rem; }
+  @media (max-width: 720px) { .more-grid { grid-template-columns: 1fr; } }
+
+  /* Reading progress */
+  .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: transparent; z-index: 90; }
+  .read-progress span { display: block; height: 100%; width: 0%; background: var(--signal); box-shadow: 0 0 10px var(--signal); transition: width 0.1s linear; }
+
+  /* Scroll to top */
+  .to-top { position: fixed; right: 1.4rem; bottom: 1.4rem; width: 44px; height: 44px; border-radius: var(--radius); display: grid; place-items: center; background: var(--signal); color: var(--bg); border: none; cursor: pointer; z-index: 80; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity 0.25s, transform 0.25s; }
+  .to-top[hidden] { display: none; }
+  .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+  .to-top:hover { background: #f2ff7a; }
+  .to-top svg { width: 20px; height: 20px; }
+</style>
+
+<script>
+  const bar = document.getElementById("rp-bar");
+  const toTop = document.getElementById("to-top");
+  function onScroll() {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop || document.body.scrollTop;
+    const height = doc.scrollHeight - doc.clientHeight;
+    const pct = height > 0 ? (scrollTop / height) * 100 : 0;
+    if (bar) bar.style.width = pct + "%";
+    if (toTop) { toTop.hidden = false; toTop.classList.toggle("show", scrollTop > 600); }
+  }
+  if (toTop) toTop.hidden = true;
+  document.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+</script>

@@ -1,0 +1,229 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "Strictly FYI — the no-fluff go-to-market brief",
+  description = "Signal, not noise. A sharp, curated brief on positioning, launches, and go-to-market — for product marketers who are done with the fluff.",
+  image = "/og.png",
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://strictly.fyi");
+const canonical = new URL(Astro.url.pathname, site);
+const ogImage = new URL(image, site);
+const year = new Date().getFullYear();
+
+const nav = [
+  { href: "/blog/", label: "The Briefs" },
+  { href: "/#what", label: "What you get" },
+  { href: "/about/", label: "Standard" },
+];
+const current = Astro.url.pathname;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Strictly FYI",
+  url: site.href,
+  description,
+  publisher: { "@type": "Organization", name: "Strictly FYI" },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0b0d'/%3E%3Ctext x='4' y='23' font-family='monospace' font-size='16' font-weight='700' fill='%23e6ff4d'%3EFYI%3C/text%3E%3C/svg%3E" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Strictly FYI" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="theme-color" content="#0b0b0d" />
+    <link rel="alternate" type="application/rss+xml" title="Strictly FYI" href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-head">
+      <div class="wrap head-inner">
+        <a href="/" class="brand" aria-label="Strictly FYI home">
+          <span class="brand-mark">STRICTLY</span>
+          <span class="brand-slash">//</span>
+          <span class="brand-fyi">FYI</span>
+        </a>
+        <nav class="nav" id="nav" aria-label="Primary">
+          {nav.map((n) => <a href={n.href} class={current === n.href ? "active" : ""}>{n.label}</a>)}
+          <a href="/#subscribe" class="nav-cta">Get the brief</a>
+        </nav>
+        <div class="head-actions">
+          <a href="/#subscribe" class="btn btn-signal btn-sm head-sub">Get the brief</a>
+          <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="head-strip">
+        <div class="wrap strip-inner mono">
+          <span>DOC · FYI-{year}</span>
+          <span class="strip-status"><span class="dot"></span> FILED WEEKLY</span>
+          <span>CLEARANCE: PUBLIC</span>
+          <span class="strip-time" id="clock">--:--:-- UTC</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap foot-top">
+        <div>
+          <a href="/" class="brand foot-brand">
+            <span class="brand-mark">STRICTLY</span><span class="brand-slash">//</span><span class="brand-fyi">FYI</span>
+          </a>
+          <p class="mono foot-tagline">// signal, not noise. filed weekly.</p>
+        </div>
+        <div class="foot-links">
+          <a href="/blog/">The Briefs</a>
+          <a href="/about/">Editorial Standard</a>
+          <a href="/#subscribe">Subscribe</a>
+          <a href="/rss.xml">RSS</a>
+          <a href="mailto:desk@strictly.fyi">desk@strictly.fyi</a>
+        </div>
+      </div>
+      <div class="wrap foot-base mono">
+        <span>© {year} STRICTLY FYI</span>
+        <span class="redact" title="You didn't see anything.">EYES ONLY // DECLASSIFIED FOR PUBLIC READERSHIP</span>
+        <span>END OF FILE ▮</span>
+      </div>
+    </footer>
+
+    <style>
+      .skip { position: absolute; left: -999px; top: 0; background: var(--signal); color: #000; padding: 0.6rem 1rem; z-index: 100; font-family: var(--mono); }
+      .skip:focus { left: 0; }
+
+      .site-head { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+      .head-inner { display: flex; align-items: center; gap: 1.5rem; padding: 0.9rem 0; }
+      .brand { display: inline-flex; align-items: center; gap: 0.35rem; text-decoration: none; font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+      .brand-mark { color: var(--ink); }
+      .brand-slash { color: var(--signal); }
+      .brand-fyi { color: var(--bg); background: var(--signal); padding: 0 0.35rem; border-radius: 2px; }
+
+      .nav { display: flex; gap: 1.5rem; margin-left: auto; align-items: center; }
+      .nav a { color: var(--muted); text-decoration: none; font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.03em; text-transform: uppercase; padding: 0.2rem 0; border-bottom: 1px solid transparent; transition: color 0.15s, border-color 0.15s; }
+      .nav a:hover, .nav a.active { color: var(--signal); border-color: var(--signal); }
+      .nav .nav-cta { display: none; }
+
+      .head-actions { display: flex; align-items: center; gap: 0.7rem; }
+      .btn-sm { padding: 0.55rem 1rem; font-size: 0.78rem; }
+      .nav-toggle { display: none; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--panel); color: var(--ink); cursor: pointer; }
+      .nav-toggle svg { width: 20px; height: 20px; }
+      .nav-toggle:hover { border-color: var(--signal); color: var(--signal); }
+
+      .head-strip { border-top: 1px solid var(--line); background: rgba(0,0,0,0.25); }
+      .strip-inner { display: flex; gap: 1.5rem; align-items: center; padding: 0.4rem 0; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--faint); text-transform: uppercase; overflow: hidden; white-space: nowrap; }
+      .strip-status { color: var(--signal-dim); display: inline-flex; align-items: center; gap: 0.4rem; }
+      .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 8px var(--signal); animation: pulse 1.6s ease-in-out infinite; }
+      @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+      .strip-time { margin-left: auto; }
+
+      @media (max-width: 760px) {
+        .head-sub { display: none; }
+        .nav-toggle { display: grid; }
+        .strip-inner span:nth-child(3) { display: none; }
+        .nav {
+          position: fixed; inset: 0 0 0 auto; width: min(320px, 84vw);
+          flex-direction: column; align-items: flex-start; gap: 0.2rem;
+          background: var(--panel); border-left: 1px solid var(--line-2);
+          padding: 5rem 1.5rem 2rem; margin: 0; z-index: 60;
+          transform: translateX(105%); transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+        }
+        .nav.open { transform: none; }
+        .nav a { font-size: 0.95rem; width: 100%; border-bottom: 1px solid var(--line); padding: 0.9rem 0; }
+        .nav .nav-cta { display: block; margin-top: 1rem; background: var(--signal); color: var(--bg); text-align: center; border-radius: var(--radius); padding: 0.8rem; border-bottom: none; }
+        .nav-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 55; opacity: 0; pointer-events: none; transition: opacity 0.28s; }
+        .nav-backdrop.on { opacity: 1; pointer-events: auto; }
+      }
+
+      .site-foot { margin-top: clamp(4rem, 10vw, 7rem); border-top: 1px solid var(--line); background: var(--panel); }
+      .foot-top { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; padding: 2.5rem 0 2rem; }
+      .foot-brand { font-size: 1.3rem; }
+      .foot-tagline { color: var(--faint); font-size: 0.8rem; margin-top: 0.6rem; }
+      .foot-links { display: flex; flex-direction: column; gap: 0.5rem; }
+      .foot-links a { color: var(--muted); text-decoration: none; font-family: var(--mono); font-size: 0.85rem; }
+      .foot-links a:hover { color: var(--signal); }
+      .foot-base { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; border-top: 1px solid var(--line); padding: 1.1rem 0; font-size: 0.72rem; color: var(--faint); letter-spacing: 0.05em; }
+    </style>
+
+    <script is:inline>
+      function tick() {
+        const el = document.getElementById("clock");
+        if (!el) return;
+        const d = new Date();
+        const p = (n) => String(n).padStart(2, "0");
+        el.textContent = `${p(d.getUTCHours())}:${p(d.getUTCMinutes())}:${p(d.getUTCSeconds())} UTC`;
+      }
+      tick();
+      setInterval(tick, 1000);
+    </script>
+    <script>
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        }
+      }, { threshold: 0.12 });
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      // Mobile nav
+      const nav = document.getElementById("nav");
+      const navToggle = document.getElementById("nav-toggle");
+      let backdrop: HTMLDivElement | null = null;
+      function closeNav() {
+        nav?.classList.remove("open");
+        navToggle?.setAttribute("aria-expanded", "false");
+        backdrop?.classList.remove("on");
+      }
+      navToggle?.addEventListener("click", () => {
+        const open = nav?.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", String(!!open));
+        if (open && !backdrop) {
+          backdrop = document.createElement("div");
+          backdrop.className = "nav-backdrop";
+          document.body.appendChild(backdrop);
+          backdrop.addEventListener("click", closeNav);
+        }
+        requestAnimationFrame(() => backdrop?.classList.toggle("on", !!open));
+      });
+      nav?.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
+    </script>
+  </body>
+</html>

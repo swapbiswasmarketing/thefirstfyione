@@ -1,0 +1,19 @@
+{
+  "name": "strictly-fyi",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Strictly FYI - the no-fluff go-to-market brief. Signal, not noise.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^5.14.1"
+  }
+}

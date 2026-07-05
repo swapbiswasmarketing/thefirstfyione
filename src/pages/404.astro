@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 — File Not Found — Strictly FYI" description="This file does not exist, or your clearance is insufficient.">
+  <section class="nf">
+    <div class="wrap-narrow">
+      <div class="nf-code mono">ERROR 404</div>
+      <div class="nf-stamp mono" aria-hidden="true">FILE NOT FOUND</div>
+      <h1>This file has been <span class="redact" title="or never existed">redacted, moved, or never existed</span>.</h1>
+      <p class="nf-lede mono">
+        // The requested document is not on file. Either your clearance is insufficient,
+        or the page took the information to the grave. Strictly FYI.
+      </p>
+      <div class="nf-cta">
+        <a href="/" class="btn btn-signal">Return to base →</a>
+        <a href="/blog/" class="btn btn-ghost">Open the archive</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .nf { text-align: center; padding: clamp(4rem, 12vw, 8rem) 0; }
+  .nf-code { color: var(--faint); letter-spacing: 0.3em; font-size: 0.9rem; }
+  .nf-stamp {
+    display: inline-block; margin: 1.4rem 0; color: var(--danger);
+    border: 2px solid var(--danger); padding: 0.5rem 1.2rem; border-radius: 3px;
+    font-size: 1.1rem; letter-spacing: 0.14em; transform: rotate(-3deg); font-weight: 600;
+  }
+  .nf h1 { font-size: clamp(1.9rem, 5.5vw, 3.4rem); margin: 1rem auto; max-width: 22ch; }
+  .nf-lede { color: var(--muted); font-size: 0.95rem; max-width: 54ch; margin: 0 auto 2rem; line-height: 1.7; }
+  .nf-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+</style>
