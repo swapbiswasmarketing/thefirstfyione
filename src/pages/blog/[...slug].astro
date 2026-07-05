@@ -9,7 +9,8 @@ export async function getStaticPaths() {
 }
 
 const { post, sorted } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 const catLabel: Record<string, string> = {
   science: "Science", history: "History", tech: "Tech",
@@ -26,6 +27,12 @@ const url = new URL(`/blog/${post.id}/`, site).href;
 const published = post.data.pubDate.toISOString();
 const modified = (post.data.updatedDate ?? post.data.pubDate).toISOString();
 const section = catLabel[post.data.category] ?? "Curiosity";
+
+const shareText = encodeURIComponent(post.data.title);
+const shareUrl = encodeURIComponent(url);
+const xShare = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+const fbShare = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+const liShare = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
 
 const articleLd = {
   "@context": "https://schema.org",
@@ -49,6 +56,17 @@ const breadcrumbLd = {
     { "@type": "ListItem", position: 3, name: post.data.title, item: url },
   ],
 };
+const faqLd = post.data.faqs?.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: post.data.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    }
+  : null;
 ---
 
 <Layout
@@ -61,6 +79,7 @@ const breadcrumbLd = {
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleLd)} is:inline />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} is:inline />
+  {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} is:inline />}
 
   <div class="read-progress" aria-hidden="true"><span id="rp-bar"></span></div>
   <button id="to-top" class="to-top" type="button" aria-label="Back to top" hidden>
@@ -79,14 +98,50 @@ const breadcrumbLd = {
         <span>Strictly FYI</span>
         <span>·</span>
         <time datetime={published}>{post.data.pubDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</time>
+        {post.data.updatedDate && (
+          <><span>·</span><span class="updated">Updated {post.data.updatedDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span></>
+        )}
         {post.data.readingTime && <><span>·</span><span>{post.data.readingTime}</span></>}
       </div>
       <hr class="rule" />
+
+      {toc.length >= 3 && (
+        <details class="toc" open>
+          <summary>In this article</summary>
+          <ol>
+            {toc.map((h) => <li class={h.depth === 3 ? "sub" : ""}><a href={`#${h.slug}`}>{h.text}</a></li>)}
+          </ol>
+        </details>
+      )}
     </div>
 
     <div class="wrap-narrow prose">
       <Content />
     </div>
+
+    <div class="wrap-narrow">
+      <div class="share" aria-label="Share this article">
+        <span class="share-label mono">Share</span>
+        <a class="share-btn" href={xShare} target="_blank" rel="noopener" aria-label="Share on X">X</a>
+        <a class="share-btn" href={fbShare} target="_blank" rel="noopener" aria-label="Share on Facebook">Facebook</a>
+        <a class="share-btn" href={liShare} target="_blank" rel="noopener" aria-label="Share on LinkedIn">LinkedIn</a>
+        <button class="share-btn copy-link" type="button" data-url={url}>Copy link</button>
+      </div>
+    </div>
+
+    {post.data.faqs?.length && (
+      <div class="wrap-narrow">
+        <section class="faq" aria-label="Frequently asked questions">
+          <h2>Frequently asked questions</h2>
+          {post.data.faqs.map((f) => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </section>
+      </div>
+    )}
 
     <div class="wrap-narrow">
       <div class="post-cta">
@@ -122,11 +177,24 @@ const breadcrumbLd = {
   .post h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.05; margin: 0.6rem 0 0.8rem; }
   .dek { font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--ink-soft); line-height: 1.4; }
   .byline { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; margin: 1.4rem 0; color: var(--ink-faint); font-size: 0.8rem; }
+  .byline .updated { color: var(--indigo); }
   .rule { border: none; border-top: 1px solid var(--line); margin: 0; }
 
-  .prose { margin-top: 2rem; font-size: 1.18rem; line-height: 1.75; color: #2c2d34; }
-  .prose :global(h2) { font-family: var(--serif); color: var(--ink); font-size: clamp(1.6rem, 3.5vw, 2.1rem); margin: 2.6rem 0 0.8rem; }
-  .prose :global(h3) { font-size: 1.4rem; margin: 2rem 0 0.6rem; }
+  /* Table of contents */
+  .toc { margin: 1.8rem 0 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-2); padding: 0.4rem 1.2rem; }
+  .toc summary { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--indigo); cursor: pointer; padding: 0.7rem 0; list-style: none; }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after { content: "▾"; float: right; transition: transform 0.2s; }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol { margin: 0.2rem 0 1rem; padding-left: 1.1rem; }
+  .toc li { margin: 0.3rem 0; }
+  .toc li.sub { margin-left: 1rem; list-style: circle; }
+  .toc a { color: var(--ink-soft); text-decoration: none; font-size: 0.95rem; }
+  .toc a:hover { color: var(--indigo); text-decoration: underline; }
+
+  .prose { margin-top: 2rem; font-size: 1.18rem; line-height: 1.75; color: #2c2d34; scroll-margin-top: 90px; }
+  .prose :global(h2) { font-family: var(--serif); color: var(--ink); font-size: clamp(1.6rem, 3.5vw, 2.1rem); margin: 2.6rem 0 0.8rem; scroll-margin-top: 90px; }
+  .prose :global(h3) { font-size: 1.4rem; margin: 2rem 0 0.6rem; scroll-margin-top: 90px; }
   .prose :global(p) { margin: 1.1rem 0; }
   .prose :global(ul), .prose :global(ol) { margin: 1.1rem 0 1.1rem 1.4rem; }
   .prose :global(li) { margin: 0.5rem 0; }
@@ -137,6 +205,23 @@ const breadcrumbLd = {
   .prose :global(hr) { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
   .prose :global(code) { font-family: var(--mono); background: var(--paper-deep); padding: 0.15em 0.4em; border-radius: 5px; font-size: 0.88em; }
   .prose :global(mark) { background: var(--highlight); padding: 0 0.15em; }
+
+  /* Share */
+  .share { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin: 2.5rem 0 1rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .share-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-right: 0.2rem; }
+  .share-btn { font-family: var(--mono); font-size: 0.82rem; padding: 0.5rem 0.9rem; min-height: 40px; display: inline-flex; align-items: center; border: 1.5px solid var(--line-2); border-radius: 999px; background: var(--paper-2); color: var(--ink); text-decoration: none; cursor: pointer; transition: all 0.15s; }
+  .share-btn:hover { border-color: var(--indigo); color: var(--indigo); }
+  .copy-link.done { border-color: var(--indigo); color: var(--indigo); }
+
+  /* FAQ */
+  .faq { margin: 3rem 0; }
+  .faq h2 { font-family: var(--serif); font-size: clamp(1.5rem, 3.5vw, 2rem); margin-bottom: 1rem; }
+  .faq-item { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-2); margin-bottom: 0.7rem; padding: 0 1.2rem; }
+  .faq-item summary { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; cursor: pointer; padding: 1.1rem 0; list-style: none; position: relative; padding-right: 2rem; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; position: absolute; right: 0.2rem; top: 50%; transform: translateY(-50%); font-size: 1.5rem; color: var(--indigo); transition: transform 0.2s; }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-item p { color: var(--ink-soft); padding-bottom: 1.1rem; margin: 0; line-height: 1.7; }
 
   .post-cta { text-align: center; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2.4rem; background: var(--paper-2); margin: 3rem 0; box-shadow: var(--shadow); }
   .cta-badge { display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 0.82rem; padding: 0.1rem 0.5rem; }
@@ -175,4 +260,15 @@ const breadcrumbLd = {
   document.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
   toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+  const copyBtn = document.querySelector<HTMLButtonElement>(".copy-link");
+  copyBtn?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(copyBtn.dataset.url || location.href);
+      const prev = copyBtn.textContent;
+      copyBtn.textContent = "Copied ✓";
+      copyBtn.classList.add("done");
+      setTimeout(() => { copyBtn.textContent = prev; copyBtn.classList.remove("done"); }, 1800);
+    } catch (e) {}
+  });
 </script>

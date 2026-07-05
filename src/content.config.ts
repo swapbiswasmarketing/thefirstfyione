@@ -12,6 +12,7 @@ const blog = defineCollection({
     readingTime: z.string().optional(),
     filecode: z.string().optional(),
     featured: z.boolean().default(false),
+    faqs: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
   }),
 });
 
