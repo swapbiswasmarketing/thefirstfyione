@@ -6,205 +6,302 @@ const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 const featured = posts.find((p) => p.data.featured) ?? posts[0];
-const rest = posts.filter((p) => p.id !== featured?.id).slice(0, 6);
+const rest = posts.filter((p) => p.id !== featured?.id).slice(0, 5);
 
+const catLabel: Record<string, string> = {
+  science: "Science", history: "History", tech: "Tech",
+  culture: "Culture", everyday: "Everyday", curiosity: "Curiosity",
+};
 const cats = [
   { key: "science", n: "01", name: "Science", note: "How the universe actually works" },
   { key: "history", n: "02", name: "History", note: "The stories behind the story" },
   { key: "tech", n: "03", name: "Tech", note: "Why the things around you work" },
-  { key: "culture", n: "04", name: "Culture", note: "Ideas, language, and why we do what we do" },
+  { key: "culture", n: "04", name: "Culture", note: "Ideas, language, and why we do things" },
   { key: "everyday", n: "05", name: "Everyday", note: "The hidden logic of ordinary life" },
   { key: "curiosity", n: "06", name: "Curiosity", note: "The wonderfully, oddly true" },
 ];
-const catLabel: Record<string, string> = Object.fromEntries(cats.map((c) => [c.key, c.name]));
-
 const facts = [
   "Honey found in 3,000-year-old Egyptian tombs was still edible.",
   "A day on Venus is longer than its year.",
   "Bananas are botanically berries. Strawberries are not.",
   "Octopuses have three hearts and blue blood.",
-  "The Eiffel Tower can be ~15 cm taller in summer heat.",
+  "The Eiffel Tower can be about 15 cm taller in summer heat.",
 ];
+
+const now = new Date();
+const dateline = now
+  .toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })
+  .toUpperCase();
+
+const fwords = featured.data.title.trim().split(" ");
+const fLast = fwords.length > 1 ? fwords.pop() : featured.data.title;
+const fHead = fwords.length > 1 ? fwords.join(" ") + " " : "";
+const fcat = catLabel[featured.data.category] ?? "Curiosity";
+
+const fmt = (d: Date) => d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+const stinum = (p: any, i: number) => p.data.filecode ?? `No. 0${i + 2}`;
 ---
 
-<Layout>
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <p class="eyebrow reveal">The general-interest field guide to the fascinating</p>
-      <h1 class="hero-title reveal">
-        Interesting things, <span class="hl">strictly</span> for your information.
-      </h1>
-      <p class="hero-sub reveal">
-        Short, smart, well-sourced stories about science, history, tech, culture, and the
-        quiet wonders of everyday life. The stuff that makes you go <em>"huh, I didn't know that."</em>
-      </p>
-      <div class="hero-cta reveal">
-        <a href="/blog/" class="btn btn-primary">Start reading →</a>
-        <a href="#subscribe" class="btn btn-ghost">Get the weekly FYI</a>
+<Layout bare>
+  <div class="gazette wrap">
+    <!-- ============ MASTHEAD ============ -->
+    <header class="mast">
+      <div class="dateline">
+        <span>Vol. I · Nº 001</span>
+        <span class="dateline-mid">A field guide to the fascinating</span>
+        <span>{dateline}</span>
       </div>
-    </div>
-  </section>
+      <div class="nameplate-row">
+        <h1 class="nameplate"><a href="/">Strictly <span class="hl-live">FYI</span></a></h1>
+        <div class="mast-meta">
+          <span>The weekly dispatch</span><br />
+          <span>Interesting things, strictly</span><br />
+          <span>for your information.</span>
+        </div>
+      </div>
+      <div class="rule-thickthin"></div>
+      <nav class="dept-nav" aria-label="Departments">
+        {cats.map((c, i) => (
+          <>
+            <a href={`/blog/?cat=${c.key}`}><span class="sec">§{c.n}</span> {c.name.toUpperCase()}</a>
+            {i < cats.length - 1 && <span class="dot" aria-hidden="true">·</span>}
+          </>
+        ))}
+      </nav>
+    </header>
 
-  <!-- ============ FEATURED ============ -->
-  {featured && (
-    <section class="section featured-section">
-      <div class="wrap">
-        <p class="tag tag-accent reveal">// featured</p>
-        <a href={`/blog/${featured.id}/`} class="feature reveal">
-          <div class="feature-body">
-            <span class="cat">{catLabel[featured.data.category] ?? "Curiosity"}</span>
-            <h2>{featured.data.title}</h2>
-            <p>{featured.data.description}</p>
-            <span class="feature-meta mono">
-              {featured.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-              {featured.data.readingTime ? ` · ${featured.data.readingTime}` : ""} · Read →
-            </span>
-          </div>
-          <div class="feature-side" aria-hidden="true">
-            <span class="feature-num mono">Nº 01</span>
-            <span class="feature-mark">FYI</span>
-          </div>
+    <!-- ============ THE FOLD — 8/4 LEDGER SPLIT ============ -->
+    <section class="fold">
+      <article class="lead">
+        <p class="lead-kicker">{featured.data.filecode ?? "No. 01"} / {fcat.toUpperCase()} · The Lead</p>
+        <a href={`/blog/${featured.id}/`} class="lead-link">
+          <h2 class="lead-head">{fHead}<span class="hl-live">{fLast}</span></h2>
         </a>
+        <p class="lead-dek">{featured.data.description}</p>
+        <p class="lead-meta">
+          <time>{fmt(featured.data.pubDate)}</time>
+          <span class="leader" aria-hidden="true"></span>
+          <span>{featured.data.readingTime ?? ""}</span>
+          <a href={`/blog/${featured.id}/`} class="entry-link">Read the entry →</a>
+        </p>
+      </article>
+
+      <aside class="stringers" aria-label="Other entries">
+        <p class="rail-head">More in this issue</p>
+        {rest.map((p, i) => (
+          <a href={`/blog/${p.id}/`} class="stringer">
+            <span class="stringer-num">{stinum(p, i)}</span>
+            <span class="stringer-body">
+              <span class="stringer-kicker">{catLabel[p.data.category]}</span>
+              <span class="stringer-head">{p.data.title}</span>
+              <span class="stringer-time">{p.data.readingTime ?? ""}</span>
+            </span>
+          </a>
+        ))}
+      </aside>
+    </section>
+
+    <!-- ============ THE ALMANAC ============ -->
+    <section class="almanac-row">
+      <div class="almanac">
+        <div class="almanac-head">The Almanac · One thing worth knowing</div>
+        <blockquote class="almanac-fact" id="fact">{facts[0]}</blockquote>
+        <div class="almanac-source">Entry Nº 1 · rotates on load</div>
+      </div>
+      <div class="almanac-margin" aria-hidden="true">
+        <span>One fact, filed<br />daily. Rotates<br />on load.</span>
       </div>
     </section>
-  )}
 
-  <!-- ============ TOPICS ============ -->
-  <section class="section topics-section" id="topics">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Browse by topic</p>
-        <h2>Six ways to fall down a rabbit hole.</h2>
-      </div>
-      <div class="topic-grid">
-        {cats.map((c) => (
-          <a href={`/blog/?cat=${c.key}`} class="topic reveal">
-            <span class="topic-n mono">{c.n}</span>
-            <div class="topic-body">
-              <h3>{c.name}</h3>
-              <p>{c.note}</p>
-            </div>
-          </a>
+    <!-- ============ IN THIS ISSUE — RULED INDEX ============ -->
+    <section class="index">
+      <p class="index-head">In this issue · Departments</p>
+      <div class="index-grid">
+        {[cats.slice(0, 3), cats.slice(3, 6)].map((col) => (
+          <div class="index-col">
+            {col.map((c) => (
+              <a href={`/blog/?cat=${c.key}`} class="index-row">
+                <span class="index-num">§{c.n}</span>
+                <span>
+                  <span class="index-name">{c.name}</span>
+                  <span class="index-note">{c.note}</span>
+                </span>
+              </a>
+            ))}
+          </div>
         ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============ LATEST ============ -->
-  <section class="section latest-section">
-    <div class="wrap">
-      <div class="sec-head row reveal">
-        <div>
-          <p class="eyebrow">Fresh from the desk</p>
-          <h2>Latest stories.</h2>
-        </div>
-        <a href="/blog/" class="btn btn-ghost btn-sm">All stories →</a>
+    <!-- ============ SUBSCRIBE — STANDING NOTICE ============ -->
+    <section class="subscribe">
+      <div class="sub-statement">
+        <p class="sub-standing">By post &amp; by <span class="hl-live">inbox</span>.</p>
+        <p class="sub-sub">The field guide, delivered weekly. Five interesting things, five minutes, no filler.</p>
       </div>
-      <div class="story-grid">
-        {rest.map((post) => (
-          <a href={`/blog/${post.id}/`} class="story reveal">
-            <span class="cat">{catLabel[post.data.category] ?? "Curiosity"}</span>
-            <h3>{post.data.title}</h3>
-            <p>{post.data.description}</p>
-            <span class="story-meta mono">
-              {post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-              {post.data.readingTime ? ` · ${post.data.readingTime}` : ""}
-            </span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FACT BAND ============ -->
-  <section class="fact-band">
-    <div class="wrap">
-      <span class="fact-label mono">One thing worth knowing</span>
-      <blockquote id="fact">{facts[0]}</blockquote>
-    </div>
-  </section>
-
-  <!-- ============ SUBSCRIBE ============ -->
-  <section class="section sub-section" id="subscribe">
-    <div class="wrap-narrow sub-card reveal">
-      <span class="hl sub-badge">The weekly FYI</span>
-      <h2>One email. Five things worth knowing.</h2>
-      <p>Every week: a handful of genuinely interesting, well-sourced things - decoded in plain English, read in five minutes. No spam, no filler.</p>
       <form class="sub-form" onsubmit="event.preventDefault(); this.querySelector('.sub-ok').hidden=false; this.querySelector('input').value='';">
-        <input type="email" required placeholder="you@example.com" aria-label="Email address" />
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-        <p class="sub-ok" hidden>✓ You're in. Check your inbox to confirm.</p>
+        <label class="sub-label" for="sub-email">Enter your address</label>
+        <input id="sub-email" type="email" required placeholder="you@example.com" />
+        <button type="submit" class="coupon">[ Yes, send me the weekly dispatch → ]</button>
+        <p class="sub-ok" hidden>Filed. Check your inbox to confirm.</p>
       </form>
-      <p class="sub-fine mono">Join curious readers · unsubscribe anytime</p>
-    </div>
-  </section>
+    </section>
+
+    <!-- ============ COLOPHON ============ -->
+    <footer class="colophon">
+      <div class="colophon-top">
+        <p class="imprint">
+          <span class="imprint-name">Strictly FYI</span> is set in Playfair Display, Inter &amp; Space Mono.
+          Composed in Astro. Printed on the web, Nº 001 · Est. MMXXVI.
+          <br />Interesting things, strictly for your information.
+        </p>
+        <nav class="colophon-nav" aria-label="Footer">
+          <a href="/blog/">Read</a> · <a href="/#index">Topics</a> · <a href="/about/">About</a> · <a href="/rss.xml">RSS</a>
+        </nav>
+      </div>
+      <div class="colophon-feet">
+        <span>{cats.map((c) => `§${c.n} ${c.name}`).join("  ·  ")}</span>
+        <span class="end-mark">END</span>
+      </div>
+    </footer>
+  </div>
 </Layout>
 
 <style>
-  .hero { padding: clamp(3.5rem, 10vw, 7rem) 0 clamp(2rem, 5vw, 3.5rem); }
-  .hero-inner { max-width: 900px; }
-  .hero .eyebrow { display: inline-block; margin-bottom: 1.2rem; }
-  .hero-title { font-family: var(--serif); font-size: clamp(2.6rem, 7vw, 5rem); font-weight: 600; line-height: 1.02; letter-spacing: -0.02em; }
-  .hero-sub { font-size: clamp(1.1rem, 2.2vw, 1.35rem); color: var(--ink-soft); max-width: 56ch; margin: 1.6rem 0 2rem; }
-  .hero-sub em { font-family: var(--serif); font-style: italic; color: var(--ink); }
-  .hero-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .gazette {
+    --display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --hl: #ffe14d;
+    --rule-faint: rgba(25, 26, 31, 0.14);
+    --rule-mid: rgba(25, 26, 31, 0.2);
+    padding-top: 1.2rem;
+    padding-bottom: 3rem;
+  }
+  .gazette a { text-decoration: none; color: var(--ink); }
 
-  .sec-head { max-width: 640px; margin-bottom: 2.4rem; }
-  .sec-head h2 { font-size: clamp(1.8rem, 4.5vw, 2.9rem); margin-top: 0.5rem; }
-  .sec-head.row { display: flex; justify-content: space-between; align-items: flex-end; max-width: none; gap: 1rem; flex-wrap: wrap; }
+  /* Live highlighter — the one signature accent */
+  .hl-live {
+    background-image: linear-gradient(transparent 52%, var(--hl) 52%, var(--hl) 90%, transparent 90%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    animation: hl-swipe 0.55s cubic-bezier(.4,0,.2,1) 0.25s forwards;
+    padding: 0 0.04em;
+  }
+  @keyframes hl-swipe { to { background-size: 100% 100%; } }
+  @media (prefers-reduced-motion: reduce) { .hl-live { background-size: 100% 100%; animation: none; } }
 
-  /* Featured */
-  .featured-section .tag-accent { display: block; margin-bottom: 1rem; }
-  .feature { display: grid; grid-template-columns: 1fr 220px; gap: 0; text-decoration: none; color: var(--ink); background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
-  .feature:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
-  .feature-body { padding: clamp(1.8rem, 4vw, 3rem); }
-  .feature-body .cat { margin-bottom: 1rem; }
-  .feature-body h2 { font-size: clamp(1.7rem, 4vw, 2.8rem); line-height: 1.08; margin-bottom: 0.7rem; }
-  .feature-body p { color: var(--ink-soft); font-size: 1.1rem; max-width: 52ch; margin-bottom: 1.2rem; }
-  .feature-meta { color: var(--ink-faint); font-size: 0.82rem; }
-  .feature-side { background: var(--indigo); display: grid; place-items: center; position: relative; }
-  .feature-num { position: absolute; top: 1rem; left: 1rem; color: rgba(255,255,255,0.72); font-size: 0.72rem; letter-spacing: 0.2em; }
-  .feature-mark { font-family: var(--serif); font-weight: 700; font-size: 3.2rem; letter-spacing: -0.02em; color: #fff; }
-  @media (max-width: 720px) { .feature { grid-template-columns: 1fr; } .feature-side { min-height: 88px; } .feature-mark { font-size: 2.2rem; } }
+  /* -------- MASTHEAD -------- */
+  .dateline {
+    display: flex; justify-content: space-between; gap: 1rem;
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--ink-faint); border-bottom: 1px solid var(--ink); padding-bottom: 0.5rem;
+  }
+  .dateline-mid { color: var(--ink-soft); }
+  .nameplate-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; padding: 0.9rem 0 0.5rem; }
+  .nameplate {
+    font-family: var(--display); font-weight: 900; text-transform: uppercase;
+    font-size: clamp(3rem, 12vw, 8.25rem); line-height: 0.84; letter-spacing: -0.035em;
+    margin: 0; overflow-wrap: anywhere;
+  }
+  .mast-meta { text-align: right; flex-shrink: 0; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); line-height: 1.7; padding-bottom: 0.5rem; }
+  .rule-thickthin { border-top: 3px solid var(--ink); position: relative; }
+  .rule-thickthin::after { content: ""; position: absolute; left: 0; right: 0; top: 4px; border-top: 1px solid var(--ink); }
+  .dept-nav { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.7rem; padding: 0.7rem 0; margin-top: 6px; border-bottom: 1px solid var(--ink); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; }
+  .dept-nav a { color: var(--ink-soft); }
+  .dept-nav a:hover { color: var(--ink); }
+  .dept-nav .sec { color: var(--ink-faint); }
+  .dept-nav .dot { color: var(--ink-faint); }
 
-  /* Topics */
-  .topics-section { background: var(--paper-deep); border-block: 1px solid var(--line); }
-  .topic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .topic { display: flex; gap: 1rem; align-items: baseline; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.6rem; text-decoration: none; color: var(--ink); transition: border-color 0.18s, background 0.18s; }
-  .topic:hover { border-color: var(--indigo); background: color-mix(in srgb, var(--indigo) 4%, var(--paper-2)); }
-  .topic-n { font-size: 0.92rem; color: var(--indigo); font-weight: 700; letter-spacing: 0.04em; flex-shrink: 0; }
-  .topic h3 { font-size: 1.3rem; margin: 0 0 0.3rem; }
-  .topic p { color: var(--ink-soft); font-size: 0.95rem; }
-  @media (max-width: 820px) { .topic-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 520px) { .topic-grid { grid-template-columns: 1fr; } }
+  /* -------- THE FOLD: 8/4 -------- */
+  .fold { display: grid; grid-template-columns: 8fr 4fr; }
+  .lead { padding: 1.8rem 2.2rem 1.8rem 0; border-right: 1px solid var(--rule-mid); min-width: 0; }
+  .lead-kicker { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .lead-head { font-family: var(--display); font-weight: 700; font-size: clamp(2.1rem, 5.2vw, 4.4rem); line-height: 0.98; letter-spacing: -0.02em; margin: 0.5rem 0 0; }
+  .lead-link:hover .lead-head { color: #000; }
+  .lead-dek { font-size: 1.15rem; line-height: 1.55; color: var(--ink-soft); max-width: 34ch; margin: 1.1rem 0 0 min(22%, 5rem); }
+  .lead-meta { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; margin-top: 1.3rem; font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint); }
+  .lead-meta .leader { flex: 1; min-width: 1.5rem; border-bottom: 1px dotted var(--ink-faint); transform: translateY(-0.2em); }
+  .entry-link { color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
+  .entry-link:hover { background: var(--hl); }
 
-  /* Latest */
-  .story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .story { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 0.5rem; box-shadow: var(--shadow); transition: transform 0.18s, box-shadow 0.18s; }
-  .story:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
-  .story .cat { align-self: flex-start; }
-  .story h3 { font-size: 1.3rem; line-height: 1.15; }
-  .story p { color: var(--ink-soft); font-size: 0.97rem; flex: 1; }
-  .story-meta { color: var(--ink-faint); font-size: 0.78rem; }
-  @media (max-width: 900px) { .story-grid { grid-template-columns: 1fr; } }
+  .stringers { padding: 1.8rem 0 1.8rem 1.6rem; min-width: 0; }
+  .rail-head { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); padding-bottom: 0.6rem; border-bottom: 1px solid var(--ink); }
+  .stringer { display: grid; grid-template-columns: 4.5ch 1fr; gap: 0.8rem; padding: 0.95rem 0; border-bottom: 1px solid var(--rule-faint); align-items: start; }
+  .stringer-num { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); letter-spacing: 0.04em; padding-top: 0.25rem; white-space: nowrap; }
+  .stringer-body { min-width: 0; display: block; }
+  .stringer-kicker { display: block; font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+  .stringer-head { display: block; font-family: var(--display); font-weight: 600; font-size: clamp(1.12rem, 1.5vw, 1.35rem); line-height: 1.12; margin: 0.2rem 0 0.35rem; }
+  .stringer-time { font-family: var(--mono); font-size: 0.66rem; color: var(--ink-faint); }
+  .stringer:hover { border-bottom-color: var(--ink); }
+  .stringer:hover .stringer-num { background: var(--hl); color: var(--ink); }
+  .stringer:hover .stringer-head { color: #000; }
 
-  /* Fact band */
-  .fact-band { background: var(--ink); color: var(--paper); padding: clamp(2.5rem, 6vw, 4rem) 0; }
-  .fact-label { color: var(--highlight); font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; }
-  .fact-band blockquote { font-family: var(--serif); font-size: clamp(1.5rem, 4vw, 2.4rem); line-height: 1.25; margin-top: 0.8rem; max-width: 26ch; color: var(--paper); transition: opacity 0.4s; }
+  /* -------- ALMANAC -------- */
+  .almanac-row { display: grid; grid-template-columns: 6fr 6fr; border-top: 1px solid var(--ink); }
+  .almanac { border: 1px solid var(--ink); background: var(--paper-2); margin: 1.8rem 0; align-self: start; }
+  .almanac-head { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); padding: 0.7rem 1.1rem; border-bottom: 1px solid var(--ink); }
+  .almanac-fact { font-family: var(--display); font-style: italic; font-weight: 600; font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1.25; color: var(--ink); padding: 1.2rem 1.1rem 1.2rem 2rem; text-indent: -0.9rem; transition: opacity 0.4s; margin: 0; }
+  .almanac-source { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; color: var(--ink-faint); text-align: right; padding: 0 1.1rem 0.9rem; }
+  .almanac-margin { padding: 1.8rem 0 1.8rem 1.6rem; border-left: 1px solid var(--rule-faint); font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); line-height: 1.6; }
 
-  /* Subscribe */
-  .sub-card { text-align: center; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(2.2rem, 5vw, 3.4rem); box-shadow: var(--shadow); }
-  .sub-badge { display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 0.82rem; padding: 0.1rem 0.5rem; }
-  .sub-card h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); margin: 0.9rem 0 0.6rem; }
-  .sub-card > p { color: var(--ink-soft); max-width: 48ch; margin: 0 auto 1.6rem; }
-  .sub-form { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
-  .sub-form input { flex: 1; min-width: 240px; max-width: 320px; padding: 0.85rem 1.1rem; border-radius: 999px; border: 1.5px solid var(--line-2); background: var(--paper); color: var(--ink); font-size: 1rem; }
-  .sub-form input:focus { outline: none; border-color: var(--indigo); box-shadow: 0 0 0 3px color-mix(in srgb, var(--indigo) 15%, transparent); }
-  .sub-ok { flex-basis: 100%; color: var(--indigo-deep); font-weight: 600; margin-top: 0.3rem; }
-  .sub-fine { color: var(--ink-faint); font-size: 0.78rem; margin-top: 1.2rem; }
-  @media (max-width: 720px) { .sub-form input { max-width: none; } }
+  /* -------- INDEX -------- */
+  .index-head { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); padding: 0.7rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  .index-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .index-col:first-child { border-right: 1px solid var(--rule-faint); }
+  .index-col:first-child .index-row { padding-right: 1.6rem; }
+  .index-col:last-child .index-row { padding-left: 1.6rem; }
+  .index-row { display: grid; grid-template-columns: 3.5ch 1fr; gap: 0.9rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule-faint); align-items: baseline; }
+  .index-num { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint); }
+  .index-name { display: block; font-family: var(--display); font-weight: 600; font-size: 1.5rem; line-height: 1; }
+  .index-note { display: block; color: var(--ink-soft); font-size: 0.92rem; margin-top: 0.3rem; }
+  .index-row:hover { border-bottom-color: var(--ink); }
+  .index-row:hover .index-num { background: var(--hl); color: var(--ink); }
+
+  /* -------- SUBSCRIBE -------- */
+  .subscribe { display: grid; grid-template-columns: 5fr 7fr; gap: 2.5rem; border-top: 1px solid var(--ink); padding: 2.4rem 0; align-items: end; }
+  .sub-standing { font-family: var(--display); font-weight: 700; font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1; letter-spacing: -0.02em; margin: 0; }
+  .sub-sub { color: var(--ink-soft); font-size: 1.05rem; max-width: 40ch; margin-top: 0.8rem; }
+  .sub-form { display: grid; gap: 0.4rem; }
+  .sub-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .sub-form input { border: none; border-bottom: 1.5px solid var(--ink); background: transparent; border-radius: 0; padding: 0.5rem 0; font-family: var(--display); font-size: 1.5rem; color: var(--ink); }
+  .sub-form input::placeholder { color: var(--ink-faint); }
+  .sub-form input:focus { outline: none; border-bottom-color: var(--ink); background: linear-gradient(transparent 70%, var(--hl) 70%); }
+  .coupon { justify-self: start; margin-top: 0.7rem; background: none; border: none; padding: 0; cursor: pointer; font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.04em; color: var(--ink); }
+  .coupon:hover { background: var(--hl); }
+  .sub-ok { font-family: var(--mono); font-size: 0.8rem; color: var(--ink); margin-top: 0.4rem; }
+
+  /* -------- COLOPHON -------- */
+  .colophon { border-top: 1px solid var(--ink); margin-top: 2.5rem; padding-top: 1.4rem; }
+  .colophon-top { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .imprint { font-family: var(--mono); font-size: 0.72rem; line-height: 1.7; color: var(--ink-faint); max-width: 60ch; }
+  .imprint-name { color: var(--ink); }
+  .colophon-nav { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint); white-space: nowrap; }
+  .colophon-nav a { color: var(--ink-soft); }
+  .colophon-nav a:hover { color: var(--ink); }
+  .colophon-feet { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1.4rem; padding-top: 0.8rem; border-top: 1px solid var(--rule-faint); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+  .end-mark { color: var(--ink); }
+
+  /* -------- RESPONSIVE -------- */
+  @media (max-width: 900px) {
+    .nameplate-row { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+    .mast-meta { text-align: left; }
+    .fold { grid-template-columns: 1fr; }
+    .lead { border-right: none; border-bottom: 1px solid var(--ink); padding: 1.4rem 0; }
+    .lead-dek { margin-left: 0; }
+    .stringers { padding: 1.4rem 0 0; }
+    .almanac-row { grid-template-columns: 1fr; }
+    .almanac { margin: 1.4rem 0 0; }
+    .almanac-margin { display: none; }
+    .subscribe { grid-template-columns: 1fr; gap: 1.4rem; }
+    .colophon-top { flex-direction: column; gap: 1rem; }
+  }
+  @media (max-width: 560px) {
+    .index-grid { grid-template-columns: 1fr; }
+    .index-col:first-child { border-right: none; }
+    .index-col:last-child .index-row { padding-left: 0; }
+    .index-col:first-child .index-row { padding-right: 0; }
+    .dateline { flex-wrap: wrap; }
+    .dateline-mid { display: none; }
+  }
 </style>
 
 <script>
@@ -213,15 +310,16 @@ const facts = [
     "A day on Venus is longer than its year.",
     "Bananas are botanically berries. Strawberries are not.",
     "Octopuses have three hearts and blue blood.",
-    "The Eiffel Tower can be ~15 cm taller in summer heat.",
+    "The Eiffel Tower can be about 15 cm taller in summer heat.",
   ];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const el = document.getElementById("fact");
-  let i = 0;
-  if (el) {
+  if (el && !reduce) {
+    let i = 0;
     setInterval(() => {
       i = (i + 1) % facts.length;
       el.style.opacity = "0";
       setTimeout(() => { el.textContent = facts[i]; el.style.opacity = "1"; }, 380);
-    }, 4200);
+    }, 5000);
   }
 </script>

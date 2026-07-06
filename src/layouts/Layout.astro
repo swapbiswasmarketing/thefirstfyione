@@ -9,6 +9,7 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   section?: string;
+  bare?: boolean;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   publishedTime,
   modifiedTime,
   section,
+  bare = false,
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://strictly.fyi");
@@ -89,7 +91,7 @@ const jsonLd = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Space+Mono:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
@@ -98,6 +100,7 @@ const jsonLd = {
   <body>
     <a class="skip" href="#main">Skip to content</a>
 
+    {!bare && (
     <header class="site-head">
       <div class="wrap head-inner">
         <a href="/" class="brand" aria-label="Strictly FYI home">
@@ -115,11 +118,13 @@ const jsonLd = {
         </div>
       </div>
     </header>
+    )}
 
     <main id="main">
       <slot />
     </main>
 
+    {!bare && (
     <footer class="site-foot">
       <div class="wrap foot-top">
         <div class="foot-brand-col">
@@ -144,6 +149,7 @@ const jsonLd = {
         <span class="mono">Interesting things, strictly for your information.</span>
       </div>
     </footer>
+    )}
 
     <style>
       .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: var(--paper); padding: 0.6rem 1rem; z-index: 100; border-radius: 0 0 8px 0; }
