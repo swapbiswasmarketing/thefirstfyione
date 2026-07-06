@@ -16,10 +16,6 @@ const catLabel: Record<string, string> = {
   science: "Science", history: "History", tech: "Tech",
   culture: "Culture", everyday: "Everyday", curiosity: "Curiosity",
 };
-const catEmoji: Record<string, string> = {
-  science: "🔬", history: "📜", tech: "💡", culture: "🎭", everyday: "☕", curiosity: "🧩",
-};
-
 const more = sorted.filter((p) => p.id !== post.id).slice(0, 2);
 
 const site = Astro.site ?? new URL("https://strictly.fyi");
@@ -91,7 +87,7 @@ const faqLd = post.data.faqs?.length
       <nav class="crumbs mono" aria-label="Breadcrumb">
         <a href="/">Home</a> <span>/</span> <a href="/blog/">Read</a> <span>/</span> <span class="crumb-cur">{section}</span>
       </nav>
-      <span class="cat">{catEmoji[post.data.category]} {section}</span>
+      <span class="cat">{section}</span>
       <h1>{post.data.title}</h1>
       <p class="dek">{post.data.description}</p>
       <div class="byline mono">
@@ -157,7 +153,7 @@ const faqLd = post.data.faqs?.length
         <div class="more-grid">
           {more.map((p) => (
             <a href={`/blog/${p.id}/`} class="more-card">
-              <span class="cat">{catEmoji[p.data.category]} {catLabel[p.data.category]}</span>
+              <span class="cat">{catLabel[p.data.category]}</span>
               <h3>{p.data.title}</h3>
               <p>{p.data.description}</p>
             </a>

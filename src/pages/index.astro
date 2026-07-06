@@ -9,12 +9,12 @@ const featured = posts.find((p) => p.data.featured) ?? posts[0];
 const rest = posts.filter((p) => p.id !== featured?.id).slice(0, 6);
 
 const cats = [
-  { key: "science", emoji: "🔬", name: "Science", note: "How the universe actually works" },
-  { key: "history", emoji: "📜", name: "History", note: "The stories behind the story" },
-  { key: "tech", emoji: "💡", name: "Tech", note: "Why the things around you work" },
-  { key: "culture", emoji: "🎭", name: "Culture", note: "Ideas, language, and why we do what we do" },
-  { key: "everyday", emoji: "☕", name: "Everyday", note: "The hidden logic of ordinary life" },
-  { key: "curiosity", emoji: "🧩", name: "Curiosity", note: "The wonderfully, oddly true" },
+  { key: "science", n: "01", name: "Science", note: "How the universe actually works" },
+  { key: "history", n: "02", name: "History", note: "The stories behind the story" },
+  { key: "tech", n: "03", name: "Tech", note: "Why the things around you work" },
+  { key: "culture", n: "04", name: "Culture", note: "Ideas, language, and why we do what we do" },
+  { key: "everyday", n: "05", name: "Everyday", note: "The hidden logic of ordinary life" },
+  { key: "curiosity", n: "06", name: "Curiosity", note: "The wonderfully, oddly true" },
 ];
 const catLabel: Record<string, string> = Object.fromEntries(cats.map((c) => [c.key, c.name]));
 
@@ -62,8 +62,8 @@ const facts = [
             </span>
           </div>
           <div class="feature-side" aria-hidden="true">
-            <span class="feature-num mono">FYI</span>
-            <span class="feature-glyph">?</span>
+            <span class="feature-num mono">Nº 01</span>
+            <span class="feature-mark">FYI</span>
           </div>
         </a>
       </div>
@@ -80,9 +80,11 @@ const facts = [
       <div class="topic-grid">
         {cats.map((c) => (
           <a href={`/blog/?cat=${c.key}`} class="topic reveal">
-            <span class="topic-emoji">{c.emoji}</span>
-            <h3>{c.name}</h3>
-            <p>{c.note}</p>
+            <span class="topic-n mono">{c.n}</span>
+            <div class="topic-body">
+              <h3>{c.name}</h3>
+              <p>{c.note}</p>
+            </div>
           </a>
         ))}
       </div>
@@ -161,18 +163,18 @@ const facts = [
   .feature-body h2 { font-size: clamp(1.7rem, 4vw, 2.8rem); line-height: 1.08; margin-bottom: 0.7rem; }
   .feature-body p { color: var(--ink-soft); font-size: 1.1rem; max-width: 52ch; margin-bottom: 1.2rem; }
   .feature-meta { color: var(--ink-faint); font-size: 0.82rem; }
-  .feature-side { background: linear-gradient(150deg, var(--indigo), var(--indigo-deep)); display: grid; place-items: center; position: relative; }
-  .feature-num { position: absolute; top: 1rem; left: 1rem; color: rgba(255,255,255,0.7); font-size: 0.72rem; letter-spacing: 0.2em; }
-  .feature-glyph { font-family: var(--serif); font-size: 9rem; color: #fff; opacity: 0.9; line-height: 1; }
-  @media (max-width: 720px) { .feature { grid-template-columns: 1fr; } .feature-side { min-height: 120px; } .feature-glyph { font-size: 5rem; } }
+  .feature-side { background: var(--indigo); display: grid; place-items: center; position: relative; }
+  .feature-num { position: absolute; top: 1rem; left: 1rem; color: rgba(255,255,255,0.72); font-size: 0.72rem; letter-spacing: 0.2em; }
+  .feature-mark { font-family: var(--serif); font-weight: 700; font-size: 3.2rem; letter-spacing: -0.02em; color: #fff; }
+  @media (max-width: 720px) { .feature { grid-template-columns: 1fr; } .feature-side { min-height: 88px; } .feature-mark { font-size: 2.2rem; } }
 
   /* Topics */
   .topics-section { background: var(--paper-deep); border-block: 1px solid var(--line); }
   .topic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .topic { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; text-decoration: none; color: var(--ink); transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s; box-shadow: var(--shadow); }
-  .topic:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); border-color: var(--indigo); }
-  .topic-emoji { font-size: 2rem; }
-  .topic h3 { font-size: 1.35rem; margin: 0.5rem 0 0.3rem; }
+  .topic { display: flex; gap: 1rem; align-items: baseline; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.6rem; text-decoration: none; color: var(--ink); transition: border-color 0.18s, background 0.18s; }
+  .topic:hover { border-color: var(--indigo); background: color-mix(in srgb, var(--indigo) 4%, var(--paper-2)); }
+  .topic-n { font-size: 0.92rem; color: var(--indigo); font-weight: 700; letter-spacing: 0.04em; flex-shrink: 0; }
+  .topic h3 { font-size: 1.3rem; margin: 0 0 0.3rem; }
   .topic p { color: var(--ink-soft); font-size: 0.95rem; }
   @media (max-width: 820px) { .topic-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 520px) { .topic-grid { grid-template-columns: 1fr; } }

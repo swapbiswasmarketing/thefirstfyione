@@ -2,10 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 
 const principles = [
-  { icon: "🎯", t: "Short and complete", d: "Every story earns its length. We explain the whole idea, then stop. No 2,000-word warm-ups to find the one interesting paragraph." },
-  { icon: "🔍", t: "Actually true", d: "We chase down the real explanation, not the fun-sounding myth. If something's disputed or simplified, we say so." },
-  { icon: "🧠", t: "Plain English", d: "You shouldn't need a degree to enjoy a good fact. We translate the science, history, and jargon into things a curious human can hold." },
-  { icon: "✨", t: "The 'huh' test", d: "One rule for what we publish: does it make you go 'huh, I didn't know that'? If not, it doesn't run." },
+  { n: "01", t: "Short and complete", d: "Every story earns its length. We explain the whole idea, then stop. No 2,000-word warm-ups to find the one interesting paragraph." },
+  { n: "02", t: "Actually true", d: "We chase down the real explanation, not the fun-sounding myth. If something's disputed or simplified, we say so." },
+  { n: "03", t: "Plain English", d: "You shouldn't need a degree to enjoy a good fact. We translate the science, history, and jargon into things a curious human can hold." },
+  { n: "04", t: "The 'huh' test", d: "One rule for what we publish: does it make you go 'huh, I didn't know that'? If not, it doesn't run." },
 ];
 ---
 
@@ -55,7 +55,7 @@ const principles = [
       <div class="pr-grid">
         {principles.map((p) => (
           <div class="pr reveal">
-            <span class="pr-icon">{p.icon}</span>
+            <span class="pr-n mono">{p.n}</span>
             <h3>{p.t}</h3>
             <p>{p.d}</p>
           </div>
@@ -86,7 +86,7 @@ const principles = [
   .principles-section { background: var(--paper-deep); border-block: 1px solid var(--line); }
   .pr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
   .pr { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow); }
-  .pr-icon { font-size: 2rem; }
+  .pr-n { font-family: var(--mono); font-size: 1.05rem; color: var(--indigo); font-weight: 700; }
   .pr h3 { font-size: 1.3rem; margin: 0.5rem 0; }
   .pr p { color: var(--ink-soft); }
   .join { text-align: center; }

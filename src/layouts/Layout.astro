@@ -173,10 +173,11 @@ const jsonLd = {
           flex-direction: column; align-items: flex-start; gap: 0.2rem;
           background: var(--paper-2); border-left: 1px solid var(--line);
           padding: 5rem 1.5rem 2rem; margin: 0; z-index: 60;
-          transform: translateX(105%); transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+          transform: translateX(105%); visibility: hidden;
+          transition: transform 0.28s cubic-bezier(.4,0,.2,1), visibility 0.28s;
           box-shadow: var(--shadow-lift);
         }
-        .nav.open { transform: none; }
+        .nav.open { transform: none; visibility: visible; }
         .nav a { font-size: 1.15rem; width: 100%; border-bottom: 1px solid var(--line); padding: 0.8rem 0; }
         .nav .nav-cta { display: block; margin-top: 1rem; background: var(--indigo); color: #fff; text-align: center; border-radius: 999px; padding: 0.8rem; border-bottom: none; }
         .nav-backdrop { position: fixed; inset: 0; background: rgba(25,26,31,0.4); z-index: 55; opacity: 0; pointer-events: none; transition: opacity 0.28s; }
