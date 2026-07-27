@@ -1,88 +1,231 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { catLabel, cats, fmtDate } from "../../data/site";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-const catLabel: Record<string, string> = {
-  science: "Science", history: "History", tech: "Tech",
-  culture: "Culture", everyday: "Everyday", curiosity: "Curiosity",
-};
-const cats = ["all", "science", "history", "tech", "culture", "everyday", "curiosity"];
+const filters = [{ key: "all", name: "All entries", n: "00" }, ...cats];
+const total = String(posts.length).padStart(3, "0");
 ---
 
-<Layout title="Read · Strictly FYI" description="Every story from Strictly FYI - short, smart, well-sourced pieces on science, history, tech, culture, and everyday curiosities.">
-  <section class="arch-hero">
-    <div class="wrap">
-      <p class="eyebrow">The archive</p>
-      <h1>Everything worth knowing.</h1>
-      <p class="lede">Short, well-sourced stories on the fascinating. Filter by topic.</p>
-      <div class="filters" role="group" aria-label="Filter stories by topic">
-        {cats.map((c) => (
-          <button class={`chip ${c === "all" ? "on" : ""}`} data-cat={c} type="button">
-            {c === "all" ? "All stories" : catLabel[c]}
-          </button>
-        ))}
-      </div>
-    </div>
-  </section>
+<Layout
+  title="The Archive · Strictly FYI"
+  description="Every entry filed by Strictly FYI - short, smart, well-sourced pieces on science, history, tech, culture, and everyday curiosities."
+>
+  <div class="archive wrap">
+    <header class="arch-head">
+      <p class="arch-kicker">The Archive · Nº {total} entries filed</p>
+      <h1 class="arch-title">Everything worth <span class="hl-live">knowing</span>.</h1>
+      <p class="arch-dek">
+        Short, well-sourced entries on the fascinating. Filed by department, newest first.
+      </p>
+    </header>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="story-grid" id="grid">
-        {posts.map((post) => (
-          <a href={`/blog/${post.id}/`} class="story" data-cat={post.data.category}>
-            <span class="cat">{catLabel[post.data.category] ?? "🧩 Curiosity"}</span>
-            <h2>{post.data.title}</h2>
-            <p>{post.data.description}</p>
-            <span class="story-meta mono">
-              {post.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-              {post.data.readingTime ? ` · ${post.data.readingTime}` : ""}
+    <nav class="depts" aria-label="Filter entries by department">
+      {filters.map((c) => (
+        <button class={`dept ${c.key === "all" ? "on" : ""}`} data-cat={c.key} type="button" aria-pressed={c.key === "all"}>
+          <span class="dept-n" aria-hidden="true">§{c.n}</span>{c.name}
+        </button>
+      ))}
+    </nav>
+
+    <ol class="ledger" id="grid">
+      {posts.map((post, i) => (
+        <li class="entry" data-cat={post.data.category}>
+          <a href={`/blog/${post.id}/`} class="entry-link">
+            <span class="entry-num">{post.data.filecode ?? `No. ${String(i + 1).padStart(3, "0")}`}</span>
+            <span class="entry-body">
+              <span class="entry-kicker">{catLabel[post.data.category]}</span>
+              <span class="entry-head">{post.data.title}</span>
+              <span class="entry-dek">{post.data.description}</span>
+            </span>
+            <span class="entry-meta">
+              <time datetime={post.data.pubDate.toISOString()}>{fmtDate(post.data.pubDate)}</time>
+              {post.data.readingTime && <span class="entry-time">{post.data.readingTime}</span>}
+              <span class="entry-arrow" aria-hidden="true">→</span>
             </span>
           </a>
-        ))}
-      </div>
-      <p class="empty" id="empty" hidden>No stories in this topic yet - check back soon.</p>
-    </div>
-  </section>
+        </li>
+      ))}
+    </ol>
+
+    <p class="empty" id="empty" hidden>Nothing filed under this department yet. Check back soon.</p>
+
+    <section class="arch-foot">
+      <p class="arch-foot-copy">
+        Five interesting things, every week. No filler, no algorithm bait.
+      </p>
+      <a href="/#subscribe" class="btn">Subscribe →</a>
+    </section>
+  </div>
 </Layout>
 
 <style>
-  .arch-hero { padding: clamp(3rem, 8vw, 5rem) 0 1.5rem; }
-  .arch-hero h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); margin: 0.4rem 0; }
-  .arch-hero .lede { color: var(--ink-soft); font-size: 1.1rem; margin-bottom: 2rem; }
-  .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .chip { font-family: var(--sans); font-weight: 500; font-size: 0.9rem; padding: 0.5rem 1rem; border-radius: 999px; cursor: pointer; background: var(--paper-2); border: 1.5px solid var(--line-2); color: var(--ink-soft); transition: all 0.15s; }
-  .chip:hover { border-color: var(--indigo); color: var(--indigo-deep); }
-  .chip.on { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+  .archive { padding-top: clamp(1.75rem, 5vw, 3rem); }
 
-  .story-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-  .story { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.7rem; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 0.55rem; box-shadow: var(--shadow); transition: transform 0.18s, box-shadow 0.18s; }
-  .story:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
-  .story .cat { align-self: flex-start; }
-  .story h2 { font-size: 1.5rem; line-height: 1.13; }
-  .story p { color: var(--ink-soft); font-size: 0.98rem; flex: 1; }
-  .story-meta { color: var(--ink-faint); font-size: 0.8rem; }
-  .empty { text-align: center; color: var(--ink-soft); font-size: 1.15rem; padding: 3rem 0; font-family: var(--serif); font-style: italic; }
-  @media (max-width: 760px) { .story-grid { grid-template-columns: 1fr; } }
+  /* -------- HEAD -------- */
+  .arch-kicker {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .arch-title {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.4rem, 7vw, 5rem); line-height: 0.98; letter-spacing: -0.025em;
+    margin: 0.55rem 0 0;
+  }
+  .arch-dek {
+    font-family: var(--serif); font-size: clamp(1.05rem, 2vw, 1.25rem);
+    color: var(--ink-soft); max-width: 46ch; margin-top: 0.9rem; line-height: 1.5;
+  }
+
+  /* -------- DEPARTMENT FILTER -------- */
+  .depts {
+    display: flex; flex-wrap: wrap; gap: 0 1.4rem;
+    margin-top: 1.8rem; padding: 0.6rem 0;
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+  }
+  .dept {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase;
+    background: none; border: none; border-radius: 0; cursor: pointer;
+    color: var(--ink-faint); padding: 0.35rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color var(--t-hover) var(--ease-out), border-color var(--t-hover) var(--ease-out),
+      transform var(--t-press) var(--ease-out);
+  }
+  .dept-n { color: var(--ink-faint); margin-right: 0.45rem; }
+  .dept.on { color: var(--ink); border-bottom-color: var(--ink); }
+  .dept.on .dept-n { background: var(--hl); }
+  .dept:active { transform: scale(0.97); }
+
+  @media (hover: hover) and (pointer: fine) {
+    .dept:hover { color: var(--ink); }
+  }
+
+  /* -------- THE LEDGER -------- */
+  .ledger { list-style: none; margin: 0; padding: 0; }
+  .entry { border-bottom: 1px solid var(--rule); }
+  .entry:last-child { border-bottom: 1px solid var(--ink); }
+
+  .entry-link {
+    display: grid;
+    grid-template-columns: 7.5ch minmax(0, 1fr) 11rem;
+    gap: 0 1.6rem;
+    align-items: start;
+    padding: 1.5rem 0;
+    text-decoration: none; color: var(--ink);
+    transition: background var(--t-hover) var(--ease-out);
+  }
+
+  .entry-num {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em;
+    color: var(--ink-faint); padding-top: 0.4rem; white-space: nowrap;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
+
+  /* Head and dek share one right edge so the row reads as a set column
+     rather than two ragged blocks. */
+  .entry-body { min-width: 0; max-width: 68ch; }
+  .entry-kicker {
+    display: block; font-family: var(--mono); font-size: 0.64rem;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .entry-head {
+    display: block; font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.35rem, 2.6vw, 1.85rem); line-height: 1.1;
+    letter-spacing: -0.015em; margin: 0.3rem 0 0.4rem;
+  }
+  .entry-dek {
+    display: block; font-family: var(--serif); font-size: 1.02rem;
+    line-height: 1.5; color: var(--ink-soft);
+  }
+
+  .entry-meta {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem;
+    font-family: var(--mono); font-size: 0.68rem; color: var(--ink-faint);
+    padding-top: 0.35rem; text-align: right;
+  }
+  .entry-arrow {
+    margin-top: 0.3rem; color: var(--ink);
+    opacity: 0; transform: translateX(-6px);
+    transition: opacity var(--t-hover) var(--ease-out), transform var(--t-hover) var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .entry-link:hover { background: color-mix(in srgb, var(--hl) 14%, transparent); }
+    .entry-link:hover .entry-num { background: var(--hl); color: var(--ink); }
+    .entry-link:hover .entry-arrow { opacity: 1; transform: none; }
+  }
+  .entry-link:focus-visible { outline-offset: -3px; }
+
+  .empty {
+    font-family: var(--serif); font-style: italic; font-size: 1.2rem;
+    color: var(--ink-soft); padding: 3.5rem 0; text-align: center;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  /* -------- FOOT -------- */
+  .arch-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1.25rem 2rem; flex-wrap: wrap; padding: 2rem 0 0;
+  }
+  .arch-foot-copy {
+    font-family: var(--display); font-weight: 600; font-style: italic;
+    font-size: clamp(1.2rem, 2.6vw, 1.7rem); line-height: 1.25;
+    max-width: 30ch; margin: 0;
+  }
+
+  /* -------- RESPONSIVE -------- */
+  @media (max-width: 860px) {
+    .entry-link { grid-template-columns: 7ch minmax(0, 1fr); gap: 0 1.1rem; }
+    .entry-meta {
+      grid-column: 2; flex-direction: row; align-items: baseline;
+      gap: 0.8rem; text-align: left; justify-content: flex-start;
+      margin-top: 0.6rem; padding-top: 0;
+    }
+    .entry-arrow { display: none; }
+  }
+  @media (max-width: 520px) {
+    .entry-link { grid-template-columns: 1fr; gap: 0; }
+    .entry-num { padding-top: 0; margin-bottom: 0.5rem; display: inline-block; }
+    .entry-meta { grid-column: 1; }
+    .depts { gap: 0 1rem; }
+  }
 </style>
 
 <script>
+  const grid = document.getElementById("grid");
+  const empty = document.getElementById("empty");
+
   function apply(cat: string) {
-    const cards = document.querySelectorAll<HTMLElement>(".story");
     let shown = 0;
-    cards.forEach((c) => {
-      const show = cat === "all" || c.dataset.cat === cat;
-      c.style.display = show ? "" : "none";
+    document.querySelectorAll<HTMLElement>(".entry").forEach((row) => {
+      const show = cat === "all" || row.dataset.cat === cat;
+      row.hidden = !show;
       if (show) shown++;
     });
-    document.querySelectorAll(".chip").forEach((ch) => ch.classList.toggle("on", (ch as HTMLElement).dataset.cat === cat));
-    const empty = document.getElementById("empty");
-    if (empty) (empty as HTMLElement).hidden = shown !== 0;
+    document.querySelectorAll<HTMLButtonElement>(".dept").forEach((b) => {
+      const on = b.dataset.cat === cat;
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
+    if (empty) empty.hidden = shown !== 0;
+    if (grid) grid.hidden = shown === 0;
   }
-  document.querySelectorAll(".chip").forEach((ch) => ch.addEventListener("click", () => apply((ch as HTMLElement).dataset.cat || "all")));
+
+  document.querySelectorAll<HTMLButtonElement>(".dept").forEach((b) => {
+    b.addEventListener("click", () => {
+      const cat = b.dataset.cat || "all";
+      apply(cat);
+      const url = new URL(location.href);
+      if (cat === "all") url.searchParams.delete("cat");
+      else url.searchParams.set("cat", cat);
+      history.replaceState(null, "", url);
+    });
+  });
+
   const initial = new URLSearchParams(location.search).get("cat");
   if (initial) apply(initial);
 </script>

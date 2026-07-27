@@ -2,29 +2,77 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="404 · Strictly FYI" description="This page isn't in the archive.">
-  <section class="nf">
-    <div class="wrap-narrow">
-      <div class="nf-glyph" aria-hidden="true">?</div>
-      <p class="eyebrow">Error 404</p>
-      <h1>This one's not in the <span class="hl">archive</span>.</h1>
-      <p class="nf-lede">
-        The page you're after has wandered off - or never existed. But here's something that does:
-        <em>a group of flamingos is called a "flamboyance."</em> You're welcome.
-      </p>
-      <div class="nf-cta">
-        <a href="/" class="btn btn-primary">Back home →</a>
-        <a href="/blog/" class="btn btn-ghost">Read something true</a>
+<Layout title="404 · Strictly FYI" description="This page is not in the archive.">
+  <div class="nf wrap">
+    <p class="nf-kicker">Errata · Error 404 · Page not filed</p>
+    <div class="rule-thickthin"></div>
+
+    <div class="nf-body">
+      <div class="nf-main">
+        <h1 class="nf-title">This one is not in the <span class="hl-live">archive</span>.</h1>
+        <p class="nf-dek">
+          The page you are after has wandered off, or never existed. Either way, the presses have
+          moved on. Here is the way back.
+        </p>
+        <div class="nf-actions">
+          <a href="/blog/" class="btn btn-solid">Read the archive →</a>
+          <a href="/" class="btn">Back to the front page</a>
+        </div>
       </div>
+
+      <aside class="nf-margin">
+        <p class="nf-margin-head">Filler item</p>
+        <p class="nf-fact">A group of flamingos is called a <em>flamboyance</em>.</p>
+        <p class="nf-margin-foot">Nº 000 · Unfiled</p>
+      </aside>
     </div>
-  </section>
+  </div>
 </Layout>
 
 <style>
-  .nf { text-align: center; padding: clamp(4rem, 12vw, 8rem) 0; }
-  .nf-glyph { font-family: var(--serif); font-size: clamp(5rem, 16vw, 9rem); line-height: 1; color: var(--indigo); }
-  .nf h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); margin: 0.6rem auto; max-width: 18ch; }
-  .nf-lede { color: var(--ink-soft); font-size: 1.2rem; max-width: 46ch; margin: 0 auto 2rem; }
-  .nf-lede em { font-family: var(--serif); font-style: italic; color: var(--ink); }
-  .nf-cta { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+  .nf { padding-top: clamp(1.75rem, 5vw, 3rem); padding-bottom: 2rem; }
+
+  .nf-kicker {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--ink-faint); padding-bottom: 0.55rem;
+  }
+
+  .nf-body {
+    display: grid; grid-template-columns: minmax(0, 1fr);
+    gap: 2rem; padding-top: 2.5rem;
+  }
+  .nf-main { min-width: 0; }
+
+  .nf-title {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.3rem, 7vw, 4.75rem); line-height: 0.97; letter-spacing: -0.03em;
+    max-width: 15ch;
+  }
+  .nf-dek {
+    font-family: var(--serif); font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.55;
+    color: var(--ink-soft); max-width: 46ch; margin: 1.1rem 0 1.8rem;
+  }
+  .nf-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+  /* The margin box: a filler item, exactly what a paper runs when copy comes up short. */
+  .nf-margin { border: 1px solid var(--ink); background: var(--paper-2); align-self: start; }
+  .nf-margin-head {
+    font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-soft); padding: 0.6rem 1rem; border-bottom: 1px solid var(--ink);
+  }
+  .nf-fact {
+    font-family: var(--display); font-style: italic; font-weight: 600;
+    font-size: clamp(1.2rem, 2.4vw, 1.5rem); line-height: 1.3; color: var(--ink);
+    padding: 1.1rem 1rem;
+  }
+  .nf-fact em { font-style: normal; background: linear-gradient(transparent 54%, var(--hl) 54%, var(--hl) 92%, transparent 92%); }
+  .nf-margin-foot {
+    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em;
+    color: var(--ink-faint); text-align: right; padding: 0 1rem 0.8rem;
+  }
+
+  @media (min-width: 880px) {
+    .nf-body { grid-template-columns: 7fr 5fr; gap: 3rem; }
+    .nf-margin { margin-left: auto; max-width: 24rem; width: 100%; }
+  }
 </style>

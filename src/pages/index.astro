@@ -1,32 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { catLabel, cats, facts, fmtDate } from "../data/site";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 const featured = posts.find((p) => p.data.featured) ?? posts[0];
 const rest = posts.filter((p) => p.id !== featured?.id).slice(0, 5);
-
-const catLabel: Record<string, string> = {
-  science: "Science", history: "History", tech: "Tech",
-  culture: "Culture", everyday: "Everyday", curiosity: "Curiosity",
-};
-const cats = [
-  { key: "science", n: "01", name: "Science", note: "How the universe actually works" },
-  { key: "history", n: "02", name: "History", note: "The stories behind the story" },
-  { key: "tech", n: "03", name: "Tech", note: "Why the things around you work" },
-  { key: "culture", n: "04", name: "Culture", note: "Ideas, language, and why we do things" },
-  { key: "everyday", n: "05", name: "Everyday", note: "The hidden logic of ordinary life" },
-  { key: "curiosity", n: "06", name: "Curiosity", note: "The wonderfully, oddly true" },
-];
-const facts = [
-  "Honey found in 3,000-year-old Egyptian tombs was still edible.",
-  "A day on Venus is longer than its year.",
-  "Bananas are botanically berries. Strawberries are not.",
-  "Octopuses have three hearts and blue blood.",
-  "The Eiffel Tower can be about 15 cm taller in summer heat.",
-];
 
 const now = new Date();
 const dateline = now
@@ -38,8 +19,34 @@ const fLast = fwords.length > 1 ? fwords.pop() : featured.data.title;
 const fHead = fwords.length > 1 ? fwords.join(" ") + " " : "";
 const fcat = catLabel[featured.data.category] ?? "Curiosity";
 
-const fmt = (d: Date) => d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 const stinum = (p: any, i: number) => p.data.filecode ?? `No. 0${i + 2}`;
+
+/* The front page runs the opening of the lead story, then sends the reader
+   inside. Pulled from the entry itself so it can never fall out of sync. */
+const stripMd = (s: string) =>
+  s
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/[*_`]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const openingPara =
+  featured.body
+    ?.split(/\n\s*\n/)
+    .map((b) => b.trim())
+    .find((b) => b.length > 0 && !/^[#>|\-*]/.test(b)) ?? "";
+
+const leadOpening = (() => {
+  const clean = stripMd(openingPara);
+  if (clean.length <= 300) return clean;
+  const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [clean];
+  let out = "";
+  for (const s of sentences) {
+    if (out.length + s.length > 320 && out.length > 0) break;
+    out += s;
+  }
+  return (out || clean.slice(0, 300)).trim();
+})();
 ---
 
 <Layout bare>
@@ -67,54 +74,66 @@ const stinum = (p: any, i: number) => p.data.filecode ?? `No. 0${i + 2}`;
             {i < cats.length - 1 && <span class="dot" aria-hidden="true">·</span>}
           </>
         ))}
+        <span class="dot" aria-hidden="true">·</span>
+        <a href="/about/">ABOUT</a>
       </nav>
     </header>
 
     <!-- ============ THE FOLD - 8/4 LEDGER SPLIT ============ -->
     <section class="fold">
-      <article class="lead">
-        <p class="lead-kicker">{featured.data.filecode ?? "No. 01"} / {fcat.toUpperCase()} · The Lead</p>
-        <a href={`/blog/${featured.id}/`} class="lead-link">
-          <h2 class="lead-head">{fHead}<span class="hl-live">{fLast}</span></h2>
-        </a>
-        <p class="lead-dek">{featured.data.description}</p>
-        <p class="lead-meta">
-          <time>{fmt(featured.data.pubDate)}</time>
-          <span class="leader" aria-hidden="true"></span>
-          <span>{featured.data.readingTime ?? ""}</span>
-          <a href={`/blog/${featured.id}/`} class="entry-link">Read the entry →</a>
-        </p>
-      </article>
+      <div class="lead-col">
+        <article class="lead">
+          <p class="lead-kicker">{featured.data.filecode ?? "No. 01"} / {fcat.toUpperCase()} · The Lead</p>
+          <a href={`/blog/${featured.id}/`} class="lead-link">
+            <h2 class="lead-head">{fHead}<span class="hl-live">{fLast}</span></h2>
+          </a>
+          <p class="lead-dek">{featured.data.description}</p>
+          <p class="lead-meta">
+            <time datetime={featured.data.pubDate.toISOString()}>{fmtDate(featured.data.pubDate)}</time>
+            <span class="leader" aria-hidden="true"></span>
+            <span>{featured.data.readingTime ?? ""}</span>
+            <a href={`/blog/${featured.id}/`} class="entry-link">Read the entry →</a>
+          </p>
+
+          {leadOpening && (
+            <div class="lead-body">
+              <p>
+                {leadOpening}{" "}
+                <a href={`/blog/${featured.id}/`} class="lead-cont">Continued inside →</a>
+              </p>
+            </div>
+          )}
+        </article>
+
+        <!-- The boxed item sits at the foot of the lead column, the way a
+             front page fills the well under the lead story. -->
+        <aside class="almanac">
+          <div class="almanac-head">The Almanac · One thing worth knowing</div>
+          <blockquote class="almanac-fact" id="fact">{facts[0]}</blockquote>
+          <div class="almanac-source" id="fact-source">Entry Nº 1 · rotates on load</div>
+        </aside>
+      </div>
 
       <aside class="stringers" aria-label="Other entries">
         <p class="rail-head">More in this issue</p>
-        {rest.map((p, i) => (
-          <a href={`/blog/${p.id}/`} class="stringer">
-            <span class="stringer-num">{stinum(p, i)}</span>
-            <span class="stringer-body">
-              <span class="stringer-kicker">{catLabel[p.data.category]}</span>
-              <span class="stringer-head">{p.data.title}</span>
-              <span class="stringer-time">{p.data.readingTime ?? ""}</span>
-            </span>
-          </a>
-        ))}
+        <div class="stagger">
+          {rest.map((p, i) => (
+            <a href={`/blog/${p.id}/`} class="stringer">
+              <span class="stringer-num">{stinum(p, i)}</span>
+              <span class="stringer-body">
+                <span class="stringer-kicker">{catLabel[p.data.category]}</span>
+                <span class="stringer-head">{p.data.title}</span>
+                <span class="stringer-time">{p.data.readingTime ?? ""}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+        <a href="/blog/" class="rail-all">The full archive →</a>
       </aside>
     </section>
 
-    <!-- ============ THE ALMANAC ============ -->
-    <section class="almanac-row">
-      <div class="almanac">
-        <div class="almanac-head">The Almanac · One thing worth knowing</div>
-        <blockquote class="almanac-fact" id="fact">{facts[0]}</blockquote>
-        <div class="almanac-source">Entry Nº 1 · rotates on load</div>
-      </div>
-      <div class="almanac-margin" aria-hidden="true">
-        <span>One fact, filed<br />daily. Rotates<br />on load.</span>
-      </div>
-    </section>
-
     <!-- ============ IN THIS ISSUE - RULED INDEX ============ -->
-    <section class="index">
+    <section class="index" id="index">
       <p class="index-head">In this issue · Departments</p>
       <div class="index-grid">
         {[cats.slice(0, 3), cats.slice(3, 6)].map((col) => (
@@ -134,60 +153,37 @@ const stinum = (p: any, i: number) => p.data.filecode ?? `No. 0${i + 2}`;
     </section>
 
     <!-- ============ SUBSCRIBE - STANDING NOTICE ============ -->
-    <section class="subscribe">
+    <section class="subscribe" id="subscribe">
       <div class="sub-statement">
         <p class="sub-standing">By post &amp; by <span class="hl-live">inbox</span>.</p>
-        <p class="sub-sub">The field guide, delivered weekly. Five interesting things, five minutes, no filler.</p>
+        <p class="sub-sub">
+          The field guide, delivered weekly. Five interesting things, five minutes, no filler.
+        </p>
       </div>
-      <form class="sub-form" onsubmit="event.preventDefault(); this.querySelector('.sub-ok').hidden=false; this.querySelector('input').value='';">
+      <form class="sub-form" id="sub-form" novalidate>
         <label class="sub-label" for="sub-email">Enter your address</label>
-        <input id="sub-email" type="email" required placeholder="you@example.com" />
+        <input
+          id="sub-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="you@example.com"
+          aria-describedby="sub-msg"
+        />
         <button type="submit" class="coupon">[ Yes, send me the weekly dispatch → ]</button>
-        <p class="sub-ok" hidden>Filed. Check your inbox to confirm.</p>
+        <p class="sub-msg" id="sub-msg" role="status"></p>
       </form>
     </section>
-
-    <!-- ============ COLOPHON ============ -->
-    <footer class="colophon">
-      <div class="colophon-top">
-        <p class="imprint">
-          <span class="imprint-name">Strictly FYI</span> is set in Playfair Display, Inter &amp; Space Mono.
-          Composed in Astro. Printed on the web, Nº 001 · Est. MMXXVI.
-          <br />Interesting things, strictly for your information.
-        </p>
-        <nav class="colophon-nav" aria-label="Footer">
-          <a href="/blog/">Read</a> · <a href="/#index">Topics</a> · <a href="/about/">About</a> · <a href="/rss.xml">RSS</a>
-        </nav>
-      </div>
-      <div class="colophon-feet">
-        <span>{cats.map((c) => `§${c.n} ${c.name}`).join("  ·  ")}</span>
-        <span class="end-mark">END</span>
-      </div>
-    </footer>
   </div>
 </Layout>
 
 <style>
   .gazette {
-    --display: "Playfair Display", Georgia, "Times New Roman", serif;
-    --hl: #ffe14d;
-    --rule-faint: rgba(25, 26, 31, 0.14);
-    --rule-mid: rgba(25, 26, 31, 0.2);
     padding-top: 1.2rem;
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
   }
   .gazette a { text-decoration: none; color: var(--ink); }
-
-  /* Live highlighter - the one signature accent */
-  .hl-live {
-    background-image: linear-gradient(transparent 52%, var(--hl) 52%, var(--hl) 90%, transparent 90%);
-    background-repeat: no-repeat;
-    background-size: 0% 100%;
-    animation: hl-swipe 0.55s cubic-bezier(.4,0,.2,1) 0.25s forwards;
-    padding: 0 0.04em;
-  }
-  @keyframes hl-swipe { to { background-size: 100% 100%; } }
-  @media (prefers-reduced-motion: reduce) { .hl-live { background-size: 100% 100%; animation: none; } }
 
   /* -------- MASTHEAD -------- */
   .dateline {
@@ -202,97 +198,207 @@ const stinum = (p: any, i: number) => p.data.filecode ?? `No. 0${i + 2}`;
     font-size: clamp(3rem, 12vw, 8.25rem); line-height: 0.84; letter-spacing: -0.035em;
     margin: 0; overflow-wrap: anywhere;
   }
-  .mast-meta { text-align: right; flex-shrink: 0; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); line-height: 1.7; padding-bottom: 0.5rem; }
-  .rule-thickthin { border-top: 3px solid var(--ink); position: relative; }
-  .rule-thickthin::after { content: ""; position: absolute; left: 0; right: 0; top: 4px; border-top: 1px solid var(--ink); }
-  .dept-nav { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.7rem; padding: 0.7rem 0; margin-top: 6px; border-bottom: 1px solid var(--ink); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; }
-  .dept-nav a { color: var(--ink-soft); }
-  .dept-nav a:hover { color: var(--ink); }
-  .dept-nav .sec { color: var(--ink-faint); }
-  .dept-nav .dot { color: var(--ink-faint); }
+  .mast-meta {
+    text-align: right; flex-shrink: 0; font-family: var(--mono); font-size: 0.66rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);
+    line-height: 1.7; padding-bottom: 0.5rem;
+  }
+  .dept-nav {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.7rem;
+    padding: 0.7rem 0; border-bottom: 1px solid var(--ink);
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em;
+  }
+  .dept-nav a {
+    color: var(--ink-soft);
+    transition: color var(--t-hover) var(--ease-out), background var(--t-hover) var(--ease-out);
+  }
+  .dept-nav .sec, .dept-nav .dot { color: var(--ink-faint); }
 
   /* -------- THE FOLD: 8/4 -------- */
   .fold { display: grid; grid-template-columns: 8fr 4fr; }
-  .lead { padding: 1.8rem 2.2rem 1.8rem 0; border-right: 1px solid var(--rule-mid); min-width: 0; }
-  .lead-kicker { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
-  .lead-head { font-family: var(--display); font-weight: 700; font-size: clamp(2.1rem, 5.2vw, 4.4rem); line-height: 0.98; letter-spacing: -0.02em; margin: 0.5rem 0 0; }
-  .lead-link:hover .lead-head { color: #000; }
-  .lead-dek { font-size: 1.15rem; line-height: 1.55; color: var(--ink-soft); max-width: 34ch; margin: 1.1rem 0 0 min(22%, 5rem); }
-  .lead-meta { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; margin-top: 1.3rem; font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint); }
+  .lead-col {
+    display: flex; flex-direction: column;
+    padding: 1.8rem 2.2rem 1.8rem 0;
+    border-right: 1px solid var(--rule-mid); min-width: 0;
+  }
+  .lead { min-width: 0; margin-bottom: 2rem; }
+  .lead-kicker {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .lead-head {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.1rem, 5.2vw, 4.4rem); line-height: 0.98; letter-spacing: -0.02em;
+    margin: 0.5rem 0 0;
+  }
+  .lead-dek {
+    font-family: var(--serif); font-size: 1.18rem; line-height: 1.5; color: var(--ink-soft);
+    max-width: 34ch; margin: 1.1rem 0 0 min(22%, 5rem);
+  }
+  .lead-meta {
+    display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; margin-top: 1.3rem;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint);
+  }
   .lead-meta .leader { flex: 1; min-width: 1.5rem; border-bottom: 1px dotted var(--ink-faint); transform: translateY(-0.2em); }
-  .entry-link { color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
-  .entry-link:hover { background: var(--hl); }
+  .entry-link {
+    color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 1px;
+    transition: background var(--t-hover) var(--ease-out);
+  }
+
+  /* Set in two columns with a rule between them, the way a front page runs
+     the top of the lead story before sending you inside. */
+  .lead-body {
+    margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule);
+    columns: 2; column-gap: 2rem; column-rule: 1px solid var(--rule);
+  }
+  .lead-body p {
+    font-family: var(--serif); font-size: 1.02rem; line-height: 1.58;
+    color: var(--ink-soft); margin: 0;
+  }
+  .lead-body p::first-letter {
+    font-family: var(--display); font-weight: 700; font-size: 1.15em; color: var(--ink);
+  }
+  .lead-cont {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink); white-space: nowrap;
+    border-bottom: 1px solid var(--ink); padding-bottom: 1px;
+    transition: background var(--t-hover) var(--ease-out);
+  }
 
   .stringers { padding: 1.8rem 0 1.8rem 1.6rem; min-width: 0; }
-  .rail-head { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); padding-bottom: 0.6rem; border-bottom: 1px solid var(--ink); }
-  .stringer { display: grid; grid-template-columns: 4.5ch 1fr; gap: 0.8rem; padding: 0.95rem 0; border-bottom: 1px solid var(--rule-faint); align-items: start; }
-  .stringer-num { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); letter-spacing: 0.04em; padding-top: 0.25rem; white-space: nowrap; }
+  .rail-head {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); padding-bottom: 0.6rem; border-bottom: 1px solid var(--ink);
+  }
+  .stringer {
+    display: grid; grid-template-columns: 4.5ch 1fr; gap: 0.8rem;
+    padding: 0.95rem 0; border-bottom: 1px solid var(--rule); align-items: start;
+    transition: border-color var(--t-hover) var(--ease-out);
+  }
+  .stringer-num {
+    font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); letter-spacing: 0.04em;
+    padding-top: 0.25rem; white-space: nowrap;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
   .stringer-body { min-width: 0; display: block; }
-  .stringer-kicker { display: block; font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
-  .stringer-head { display: block; font-family: var(--display); font-weight: 600; font-size: clamp(1.12rem, 1.5vw, 1.35rem); line-height: 1.12; margin: 0.2rem 0 0.35rem; }
+  .stringer-kicker {
+    display: block; font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .stringer-head {
+    display: block; font-family: var(--display); font-weight: 600;
+    font-size: clamp(1.12rem, 1.5vw, 1.35rem); line-height: 1.12; margin: 0.2rem 0 0.35rem;
+  }
   .stringer-time { font-family: var(--mono); font-size: 0.66rem; color: var(--ink-faint); }
-  .stringer:hover { border-bottom-color: var(--ink); }
-  .stringer:hover .stringer-num { background: var(--hl); color: var(--ink); }
-  .stringer:hover .stringer-head { color: #000; }
+  .rail-all {
+    display: inline-block; margin-top: 1rem;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 2px;
+    transition: background var(--t-hover) var(--ease-out);
+  }
 
   /* -------- ALMANAC -------- */
-  .almanac-row { display: grid; grid-template-columns: 6fr 6fr; border-top: 1px solid var(--ink); }
-  .almanac { border: 1px solid var(--ink); background: var(--paper-2); margin: 1.8rem 0; align-self: start; }
-  .almanac-head { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); padding: 0.7rem 1.1rem; border-bottom: 1px solid var(--ink); }
-  .almanac-fact { font-family: var(--display); font-style: italic; font-weight: 600; font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1.25; color: var(--ink); padding: 1.2rem 1.1rem 1.2rem 2rem; text-indent: -0.9rem; transition: opacity 0.4s; margin: 0; }
-  .almanac-source { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; color: var(--ink-faint); text-align: right; padding: 0 1.1rem 0.9rem; }
-  .almanac-margin { padding: 1.8rem 0 1.8rem 1.6rem; border-left: 1px solid var(--rule-faint); font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); line-height: 1.6; }
-
+  .almanac {
+    border: 1px solid var(--ink); background: var(--paper-2);
+    margin-top: auto; /* pins the box to the foot of the lead column */
+    padding-top: 0;
+  }
+  .almanac-head {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-soft); padding: 0.7rem 1.1rem; border-bottom: 1px solid var(--ink);
+  }
+  .almanac-fact {
+    font-family: var(--display); font-style: italic; font-weight: 600;
+    font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1.25; color: var(--ink);
+    padding: 1.2rem 1.1rem 1.2rem 2rem; text-indent: -0.9rem; margin: 0;
+    transition: opacity 0.36s var(--ease-out), filter 0.36s var(--ease-out);
+  }
+  /* Blur bridges the crossfade so the eye reads one fact changing, not two overlapping. */
+  .almanac-fact.swap { opacity: 0; filter: blur(3px); }
+  .almanac-source {
+    font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; color: var(--ink-faint);
+    text-align: right; padding: 0 1.1rem 0.9rem;
+  }
   /* -------- INDEX -------- */
-  .index-head { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); padding: 0.7rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  .index { margin-top: 0.4rem; }
+  .index-head {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-soft); padding: 0.7rem 0;
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+  }
   .index-grid { display: grid; grid-template-columns: 1fr 1fr; }
-  .index-col:first-child { border-right: 1px solid var(--rule-faint); }
+  .index-col:first-child { border-right: 1px solid var(--rule); }
   .index-col:first-child .index-row { padding-right: 1.6rem; }
   .index-col:last-child .index-row { padding-left: 1.6rem; }
-  .index-row { display: grid; grid-template-columns: 3.5ch 1fr; gap: 0.9rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule-faint); align-items: baseline; }
-  .index-num { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint); }
+  .index-row {
+    display: grid; grid-template-columns: 3.5ch 1fr; gap: 0.9rem;
+    padding: 1.1rem 0; border-bottom: 1px solid var(--rule); align-items: baseline;
+    transition: border-color var(--t-hover) var(--ease-out);
+  }
+  .index-num {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint);
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
   .index-name { display: block; font-family: var(--display); font-weight: 600; font-size: 1.5rem; line-height: 1; }
-  .index-note { display: block; color: var(--ink-soft); font-size: 0.92rem; margin-top: 0.3rem; }
-  .index-row:hover { border-bottom-color: var(--ink); }
-  .index-row:hover .index-num { background: var(--hl); color: var(--ink); }
+  .index-note { display: block; font-family: var(--serif); color: var(--ink-soft); font-size: 1rem; margin-top: 0.3rem; }
 
   /* -------- SUBSCRIBE -------- */
-  .subscribe { display: grid; grid-template-columns: 5fr 7fr; gap: 2.5rem; border-top: 1px solid var(--ink); padding: 2.4rem 0; align-items: end; }
-  .sub-standing { font-family: var(--display); font-weight: 700; font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1; letter-spacing: -0.02em; margin: 0; }
-  .sub-sub { color: var(--ink-soft); font-size: 1.05rem; max-width: 40ch; margin-top: 0.8rem; }
+  .subscribe {
+    display: grid; grid-template-columns: 5fr 7fr; gap: 2.5rem;
+    border-top: 1px solid var(--ink); padding: 2.4rem 0; align-items: end;
+    scroll-margin-top: 2rem;
+  }
+  .sub-standing {
+    font-family: var(--display); font-weight: 700; font-size: clamp(1.9rem, 4vw, 3.2rem);
+    line-height: 1; letter-spacing: -0.02em; margin: 0;
+  }
+  .sub-sub { font-family: var(--serif); color: var(--ink-soft); font-size: 1.08rem; max-width: 40ch; margin-top: 0.8rem; }
   .sub-form { display: grid; gap: 0.4rem; }
-  .sub-label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
-  .sub-form input { border: none; border-bottom: 1.5px solid var(--ink); background: transparent; border-radius: 0; padding: 0.5rem 0; font-family: var(--display); font-size: 1.5rem; color: var(--ink); }
+  .sub-label {
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .sub-form input {
+    border: none; border-bottom: 1.5px solid var(--ink); background: transparent; border-radius: 0;
+    padding: 0.5rem 0; font-family: var(--display); font-size: 1.5rem; color: var(--ink); width: 100%;
+    transition: border-color var(--t-hover) var(--ease-out), background var(--t-hover) var(--ease-out);
+  }
   .sub-form input::placeholder { color: var(--ink-faint); }
-  .sub-form input:focus { outline: none; border-bottom-color: var(--ink); background: linear-gradient(transparent 70%, var(--hl) 70%); }
-  .coupon { justify-self: start; margin-top: 0.7rem; background: none; border: none; padding: 0; cursor: pointer; font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.04em; color: var(--ink); }
-  .coupon:hover { background: var(--hl); }
-  .sub-ok { font-family: var(--mono); font-size: 0.8rem; color: var(--ink); margin-top: 0.4rem; }
+  .sub-form input:focus {
+    outline: none;
+    background: linear-gradient(transparent 70%, var(--hl) 70%);
+  }
+  .sub-form input[aria-invalid="true"] { border-bottom-color: #b3261e; }
+  .coupon { justify-self: start; margin-top: 0.7rem; }
+  .sub-msg { font-family: var(--mono); font-size: 0.78rem; color: var(--ink); margin-top: 0.5rem; min-height: 1.2em; }
+  .sub-msg.err { color: #b3261e; }
 
-  /* -------- COLOPHON -------- */
-  .colophon { border-top: 1px solid var(--ink); margin-top: 2.5rem; padding-top: 1.4rem; }
-  .colophon-top { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-  .imprint { font-family: var(--mono); font-size: 0.72rem; line-height: 1.7; color: var(--ink-faint); max-width: 60ch; }
-  .imprint-name { color: var(--ink); }
-  .colophon-nav { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint); white-space: nowrap; }
-  .colophon-nav a { color: var(--ink-soft); }
-  .colophon-nav a:hover { color: var(--ink); }
-  .colophon-feet { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1.4rem; padding-top: 0.8rem; border-top: 1px solid var(--rule-faint); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
-  .end-mark { color: var(--ink); }
+  /* -------- HOVER (gated: touch fires hover on tap) -------- */
+  @media (hover: hover) and (pointer: fine) {
+    .dept-nav a:hover { color: var(--ink); background: var(--hl); }
+    .lead-link:hover .lead-head { color: #000; }
+    .entry-link:hover { background: var(--hl); }
+    .lead-cont:hover { background: var(--hl); }
+    .stringer:hover { border-bottom-color: var(--ink); }
+    .stringer:hover .stringer-num { background: var(--hl); color: var(--ink); }
+    .stringer:hover .stringer-head { color: #000; }
+    .rail-all:hover { background: var(--hl); }
+    .index-row:hover { border-bottom-color: var(--ink); }
+    .index-row:hover .index-num { background: var(--hl); color: var(--ink); }
+  }
 
   /* -------- RESPONSIVE -------- */
   @media (max-width: 900px) {
     .nameplate-row { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
     .mast-meta { text-align: left; }
     .fold { grid-template-columns: 1fr; }
-    .lead { border-right: none; border-bottom: 1px solid var(--ink); padding: 1.4rem 0; }
+    .lead-col { border-right: none; padding: 1.4rem 0 0; }
+    .lead { margin-bottom: 0; padding-bottom: 1.4rem; border-bottom: 1px solid var(--ink); }
     .lead-dek { margin-left: 0; }
+    .lead-body { columns: 1; }
+    .almanac { margin-top: 1.6rem; }
     .stringers { padding: 1.4rem 0 0; }
-    .almanac-row { grid-template-columns: 1fr; }
-    .almanac { margin: 1.4rem 0 0; }
-    .almanac-margin { display: none; }
     .subscribe { grid-template-columns: 1fr; gap: 1.4rem; }
-    .colophon-top { flex-direction: column; gap: 1rem; }
   }
   @media (max-width: 560px) {
     .index-grid { grid-template-columns: 1fr; }
@@ -305,21 +411,63 @@ const stinum = (p: any, i: number) => p.data.filecode ?? `No. 0${i + 2}`;
 </style>
 
 <script>
-  const facts = [
-    "Honey found in 3,000-year-old Egyptian tombs was still edible.",
-    "A day on Venus is longer than its year.",
-    "Bananas are botanically berries. Strawberries are not.",
-    "Octopuses have three hearts and blue blood.",
-    "The Eiffel Tower can be about 15 cm taller in summer heat.",
-  ];
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  import { facts } from "../data/site";
+
+  /* Almanac: rotate the filed fact. Pauses when the tab is hidden so a
+     returning reader never lands mid-crossfade. */
   const el = document.getElementById("fact");
+  const src = document.getElementById("fact-source");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   if (el && !reduce) {
     let i = 0;
-    setInterval(() => {
+    let timer = 0;
+
+    const tick = () => {
       i = (i + 1) % facts.length;
-      el.style.opacity = "0";
-      setTimeout(() => { el.textContent = facts[i]; el.style.opacity = "1"; }, 380);
-    }, 5000);
+      el.classList.add("swap");
+      setTimeout(() => {
+        el.textContent = facts[i];
+        if (src) src.textContent = `Entry Nº ${i + 1} · rotates on load`;
+        el.classList.remove("swap");
+      }, 360);
+    };
+
+    const start = () => { timer = window.setInterval(tick, 6000); };
+    const stop = () => { window.clearInterval(timer); };
+
+    start();
+    document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
   }
+
+  /* Subscribe: validate inline. No alerts, no exclamation marks. */
+  const form = document.getElementById("sub-form") as HTMLFormElement | null;
+  const input = document.getElementById("sub-email") as HTMLInputElement | null;
+  const msg = document.getElementById("sub-msg");
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!input || !msg) return;
+
+    const value = input.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+
+    if (!valid) {
+      input.setAttribute("aria-invalid", "true");
+      msg.textContent = value ? "That address does not look right. Check it and try again." : "Enter an email address to subscribe.";
+      msg.classList.add("err");
+      input.focus();
+      return;
+    }
+
+    input.removeAttribute("aria-invalid");
+    msg.classList.remove("err");
+    msg.textContent = "Filed. Check your inbox to confirm.";
+    input.value = "";
+  });
+
+  input?.addEventListener("input", () => {
+    input.removeAttribute("aria-invalid");
+    if (msg) { msg.textContent = ""; msg.classList.remove("err"); }
+  });
 </script>

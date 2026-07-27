@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import { catLabel, fmtDate, fmtLong } from "../../data/site";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -11,18 +12,14 @@ export async function getStaticPaths() {
 const { post, sorted } = Astro.props;
 const { Content, headings } = await render(post);
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
-
-const catLabel: Record<string, string> = {
-  science: "Science", history: "History", tech: "Tech",
-  culture: "Culture", everyday: "Everyday", curiosity: "Curiosity",
-};
-const more = sorted.filter((p) => p.id !== post.id).slice(0, 2);
+const more = sorted.filter((p) => p.id !== post.id).slice(0, 3);
 
 const site = Astro.site ?? new URL("https://strictly.fyi");
 const url = new URL(`/blog/${post.id}/`, site).href;
 const published = post.data.pubDate.toISOString();
 const modified = (post.data.updatedDate ?? post.data.pubDate).toISOString();
 const section = catLabel[post.data.category] ?? "Curiosity";
+const filecode = post.data.filecode ?? "FYI";
 
 const shareText = encodeURIComponent(post.data.title);
 const shareUrl = encodeURIComponent(url);
@@ -72,6 +69,7 @@ const faqLd = post.data.faqs?.length
   publishedTime={published}
   modifiedTime={modified}
   section={section}
+  wrap="1040px"
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleLd)} is:inline />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} is:inline />
@@ -79,192 +77,464 @@ const faqLd = post.data.faqs?.length
 
   <div class="read-progress" aria-hidden="true"><span id="rp-bar"></span></div>
   <button id="to-top" class="to-top" type="button" aria-label="Back to top" hidden>
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
   </button>
 
-  <article class="post">
-    <div class="wrap-narrow">
-      <nav class="crumbs mono" aria-label="Breadcrumb">
-        <a href="/">Home</a> <span>/</span> <a href="/blog/">Read</a> <span>/</span> <span class="crumb-cur">{section}</span>
+  <article class="post wrap">
+    <!-- ============ ENTRY HEAD ============ -->
+    <header class="entry-head">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/blog/">Archive</a> <span aria-hidden="true">/</span>
+        <a href={`/blog/?cat=${post.data.category}`}>{section}</a>
       </nav>
-      <span class="cat">{section}</span>
-      <h1>{post.data.title}</h1>
-      <p class="dek">{post.data.description}</p>
-      <div class="byline mono">
-        <span>Strictly FYI</span>
-        <span>·</span>
-        <time datetime={published}>{post.data.pubDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</time>
-        {post.data.updatedDate && (
-          <><span>·</span><span class="updated">Updated {post.data.updatedDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span></>
-        )}
-        {post.data.readingTime && <><span>·</span><span>{post.data.readingTime}</span></>}
-      </div>
-      <hr class="rule" />
+      <div class="rule-thickthin"></div>
 
+      <p class="entry-file">{filecode} · {section.toUpperCase()} · Filed {fmtDate(post.data.pubDate)}</p>
+      <h1 class="entry-title">{post.data.title}</h1>
+      <p class="entry-dek">{post.data.description}</p>
+
+      <div class="byline">
+        <span class="byline-by">By <span class="byline-name">Strictly FYI</span></span>
+        <span class="leader" aria-hidden="true"></span>
+        <time datetime={published}>{fmtLong(post.data.pubDate)}</time>
+        {post.data.updatedDate && <span class="byline-upd">Updated {fmtDate(post.data.updatedDate)}</span>}
+        {post.data.readingTime && <span>{post.data.readingTime}</span>}
+      </div>
+    </header>
+
+    <!-- ============ BODY: MARGIN RAIL + COLUMN ============ -->
+    <div class="post-shell">
       {toc.length >= 3 && (
-        <details class="toc" open>
-          <summary>In this article</summary>
+        <nav class="toc" id="toc" aria-label="On this page">
+          <p class="toc-head">In this entry</p>
           <ol>
-            {toc.map((h) => <li class={h.depth === 3 ? "sub" : ""}><a href={`#${h.slug}`}>{h.text}</a></li>)}
+            {toc.map((h) => (
+              <li class={h.depth === 3 ? "sub" : ""}>
+                <a href={`#${h.slug}`} data-toc={h.slug}>{h.text}</a>
+              </li>
+            ))}
           </ol>
-        </details>
+        </nav>
       )}
-    </div>
 
-    <div class="wrap-narrow prose">
-      <Content />
-    </div>
+      <div class="post-col">
+        <div class="prose">
+          <Content />
+        </div>
 
-    <div class="wrap-narrow">
-      <div class="share" aria-label="Share this article">
-        <span class="share-label mono">Share</span>
-        <a class="share-btn" href={xShare} target="_blank" rel="noopener" aria-label="Share on X">X</a>
-        <a class="share-btn" href={fbShare} target="_blank" rel="noopener" aria-label="Share on Facebook">Facebook</a>
-        <a class="share-btn" href={liShare} target="_blank" rel="noopener" aria-label="Share on LinkedIn">LinkedIn</a>
-        <button class="share-btn copy-link" type="button" data-url={url}>Copy link</button>
-      </div>
-    </div>
+        <!-- ============ SHARE ============ -->
+        <div class="share">
+          <span class="share-label">Pass it on</span>
+          <a class="share-btn" href={xShare} target="_blank" rel="noopener">[ X ]</a>
+          <a class="share-btn" href={fbShare} target="_blank" rel="noopener">[ Facebook ]</a>
+          <a class="share-btn" href={liShare} target="_blank" rel="noopener">[ LinkedIn ]</a>
+          <button class="share-btn copy-link" type="button" data-url={url}>[ Copy link ]</button>
+        </div>
 
-    {post.data.faqs?.length && (
-      <div class="wrap-narrow">
-        <section class="faq" aria-label="Frequently asked questions">
-          <h2>Frequently asked questions</h2>
-          {post.data.faqs.map((f) => (
-            <details class="faq-item">
-              <summary>{f.q}</summary>
-              <p>{f.a}</p>
-            </details>
-          ))}
+        <!-- ============ FAQ ============ -->
+        {post.data.faqs?.length && (
+          <section class="faq" aria-label="Frequently asked questions">
+            <p class="faq-head">Queries on file</p>
+            {post.data.faqs.map((f) => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </section>
+        )}
+
+        <!-- ============ STANDING NOTICE ============ -->
+        <section class="notice">
+          <p class="notice-kicker">The standing notice</p>
+          <p class="notice-head">Liked this? Get five like it every week.</p>
+          <p class="notice-sub">Five interesting things, five minutes, no filler.</p>
+          <a href="/#subscribe" class="coupon">[ Yes, send me the weekly dispatch → ]</a>
         </section>
       </div>
-    )}
-
-    <div class="wrap-narrow">
-      <div class="post-cta">
-        <span class="hl cta-badge">The weekly FYI</span>
-        <h3>Liked this? Get five like it every week.</h3>
-        <a href="/#subscribe" class="btn btn-primary">Subscribe →</a>
-      </div>
     </div>
 
+    <!-- ============ KEEP READING ============ -->
     {more.length > 0 && (
-      <div class="wrap keep">
-        <p class="eyebrow">Keep reading</p>
-        <div class="more-grid">
+      <section class="keep">
+        <p class="keep-head">Also in the archive</p>
+        <ol class="keep-list">
           {more.map((p) => (
-            <a href={`/blog/${p.id}/`} class="more-card">
-              <span class="cat">{catLabel[p.data.category]}</span>
-              <h3>{p.data.title}</h3>
-              <p>{p.data.description}</p>
-            </a>
+            <li>
+              <a href={`/blog/${p.id}/`} class="keep-row">
+                <span class="keep-num">{p.data.filecode ?? "FYI"}</span>
+                <span class="keep-body">
+                  <span class="keep-kicker">{catLabel[p.data.category]}</span>
+                  <span class="keep-title">{p.data.title}</span>
+                </span>
+                <span class="keep-time">{p.data.readingTime ?? ""}</span>
+              </a>
+            </li>
           ))}
-        </div>
-      </div>
+        </ol>
+        <a href="/blog/" class="keep-all">See all entries →</a>
+      </section>
     )}
   </article>
 </Layout>
 
 <style>
-  .post { padding-top: clamp(2rem, 5vw, 3.5rem); }
-  .crumbs { font-size: 0.75rem; color: var(--ink-faint); margin-bottom: 1.4rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .crumbs a { color: var(--ink-soft); text-decoration: none; }
-  .crumbs a:hover { color: var(--indigo); }
-  .crumb-cur { color: var(--indigo); }
-  .post h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.05; margin: 0.6rem 0 0.8rem; }
-  .dek { font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--ink-soft); line-height: 1.4; }
-  .byline { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; margin: 1.4rem 0; color: var(--ink-faint); font-size: 0.8rem; }
-  .byline .updated { color: var(--indigo); }
-  .rule { border: none; border-top: 1px solid var(--line); margin: 0; }
+  .post { padding-top: clamp(1.25rem, 4vw, 2rem); }
 
-  /* Table of contents */
-  .toc { margin: 1.8rem 0 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-2); padding: 0.4rem 1.2rem; }
-  .toc summary { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--indigo); cursor: pointer; padding: 0.7rem 0; list-style: none; }
-  .toc summary::-webkit-details-marker { display: none; }
-  .toc summary::after { content: "▾"; float: right; transition: transform 0.2s; }
-  .toc[open] summary::after { transform: rotate(180deg); }
-  .toc ol { margin: 0.2rem 0 1rem; padding-left: 1.1rem; }
-  .toc li { margin: 0.3rem 0; }
-  .toc li.sub { margin-left: 1rem; list-style: circle; }
-  .toc a { color: var(--ink-soft); text-decoration: none; font-size: 0.95rem; }
-  .toc a:hover { color: var(--indigo); text-decoration: underline; }
+  /* -------- ENTRY HEAD -------- */
+  .crumbs {
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint); display: flex; gap: 0.45rem; flex-wrap: wrap; padding-bottom: 0.6rem;
+  }
+  .crumbs a {
+    color: var(--ink-soft); text-decoration: none;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
 
-  .prose { margin-top: 2rem; font-size: 1.18rem; line-height: 1.75; color: #2c2d34; scroll-margin-top: 90px; }
-  .prose :global(h2) { font-family: var(--serif); color: var(--ink); font-size: clamp(1.6rem, 3.5vw, 2.1rem); margin: 2.6rem 0 0.8rem; scroll-margin-top: 90px; }
-  .prose :global(h3) { font-size: 1.4rem; margin: 2rem 0 0.6rem; scroll-margin-top: 90px; }
-  .prose :global(p) { margin: 1.1rem 0; }
-  .prose :global(ul), .prose :global(ol) { margin: 1.1rem 0 1.1rem 1.4rem; }
-  .prose :global(li) { margin: 0.5rem 0; }
-  .prose :global(strong) { color: var(--ink); }
-  .prose :global(a) { color: var(--indigo-deep); }
-  .prose :global(blockquote) { margin: 1.8rem 0; padding: 1.1rem 1.6rem; border-left: 4px solid var(--indigo); background: var(--paper-2); border-radius: 0 var(--radius) var(--radius) 0; font-family: var(--serif); font-style: italic; font-size: 1.28rem; color: var(--ink); }
+  .entry-file {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-faint); margin-top: 1.4rem;
+  }
+  .entry-title {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.15rem, 5.6vw, 4.25rem); line-height: 0.99; letter-spacing: -0.025em;
+    margin: 0.6rem 0 0; max-width: 20ch;
+  }
+  .entry-dek {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.42;
+    color: var(--ink-soft); max-width: 52ch; margin-top: 1rem;
+  }
+
+  .byline {
+    display: flex; align-items: baseline; gap: 0.85rem; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em;
+    color: var(--ink-faint); margin-top: 1.6rem;
+    padding: 0.7rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule);
+  }
+  .byline-name { color: var(--ink); }
+  .byline-upd { background: var(--hl); color: var(--ink); padding: 0.1rem 0.35rem; }
+  .leader { flex: 1; min-width: 1.5rem; border-bottom: 1px dotted var(--rule-mid); transform: translateY(-0.25em); }
+
+  /* -------- SHELL: margin rail + reading column -------- */
+  .post-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    padding-top: 2.25rem;
+  }
+  .post-col { min-width: 0; max-width: 68ch; }
+
+  /* -------- TABLE OF CONTENTS -------- */
+  .toc { font-family: var(--mono); border-top: 1px solid var(--ink); padding-top: 0.7rem; }
+  .toc-head {
+    font-size: 0.64rem; letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 0.6rem;
+  }
+  .toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+  .toc li { counter-increment: toc; margin: 0.1rem 0; }
+  .toc li.sub { padding-left: 1rem; }
+  .toc a {
+    display: block; font-size: 0.75rem; line-height: 1.45; color: var(--ink-faint);
+    text-decoration: none; padding: 0.3rem 0 0.3rem 0.55rem;
+    border-left: 2px solid transparent;
+    transition: color var(--t-hover) var(--ease-out), border-color var(--t-hover) var(--ease-out);
+  }
+  .toc a.active { color: var(--ink); border-left-color: var(--ink); }
+
+  /* -------- PROSE -------- */
+  .prose {
+    font-family: var(--serif);
+    font-size: 1.19rem;
+    line-height: 1.72;
+    color: #24252b;
+    counter-reset: sec;
+  }
+  .prose :global(p) { margin: 1.15rem 0; }
+
+  /* Drop cap. The single most newspaper thing a body of text can do. */
+  .prose > :global(p:first-of-type)::first-letter {
+    float: left;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 4.1em;
+    line-height: 0.76;
+    padding: 0.06em 0.09em 0 0;
+    color: var(--ink);
+  }
+
+  .prose :global(h2) {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.55rem, 3.2vw, 2.1rem); line-height: 1.1; letter-spacing: -0.02em;
+    margin: 2.9rem 0 0.9rem; padding-top: 1.1rem; border-top: 1px solid var(--rule);
+  }
+  .prose :global(h2)::before {
+    counter-increment: sec;
+    content: "§ " counter(sec, decimal-leading-zero);
+    display: block; font-family: var(--mono); font-weight: 400;
+    font-size: 0.66rem; letter-spacing: 0.13em; color: var(--ink-faint);
+    margin-bottom: 0.55rem;
+  }
+  .prose :global(h3) {
+    font-family: var(--display); font-weight: 600;
+    font-size: 1.35rem; margin: 2.1rem 0 0.5rem;
+  }
+  .prose :global(ul), .prose :global(ol) { margin: 1.15rem 0 1.15rem 1.3rem; }
+  .prose :global(li) { margin: 0.45rem 0; padding-left: 0.25rem; }
+  .prose :global(li)::marker { color: var(--ink-faint); }
+  .prose :global(strong) { font-weight: 600; color: var(--ink); }
+  .prose :global(em) { font-style: italic; }
+
+  .prose :global(a) {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+    text-decoration-color: var(--rule-mid);
+    transition: background var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out);
+  }
+
+  /* Pull quote, not a chat bubble. */
+  .prose :global(blockquote) {
+    margin: 2rem 0;
+    padding: 0 0 0 1.5rem;
+    border-left: 3px solid var(--ink);
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
   .prose :global(blockquote p) { margin: 0; }
-  .prose :global(hr) { border: none; border-top: 1px solid var(--line); margin: 2.5rem 0; }
-  .prose :global(code) { font-family: var(--mono); background: var(--paper-deep); padding: 0.15em 0.4em; border-radius: 5px; font-size: 0.88em; }
-  .prose :global(mark) { background: var(--highlight); padding: 0 0.15em; }
 
-  /* Share */
-  .share { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin: 2.5rem 0 1rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
-  .share-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-right: 0.2rem; }
-  .share-btn { font-family: var(--mono); font-size: 0.82rem; padding: 0.5rem 0.9rem; min-height: 40px; display: inline-flex; align-items: center; border: 1.5px solid var(--line-2); border-radius: 999px; background: var(--paper-2); color: var(--ink); text-decoration: none; cursor: pointer; transition: all 0.15s; }
-  .share-btn:hover { border-color: var(--indigo); color: var(--indigo); }
-  .copy-link.done { border-color: var(--indigo); color: var(--indigo); }
+  .prose :global(hr) { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+  .prose :global(code) {
+    font-family: var(--mono); font-size: 0.86em;
+    background: var(--paper-deep); padding: 0.12em 0.35em;
+  }
+  .prose :global(mark) { background: var(--hl); padding: 0 0.14em; }
+  .prose :global(img) { margin: 2rem 0; border: 1px solid var(--rule); }
 
-  /* FAQ */
-  .faq { margin: 3rem 0; }
-  .faq h2 { font-family: var(--serif); font-size: clamp(1.5rem, 3.5vw, 2rem); margin-bottom: 1rem; }
-  .faq-item { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-2); margin-bottom: 0.7rem; padding: 0 1.2rem; }
-  .faq-item summary { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; cursor: pointer; padding: 1.1rem 0; list-style: none; position: relative; padding-right: 2rem; }
+  /* -------- SHARE -------- */
+  .share {
+    display: flex; align-items: center; gap: 0.35rem 1rem; flex-wrap: wrap;
+    margin-top: 3rem; padding: 0.9rem 0;
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule);
+  }
+  .share-label {
+    font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--ink-faint); margin-right: 0.3rem;
+  }
+  .share-btn {
+    font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.03em;
+    color: var(--ink-soft); background: none; border: none; padding: 0.35rem 0.15rem;
+    cursor: pointer; text-decoration: none;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out),
+      transform var(--t-press) var(--ease-out);
+  }
+  .share-btn:active { transform: scale(0.97); }
+  .copy-link.done { background: var(--hl); color: var(--ink); }
+
+  /* -------- FAQ -------- */
+  .faq { margin-top: 3rem; }
+  .faq-head {
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--ink-faint); padding-bottom: 0.6rem; border-bottom: 1px solid var(--ink);
+  }
+  .faq-item { border-bottom: 1px solid var(--rule); }
+  .faq-item summary {
+    font-family: var(--display); font-weight: 600; font-size: 1.18rem; line-height: 1.3;
+    cursor: pointer; padding: 1rem 2.2rem 1rem 0; list-style: none; position: relative;
+    transition: color var(--t-hover) var(--ease-out);
+  }
   .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary::after { content: "+"; position: absolute; right: 0.2rem; top: 50%; transform: translateY(-50%); font-size: 1.5rem; color: var(--indigo); transition: transform 0.2s; }
-  .faq-item[open] summary::after { content: "−"; }
-  .faq-item p { color: var(--ink-soft); padding-bottom: 1.1rem; margin: 0; line-height: 1.7; }
+  .faq-item summary::after {
+    content: "+"; position: absolute; right: 0.15rem; top: 0.95rem;
+    font-family: var(--mono); font-size: 1.15rem; color: var(--ink-faint);
+  }
+  .faq-item[open] summary::after { content: "\2212"; color: var(--ink); }
+  .faq-item[open] summary { color: var(--ink); }
+  .faq-item p {
+    font-family: var(--serif); font-size: 1.05rem; line-height: 1.65;
+    color: var(--ink-soft); padding: 0 2.2rem 1.1rem 0; margin: 0;
+  }
 
-  .post-cta { text-align: center; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 2.4rem; background: var(--paper-2); margin: 3rem 0; box-shadow: var(--shadow); }
-  .cta-badge { display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 0.82rem; padding: 0.1rem 0.5rem; }
-  .post-cta h3 { font-size: 1.6rem; margin: 0.7rem 0 1.3rem; }
+  /* -------- STANDING NOTICE -------- */
+  .notice {
+    margin-top: 3rem; border: 1px solid var(--ink); background: var(--paper-2);
+    padding: 1.5rem 1.4rem 1.4rem;
+  }
+  .notice-kicker {
+    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .notice-head {
+    font-family: var(--display); font-weight: 700; font-size: clamp(1.35rem, 3vw, 1.85rem);
+    line-height: 1.15; letter-spacing: -0.015em; margin: 0.5rem 0 0.4rem;
+  }
+  .notice-sub { font-family: var(--serif); color: var(--ink-soft); margin-bottom: 1rem; }
 
-  .keep { margin-top: 3.5rem; }
-  .keep .eyebrow { display: block; margin-bottom: 1rem; }
-  .more-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .more-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; text-decoration: none; color: var(--ink); background: var(--paper-2); box-shadow: var(--shadow); transition: transform 0.18s, box-shadow 0.18s; }
-  .more-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
-  .more-card .cat { margin-bottom: 0.5rem; }
-  .more-card h3 { font-size: 1.3rem; margin: 0.3rem 0 0.4rem; }
-  .more-card p { color: var(--ink-soft); font-size: 0.95rem; }
-  @media (max-width: 720px) { .more-grid { grid-template-columns: 1fr; } }
+  /* -------- KEEP READING -------- */
+  .keep { margin-top: clamp(3rem, 7vw, 4.5rem); }
+  .keep-head {
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-faint); padding-bottom: 0.6rem; border-bottom: 1px solid var(--ink);
+  }
+  .keep-list { list-style: none; margin: 0; padding: 0; }
+  .keep-list li { border-bottom: 1px solid var(--rule); }
+  .keep-row {
+    display: grid; grid-template-columns: 8ch minmax(0, 1fr) auto; gap: 0 1.4rem;
+    align-items: baseline; padding: 1.1rem 0; text-decoration: none; color: var(--ink);
+    transition: background var(--t-hover) var(--ease-out);
+  }
+  .keep-num {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--ink-faint);
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
+  .keep-kicker {
+    display: block; font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .keep-title {
+    display: block; font-family: var(--display); font-weight: 600;
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.15; margin-top: 0.25rem;
+  }
+  .keep-time { font-family: var(--mono); font-size: 0.66rem; color: var(--ink-faint); white-space: nowrap; }
+  .keep-all {
+    display: inline-block; margin-top: 1.2rem;
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px;
+    transition: background var(--t-hover) var(--ease-out);
+  }
 
-  .read-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: transparent; z-index: 90; }
-  .read-progress span { display: block; height: 100%; width: 0%; background: var(--indigo); transition: width 0.1s linear; }
-  .to-top { position: fixed; right: 1.4rem; bottom: 1.4rem; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--indigo); color: #fff; border: none; cursor: pointer; box-shadow: var(--shadow-lift); z-index: 80; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity 0.25s, transform 0.25s; }
+  /* -------- READING FURNITURE -------- */
+  .read-progress {
+    position: fixed; top: 0; left: 0; right: 0; height: 3px;
+    background: transparent; z-index: var(--z-float);
+  }
+  .read-progress span { display: block; height: 100%; width: 0%; background: var(--ink); }
+  .to-top {
+    position: fixed; right: 1.2rem; bottom: 1.2rem; width: 42px; height: 42px;
+    display: grid; place-items: center; border-radius: 0;
+    background: var(--paper-2); color: var(--ink); border: 1.5px solid var(--ink);
+    cursor: pointer; z-index: var(--z-float);
+    opacity: 0; pointer-events: none; transform: translateY(8px);
+    transition: opacity 0.22s var(--ease-out), transform 0.22s var(--ease-out),
+      background var(--t-hover) var(--ease-out);
+  }
   .to-top[hidden] { display: none; }
   .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
-  .to-top:hover { background: var(--indigo-deep); }
-  .to-top svg { width: 20px; height: 20px; }
+  .to-top:active { transform: scale(0.94); }
+  .to-top svg { width: 18px; height: 18px; }
+
+  /* -------- HOVER (gated) -------- */
+  @media (hover: hover) and (pointer: fine) {
+    .crumbs a:hover { background: var(--hl); color: var(--ink); }
+    .toc a:hover { color: var(--ink); border-left-color: var(--rule-mid); }
+    .prose :global(a):hover { background: var(--hl); text-decoration-color: var(--ink); }
+    .share-btn:hover { background: var(--hl); color: var(--ink); }
+    .faq-item summary:hover { color: #000; }
+    .keep-row:hover { background: color-mix(in srgb, var(--hl) 14%, transparent); }
+    .keep-row:hover .keep-num { background: var(--hl); color: var(--ink); }
+    .keep-all:hover { background: var(--hl); }
+    .to-top:hover { background: var(--hl); }
+  }
+
+  /* -------- RESPONSIVE -------- */
+  @media (min-width: 1080px) {
+    .post-shell {
+      grid-template-columns: 13rem minmax(0, 1fr);
+      gap: 3.5rem;
+    }
+    .toc { position: sticky; top: 2rem; align-self: start; max-height: calc(100dvh - 4rem); overflow-y: auto; }
+    .entry-title { max-width: 18ch; }
+  }
+  @media (max-width: 1079px) {
+    .toc { max-width: 68ch; }
+    .toc ol { columns: 2; column-gap: 2rem; }
+    .toc li { break-inside: avoid; }
+  }
+  @media (max-width: 620px) {
+    .toc ol { columns: 1; }
+    .keep-row { grid-template-columns: 7ch minmax(0, 1fr); gap: 0 1rem; }
+    .keep-time { grid-column: 2; margin-top: 0.35rem; }
+    .prose { font-size: 1.12rem; }
+    .prose > :global(p:first-of-type)::first-letter { font-size: 3.4em; }
+    .byline { gap: 0.6rem; }
+    .leader { display: none; }
+  }
 </style>
 
 <script>
+  /* Reading progress, back-to-top and the table of contents all follow one
+     rAF-throttled read of scroll position. */
   const bar = document.getElementById("rp-bar");
   const toTop = document.getElementById("to-top");
-  function onScroll() {
+  const links = document.querySelectorAll<HTMLAnchorElement>("[data-toc]");
+  const sections = [...links]
+    .map((a) => document.getElementById(a.dataset.toc!))
+    .filter((el): el is HTMLElement => !!el);
+
+  let ticking = false;
+
+  function paint() {
     const doc = document.documentElement;
     const st = doc.scrollTop || document.body.scrollTop;
     const h = doc.scrollHeight - doc.clientHeight;
-    if (bar) bar.style.width = (h > 0 ? (st / h) * 100 : 0) + "%";
-    if (toTop) { toTop.hidden = false; toTop.classList.toggle("show", st > 600); }
-  }
-  if (toTop) toTop.hidden = true;
-  document.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-  toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    if (bar) bar.style.transform = `scaleX(${h > 0 ? st / h : 0})`;
+    if (toTop) toTop.classList.toggle("show", st > 600);
 
+    /* Derived from position rather than from intersection events, so jumping
+       to an anchor or pressing End still lands on the right section. */
+    if (sections.length) {
+      const line = window.innerHeight * 0.28;
+      let active = "";
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= line) active = s.id;
+      }
+      links.forEach((a) => a.classList.toggle("active", !!active && a.dataset.toc === active));
+    }
+    ticking = false;
+  }
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(paint);
+    }
+  }
+
+  if (bar) {
+    bar.style.width = "100%";
+    bar.style.transformOrigin = "0 50%";
+  }
+  if (toTop) toTop.hidden = false;
+  document.addEventListener("scroll", onScroll, { passive: true });
+  paint();
+
+  toTop?.addEventListener("click", () => {
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  });
+
+  /* Copy link */
   const copyBtn = document.querySelector<HTMLButtonElement>(".copy-link");
   copyBtn?.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(copyBtn.dataset.url || location.href);
       const prev = copyBtn.textContent;
-      copyBtn.textContent = "Copied ✓";
+      copyBtn.textContent = "[ Copied ✓ ]";
       copyBtn.classList.add("done");
-      setTimeout(() => { copyBtn.textContent = prev; copyBtn.classList.remove("done"); }, 1800);
-    } catch (e) {}
+      setTimeout(() => {
+        copyBtn.textContent = prev;
+        copyBtn.classList.remove("done");
+      }, 1800);
+    } catch {
+      /* Clipboard blocked. The link is in the address bar either way. */
+    }
   });
 </script>
