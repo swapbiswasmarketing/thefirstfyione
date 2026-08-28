@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { cats } from "../data/site";
+import { cats, gtmId } from "../data/site";
 
 interface Props {
   title?: string;
@@ -45,6 +45,17 @@ const dateline = new Date()
   .toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })
   .toUpperCase();
 
+/* Google Tag Manager loader. Kept as one inline string so the container ID
+   stays in src/data/site.ts and never gets duplicated across the head and the
+   noscript fallback below. */
+const gtmSnippet = gtmId
+  ? `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`
+  : "";
+
+const gtmNoscript = gtmId
+  ? `<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`
+  : "";
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -64,6 +75,14 @@ const jsonLd = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Tag Manager. GA4 and Clarity live as tags inside the container. -->
+    {gtmId && (
+      <>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <script is:inline set:html={gtmSnippet} />
+      </>
+    )}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <title>{title}</title>
@@ -108,6 +127,7 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body style={wrap ? `--wrap: ${wrap}` : undefined}>
+    {gtmId && <noscript set:html={gtmNoscript} />}
     <a class="skip" href="#main">Skip to content</a>
 
     {!bare && (

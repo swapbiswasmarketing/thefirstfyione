@@ -32,3 +32,9 @@ export const fmtDate = (d: Date) =>
 
 export const fmtLong = (d: Date) =>
   d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+
+/* Google Tag Manager container ID, e.g. "GTM-ABC1234". GA4 and Microsoft
+   Clarity are configured as tags inside this container, so this is the only
+   analytics snippet the site ships. Leave it empty to render no analytics at
+   all, which is what local dev and any pre-launch build should do. */
+export const gtmId = "GTM-WLHM6RXG";
