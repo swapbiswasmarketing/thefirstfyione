@@ -31,7 +31,7 @@ The trigger is almost always the same: something very cold pressing against the 
 
 Your palate is packed with blood vessels sitting close to the surface. When cold hits them fast, they do something dramatic. First they clamp down and constrict, then, a moment later, they swing open and dilate to rush warm blood back to the area. That quick constrict-then-dilate whiplash is the event your body reacts to.
 
-Sitting right in the neighborhood is the trigeminal nerve, the main sensation nerve for your entire face. It handles feeling for your cheeks, jaw, eyes, and forehead all through the same trunk line. And here's where it gets interesting: the branch that senses the roof of your mouth shares a route with the branch that senses your forehead.
+Sitting right in the neighborhood is the trigeminal nerve, the main sensation nerve for your entire face. It handles feeling for your cheeks, jaw, eyes, and forehead all through the same trunk line. And the wiring has a quirk: the branch that senses the roof of your mouth shares a route with the branch that senses your forehead.
 
 > Your brain gets a genuine pain signal, but it reads the return address wrong and delivers the ache to your forehead instead of the roof of your mouth. That's why the cold is in your mouth but the pain is above your eyes.
 

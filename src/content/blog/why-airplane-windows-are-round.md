@@ -52,4 +52,4 @@ Once you know about stress concentration, the world reveals its rounded corners:
 - **Swimming-pool tiles, bridge cutouts, aircraft doors, spacecraft windows** - all softened at the corners.
 - Even the little **notches in ring-pull cans and packaging** are curved where they need to survive stress.
 
-The next time you're squinting out at the clouds, remember: that soft-cornered window is the quiet result of a very hard lesson. Someone figured out, at great cost, that the universe hates a sharp corner - and rounded it off for good. Strictly FYI.
+The next time you're squinting out at the clouds, remember: that soft-cornered window is the quiet result of a very hard lesson. Someone figured out, at great cost, that the universe hates a sharp corner - and rounded it off for good. Everyday objects are full of these embedded lessons; [the ridges on a quarter are another one](/blog/why-coins-have-ridges/), left over from a very different kind of emergency. Strictly FYI.

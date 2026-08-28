@@ -33,7 +33,7 @@ That is why the layout looks scrambled. It is not scrambled by letter. It is arr
 
 ## The "designed to slow you down" story is wrong
 
-You have almost certainly heard that QWERTY was deliberately designed to slow typists down, because they were typing faster than the machine could handle.
+You have probably heard that QWERTY was deliberately designed to slow typists down, because they were typing faster than the machine could handle.
 
 It is a great story and there is no evidence for it. It also does not survive five seconds of thinking about the business. Sholes was trying to sell typewriters against pen and ink. A machine advertised as slower than the competition is not a product.
 
@@ -45,7 +45,7 @@ Here is the part that gets left out of the usual telling. The jamming explanatio
 
 Researchers **Koichi Yasuoka and Motoko Yasuoka** of Kyoto University published a study of the layout's development arguing that the standard story does not fit the documentary record. Their case is that some of the earliest heavy users of these machines were **telegraph operators** transcribing Morse code as it arrived, and that the layout was shaped by the demands of that work rather than purely by typebar geometry.
 
-Look at the evidence in the layout itself and it gets genuinely murky:
+Look at the evidence in the layout itself and it gets murky:
 
 - The letters **Z** and **S** sit oddly given how often the pairing appears when transcribing Morse, where the two characters are easy to confuse until the next signal arrives.
 - The order shifted repeatedly through the early 1870s, which is hard to square with a single clean engineering fix.
@@ -57,7 +57,7 @@ The honest position: the layout was shaped by the mechanical and commercial pres
 
 One detail almost always comes up: every letter in the word **TYPEWRITER** appears on the top row. The usual claim is that this was arranged so salesmen could rattle off the product name quickly during a demonstration.
 
-Treat that one gently. It is repeated everywhere and documented nowhere. Given how many times the layout changed, a nine-letter coincidence is entirely plausible, and a good story tends to outlive the check on whether it is true.
+Treat that one gently. It is repeated everywhere and documented nowhere. Given how many times the layout changed, a nine-letter coincidence is entirely plausible, and a good story tends to outlive the check on whether it is true - the same reflex that keeps [the Illuminati on the dollar bill](/blog/illuminati-on-the-dollar-bill/) decades after the dates stopped adding up.
 
 ## So why are we still using it?
 
@@ -66,5 +66,7 @@ Because switching is expensive and being right is not enough.
 **August Dvorak** patented a rival layout in 1936, putting the most common letters under the strongest fingers on the home row. On paper it is clearly better designed. The most-quoted study showing large speed gains was run by Dvorak himself, and later reviewers, notably in a 1990 analysis titled *The Fable of the Keys*, found the real advantage far smaller than the legend.
 
 Even if Dvorak were meaningfully faster, it would not matter much. Every keyboard, every typing class, every muscle memory in every pair of hands is QWERTY. The cost of moving is paid by each person individually and the benefit only arrives if everyone moves together, which is why the market never does.
+
+Standards usually die with their machines; QWERTY is the rare one that did not. The medieval unit of time called [the moment went the other way](/blog/how-long-is-a-moment/) - the mechanical clock arrived and erased it within a couple of generations.
 
 So the keyboard under your hands is a solution to a mechanical problem that has not existed since typebars did, preserved because 150 years of people already learned it. The letters are not in a sensible order. They are in the order that won. Strictly FYI.

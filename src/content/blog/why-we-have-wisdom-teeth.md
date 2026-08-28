@@ -31,7 +31,7 @@ That late arrival is a big part of the problem. By the time they try to come in,
 
 Here is the evolutionary heart of it. Our ancestors ate a diet that was far coarser and tougher than ours - raw plants, uncooked meat, fibrous roots, and food that came with grit and sand attached. Chewing that kind of material is hard work, and it grinds teeth down over a lifetime. Teeth also drifted forward as the ones ahead of them wore away.
 
-A big set of molars, including a third row at the back, gave our ancestors extra grinding surface to process all that food. Their jaws were larger and longer, which meant there was genuinely enough room for all those teeth to line up.
+A big set of molars, including a third row at the back, gave our ancestors extra grinding surface to process all that food. Their jaws were larger and longer, which meant there was enough room for all those teeth to line up.
 
 > Wisdom teeth are essentially spare grinding equipment for a jaw and a diet we no longer have.
 
@@ -51,12 +51,12 @@ That is why so many people end up having them removed. It is not that the tooth 
 
 ## Evolution caught in the act
 
-Here is the part that makes people go "huh." Some people are now born without one, some, or even all of their wisdom teeth. The teeth simply never form. This is called agenesis, and it is genuinely common, though how common varies quite a bit between populations.
+Here is the part that makes people go "huh." Some people are now born without one, some, or even all of their wisdom teeth. The teeth simply never form. This is called agenesis, and it is common, though how common varies quite a bit between populations.
 
-Scientists generally see this as a plausible example of ongoing human evolution. If big third molars are no longer useful, and can even be harmful, then not growing them is not much of a loss. Over long timescales, a trait that stops paying its way tends to fade. To be clear, no one is claiming wisdom teeth are about to vanish next century, and the full picture involves genetics we are still untangling. But the trend of missing third molars is a real, observable thing rather than a myth.
+Scientists generally see this as a plausible example of ongoing human evolution. If big third molars are no longer useful, and can even be harmful, then not growing them is not much of a loss. Over long timescales, a trait that stops paying its way tends to fade. No one is claiming wisdom teeth are about to vanish next century, and the full picture involves genetics we are still untangling. But the trend of missing third molars is a real, observable thing rather than a myth.
 
 ## So why do we have wisdom teeth?
 
 Because evolution does not redesign a body from scratch. It tinkers with what is already there, and it moves slowly. We inherited a full set of molars from ancestors who needed every last one of them to chew a rough diet with big, roomy jaws. We kept the teeth. We lost the jaw space and the tough menu. The mismatch is what lands people in the dentist's chair.
 
-So the next time a wisdom tooth acts up, you can at least appreciate the backstory: it is a leftover tool for a job that no longer exists, showing up in a mouth that has quietly moved on without it. Strictly FYI.
+So the next time a wisdom tooth acts up, you can at least appreciate the backstory: it is a leftover tool for a job that no longer exists, showing up in a mouth that has moved on without it. Biology runs on its own timetable everywhere you look - [eels do not even grow reproductive organs](/blog/how-do-eels-reproduce/) until the final act of their lives. Strictly FYI.

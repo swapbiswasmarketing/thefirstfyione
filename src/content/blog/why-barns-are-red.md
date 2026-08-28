@@ -17,7 +17,7 @@ faqs:
     a: "White paint relied on more expensive pigments, so a white barn signalled a farmer who could afford it. Some regions, parts of New England especially, have far more white barns for this reason."
 ---
 
-Drive through farm country almost anywhere and the barns are red. Not painted-to-match red, not one region's fashion, just red, over and over, across centuries and countries that never coordinated it.
+Drive through farm country almost anywhere and the barns are red. The same red, again and again, across centuries and countries that never coordinated it.
 
 The usual explanation is that red paint was the cheapest. That is true, eventually, and it is not the reason. The reason starts with a farmer trying to stop a building from rotting, and ends somewhere considerably stranger.
 
@@ -29,7 +29,7 @@ Before manufactured paint was something an ordinary farmer bought, the fix was h
 
 ## The thing they mixed in was rust
 
-Among the common additives, one solved several problems at once: **iron oxide**, which is to say rust.
+Among the common additives, one solved several problems at once: **iron oxide** - plain rust.
 
 - It **discouraged mould and moss**, the organisms doing the real damage to the wood.
 - It was **everywhere**. Iron-bearing soil and rust are not things a farmer has to buy from anyone.
@@ -40,13 +40,13 @@ Nobody was choosing a colour. They were choosing a preservative, and the colour 
 
 > The economics arrived afterwards and locked it in. By the time commercial paint was widely affordable, red pigment was still the cheapest on the shelf, and a red barn was already what a barn looked like. Function set the colour, then habit kept it.
 
-You can see the counter-example in the same landscape. White paint depended on costlier pigments, so a white barn quietly announced a farmer with money, which is part of why some regions, New England especially, have so many of them.
+You can see the counter-example in the same landscape. White paint depended on costlier pigments, so a white barn announced a farmer with money, which is part of why some regions, New England especially, have so many of them.
 
 ## Now the odd part
 
 Ask why iron oxide was so abundant that a farmer could scrape it together for free, and you leave the farmyard entirely.
 
-Iron is one of the most common elements in the Earth's crust, and unusually common throughout the universe, and that abundance is not an accident of our planet. It is a consequence of how stars work.
+Iron is one of the most common elements in the Earth's crust, and abundant throughout the universe, and that abundance is not an accident of our planet. It is a consequence of how stars work.
 
 Stars run by fusing light elements into heavier ones and releasing energy. Hydrogen to helium, helium to carbon, on up the chain in the cores of massive stars. Every step pays out energy, which is what holds the star up against its own gravity.
 
@@ -60,4 +60,4 @@ That material eventually collects into new stars, planets, soil and ore. The iro
 
 Because a farmer needed to stop wood rotting, reached for the cheapest thing that worked, and the cheapest thing that worked was rust. Rust is red because it is iron, and iron is lying around in enormous quantities because it is the element at which stars stop being able to hold themselves up.
 
-Every red barn on every roadside is painted with the ash of dead stars, chosen by someone who just wanted the roof to last another winter. Strictly FYI.
+Every red barn on every roadside is painted with the ash of dead stars, chosen by someone who just wanted the roof to last another winter. Ordinary objects keep this kind of secret constantly - even [a burning candle is performing a vanishing act](/blog/where-does-candle-wax-go/) nobody thinks to question. Strictly FYI.

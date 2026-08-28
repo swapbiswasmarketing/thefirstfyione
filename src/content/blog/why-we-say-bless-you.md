@@ -33,7 +33,7 @@ The more serious problem is chronology. People were responding to sneezes with s
 
 The second explanation: people once believed a sneeze could expel your soul, or let a demon in, and the blessing sealed the gap.
 
-This one is real folklore. It genuinely circulated, in various forms, across many cultures. But circulating is not the same as originating. Beliefs like this are what people generate to explain a habit they inherited and cannot account for. They are the story around the custom, not the source of it.
+This one is real folklore. It circulated, in various forms, across many cultures. But circulating is not the same as originating. Beliefs like this are what people generate to explain a habit they inherited and cannot account for. They are the story around the custom, not the source of it.
 
 ## What the record actually shows
 
@@ -54,10 +54,10 @@ The folklore attached itself to the biology as well, and some of it is still rep
 - **Your heart does not stop when you sneeze.** The pressure changes in your chest during a sneeze can nudge the timing of a heartbeat, which is very likely where the belief came from, but nothing pauses.
 - **Your eyes will not pop out if you keep them open.** The eyelid closing is a reflex bundled into the sneeze. It is not a safety mechanism, and people who hold their eyes open during a sneeze are fine.
 
-A sneeze is a violent, well-coordinated reflex for clearing an irritant out of your nose, and it is genuinely forceful and genuinely messy, which is reason enough for people around you to say something.
+A sneeze is a violent, well-coordinated reflex for clearing an irritant out of your nose, and it is forceful and messy, which is reason enough for people around you to say something.
 
 ## So what is the real answer?
 
-There is no single origin to find, and that is the actual finding. "Bless you" is a Christian phrase laid over a pre-Christian reflex that shows up wherever people live near each other. The plague story explains the English wording, at best, and probably not even that. The soul story explains nothing but tells us what people guessed.
+There is no single origin to find, and that is the actual finding. "Bless you" is a Christian phrase laid over a pre-Christian reflex that shows up wherever people live near each other. The plague story explains the English wording, at best, and probably not even that. The soul story explains nothing but tells us what people guessed. Language does this constantly - "wait a moment" once named [an exact unit of 90 seconds](/blog/how-long-is-a-moment/), and the words outlived the measurement there too.
 
 What survives is the smallest possible social contract: your body did something startling, I noticed, and I wished you well about it. Everything else is commentary. Strictly FYI.

@@ -17,7 +17,7 @@ faqs:
     a: "Honey can contain dormant Clostridium botulinum spores that are harmless to adults but dangerous to infants under one year old."
 ---
 
-When archaeologists opened ancient Egyptian tombs, they found the usual treasures - gold, artifacts, and, remarkably, pots of honey thousands of years old that were reportedly still edible. Leave bread out for a week and it's a science experiment. Leave honey out for three millennia and it's... breakfast.
+When archaeologists opened ancient Egyptian tombs, they found the usual treasures - gold, artifacts, and pots of honey thousands of years old that were reportedly still edible. Leave bread out for a week and it's a science experiment. Leave honey out for three millennia and it's... breakfast.
 
 Almost no other food does this. So what makes honey basically immortal? It comes down to a stack of conditions that make it one of the most hostile places on Earth for a microbe to live.
 
@@ -47,4 +47,4 @@ A few honest caveats, because "never spoils" has conditions:
 - **Crystallizing isn't spoiling.** Honey that turns grainy and pale has just crystallized - warm it gently and it flows again. It's fine.
 - **Not for babies.** Honey can contain dormant *Clostridium botulinum* spores that are harmless to adults but dangerous to infants under one year old, whose guts can't handle them. This is the one real safety rule.
 
-So honey doesn't have a shelf life so much as a geological one. Every jar in your cupboard is a tiny, sealed monument to a few billion years of chemistry - and a few thousand bees who fanned it dry. Strictly FYI.
+So honey doesn't have a shelf life so much as a geological one. Every jar in your cupboard is a tiny, sealed monument to a few billion years of chemistry - and a few thousand bees who fanned it dry. And it is not the only pantry item running a chemistry demonstration: [the candle on the same shelf is turning itself into air](/blog/where-does-candle-wax-go/). Strictly FYI.

@@ -42,8 +42,9 @@ A false alarm is cheap; a missed detection can be fatal. Over enough generations
 This same wiring shapes a surprising amount of life:
 
 - **We trust face-like design.** Cars are often styled with "friendly" or "aggressive" front-end faces on purpose, because you read them emotionally.
-- **We see faces in the sky and stone** - the Man in the Moon, the (long-debunked) "Face on Mars," religious figures in toast and clouds. Same mechanism, grander canvas.
+- **We see faces in the sky and stone** - the Man in the Moon, the (long-debunked) "Face on Mars," religious figures in toast and clouds. Same mechanism, grander canvas. It even shapes what we believe: the eager pattern-matcher is a big part of why [a heraldry committee's floating eye became "proof" of the Illuminati](/blog/illuminati-on-the-dollar-bill/).
 - **Babies do it early.** Newborns preferentially look at face-like patterns within hours of birth, before they've learned what a face even is.
 - **It has a cousin for sound.** Hearing words in random noise, or a name in the hum of a fan, is the auditory version of the same eager pattern-matcher.
+- **It is astonishingly fast.** The brain can identify an image it saw for just 13 milliseconds - a span [far shorter than any historical definition of a moment](/blog/how-long-is-a-moment/).
 
 So the next time a mailbox looks mildly judgmental at you, don't worry - your brain is working exactly as designed. It would rather show you a hundred faces that aren't there than let you miss the one that is. Strictly FYI.
