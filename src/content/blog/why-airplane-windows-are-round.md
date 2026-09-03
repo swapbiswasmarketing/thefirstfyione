@@ -41,7 +41,7 @@ Engineers call it **stress concentration**. At a right-angled corner, the stress
 
 Round the corner.
 
-A curved corner gives the stress a gentle path to flow around, spreading it out instead of concentrating it. No spike, no crack-nursery, no catastrophic failure at 35,000 feet. The Comet's successors - and every pressurized aircraft since - got windows with generously rounded corners. Problem solved, permanently.
+A curved corner gives the stress a gentle path to flow around, spreading it out instead of concentrating it. No spike, no crack-nursery, no catastrophic failure at 35,000 feet. The Comet's successors - and every pressurized aircraft since - got windows with generously rounded corners. Problem solved, permanently. Some failures have nothing to do with the material, like the Great Wall of China in 1644, when [a Ming general opened its gates and let an army through](/blog/did-the-great-wall-of-china-work/).
 
 ## Now you'll see it everywhere
 

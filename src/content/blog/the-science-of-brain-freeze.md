@@ -25,7 +25,7 @@ It turns out the answer is a small case of mistaken identity happening inside on
 
 Brain freeze has a proper medical name, and it is gloriously oversized: **sphenopalatine ganglioneuralgia**. That mouthful basically means "nerve pain around the sphenopalatine ganglion," a little cluster of nerves tucked behind your nose and the roof of your mouth. Doctors more often just call it an ice-cream headache or a cold-stimulus headache, which is kinder to say and to spell.
 
-The trigger is almost always the same: something very cold pressing against the roof of your mouth, the palate. That's the sensitive spot. Sip an icy drink slowly and you might be fine. Let a spoonful of gelato melt against the top of your mouth, and you've rung the doorbell.
+The trigger is almost always the same: something very cold pressing against the roof of your mouth, the palate. That's the sensitive spot. Cubes float, so [the coldest thing in a glass sits right at the top](/blog/why-does-ice-float/), the part your mouth meets first. Sip an icy drink slowly and you might be fine. Let a spoonful of gelato melt against the top of your mouth, and you've rung the doorbell.
 
 ## What's actually happening up there
 

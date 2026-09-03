@@ -29,7 +29,7 @@ Here is the part that surprises most people: only female mosquitoes bite, and ev
 
 > The blood meal is not food in the usual sense - it is a reproductive supplement. Females need the protein to develop their eggs, which is the entire reason biting evolved in the first place.
 
-Nectar-feeding also makes many mosquitoes pollinators. They are not as efficient as bees, but they visit flowers, and some plants rely on them. So the creature you associate purely with itchy welts is, most of the time, moving pollen around a swamp.
+Nectar-feeding also makes many mosquitoes pollinators. They are not as efficient as bees, but they visit flowers, and some plants rely on them. So the creature you associate purely with itchy welts is, most of the time, moving pollen around a swamp. The insect you swat next is probably running something just as specific - a housefly's feet carry both its taste bristles and its grip pads, which is [why it keeps scrubbing its front legs clean](/blog/why-do-flies-rub-their-hands/).
 
 ## What eating and being eaten looks like
 

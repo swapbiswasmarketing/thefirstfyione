@@ -29,7 +29,7 @@ The problem Sholes was solving was mechanical. On those early typewriters, each 
 
 > The fix was to look at which letters people actually type back to back, and then move those pairs apart on the machine, so the arms swinging up would approach from different angles instead of the same one.
 
-That is why the layout looks scrambled. It is not scrambled by letter. It is arranged by **pairs of letters**, which is invisible unless you know to look for it.
+That is why the layout looks scrambled. It is not scrambled by letter. It is arranged by **pairs of letters**, which is invisible unless you know to look for it. Connectors carry the same kind of buried reasoning - [the plug that only goes in one way up](/blog/why-is-usb-not-reversible/) has four contacts in a single row, and one row can only meet its match one way.
 
 ## The "designed to slow you down" story is wrong
 

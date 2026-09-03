@@ -56,7 +56,7 @@ Five centuries after Bede, scholars including **Roger Bacon** were still using h
 | Uncia | 480 | 7.5 seconds |
 | Atomus | 22,560 | 0.16 seconds |
 
-One honest caveat: these were scholars' units, built for calendar math and astronomy. No baker ever promised bread in two momenta. The moment lived in manuscripts, not marketplaces, which is partly why it slipped away unnoticed.
+One honest caveat: these were scholars' units, built for calendar math and astronomy. No baker ever promised bread in two momenta. The moment lived in manuscripts, not marketplaces, which is partly why it slipped away unnoticed. Words can live entirely on the page like that, which is how English ended up with [a collective noun for ravens, set in type in 1486 to fill blank pages](/blog/what-is-a-group-of-ravens-called/).
 
 ## The clock that killed it
 

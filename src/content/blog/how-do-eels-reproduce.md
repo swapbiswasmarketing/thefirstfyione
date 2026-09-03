@@ -55,7 +55,7 @@ The leptocephalus is so unlike an adult eel that it was originally classified as
 
 The man who cracked the geography was a Danish scientist named **Johannes Schmidt**. Starting in **1904**, he led expedition after expedition across the Mediterranean and North Atlantic, netting eel larvae and logging their sizes. His logic was patient and simple: the smaller the larvae, the closer the birthplace. The trail of ever-tinier leptocephali led him away from Europe, across the ocean, to the seaweed-strewn **Sargasso Sea**. He spent roughly two decades on the problem, and even then it remained a hypothesis - he had found babies, not births.
 
-Direct proof of the journey only arrived in **2022**, when an international team fitted migrating European eels with satellite tags and tracked them from the Azores toward the Sargasso - the first direct evidence of adults completing the route, nearly a century after Schmidt.
+Direct proof of the journey only arrived in **2022**, when an international team fitted migrating European eels with satellite tags and tracked them from the Azores toward the Sargasso - the first direct evidence of adults completing the route, nearly a century after Schmidt. Origins usually get settled from traces rather than from the event itself, which is how [the egg's enormous head start on the chicken](/blog/what-came-first-the-chicken-or-the-egg/) was worked out from footprints and dated bones.
 
 > The larvae drift out of the Sargasso; the silver adults vanish into it. What happens at the center has never been seen, filmed, or sampled in the act. The eel's private life is one of the last closed doors in vertebrate biology.
 

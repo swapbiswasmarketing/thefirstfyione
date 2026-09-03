@@ -33,7 +33,7 @@ The more serious problem is chronology. People were responding to sneezes with s
 
 The second explanation: people once believed a sneeze could expel your soul, or let a demon in, and the blessing sealed the gap.
 
-This one is real folklore. It circulated, in various forms, across many cultures. But circulating is not the same as originating. Beliefs like this are what people generate to explain a habit they inherited and cannot account for. They are the story around the custom, not the source of it.
+This one is real folklore. It circulated, in various forms, across many cultures. But circulating is not the same as originating. Beliefs like this are what people generate to explain a habit they inherited and cannot account for. They are the story around the custom, not the source of it. The spelling Xmas collects the same kind of story, and the X that looks like Christ deleted is [the Greek letter chi, which English writers were using for that name by about 1100](/blog/why-do-people-say-xmas/).
 
 ## What the record actually shows
 

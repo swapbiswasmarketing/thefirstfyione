@@ -37,7 +37,7 @@ Low water would be enough on its own. Honey doesn't stop there:
 - **The bees add a preservative.** Bees mix in an enzyme called **glucose oxidase**. As honey slowly ripens, that enzyme produces tiny amounts of **hydrogen peroxide** - the same stuff in your medicine cabinet - plus gluconic acid. A continuous, gentle antiseptic, brewed in.
 - **It's sealed and processed.** Bees fan the nectar with their wings to evaporate water down to that magic ~17%, then cap the cells with wax. It arrives pre-packaged for the long haul.
 
-Low water, high acid, built-in peroxide, sealed tight. Stack those and you get a food that can outlast civilizations.
+Low water, high acid, built-in peroxide, sealed tight. Stack those and you get a food that can outlast civilizations. The bees defend the finished store too, and a worker who stings a mammal [leaves her barbed sting in the skin and dies of the injury](/blog/why-do-bees-die-after-stinging/).
 
 ## The fine print
 

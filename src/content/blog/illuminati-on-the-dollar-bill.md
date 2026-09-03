@@ -45,7 +45,7 @@ An unfinished building, a watchful eye, a line of Roman poetry. As eighteenth-ce
 
 ## Even the Freemason version has a timeline problem
 
-The fallback theory swaps the Illuminati for the Freemasons, who really do use the Eye of Providence. But the eye first appeared as standard Masonic iconography in **1797**, in Thomas Smith Webb's *The Freemason's Monitor* - **15 years after** the Great Seal was designed.
+The fallback theory swaps the Illuminati for the Freemasons, who really do use the Eye of Providence. But the eye first appeared as standard Masonic iconography in **1797**, in Thomas Smith Webb's *The Freemason's Monitor* - **15 years after** the Great Seal was designed. A symbol is dated by the oldest source that carries it, and so is a quotation: [the sales pitch that named Greenland](/blog/why-is-greenland-called-greenland/) survives only in a priest's paraphrase written about 140 years after the voyage.
 
 > The eye was on the seal before it was a Masonic symbol, and the Illuminati never used it at all. The theory is not just wrong; it is wrong in the wrong order.
 

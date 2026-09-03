@@ -21,7 +21,7 @@ Burn a candle to the end and audit the scene. A few grams of stub, a spent bit o
 
 ## Where does the wax go?
 
-The wax becomes gas. A candle flame melts the wax below it, pulls the liquid up the wick, vaporizes it, and burns it, and the products of that burning are **water vapor and carbon dioxide**. Both are invisible. The wax does not vanish; it disperses into the air around you, molecule by molecule, for as long as the flame stays lit.
+The wax becomes gas. A candle flame melts the wax below it, pulls the liquid up the wick, vaporizes it, and burns it, and the products of that burning are **water vapor and carbon dioxide**. Both are invisible. The wax does not vanish; it disperses into the air around you, molecule by molecule, for as long as the flame stays lit. The same gas does louder work elsewhere: a bloated whale carcass on a beach is [filled mostly with carbon dioxide, not the methane the story always reaches for](/blog/why-do-whales-explode/).
 
 Which means a candle is stranger than it looks: it is a device for slowly converting a solid block into the atmosphere of your living room.
 

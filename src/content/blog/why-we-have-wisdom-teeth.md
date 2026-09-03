@@ -29,7 +29,7 @@ That late arrival is a big part of the problem. By the time they try to come in,
 
 ## Built for a tougher menu
 
-Here is the evolutionary heart of it. Our ancestors ate a diet that was far coarser and tougher than ours - raw plants, uncooked meat, fibrous roots, and food that came with grit and sand attached. Chewing that kind of material is hard work, and it grinds teeth down over a lifetime. Teeth also drifted forward as the ones ahead of them wore away.
+Here is the evolutionary heart of it. Our ancestors ate a diet that was far coarser and tougher than ours - raw plants, uncooked meat, fibrous roots, and food that came with grit and sand attached. Chewing that kind of material is hard work, and it grinds teeth down over a lifetime. Teeth also drifted forward as the ones ahead of them wore away. A horse hoof is kept in trim the same way, growing about 7 mm a month and holding its shape only because [the ground underneath files it back down](/blog/why-do-horses-need-shoes/).
 
 A big set of molars, including a third row at the back, gave our ancestors extra grinding surface to process all that food. Their jaws were larger and longer, which meant there was enough room for all those teeth to line up.
 

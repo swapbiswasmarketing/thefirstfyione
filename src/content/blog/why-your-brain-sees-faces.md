@@ -25,7 +25,7 @@ This is **pareidolia** - the brain's tendency to find meaningful patterns, espec
 
 Buried in a region of your brain called the **fusiform gyrus** is a patch nicknamed the **fusiform face area**, which specializes in recognizing faces. It's fast, and it's hair-trigger. Studies measuring brain activity find that face-*like* objects - two dots and a line arranged just so - light up face-processing regions almost as quickly as real faces do, within about a fifth of a second.
 
-That's why you don't *decide* the outlet looks surprised. You see the surprise before you can think about it. The pattern-matcher fires first and asks questions later.
+That's why you don't *decide* the outlet looks surprised. You see the surprise before you can think about it. The pattern-matcher fires first and asks questions later. Color works the same way, which is why [the skin over a vein returns more red light than blue and still looks blue](/blog/why-are-veins-blue/).
 
 ## Why evolution made you over-eager
 
