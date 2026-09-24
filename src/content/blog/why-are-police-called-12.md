@@ -51,7 +51,7 @@ Earlier printings are where this gets good. In the [1940 APCO Standards Committe
 
 ## The 10-12 story is folklore, and it shows
 
-The confident version says 10-12 means police are present or on the way. No printing of the APCO list has ever said that, and the list itself kept moving: the ten-signals were rewritten in 1955, again for APCO Project 2 in 1967, and again for APCO Project 14 in 1974, where 10-12 still read stand by.
+The confident version says 10-12 means police are present or on the way. No printing of the APCO list has ever said that, and the list itself kept moving: the ten-signals were rewritten in 1955, again for APCO Project 2 in 1967, and again for APCO Project 14 in 1974, where 10-12 still read stand by. That 1974 revision is the one that [turned 10-4 from "Acknowledgement" into "Affirmative (Ok)"](/blog/what-does-10-4-mean/).
 
 The 1968 manual dates the signals to Illinois APCO members in **1935**, registered and adopted nationally in **1940**. An origin story that needs one code to have meant one thing, everywhere, for decades is asking a great deal of a system that kept revising itself.
 

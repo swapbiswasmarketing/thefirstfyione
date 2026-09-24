@@ -40,7 +40,7 @@ The reason nobody picks a winner is that the candidates are eliminated by differ
 | Spacewar! | 1962 | Steve Russell and others, MIT | Digital, real-time, and copied to other sites. Needed a PDP-1, priced at US$120,000. |
 | Computer Space, Pong | 1971, 1972 | Bushnell and Dabney, Allan Alcorn | First sold, then first to sell well. Both arrive a decade after the interesting part of the argument. |
 
-The one rule everybody does share is buried in the word itself. Under the early technical definition, a product counted as a video game only if it transmitted a video signal to a display, which rules out games that sent their output to a printer or a teletype and the machines that spelled their boards in light bulbs.
+The one rule everybody does share is buried in the word itself. Under the early technical definition, a product counted as a video game only if it transmitted a video signal to a display, which rules out games that sent their output to a printer or a teletype and the machines that spelled their boards in light bulbs. Countdowns have a first-of-its-kind argument too: [the earliest backward count](/blog/what-does-t-minus-mean/) is a Cambridge boat race in 1865, a Jules Verne cannon in 1889 or a rocket launch in a 1929 film, depending on what is being counted down to.
 
 ## Bertie and Nimrod were advertisements with a game attached
 

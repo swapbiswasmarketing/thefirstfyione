@@ -29,7 +29,7 @@ The tank cracked the case wide open.
 
 ## The killer was a corner
 
-The Comet's fuselage was failing from **metal fatigue** - tiny cracks that grow every time a material is stressed and released. Every flight, the cabin pressurized and depressurized, flexing the aluminum skin a little. Do that enough times and cracks form.
+The Comet's fuselage was failing from **metal fatigue** - tiny cracks that grow every time a material is stressed and released. Every flight, the cabin pressurized and depressurized, flexing the aluminum skin a little. Do that enough times and cracks form. A town's water tower runs a daily pressure cycle of its own, drained through the day and refilled overnight, though [the pressure it delivers is set by the height of its water surface](/blog/how-do-water-towers-work/).
 
 But they didn't form just anywhere. They started at the **corners of the square-ish cutouts** in the fuselage - windows and antenna openings. And there's a clean reason why.
 
@@ -41,7 +41,7 @@ Engineers call it **stress concentration**. At a right-angled corner, the stress
 
 Round the corner.
 
-A curved corner gives the stress a gentle path to flow around, spreading it out instead of concentrating it. No spike, no crack-nursery, no catastrophic failure at 35,000 feet. The Comet's successors - and every pressurized aircraft since - got windows with generously rounded corners. Problem solved, permanently. Some failures have nothing to do with the material, like the Great Wall of China in 1644, when [a Ming general opened its gates and let an army through](/blog/did-the-great-wall-of-china-work/).
+A curved corner gives the stress a gentle path to flow around, spreading it out instead of concentrating it. No spike, no crack-nursery, no catastrophic failure at 35,000 feet. The Comet's successors - and every pressurized aircraft since - got windows with generously rounded corners, and on the approach those windows give a view of flaps and slats sliding out to curve the wing for [the extra lift slow flight needs](/blog/how-do-planes-fly/). Problem solved, permanently. Some failures have nothing to do with the material, like the Great Wall of China in 1644, when [a Ming general opened its gates and let an army through](/blog/did-the-great-wall-of-china-work/).
 
 ## Now you'll see it everywhere
 

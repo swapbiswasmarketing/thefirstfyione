@@ -35,7 +35,7 @@ A giggle is assembled from very short notes, averaging **69 milliseconds** each 
 
 The first is pitch. Mean fundamental frequency falls from about **650 Hz at two years old to under 450 Hz by twenty**, a decline of roughly **30 percent**. A giggle is therefore an approximate birth certificate, read aloud at the worst possible moment.
 
-The second is steadiness. Variability in note frequency was **higher in subordinate animals than in dominant ones**, so the more frantic and uneven a giggle sounds, the lower the status of the hyena producing it. Sex, by contrast, left no reliable acoustic trace.
+The second is steadiness. Variability in note frequency was **higher in subordinate animals than in dominant ones**, so the more frantic and uneven a giggle sounds, the lower the status of the hyena producing it. Sex, by contrast, left no reliable acoustic trace. Roosters carry rank in a different part of the call: the main sign of [a rooster's status](/blog/why-do-roosters-crow/) appears to be how often he crows, and in a lab study the top-ranked bird crowed first on almost every morning.
 
 Familiar animal noise usually turns out to be doing a job rather than expressing a mood, which is also the case with [the racket that comes out of long grass on summer nights](/blog/why-do-crickets-chirp/).
 

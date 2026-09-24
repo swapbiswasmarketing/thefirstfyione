@@ -62,7 +62,7 @@ The 1812 figures scatter the same way. The archives exhibit credits the nickname
 
 ## The Bloody First went over the wall at Monterrey
 
-The men who did go earned the reputation the nickname now carries. At the **Battle of Monterrey in September 1846**, the First Tennessee Infantry under Colonel William Bowen Campbell assaulted Fort Teneria and were, in the archives' phrase, **first over the walls and into the fort**. The regiment came home as the **Bloody First**.
+The men who did go earned the reputation the nickname now carries. At the **Battle of Monterrey in September 1846**, the First Tennessee Infantry under Colonel William Bowen Campbell assaulted Fort Teneria and were, in the archives' phrase, **first over the walls and into the fort**. The regiment came home as the **Bloody First**. The same war often gets credit for the word gringo, supposedly from a song American soldiers sang, but [a Madrid dictionary had the word 59 years before the fighting began](/blog/what-does-gringo-mean/).
 
 Tennessee raised more units than it could use. The archives exhibit records that the Third, Fourth and Fifth Infantries were recruited after the major fighting ended and served mainly as garrison troops and supply line guards.
 

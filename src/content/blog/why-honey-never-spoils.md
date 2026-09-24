@@ -33,7 +33,7 @@ Scientists measure this as **water activity**, and honey's is far too low for al
 
 Low water would be enough on its own. Honey doesn't stop there:
 
-- **It's acidic.** Honey has a pH around 3.9 - roughly as acidic as tomato juice - which most spoilage bacteria hate.
+- **It's acidic.** Honey has a pH around 3.9 - roughly as acidic as tomato juice - which most spoilage bacteria hate. The oldest [sushi](/blog/where-did-sushi-originate/) leaned on acid too: fish packed in salt and rice fermented for months, and the falling pH held back the microbes that rot it.
 - **The bees add a preservative.** Bees mix in an enzyme called **glucose oxidase**. As honey slowly ripens, that enzyme produces tiny amounts of **hydrogen peroxide** - the same stuff in your medicine cabinet - plus gluconic acid. A continuous, gentle antiseptic, brewed in.
 - **It's sealed and processed.** Bees fan the nectar with their wings to evaporate water down to that magic ~17%, then cap the cells with wax. It arrives pre-packaged for the long haul.
 

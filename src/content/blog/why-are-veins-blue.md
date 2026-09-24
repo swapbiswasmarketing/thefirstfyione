@@ -36,7 +36,7 @@ The 2026 optics paper opens on the same fact, that "human blood is always red" w
 ## The correction everyone gives you is wrong too
 
 Once the blood is ruled out, the blue has to come from the light, and the standard explainer takes its wrong turn right here. Baird's page states the familiar version: "Skin scatters a lot of the red portion of white light before it can reflect off the blood, leaving the blue light to reflect off the blood and back to our eyes."
-Measurement points the other way. Markus Wagner and five co-authors, writing in [Biomedical Optics Express](https://pmc.ncbi.nlm.nih.gov/articles/PMC12904536) in January 2026, photographed artificial vessels buried in synthetic skin and reported that above the vein, "in absolute terms, more red light is reflected than blue light".
+Measurement points the other way. Markus Wagner and five co-authors, writing in [Biomedical Optics Express](https://pmc.ncbi.nlm.nih.gov/articles/PMC12904536) in January 2026, photographed artificial vessels buried in synthetic skin and reported that above the vein, "in absolute terms, more red light is reflected than blue light". Lift has the same trap: trading [the equal-transit story of how planes fly](/blog/how-do-planes-fly/) for air bouncing off the underside of the wing swaps one error for another.
 
 > "In absolute terms, more red light is reflected than blue light" from the skin above a vein. The blue never arrives at your eye as blue. It is manufactured from the difference between that light and the light coming off the skin beside it.
 

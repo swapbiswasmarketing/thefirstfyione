@@ -72,7 +72,7 @@ That the mineral survives at all, the team writes, suggests it "formed during a 
 
 Martian dust is very fine. [A 2025 iScience paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC12496206/) on Martian dust simulant cites the commonly accepted value for the effective radius of Martian dust as approximately 1.5 micrometres.
 
-Particles that small travel. NASA notes that winds on Mars are occasionally strong enough to create dust storms that cover much of the planet, and the ferrihydrite team describes Martian dust as "well mixed on a global scale". One pigment, stirred everywhere, is why ground that is golden in one place and greenish in another still reads as a single colour from Earth.
+Particles that small travel. NASA notes that winds on Mars are occasionally strong enough to create dust storms that cover much of the planet, and the ferrihydrite team describes Martian dust as "well mixed on a global scale". One pigment, stirred everywhere, is why ground that is golden in one place and greenish in another still reads as a single colour from Earth. Path length works the other way for water: a glass of it looks clear, and [the ocean's blue](/blog/why-is-the-ocean-blue/) builds up only over metres, as each one absorbs more red light than blue.
 
 Ordinary signals carry more information than they look like they carry, [which is also true of the noise a field makes after dark](/blog/why-do-crickets-chirp/).
 

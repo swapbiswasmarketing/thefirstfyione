@@ -57,7 +57,7 @@ Those four ingredients never left. Order an Old Fashioned and you are ordering [
 
 The popular version goes like this: Antoine Amedee Peychaud, a New Orleans apothecary, served brandy and bitters in a French egg cup, a coquetier, and English speakers slurred the word into "cocktail". Dale DeGroff is the modern name attached to it. Wikipedia files it with the folk etymologies, which it says [can be dismissed "given the well-attested term 'cock-tail' for a horse"](https://en.wikipedia.org/wiki/Cocktail).
 
-The calendar finishes the job. Peychaud's bitters could not have existed before 1849. By that year the word had been in print in London for fifty-one years, defined in a New York newspaper for forty-three, and recorded in The Farmer's Cabinet on 28 April 1803, where a writer noted drinking a glass of cocktail at 11 a.m. and judged it "excellent for the head".
+The calendar finishes the job. Peychaud's bitters could not have existed before 1849. By that year the word had been in print in London for fifty-one years, defined in a New York newspaper for forty-three, and recorded in The Farmer's Cabinet on 28 April 1803, where a writer noted drinking a glass of cocktail at 11 a.m. and judged it "excellent for the head". Dates do the same work on [let them eat cake](/blog/what-does-let-them-eat-cake-mean/): Rousseau recalled a "great princess" giving the brioche answer while he was a tutor in Lyon in 1740-1741, some fifteen years before Marie Antoinette was born.
 
 ## Ranking the stories by what actually backs them
 

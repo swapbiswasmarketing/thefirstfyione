@@ -39,7 +39,7 @@ Sitting right in the neighborhood is the trigeminal nerve, the main sensation ne
 
 This mix-up has a name too: **referred pain**. It's when pain gets felt somewhere other than where it started, because different body parts share nerve pathways and the brain can't always tell them apart. The classic example is a heart attack that aches down the left arm. Brain freeze is the friendly, temporary version of the same trick.
 
-So when you feel that stab in your forehead, your forehead is fine. It's an innocent bystander getting blamed for a crime that happened one floor down.
+So when you feel that stab in your forehead, your forehead is fine. It's an innocent bystander getting blamed for a crime that happened one floor down. Holiday turkey gets framed the same way: [its tryptophan is ordinary](/blog/why-does-turkey-make-you-sleepy/), about level with chicken breast, and the drowsiness belongs to the meal and the hour.
 
 ## So why do we get brain freeze at all?
 

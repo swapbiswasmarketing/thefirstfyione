@@ -66,7 +66,7 @@ The extras have a traceable modern home. James Lipton's *An Exaltation of Larks*
 
 ## Unkind may not have meant cruel
 
-"Kind" as an adjective descends from Old English *(ge)cynde*, meaning natural, native and innate, from the same root as *kin*. The Online Etymology Dictionary gives the matching sense for the negative: Old English *uncynde*, "unnatural, not in accord with the regular course of nature", a meaning now obsolete. The modern sense, lacking in kindness, arrived in the mid-14th century.
+"Kind" as an adjective descends from Old English *(ge)cynde*, meaning natural, native and innate, from the same root as *kin*. The Online Etymology Dictionary gives the matching sense for the negative: Old English *uncynde*, "unnatural, not in accord with the regular course of nature", a meaning now obsolete. The modern sense, lacking in kindness, arrived in the mid-14th century. English was loose with kin words too: through Middle English, *cousin* also covered grandchildren and godchildren, and [second cousin](/blog/what-is-a-second-cousin/) still has two dictionary senses naming two different relatives.
 
 The older sense was live on those same pages: the hunting rhymes have a roebuck that bells "by kynde", and Blades glosses "kyndeli" in this book as "natural". The compiler left no note saying which reading he meant. A term explained online a thousand times as a comment on raven cruelty may have been a comment on raven strangeness. Names outlive their reasons, which is [how an island of ice ended up advertised as green](/blog/why-is-greenland-called-greenland/).
 

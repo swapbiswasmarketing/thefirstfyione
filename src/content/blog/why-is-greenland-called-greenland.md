@@ -33,7 +33,7 @@ Ari Thorgilsson, known as Ari the Wise, was born in **1067 or 1068** and compile
 
 So the oldest text is about **140 years** late, set down by a man born roughly eighty years after the ships sailed. Ari does not hide it. In the same sentence he says where the dating came from: what one man told Thorkell Gellison.
 
-The wording everybody repeats is later still. "Men will desire much the more to go there if the land has a good name" is [Eiriks saga rauda, chapter 2](https://www.gutenberg.org/files/17946/17946-h/17946-h.htm), in J. Sephton's translation, from a saga composed generations after Ari was in his grave.
+The wording everybody repeats is later still. "Men will desire much the more to go there if the land has a good name" is [Eiriks saga rauda, chapter 2](https://www.gutenberg.org/files/17946/17946-h/17946-h.htm), in J. Sephton's translation, from a saga composed generations after Ari was in his grave. A quotation can pick up a speaker it never had: Rousseau recalled the brioche answer of an unnamed "great princess" some fifteen years before Marie Antoinette was born, and [let them eat cake](/blog/what-does-let-them-eat-cake-mean/) was first tied to her in print in the 1840s.
 
 > Every retelling puts that sentence in Erik's mouth. The oldest surviving version is a twelfth-century priest's paraphrase, and the priest is careful to say where his information came from: one man, speaking to Thorkell Gellison.
 

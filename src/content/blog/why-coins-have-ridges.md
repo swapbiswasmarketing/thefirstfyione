@@ -27,7 +27,7 @@ Because coins used to be made of silver and gold, and people **shaved slivers of
 
 ## The crime: clipping
 
-For most of the history of money, a coin's value was the metal in it. A silver coin was a government-stamped promise that this disc contains this much silver.
+For most of the history of money, a coin's value was the metal in it. A silver coin was a government-stamped promise that this disc contains this much silver. Gold made the same promise from a thin supply: [almost all of Earth's gold](/blog/how-is-gold-formed/) sank into the core as the planet formed, and every gold coin ever struck came from the percent or so left outside it.
 
 That promise had an exploit. Early coins were struck by hand with a hammer, so their edges came out slightly irregular anyway. Shave a whisper of silver from the rim - not enough to notice - and pass the coin on. Do it to a thousand coins and you have a pile of silver dust that came from everyone else's pockets. Clipping was so common that badly clipped coins could lose a serious fraction of their weight as they circulated, which meant the coin in your hand was routinely worth less than it claimed. Everyone shaving a little off a shared stock does the same work outside money, which is how a sturgeon fishery landing seven million pounds a year in the late 1800s ended in [a ban on catching the fish at all](/blog/why-is-caviar-so-expensive/).
 

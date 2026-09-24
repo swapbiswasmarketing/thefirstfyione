@@ -25,7 +25,7 @@ So where did it come from? There are two answers everyone gives, and both of the
 
 The most repeated explanation: during a deadly plague in Rome around 590 AD, **Pope Gregory I** decreed that anyone who sneezed should be blessed immediately, because sneezing was an early sign of the disease and the victim might not live long enough to receive last rites.
 
-A plague did hit Rome in that period. Gregory was pope. The trouble is the decree itself, which appears in retellings written long afterward and in no contemporary record. It has the texture of a story assembled backwards from a custom that already existed and needed explaining.
+A plague did hit Rome in that period. Gregory was pope. The trouble is the decree itself, which appears in retellings written long afterward and in no contemporary record. It has the texture of a story assembled backwards from a custom that already existed and needed explaining. Party manners collect the same kind of story: the famine and Mass explanations for [the Irish goodbye](/blog/what-is-an-irish-goodbye/) come with no dated example, and English speakers were calling the same exit French leave by 1741.
 
 The more serious problem is chronology. People were responding to sneezes with set phrases well before there was a pope to issue anything.
 

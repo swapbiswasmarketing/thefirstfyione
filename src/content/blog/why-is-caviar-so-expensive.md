@@ -58,7 +58,7 @@ By the beginning of the 1900s, NOAA says, populations "had declined drastically 
 
 Europe lost its stock a second way. Beluga harvest on the Danube averaged **23 metric tons a year** in the mid-1970s, and the 2004 rule records that after the Djerdap I and II dams went up the harvest fell to **12.7 tons** within a decade. A sturgeon blocked from its spawning river does not go and spawn somewhere else instead.
 
-The scarcity has dates and causes on both sides of the Atlantic, and people supplied both.
+The scarcity has dates and causes on both sides of the Atlantic, and people supplied both. Other seafood reputations are younger still: before the Second World War a lot of bluefin tuna sold so cheaply that some went for cat food, and it caught on as [a sushi topping](/blog/where-did-sushi-originate/) only after fast freezing developed.
 
 ## Then the paperwork arrived
 

@@ -57,7 +57,7 @@ In 2022 a team led by Joris Peters and Greger Larson assessed more than 600 arch
 
 They deal with the older claims directly: "Previous claims for the presence of chickens in the Yellow River basin 11,000 to 8,000 y ago are not supported by either the climatic, palynological, or archaeofaunal records," and a reanalysis of those bones found the remains were not chickens.
 
-A companion paper in [Antiquity](https://www.cambridge.org/core/product/identifier/S0003598X21000909/type/journal_article) radiocarbon-dated 23 chicken bones from presumed early contexts. Eighteen of the 23 returned dates later than their stratigraphy suggested, only five matched their reported phasing, and no chicken turns up in Europe before the first millennium BC. Peters's team proposes an agricultural trigger: fields of millet and rainfed rice, and the fallow ground beside them, may have drawn red junglefowl in towards human settlements.
+A companion paper in [Antiquity](https://www.cambridge.org/core/product/identifier/S0003598X21000909/type/journal_article) radiocarbon-dated 23 chicken bones from presumed early contexts. Eighteen of the 23 returned dates later than their stratigraphy suggested, only five matched their reported phasing, and no chicken turns up in Europe before the first millennium BC. Peters's team proposes an agricultural trigger: fields of millet and rainfed rice, and the fallow ground beside them, may have drawn red junglefowl in towards human settlements. The chickens kept at least one junglefowl habit: [a rooster's dawn crow](/blog/why-do-roosters-crow/) descends from the red junglefowl's territorial call, and its timing comes from a clock inside the bird rather than from the sunrise.
 
 | Event | Date | Source |
 |---|---|---|

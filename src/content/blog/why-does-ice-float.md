@@ -21,7 +21,7 @@ faqs:
 
 Drop two cubes into a glass of water and look at where they settle. Each one rides with a thin sliver of itself in the air, and the sliver is about the same size every time, cube after cube, glass after glass. Almost nobody asks why the fraction never changes.
 
-The fraction is the answer. Ice is about 8.3 percent less dense than the water it sits in, and a floating object displaces its own mass, so about that same 8.3 percent stands above the line. In denser seawater the share grows, which is why [Wikipedia's iceberg article](https://en.wikipedia.org/wiki/Iceberg) says "about one-tenth of the volume of an iceberg is above water".
+The fraction is the answer. Ice is about 8.3 percent less dense than the water it sits in, and a floating object displaces its own mass, so about that same 8.3 percent stands above the line. In denser seawater the share grows, which is why [Wikipedia's iceberg article](https://en.wikipedia.org/wiki/Iceberg) says "about one-tenth of the volume of an iceberg is above water". The upward push behind all of it is water pressure rising with depth, the same rule that lets [a water tower set a town's tap pressure by the height of its water surface alone](/blog/how-do-water-towers-work/).
 
 ## Why does ice float?
 
@@ -70,7 +70,7 @@ Ice at 1.31 or 1.65 g/cm3 does not bob. None of it is hypothetical, either: [ice
 
 Pressure is not the only lever. Build the water out of deuterium instead of ordinary hydrogen and the ice sinks at ordinary pressure. [Wikipedia's heavy water page](https://en.wikipedia.org/wiki/Heavy_water) puts heavy water at "10.6% denser than ordinary water", a difference you can see "without equipment" because a frozen sample "dropped into normal water" sinks.
 
-The demonstration has a second half. Heavy ice "melts at 3.7 C, and thus does not melt in ice-cold normal water", so the cube reaches the bottom of a chilled glass and stays a cube. The molecule and the lattice are unchanged; one heavier isotope flips the result.
+The demonstration has a second half. Heavy ice "melts at 3.7 C, and thus does not melt in ice-cold normal water", so the cube reaches the bottom of a chilled glass and stays a cube. The molecule and the lattice are unchanged; one heavier isotope flips the result. The same swap takes the colour out of water, because deuterium shifts the molecular vibrations that make [ordinary water pale blue](/blog/why-is-the-ocean-blue/) into the infrared.
 
 ## A frozen lake stays warm at the bottom
 

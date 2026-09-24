@@ -35,7 +35,7 @@ That square was once a thing you could drop on your foot. Matthew Butterick's [P
 
 ## The capital M does not fill the square
 
-The letter is not a coincidence. [Etymonline](https://www.etymonline.com/word/em) traces the printing sense of em to "the square corresponding in dimensions to the capital M of that type," and its entry for [en](https://www.etymonline.com/word/en) dates that printing sense to 1793, defining it as "a space half as wide as an em." The alphabet supplied the label.
+The letter is not a coincidence. [Etymonline](https://www.etymonline.com/word/em) traces the printing sense of em to "the square corresponding in dimensions to the capital M of that type," and its entry for [en](https://www.etymonline.com/word/en) dates that printing sense to 1793, defining it as "a space half as wide as an em." The alphabet supplied the label. Clothing uses a letter as a picture instead: the T in [T-shirt](/blog/what-does-the-t-in-t-shirt-stand-for/) is the shape of the garment laid flat, body and sleeves, and stands for no word at all.
 
 Then the label came loose from the thing. Wikipedia's [Em (typography)](https://en.wikipedia.org/wiki/Em_%28typography%29) article files the letter-width version under a heading reading "Obsolete alternative definition," notes that it turns up "in some older texts, but not all," and hedges even that with "is defined, or said to have been defined." The article's illustration drops a capital M into a one-em square in two typefaces, and the caption states that "The M in Perpetua does not match the point size of the em."
 

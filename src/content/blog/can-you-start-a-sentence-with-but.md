@@ -75,7 +75,7 @@ Both of the beliefs underneath the question are folklore, then: that English gra
 
 The caution in Strunk that comes nearest to a rule is about frequency, not position. **Rule 14, "Avoid a succession of loose sentences,"** describes the writer who builds an entire paragraph from two-clause sentences hinged on *and*, *but* and *so*, and warns that a series of them "soon becomes monotonous and tedious." That is a note about rhythm across a paragraph, and it holds whether the but sits at the front of a sentence or halfway through it.
 
-Formality is the other live question. Schiess tells lawyers who think a sentence-initial but is too informal for legal writing that they are missing out on "a vigorous, forceful transition word." Where a supervisor, a journal or a house style sheet forbids it, that is a local instruction of exactly the 1916 Boston kind, worth obeying in that building without mistaking it for the language.
+Formality is the other live question. Schiess tells lawyers who think a sentence-initial but is too informal for legal writing that they are missing out on "a vigorous, forceful transition word." Where a supervisor, a journal or a house style sheet forbids it, that is a local instruction of exactly the 1916 Boston kind, worth obeying in that building without mistaking it for the language. Police radio operators got a rule of their own in APCO's 1967 manual, which calls "I am 10-4 on that information" incorrect, and [everyday speech has outvoted that one as well](/blog/what-does-10-4-mean/).
 
 ## No comma after it, and however is no safer
 

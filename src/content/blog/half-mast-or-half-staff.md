@@ -25,7 +25,7 @@ That guidance never once says half-staff, and the American law governing the pra
 
 ## Why is it called half mast instead of half staff?
 
-Both half-mast and half-staff are correct. Half-staff is American English, and it is the only form appearing in [4 U.S.C. 7](https://www.law.cornell.edu/uscode/text/4/7), the US Flag Code section on display. Half-mast is the British form, and the only one the UK government's own guidance uses. No statute assigns one word to sea and the other to land.
+Both half-mast and half-staff are correct. Half-staff is American English, and it is the only form appearing in [4 U.S.C. 7](https://www.law.cornell.edu/uscode/text/4/7), the US Flag Code section on display. Half-mast is the British form, and the only one the UK government's own guidance uses. No statute assigns one word to sea and the other to land. Family trees have the reverse problem: one dictionary gives [second cousin](/blog/what-is-a-second-cousin/) two senses that name two different relatives, and genealogy accepts only the first.
 
 [Etymonline](https://www.etymonline.com/word/half-mast) dates the phrase half-mast to the 1620s, within a decade of the earliest lowering anyone has found. Which of the two sounds like the sloppy modern version depends entirely on where you grew up, the same trick that fools people about [writing Christmas with an X](/blog/why-do-people-say-xmas/).
 

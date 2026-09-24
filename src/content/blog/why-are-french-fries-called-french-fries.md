@@ -29,7 +29,7 @@ Because "French frying" was the American kitchen term for cooking by immersion i
 
 > "There are 2 ways of frying known to cooks as (1) wet frying, sometimes called French frying or frying in a kettle of hot fat; and (2) dry frying or cooking in a frying pan."
 
-Etymonline dates the full phrase to **1856** and the clipped "French fries" to **1903** in American English. Immersion frying was regarded at the time as the French way to cook, which is the claim the adjective was making.
+Etymonline dates the full phrase to **1856** and the clipped "French fries" to **1903** in American English. Immersion frying was regarded at the time as the French way to cook, which is the claim the adjective was making. English pinned the same adjective on manners: by 1741, slipping away from company without a word was taking [French leave](/blog/what-is-an-irish-goodbye/), the exit Americans now call an Irish goodbye.
 
 ## The print record runs on four dates
 

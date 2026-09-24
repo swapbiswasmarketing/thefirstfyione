@@ -23,7 +23,7 @@ On **22 May 1644** a Ming general named Wu Sangui [opened the gates of the Great
 
 The most famous failure of the Great Wall was not a breach. Nobody scaled it or knocked a hole in it. The man holding the keys turned them.
 
-Whether that counts as the wall failing depends on what it was for, and on which wall is meant. There were several, raised centuries apart, and they do not add up to the barrier the name suggests.
+Whether that counts as the wall failing depends on what it was for, and on which wall is meant, just as [the date Rome fell](/blog/when-did-rome-fall/) depends on which Rome you mean. There were several, raised centuries apart, and they do not add up to the barrier the name suggests.
 
 ## Did the Great Wall of China work?
 

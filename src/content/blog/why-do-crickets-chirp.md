@@ -55,7 +55,7 @@ In 1897 Amos Dolbear, a professor of physics and astronomy at Tufts College, pub
 
 The version that holds up belongs to the **snowy tree cricket**, nicknamed the thermometer cricket. [SINA's species page](https://orthsoc.org/sina/585a.htm) gives the working rule: in the eastern United States, count chirps for 13 seconds and add 40 to get degrees Fahrenheit; west of the Great Plains, count for 12.5 seconds and add 38. The same page adds the caveat that gets stripped off everywhere else: "if you are really interested in using the snowy tree cricket as a thermometer, you should calibrate your local crickets against a thermometer placed near where they sing."
 
-So the arithmetic is species-specific. The rasping field cricket under a porch step is not the insect the formula was written for. Rules of thumb drift a long way from the thing they originally described, which is roughly what happened to [the story that the clocks get shifted for farmers](/blog/did-daylight-saving-start-for-farmers/).
+So the arithmetic is species-specific. The rasping field cricket under a porch step is not the insect the formula was written for. Rules of thumb drift a long way from the thing they originally described, which is roughly what happened to [the story that the clocks get shifted for farmers](/blog/did-daylight-saving-start-for-farmers/). [A mood ring](/blog/how-do-mood-rings-work/) needs the same calibration: its green can mean about 23 C on one liquid-crystal mixture and between 35 C and 36 C on another.
 
 ## Everything that can hear the song is listening
 

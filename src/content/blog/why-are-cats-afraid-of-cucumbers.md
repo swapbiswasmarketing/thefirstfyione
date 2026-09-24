@@ -50,7 +50,7 @@ Feeding records point the same way. A December 2023 synthesis in Nature Communic
 
 ## Nobody has run the experiment
 
-Search PubMed, the US National Library of Medicine's index of biomedical research, for cucumbers and cat behavior and 17 papers come back: cucumber seedlings under salt stress, melon ripening, sea cucumbers in aquaculture, a fungicide tested on zebrafish larvae. Not one involves a cat.
+Search PubMed, the US National Library of Medicine's index of biomedical research, for cucumbers and cat behavior and 17 papers come back: cucumber seedlings under salt stress, melon ripening, sea cucumbers in aquaculture, a fungicide tested on zebrafish larvae. Not one involves a cat. The pet-care pages are just as thin on [why cats make biscuits](/blog/why-do-cats-make-biscuits/): kneading's nursing origin is in a veterinary textbook, while the scent-marking and nest-making reasons have never been tested.
 
 So the entire evidence base is footage. Cornell's own write-up cites no study, and none turns up in the index either. A highlight reel is a sample selected for drama: the cats that glanced at the cucumber and kept chewing were never uploaded. The internet keeps a small permanent collection of animal spectacles and supplies each one with a confident reason afterwards, [the exploding beached whale included](/blog/why-do-whales-explode/).
 

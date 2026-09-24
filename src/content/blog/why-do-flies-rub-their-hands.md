@@ -65,7 +65,7 @@ Nothing in the fly stores that order anywhere. The sequence is what falls out of
 
 ## The scheming fly is a story we bring with us
 
-The gesture matches one of the most legible movements in human theatre, the villain rubbing his palms, so people read plotting into it, or gloating. Nothing in the fly supports that. The same sequence runs in a dust-covered fly in a laboratory rig with no sandwich anywhere in the building, and it advances on sensory feedback rather than on mood. Reading intent into animal movement is an old habit, and it is roughly how we ended up hanging borrowed vocabulary on [a flock of ravens](/blog/what-is-a-group-of-ravens-called/).
+The gesture matches one of the most legible movements in human theatre, the villain rubbing his palms, so people read plotting into it, or gloating. Nothing in the fly supports that. The same sequence runs in a dust-covered fly in a laboratory rig with no sandwich anywhere in the building, and it advances on sensory feedback rather than on mood. A cat kneading a lap gets a baker's name for the same reason, though [making biscuits](/blog/why-do-cats-make-biscuits/) began as a nursing kitten's way of stimulating milk flow. Reading intent into animal movement is an old habit, and it is roughly how we ended up hanging borrowed vocabulary on [a flock of ravens](/blog/what-is-a-group-of-ravens-called/).
 
 ## The washing does not actually work
 

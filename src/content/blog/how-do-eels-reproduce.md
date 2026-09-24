@@ -29,7 +29,7 @@ By **external fertilization** - eggs and sperm released into open water - at spa
 
 ## Two thousand years of wrong answers
 
-The mystery starts with a real observation: nobody could find eel eggs, eel sperm, or pregnant eels. Ever. So the theories filled the vacuum.
+The mystery starts with a real observation: nobody could find eel eggs, eel sperm, or pregnant eels. Ever. So the theories filled the vacuum. Ancient writers filled a similar gap over [where cinnamon came from](/blog/how-is-cinnamon-made/), and Herodotus was told that large birds carried the dried sticks to clay nests on cliffs.
 
 - **Aristotle** concluded that eels generated spontaneously from "the entrails of the earth" - they simply formed, parentless, in mud.
 - **Ancient Egyptians** believed eels sprang from the Nile when the sun warmed its waters.

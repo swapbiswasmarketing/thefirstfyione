@@ -35,7 +35,7 @@ What survived was patchy. The [WebExhibits Daylight Saving Time exhibit](https:/
 
 ## Dew, cows and hired hands all kept solar time
 
-The farm objection was mechanical rather than sentimental. Hay could not be cut until the dew had burned off, and the dew answers to sunrise, so an advanced clock added an hour of standing around. Hired hands still walked off at the same dinner hour, which shortened the working day rather than lengthening it. Cows were not ready to be milked an hour earlier merely because the milk train had been rescheduled.
+The farm objection was mechanical rather than sentimental. Hay could not be cut until the dew had burned off, and the dew answers to sunrise, so an advanced clock added an hour of standing around. Hired hands still walked off at the same dinner hour, which shortened the working day rather than lengthening it. Cows were not ready to be milked an hour earlier merely because the milk train had been rescheduled. Some crops keep a stricter timetable than hay: [ripe sesame pods split and spill their seed](/blog/where-do-sesame-seeds-come-from/), so the harvest is a race to cut the plant before they open.
 
 Legislating the clock does not move the sun. It moves the farm out of step with the towns it sells to, and in 1918 the towns had the schedule while the farms had the sunlight.
 

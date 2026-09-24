@@ -43,7 +43,7 @@ The distinction matters and it is small: the goal was to stop **typebars** from 
 
 Here is the part that gets left out of the usual telling. The jamming explanation is the mainstream account, but it is not unchallenged.
 
-Researchers **Koichi Yasuoka and Motoko Yasuoka** of Kyoto University published a study of the layout's development arguing that the standard story does not fit the documentary record. Their case is that some of the earliest heavy users of these machines were **telegraph operators** transcribing Morse code as it arrived, and that the layout was shaped by the demands of that work rather than purely by typebar geometry.
+Researchers **Koichi Yasuoka and Motoko Yasuoka** of Kyoto University published a study of the layout's development arguing that the standard story does not fit the documentary record. Their case is that some of the earliest heavy users of these machines were **telegraph operators** transcribing Morse code as it arrived, and that the layout was shaped by the demands of that work rather than purely by typebar geometry. American Morse, built on the landline telegraph's codes, had quirks of its own: in it three dashes make the figure 5, so in 1910 American operators logged [the distress call SOS](/blog/what-does-sos-stand-for/) as S5S.
 
 Look at the evidence in the layout itself and it gets murky:
 

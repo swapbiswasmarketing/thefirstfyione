@@ -54,7 +54,7 @@ Christopher Emerling and Mark Springer reported in **Proceedings of the Royal So
 
 A retina with rods and no cones delivers what their paper calls colourblindness, low-acuity vision in dim light, and blindness in bright-light conditions. An animal that cannot resolve the branch it is reaching for in daylight has a hard ceiling on how fast it can cross a canopy without falling out of one. Eyes make confident mistakes in every species, which is also [why the vessels under your skin look blue when nothing inside them is](/blog/why-are-veins-blue/).
 
-The damage is ancient. Emerling and Springer place the inactivation of PDE6C in the common ancestor of sloths and anteaters **shortly after that lineage split from the armadillos, near the Cretaceous-Palaeogene boundary**, and argue the loss fits an ancestor that lived underground. Modern sloths run daylight canopy vision on a retina last optimised for a burrow.
+The damage is ancient. Emerling and Springer place the inactivation of PDE6C in the common ancestor of sloths and anteaters **shortly after that lineage split from the armadillos, near the Cretaceous-Palaeogene boundary**, and argue the loss fits an ancestor that lived underground. That boundary lines up with the impact linked to the end-Cretaceous mass extinctions, whose buried crater is traced by [a ring of sinkholes in the Yucatan](/blog/what-is-a-cenote/). Modern sloths run daylight canopy vision on a retina last optimised for a burrow.
 
 ## The muscle is built for hanging
 
@@ -72,6 +72,6 @@ Niels Rattenborg and colleagues tested it. In **Biology Letters** in 2008 they p
 
 > The sleepiest-mammal statistic was recorded on captive sloths. When Rattenborg's team carried the electrodes up into the canopy, six of those hours went away.
 
-The authors declined to overclaim. Juvenile mammals sleep longer than adults, they noted, so the inclusion of juveniles may have pushed up the captive average on its own. Either way, the 15-hour number remains an accurate measurement of something, and that something is not a sloth in a forest.
+The authors declined to overclaim. Juvenile mammals sleep longer than adults, they noted, so the inclusion of juveniles may have pushed up the captive average on its own. Either way, the 15-hour number remains an accurate measurement of something, and that something is not a sloth in a forest. Whale sleep has the same gap, only wider: every brain recording of it was made in captivity, on five toothed species, and [no sperm or baleen whale has had its sleeping brain recorded at all](/blog/how-do-whales-sleep/).
 
 A sloth crossing a branch is doing it on a retina that stopped resolving colour around the end of the Cretaceous, powered by a stomach still fermenting last week's leaves. Moving slowly is the only strategy that equipment supports, and the animal is wide awake for nearly all of it. Strictly FYI.

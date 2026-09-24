@@ -27,7 +27,7 @@ The complaint is sincere. It is also about eight centuries younger than the spel
 
 Because the X is not the English letter X. It is the Greek letter **chi**, the first letter of **Christos**, the Greek word that became Christ in English. English writers were using X and Xp as shorthand for Christ by around **1100**, so the spelling carries the name in Greek rather than deleting it.
 
-The [Online Etymology Dictionary](https://www.etymonline.com/word/x) dates the letter to "early 12c. as an abbreviation of 'Christ'", and its [entry for Xmas](https://www.etymonline.com/word/Xmas) is exact about the mechanism: the Latin X and the Greek chi look identical and sound nothing alike, and the whole abbreviation rides on that accident of shape. Chi is the 22nd letter of the Greek alphabet and represents a *kh* sound.
+The [Online Etymology Dictionary](https://www.etymonline.com/word/x) dates the letter to "early 12c. as an abbreviation of 'Christ'", and its [entry for Xmas](https://www.etymonline.com/word/Xmas) is exact about the mechanism: the Latin X and the Greek chi look identical and sound nothing alike, and the whole abbreviation rides on that accident of shape. A letter can also stand in for a shape and no word, which is the whole story of [the T in T-shirt](/blog/what-does-the-t-in-t-shirt-stand-for/): laid flat, the garment's body and sleeves make a capital T. Chi is the 22nd letter of the Greek alphabet and represents a *kh* sound.
 
 ## The X worked on every word built on Christ's name
 
