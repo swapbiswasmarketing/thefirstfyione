@@ -57,7 +57,7 @@ It is also a joke that cannot survive being said out loud. The notes-and-flats h
 
 ## Poe was never part of this
 
-The answer that circulates as the hidden solution, "because Poe wrote on both", is not Carroll's. The Straight Dope traces it to the puzzle-maker **Sam Loyd** in **1914**, forty-nine years after Wonderland. Loyd offered a second one in the same batch: "Because the notes for which they are noted are not noted for being musical notes."
+The answer that circulates as the hidden solution, "because Poe wrote on both", is not Carroll's. The Straight Dope traces it to the puzzle-maker **Sam Loyd** in **1914**, forty-nine years after Wonderland. Loyd offered a second one in the same batch: "Because the notes for which they are noted are not noted for being musical notes." A puzzle league did the same for the dictionary: in 1935 the National Puzzlers' League recognized a 45-letter word, apparently coined by its own president, that [went on into the Oxford English Dictionary](/blog/what-is-the-longest-word-in-the-world/).
 
 Edgar Allan Poe's "The Raven" first appeared under his name in the *New York Evening Mirror* on **29 January 1845**, twenty years before Wonderland, so the pairing was there to be made. Carroll's own answer says nothing about Poe, and the Poe line reaches us through a puzzle book. A solution invented decades later and then reversed into an origin story is a shape that turns up well outside literature, including around [the leather over-trousers cowboys wear](/blog/why-do-cowboys-wear-chaps/).
 

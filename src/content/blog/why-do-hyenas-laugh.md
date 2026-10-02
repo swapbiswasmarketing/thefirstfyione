@@ -33,7 +33,7 @@ Those measurements come from **17 spotted hyenas** at the University of Californ
 
 A giggle is assembled from very short notes, averaging **69 milliseconds** each and pitched around **547 Hz**. Two properties of that structure vary between animals, and neither is under the caller's control.
 
-The first is pitch. Mean fundamental frequency falls from about **650 Hz at two years old to under 450 Hz by twenty**, a decline of roughly **30 percent**. A giggle is therefore an approximate birth certificate, read aloud at the worst possible moment.
+The first is pitch, set by how often the sound wave repeats, which is also what [Auto-Tune](/blog/when-was-autotune-invented/) measures in a singer's voice before moving it onto the nearest note. Mean fundamental frequency falls from about **650 Hz at two years old to under 450 Hz by twenty**, a decline of roughly **30 percent**. A giggle is therefore an approximate birth certificate, read aloud at the worst possible moment.
 
 The second is steadiness. Variability in note frequency was **higher in subordinate animals than in dominant ones**, so the more frantic and uneven a giggle sounds, the lower the status of the hyena producing it. Sex, by contrast, left no reliable acoustic trace. Roosters carry rank in a different part of the call: the main sign of [a rooster's status](/blog/why-do-roosters-crow/) appears to be how often he crows, and in a lab study the top-ranked bird crowed first on almost every morning.
 

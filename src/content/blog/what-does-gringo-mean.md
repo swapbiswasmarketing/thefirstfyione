@@ -39,7 +39,7 @@ Terreros never saw the dictionary published, and his entry is older than its tit
 
 ## Green Grow the Lilacs cannot explain a word in print by 1787
 
-The war both stories depend on ran from **1846 to 1848**, according to the [National Archives](https://www.archives.gov/milestone-documents/treaty-of-guadalupe-hidalgo). A word in a Madrid dictionary by 1787 cannot have been coined by soldiers in Mexico in 1846. Not every slang word can be dated this cleanly: [the police nickname 12](/blog/why-are-police-called-12/) has four competing origin stories, none backed by a dated first use.
+The war both stories depend on ran from **1846 to 1848**, according to the [National Archives](https://www.archives.gov/milestone-documents/treaty-of-guadalupe-hidalgo). A word in a Madrid dictionary by 1787 cannot have been coined by soldiers in Mexico in 1846. The New York story behind [flea market](/blog/why-is-it-called-a-flea-market/) fails the same way: the Fly Market it credits closed in 1822, 65 years before the earliest known English use of the name. Not every slang word can be dated this cleanly: [the police nickname 12](/blog/why-are-police-called-12/) has four competing origin stories, none backed by a dated first use.
 
 The [Online Etymology Dictionary](https://www.etymonline.com/word/gringo) finds it in English before the war too, **by 1841**, in a Chilean context. It also notes an **1831** English-language novel by Telesforo de Trueba y Cosio with a character called "Mr. O'Gringo, an Irishman," a name that echoes Madrid's usage.
 
@@ -47,7 +47,7 @@ Etymonline's verdict on the song is flat: the claim of "a Mexican mishearing of 
 
 The green-uniform version fails on the same dates, and so does a companion story that derives gringo from Erin go bragh, the motto of the [Saint Patrick's Battalion](https://en.wikipedia.org/wiki/Saint_Patrick%27s_Battalion), which fought for Mexico in that war. Another version, offered only as a conjecture in Joaquin Garcia Icazbalceta's 1899 [Vocabulario de mexicanismos](https://archive.org/details/vocabulariodeme01icazgoog), tied the motto to the Irish in Spain, and the dates cannot rule it out.
 
-The war stories all make the same mistake as [the story of American troops in Belgium naming french fries](/blog/why-are-french-fries-called-french-fries/): a war gets the credit for a word already in print before the fighting started.
+The war stories all make the same mistake as [the story of American troops in Belgium naming french fries](/blog/why-are-french-fries-called-french-fries/): a war gets the credit for a word already in print before the fighting started. A Danbury paper made the same kind of mistake with [paint the town red](/blog/what-does-paint-the-town-red-mean/), crediting it to a Connecticut governor whose 1883 speech came nearly nine years after an Omaha paper printed the phrase.
 
 ## Greek has the best evidence and still no proof
 

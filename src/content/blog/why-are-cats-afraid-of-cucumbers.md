@@ -38,7 +38,7 @@ There is real science underneath the snake claim, and it is not about cats. In D
 
 The authors say plainly what that supports. Their results are "consistent with the Snake Detection Theory, which posits that snakes were instrumental in the evolution of primate visual systems." A domestic cat is a carnivore rather than a primate, and a PubMed search for pulvinar snake responses in cats returns zero records. Applied to a cat, the snake story is unverified: the one measurement it leans on was taken from a different order of mammal.
 
-Fast, error-prone visual guessing is a real feature of human vision, which is [why wall sockets and car grilles keep looking like faces](/blog/why-your-brain-sees-faces/). Whether a cat does anything similar with a vegetable is a question nobody has put to a cat.
+Fast, error-prone visual guessing is a real feature of human vision, which is [why wall sockets and car grilles keep looking like faces](/blog/why-your-brain-sees-faces/). Whether a cat does anything similar with a vegetable is a question nobody has put to a cat. Illusions have been put to cats, though: in a 2021 citizen-science study, pet cats sat inside an illusory square about as often as a real one, a test built on the same pull that draws [cats into boxes](/blog/why-do-cats-like-boxes/).
 
 ## Cats hunt snakes
 

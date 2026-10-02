@@ -67,6 +67,8 @@ Rice was too valuable to waste, Rath points out, and in Japan it was also used a
 | Hayazushi, "fast-made sushi" | By the early 19th century | None |
 | Nigiri prototype | 1820s, in Edo | None |
 
+Caper makers face the same choice today: the traditional cure ferments the buds in sea salt, while other capers are [pickled in vinegar instead](/blog/where-do-capers-come-from/).
+
 ## The first nigiri used cured or cooked fish
 
 "Originally, the rice was not topped with raw fish ingredients," Hibino writes of the 1820s nigiri. The fish "was marinated in salt, vinegar or soy sauce or it was boiled or grilled to prevent spoiling."

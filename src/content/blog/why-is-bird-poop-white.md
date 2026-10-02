@@ -27,7 +27,7 @@ Almost nobody stops to ask why one animal would fire out two different substance
 
 The white part of a bird dropping is urine, not feces. Birds have no bladder, so urine from the kidneys drains straight into the cloaca, the single exit that also carries waste from the gut. Most of the water is reclaimed on the way, leaving a pale paste that lands at the same moment as the darker feces.
 
-A 2026 review of comparative renal physiology in Poultry Science states the anatomy without hedging: in birds, [a urinary bladder is absent](https://pmc.ncbi.nlm.nih.gov/articles/PMC13136738/), and the kidneys feed ureters that empty directly into the urodeum of the cloaca.
+A 2026 review of comparative renal physiology in Poultry Science states the anatomy without hedging: in birds, [a urinary bladder is absent](https://pmc.ncbi.nlm.nih.gov/articles/PMC13136738/), and the kidneys feed ureters that empty directly into the urodeum of the cloaca. The same opening carries eggs and sperm, and pressing two cloacas together is [how most birds mate](/blog/how-do-birds-mate/).
 
 ## Birds have no bladder, so the gut finishes the job
 

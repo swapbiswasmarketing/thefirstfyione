@@ -70,7 +70,7 @@ How long a flag stays down is fixed by office in the same section, not left to j
 | Associate Justice, Cabinet secretary, former Vice President, state governor | Until interment |
 | Member of Congress | Day of death and the day after |
 
-Memorial Day is the clause that catches people out. The flag should be displayed at half-staff **until noon only**, then raised to the top of the staff for the rest of the day, so a flag left down all afternoon is out of step with the code.
+Memorial Day is the clause that catches people out. The flag should be displayed at half-staff **until noon only**, then raised to the top of the staff for the rest of the day, so a flag left down all afternoon is out of step with the code. Another statute asks the president to call for half-staff every December 7, in honor of those who died as a result of their service at [Pearl Harbor](/blog/why-did-japan-attack-pearl-harbor/). [Veterans Day](/blog/why-do-we-celebrate-veterans-day/), which mainly honors the living, is a display day with no half-staff rule at all.
 
 Rules this specific usually leave a paper trail, even when the trail ends somewhere flatter than the legend. That gap between the story and the record turns up in subjects with nothing else in common, including [what actually puts caviar out of most people's reach](/blog/why-is-caviar-so-expensive/).
 

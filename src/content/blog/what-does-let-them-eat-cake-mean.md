@@ -49,7 +49,7 @@ They had a meat pie and some Bordeaux, he writes, but had forgotten the bread. E
 
 That queen was Louis XIV's Spanish-born wife, not Marie Antoinette's mother, the Empress Maria Theresa. The king's own brother, running from the Revolution, told the joke about a queen [dead for **108 years**](https://en.chateauversailles.fr/discover/history/great-characters/maria-theresa-austria), and his sister-in-law is nowhere in it.
 
-By the time the account was published, though, Marie Antoinette had become a royalist martyr. The 2002 study suggests he could no longer pin an unkind remark on her, and notes that as Comte de Provence he had himself helped circulate scandalous songs and pamphlets about her.
+By the time the account was published, though, Marie Antoinette had become a royalist martyr. The 2002 study suggests he could no longer pin an unkind remark on her, and notes that as Comte de Provence he had himself helped circulate scandalous songs and pamphlets about her. One of her bedchamber women, Madame Campan, later briefed Napoleon on [what that post involved](/blog/what-is-a-lady-in-waiting/) when he set up his imperial court.
 
 ## China tells the same story about an emperor
 

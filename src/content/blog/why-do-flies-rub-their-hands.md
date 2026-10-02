@@ -33,7 +33,7 @@ Flies taste by contact. Yan Chen and Hubert Amrein, writing in Current Biology i
 
 Erica Freeman and Anupama Dahanukar's 2015 review of Drosophila taste in Current Opinion in Neurobiology places the leg's taste organs on [the distal tarsal segments](https://pmc.ncbi.nlm.nih.gov/articles/PMC4577450/), the last joints of the foot, and describes at least three classes of sweet-taste neuron there, sorted by how strongly and how selectively they answer sugars. Taste bristles sit on the front margins of the wings too.
 
-A fly that walks across your plate has therefore already sampled it before its mouthparts arrive. The same review reports something odder: **bitter neurons in the tarsi and wings respond to microbial lipopolysaccharides**, the molecules that coat the outside of bacteria, and that response triggers grooming.
+A fly that walks across your plate has therefore already sampled it before its mouthparts arrive. A blow fly samples carrion the same way, then [lays its eggs there](/blog/where-do-maggots-come-from/) in batches of 50 to 100. The same review reports something odder: **bitter neurons in the tarsi and wings respond to microbial lipopolysaccharides**, the molecules that coat the outside of bacteria, and that response triggers grooming.
 
 > The fly's legs taste the bacteria the legs are carrying, and the taste is part of what sets the wiping off. The sensor and the thing being cleaned are one piece of hardware.
 

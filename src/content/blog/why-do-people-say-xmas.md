@@ -69,7 +69,7 @@ The offence is real even where the etymology is not. [Lifeway Research reported 
 
 ## Saying EKS-mas out loud is the one modern part
 
-Here the critics have a point the history supports. Xmas and its older variants began as **handwriting** abbreviations for a word still spoken as Christmas, so the spelling pronunciation EKS-mas is the piece of this that is actually new.
+Here the critics have a point the history supports. Xmas and its older variants began as **handwriting** abbreviations for a word still spoken as Christmas, so the spelling pronunciation EKS-mas is the piece of this that is actually new. Newer abbreviations get the same argument over sound: the inventor of the [GIF](/blog/what-does-gif-stand-for/), Steve Wilhite, insisted on jif, while 65.6 percent of developers in Stack Overflow's 2017 survey chose the hard g.
 
 The British lexicographer Eric Partridge drew that line himself in *Usage and Abusage*, calling Xmas "barely allowable in its common use in writing and printing" and "intolerable in the pronunciation, Exmas." A written shorthand outliving the explanation for it is ordinary enough, and [the disputed radio code behind a nickname for the police](/blog/why-are-police-called-12/) has the same shape.
 

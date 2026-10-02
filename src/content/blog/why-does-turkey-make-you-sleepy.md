@@ -56,7 +56,7 @@ A common correction moves the blame one dish along. [Wikipedia's tryptophan arti
 
 In a 1986 study in [Metabolism](https://pubmed.ncbi.nlm.nih.gov/3747840/), Yokogoshi and Wurtman gave fasted rats meals of 70 to 75 percent carbohydrate, which raised the blood tryptophan ratio. **Adding as little as 5 percent casein fully blocked the rise**, probably, they wrote, because the protein added far more competing amino acids than tryptophan to the blood. At 10 percent protein, casein, peanut meal and gelatin fully blocked it, egg white only partly, and lactalbumin not at all.
 
-The carbohydrate-rich breakfast in the 2003 study held **5.2 grams of protein**; 100 grams of roasted turkey breast holds about 30 grams. "The carbs did it" was shown on meals that were mostly carbohydrate, and as an account of a turkey dinner it is overstated.
+The carbohydrate-rich breakfast in the 2003 study held **5.2 grams of protein**; 100 grams of roasted turkey breast holds about 30 grams. "The carbs did it" was shown on meals that were mostly carbohydrate, and as an account of a turkey dinner it is overstated. Single causes fare no better with cilantro: the 23andMe team that linked soap-tasting to a variant near OR6A2, often called the cilantro soap gene, found it explains only about 0.5% of the variance in [who finds cilantro soapy](/blog/why-does-cilantro-taste-like-soap/).
 
 ## A meal can make people measurably sleepier
 

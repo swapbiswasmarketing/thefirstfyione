@@ -43,7 +43,7 @@ The rock sits in the early Tournaisian, probably **358.9 to 354 million years ol
 
 ## The shell arrived 125 million years late
 
-An amniote is an animal whose embryo develops inside its own set of membranes, and that membrane system is the invention the riddle's "egg" refers to. A hard chalky shell is a separate and much later idea.
+An amniote is an animal whose embryo develops inside its own set of membranes, and that membrane system is the invention the riddle's "egg" refers to. A hard chalky shell is a separate and much later idea. Inside a hen, the ovum is [fertilized at the top of the oviduct](/blog/how-do-birds-mate/) before its white, membranes and shell are added further along.
 
 The oldest known amniote eggs are Early Jurassic, from the Sinemurian, **195 to 192 million years ago**: sauropodomorph dinosaur eggs whose calcareous layer measures only 60 to 100 micrometres over a thick fibrillar shell membrane. Stein's team read those as thin but rigid. A 2020 Nature paper led by Mark Norell reached the opposite conclusion about what came before them, reconstructing the ancestral state and finding that the first dinosaur egg was soft-shelled, with the calcified hard-shelled egg evolving independently at least three times across the Mesozoic.
 

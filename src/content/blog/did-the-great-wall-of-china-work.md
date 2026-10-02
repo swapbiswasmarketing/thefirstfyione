@@ -79,7 +79,7 @@ Arthur Waldron's The Great Wall of China: From History to Myth came from Cambrid
 
 [Publishers Weekly](https://www.publishersweekly.com/9780521365185) summarised the argument in 1990: China's modern rulers have nurtured the popular myth that the Great Wall is a single, continuous barrier built in the third century BC, when most of what is called the Great Wall today was built during the Ming dynasty of 1368 to 1644. The same review says Ming rulers, fearful of invasion by Mongols and other nomads, "chose wall-building over trade or diplomatic relations".
 
-That makes the continuous-since-Qin wall a backwards-assembled idea rather than an ancient fact: separate campaigns, centuries and dynasties apart, gathered under one name and one founding date long after the last brick. Beliefs about rules survive the same way, without anyone having issued them, which is roughly the position of [the supposed ban on starting a sentence with a conjunction](/blog/can-you-start-a-sentence-with-but/).
+That makes the continuous-since-Qin wall a backwards-assembled idea rather than an ancient fact: separate campaigns, centuries and dynasties apart, gathered under one name and one founding date long after the last brick. Japan's official founding date of 660 BC was fixed in a similar way, by a chronicle finished in AD 720, [nearly 1,400 years after the accession it records](/blog/what-is-the-oldest-country-in-the-world/). Beliefs about rules survive the same way, without anyone having issued them, which is roughly the position of [the supposed ban on starting a sentence with a conjunction](/blog/can-you-start-a-sentence-with-but/).
 
 ## Not visible from space, and the claim is older than spaceflight
 

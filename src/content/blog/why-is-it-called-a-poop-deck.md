@@ -45,7 +45,7 @@ On the most generous dating available, the ship's poop still beats the other one
 
 ## The story is folklore, assembled backwards
 
-The belief that the deck is named after what sailors did there was built out of a modern pun and then reasoned into a history. It could not have been the reason for the name, because when the deck took its name the word carried no such meaning in English. Folk etymology moves fast when a word looks obvious, which is the same instinct that makes [the shortened spelling of Christmas](/blog/why-do-people-say-xmas/) look like a modern invention. Skol, the Scandinavian toast, carries a folk etymology of the same kind: the story ties it to skulls, but [the word literally means bowl](/blog/what-does-skol-mean/).
+The belief that the deck is named after what sailors did there was built out of a modern pun and then reasoned into a history. It could not have been the reason for the name, because when the deck took its name the word carried no such meaning in English. The story that [flea markets](/blog/why-is-it-called-a-flea-market/) were named for dealers forced to flee fails the same test, because the earliest known English use, from 1887, already means the insect. Folk etymology moves fast when a word looks obvious, which is the same instinct that makes [the shortened spelling of Christmas](/blog/why-do-people-say-xmas/) look like a modern invention. Skol, the Scandinavian toast, carries a folk etymology of the same kind: the story ties it to skulls, but [the word literally means bowl](/blog/what-does-skol-mean/).
 
 ## There really was a toilet at that end of the ship
 

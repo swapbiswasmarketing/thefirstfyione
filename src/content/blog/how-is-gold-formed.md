@@ -47,7 +47,7 @@ In 2025 a [study led by Anirudh Patel](https://arxiv.org/abs/2501.09181) added m
 
 ## Almost all of Earth's own gold is in the core
 
-As the planet formed, molten iron sank to its centre to make the core and "took with it the vast majority of the planet's precious metals", says the [University of Bristol](https://www.bristol.ac.uk/news/2011/7885.html): enough to cover the entire surface in a layer **four metres thick**.
+As the planet formed, molten iron sank to its centre to make the core and "took with it the vast majority of the planet's precious metals", says the [University of Bristol](https://www.bristol.ac.uk/news/2011/7885.html): enough to cover the entire surface in a layer **four metres thick**. Liquid iron still flowing in the outer core generates most of Earth's magnetic field, [the field a compass needle lines up with](/blog/how-does-a-compass-work/).
 
 > About 99% of Earth's gold lies in the core, under nearly 3,000 km of rock. Geologist Bernard Wood told [ABC Science](https://www.abc.net.au/science/articles/2006/06/15/1663566.htm) it is "more than 99%", and W. F. McDonough's 2003 model of the core puts it at 98%. Every gold ring, coin and circuit board ever made came out of the percent or so outside it.
 

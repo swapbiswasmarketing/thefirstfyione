@@ -68,7 +68,7 @@ The laboratory that built Tennis for Two will not call it the first. Its history
 
 The [Strong National Museum of Play](https://www.museumofplay.org/blog/what-was-the-first-video-game/) notes that most people asked this question answer Pong, then corrects them: it "was not even the first arcade video game created by Atari founder Nolan Bushnell". Bushnell handed the design to Allan Alcorn as a secret warm-up exercise, and Atari announced the finished game on 29 November 1972. Bushnell and Dabney had already shipped Computer Space in late 1971, running on no microprocessor at all, just a state machine of 7400-series chips with the graphics held in diode arrays.
 
-Pong's genuine claim is money: Atari filled 2,500 orders by 1973 and had sold more than 8,000 cabinets by the end of 1974. Being the version most people saw first is a different achievement from being first, and the obvious explanation for a familiar thing turns out wrong often enough to be a working rule, right down to [what a fly is doing when it wrings its front legs together](/blog/why-do-flies-rub-their-hands/).
+Pong's genuine claim is money: Atari filled 2,500 orders by 1973 and had sold more than 8,000 cabinets by the end of 1974. Being the version most people saw first is a different achievement from being first, as Cher's 1998 hit "Believe" showed when it made [Auto-Tune](/blog/when-was-autotune-invented/) famous after about a year of discreet use on other records. The obvious explanation for a familiar thing turns out wrong often enough to be a working rule, right down to [what a fly is doing when it wrings its front legs together](/blog/why-do-flies-rub-their-hands/).
 
 ## Spacewar! is the one that got out of the building
 

@@ -31,7 +31,7 @@ By **external fertilization** - eggs and sperm released into open water - at spa
 
 The mystery starts with a real observation: nobody could find eel eggs, eel sperm, or pregnant eels. Ever. So the theories filled the vacuum. Ancient writers filled a similar gap over [where cinnamon came from](/blog/how-is-cinnamon-made/), and Herodotus was told that large birds carried the dried sticks to clay nests on cliffs.
 
-- **Aristotle** concluded that eels generated spontaneously from "the entrails of the earth" - they simply formed, parentless, in mud.
+- **Aristotle** concluded that eels generated spontaneously from "the entrails of the earth" - they simply formed, parentless, in mud. He gave some insects the same parentless origin, in dew, mud, dung and [the flesh of animals](/blog/where-do-maggots-come-from/).
 - **Ancient Egyptians** believed eels sprang from the Nile when the sun warmed its waters.
 - By the 19th century the question was an open scientific embarrassment, which is how **Freud** ended up in Trieste slicing through eel after eel in search of an organ nobody could locate.
 
@@ -55,7 +55,7 @@ The leptocephalus is so unlike an adult eel that it was originally classified as
 
 The man who cracked the geography was a Danish scientist named **Johannes Schmidt**. Starting in **1904**, he led expedition after expedition across the Mediterranean and North Atlantic, netting eel larvae and logging their sizes. His logic was patient and simple: the smaller the larvae, the closer the birthplace. The trail of ever-tinier leptocephali led him away from Europe, across the ocean, to the seaweed-strewn **Sargasso Sea**. He spent roughly two decades on the problem, and even then it remained a hypothesis - he had found babies, not births.
 
-Direct proof of the journey only arrived in **2022**, when an international team fitted migrating European eels with satellite tags and tracked them from the Azores toward the Sargasso - the first direct evidence of adults completing the route, nearly a century after Schmidt. Origins usually get settled from traces rather than from the event itself, which is how [the egg's enormous head start on the chicken](/blog/what-came-first-the-chicken-or-the-egg/) was worked out from footprints and dated bones.
+Direct proof of the journey only arrived in **2022**, when an international team fitted migrating European eels with satellite tags and tracked them from the Azores toward the Sargasso - the first direct evidence of adults completing the route, nearly a century after Schmidt. Pearls got a similar late confirmation in 2023, when DNA from fluke larvae turned up in [the cores of two mussel pearls](/blog/where-do-pearls-come-from/), backing a suspicion about parasites that goes back to 1852. Origins usually get settled from traces rather than from the event itself, which is how [the egg's enormous head start on the chicken](/blog/what-came-first-the-chicken-or-the-egg/) was worked out from footprints and dated bones.
 
 > The larvae drift out of the Sargasso; the silver adults vanish into it. What happens at the center has never been seen, filmed, or sampled in the act. The eel's private life is one of the last closed doors in vertebrate biology.
 

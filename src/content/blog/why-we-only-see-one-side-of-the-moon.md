@@ -27,7 +27,7 @@ That hemisphere is still routinely called the dark side, and it was in broad day
 
 Because the Moon rotates once on its axis in exactly the time it takes to orbit Earth. NASA calls this tidal locking: the spin and the orbit run on the same clock, roughly 27.3 days, so the same hemisphere stays pointed at Earth. A Moon that had stopped rotating would show Earth every side of itself once a month.
 
-NASA's own phrasing leaves no wiggle room: it ["takes precisely as long for the Moon to spin on its axis as it does to complete its monthly orbit around Earth"](https://science.nasa.gov/moon/tidal-locking/). The period is the sidereal month, [about 27.3 days](https://en.wikipedia.org/wiki/Orbit_of_the_Moon), against the 29.5 days of the familiar cycle of phases, which is timed from a different reference point. [Units of time have a long history of being odder than they sound](/blog/how-long-is-a-moment/).
+NASA's own phrasing leaves no wiggle room: it ["takes precisely as long for the Moon to spin on its axis as it does to complete its monthly orbit around Earth"](https://science.nasa.gov/moon/tidal-locking/). The period is the sidereal month, [about 27.3 days](https://en.wikipedia.org/wiki/Orbit_of_the_Moon), against the 29.5 days of the familiar cycle of phases, which is timed from a different reference point. That 29.5-day cycle also sets a rhythm in the oceans, with a [spring tide](/blog/what-is-a-spring-tide/) around every new moon and full moon. [Units of time have a long history of being odder than they sound](/blog/how-long-is-a-moment/).
 
 ## A Moon that stopped spinning would show us everything
 

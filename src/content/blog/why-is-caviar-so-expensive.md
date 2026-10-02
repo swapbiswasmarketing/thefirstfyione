@@ -29,7 +29,7 @@ Because the supply is throttled at the source. A female beluga sturgeon reaches 
 
 Slow maturity is the fact every caviar seller quotes, and it is correct. The [2004 listing rule](https://www.govinfo.gov/content/pkg/FR-2004-04-21/html/04-8934.htm) puts male beluga at **10 to 16 years** and females at **14 to 20**. On its own that would make caviar a late crop, and a late crop still arrives every year.
 
-The sentence that does the damage comes next. Females reproduce **once every 4 to 8 years**, so a fish fed and guarded for two decades then yields intermittently rather than annually. A grower waits once for the animal to grow up, and keeps waiting between spawnings, on a fish that can live past 50.
+The sentence that does the damage comes next. Females reproduce **once every 4 to 8 years**, so a fish fed and guarded for two decades then yields intermittently rather than annually. A grower waits once for the animal to grow up, and keeps waiting between spawnings, on a fish that can live past 50. A [Wagyu](/blog/why-is-wagyu-so-expensive/) steer, fattened on grain for a year and a half, goes to slaughter at 28 to 30 months.
 
 | Fish | Age at first spawning | Gap between spawnings |
 |---|---|---|
@@ -54,7 +54,7 @@ NOAA Fisheries describes what happened on the east coast: "During the late 1800s
 
 Seven million pounds a year, from a fish it is now illegal to catch, keep or take eggs from. The 1800s ran on animals in ways that are easy to forget now, from the sturgeon crowding the rivers to [the working horses that needed iron nailed to their feet](/blog/why-do-horses-need-shoes/).
 
-By the beginning of the 1900s, NOAA says, populations "had declined drastically and continued to decline until the coastwide moratorium", which the Commission and the federal government imposed in late 1997 and early 1998. In 2012 Atlantic sturgeon were listed under the Endangered Species Act as five distinct population segments, four of them endangered and the Gulf of Maine population threatened.
+By the beginning of the 1900s, NOAA says, populations "had declined drastically and continued to decline until the coastwide moratorium", which the Commission and the federal government imposed in late 1997 and early 1998. In 2012 Atlantic sturgeon were listed under the Endangered Species Act as five distinct population segments, four of them endangered and the Gulf of Maine population threatened. Pearl beds took far longer to exhaust: thousands of years of pearl fishing "decimated the natural pearl beds," the Gemological Institute of America says, and [most pearls sold today are cultured](/blog/where-do-pearls-come-from/).
 
 Europe lost its stock a second way. Beluga harvest on the Danube averaged **23 metric tons a year** in the mid-1970s, and the 2004 rule records that after the Djerdap I and II dams went up the harvest fell to **12.7 tons** within a decade. A sturgeon blocked from its spawning river does not go and spawn somewhere else instead.
 

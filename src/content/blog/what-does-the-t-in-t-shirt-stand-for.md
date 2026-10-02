@@ -51,7 +51,7 @@ That reprint of the [1913 regulations](https://archive.org/details/cu31924030896
 
 > The Navy wrote the garment into its regulations by 1905 and called it an undershirt. The name turns up first in a 1912 advertisement that sold T shirts beside baseball bats, the oldest use the Oxford English Dictionary has found.
 
-The Navy's own magazine was still using other names in 1947. That March, All Hands reported that "skivvy shirt shortages" were "about over", and in May it relayed a notice keeping "undershirts, cotton" on the critical list, in items reprinted by the [Naval History and Heritage Command](https://www.history.navy.mil/research/library/online-reading-room/title-list-alphabetically/u/uniforms-usnavy/mens-uniforms.html).
+The Navy's own magazine was still using other names in 1947. That March, All Hands reported that "skivvy shirt shortages" were "about over", and in May it relayed a notice keeping "undershirts, cotton" on the critical list, in items reprinted by the [Naval History and Heritage Command](https://www.history.navy.mil/research/library/online-reading-room/title-list-alphabetically/u/uniforms-usnavy/mens-uniforms.html). Older underwear had older names: the shift that a bedchamber woman handed over at [Queen Anne's dressing](/blog/what-is-a-lady-in-waiting/) was, in Etymonline's gloss, a "body garment, underclothing".
 
 ## Only the civilian documents say T shirt
 

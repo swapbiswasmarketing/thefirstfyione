@@ -29,7 +29,7 @@ Sesame seeds come from *Sesamum indicum*, a flowering herb farmed for its oil fo
 
 ## Each flower lasts a day and can leave a pod
 
-The plant grows **2 to 8 feet** tall and is, in NC State's words, "the only agronomic crop from the family Pedaliaceae." It flowers from as early as 30 days after planting until about day 75 to 80, but each flower is open for **one day** and then drops. The seeds are small: NC State counts roughly **150,000 in a pound**.
+The plant grows **2 to 8 feet** tall and is, in NC State's words, "the only agronomic crop from the family Pedaliaceae." It flowers from as early as 30 days after planting until about day 75 to 80, but each flower is open for **one day** and then drops. A pineapple flower also lasts one day, though the fruitlets left by a pineapple's 100 to 200 flowers fuse into [a single fruit](/blog/where-do-pineapples-grow/). The seeds are small: NC State counts roughly **150,000 in a pound**.
 
 Growth is indeterminate: new flowers keep opening at the top while older pods mature below, so **the lowest pods ripen first**. NC State tells growers the goal is mature seed at the top of the plant, "however, this is not always possible," and that waiting longer risks "seed loss from opened capsules."
 
@@ -71,7 +71,7 @@ NC State splits the difference, saying sesame "likely originated in sub-Saharan 
 
 ## The name is built on a Mesopotamian word for oil
 
-[Etymonline](https://www.etymonline.com/word/sesame) traces "sesame" through Latin, Greek and Phoenician to a reconstructed Late Babylonian form, and compares the Assyrian *shamash-shammu*, literally "oil-seed". [Wiktionary](https://en.wiktionary.org/wiki/sesame) reads the Akkadian source word as a compound of "oil" and "plant". At about 50% oil, the seed still earns the name, as does flax, the oilseed pressed for [the linseed oil in homemade barn finishes](/blog/why-barns-are-red/).
+[Etymonline](https://www.etymonline.com/word/sesame) traces "sesame" through Latin, Greek and Phoenician to a reconstructed Late Babylonian form, and compares the Assyrian *shamash-shammu*, literally "oil-seed". [Wiktionary](https://en.wiktionary.org/wiki/sesame) reads the Akkadian source word as a compound of "oil" and "plant". At about 50% oil, the seed still earns the name, as does flax, the oilseed pressed for [the linseed oil in homemade barn finishes](/blog/why-barns-are-red/). Coriander's name may have a less flattering source: Etymonline notes that its Greek ancestor, *koriannon*, is often said to be related to *koris*, "bedbug", from [the smell of the unripe fruit](/blog/why-does-cilantro-taste-like-soap/).
 
 ## The pod story behind open sesame is unverified
 

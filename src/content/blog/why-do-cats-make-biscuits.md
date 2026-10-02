@@ -47,7 +47,7 @@ The same article describes a kneading cat as "often purring as it does so," and 
 
 Beyond nursing, the standard list offers contentment, scent marking, nest-making by wild ancestors and stretching. "Some of these are just theories because we don't know," said Susan Nelson, a veterinarian at Kansas State University. "Cats don't get the funding for studies like dogs do."
 
-Finka said kneading "hasn't been researched in-depth scientifically." Other famous cat behaviours have the same gap: [the leap away from a cucumber](/blog/why-are-cats-afraid-of-cucumbers/) has no published study behind it either.
+Finka said kneading "hasn't been researched in-depth scientifically." Other famous cat behaviours have the same gap: [the leap away from a cucumber](/blog/why-are-cats-afraid-of-cucumbers/) has no published study behind it either. The pull of boxes is one of the few exceptions: in two Dutch shelter trials, newly arrived cats given [a hiding box](/blog/why-do-cats-like-boxes/) settled days sooner than cats without one.
 
 **Scent marking** has real anatomy behind it. Hilary Feldman's [1994 Cambridge study of semi-feral cats](https://doi.org/10.1139/z94-147) lists scent organs on the cheeks, abdomen and paws, and describes cats leaving odour from paw glands while scratching. The four kinds of marking it examined were urine spraying, elimination, scratching and rubbing. **Kneading was not one of them.**
 

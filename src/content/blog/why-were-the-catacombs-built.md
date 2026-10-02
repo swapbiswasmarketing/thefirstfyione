@@ -49,7 +49,7 @@ In 257, during the persecution under the emperor Valerian, the prefect Aemilianu
 
 The prefect is even using the Christians' own new word for the places. Jerome, studying in Rome as a young man in the fourth century, remembered them as [an outing rather than a bolthole](https://www.catacombsociety.org/why-catacombs/): "When I was a youth in Rome, studying liberal arts, it was my custom on Sundays... to visit the sepulchers of the apostles and martyrs." He lived to see the city taken: when [Alaric's Goths sacked Rome in 410](/blog/when-did-rome-fall/), Jerome wrote that "sobs choke my utterance".
 
-The underground-congregation image is a staple of nineteenth-century fiction. Nicholas Wiseman gave his 1854 novel the title [*Fabiola; or, The Church of the Catacombs*](https://archive.org/details/fabiolaorchurcho00wise), which tells you what readers were being sold. Old spaces collect stories nobody asked for, much like [the eye that stares out of the dollar bill](/blog/illuminati-on-the-dollar-bill/).
+The underground-congregation image is a staple of nineteenth-century fiction. Nicholas Wiseman gave his 1854 novel the title [*Fabiola; or, The Church of the Catacombs*](https://archive.org/details/fabiolaorchurcho00wise), which tells you what readers were being sold. Hiding from a persecuting emperor is also the heart of San Marino's founding legend, in which a Christian stonemason named Marinus fled Diocletian to Mount Titano, [the source of the republic's traditional date of 301](/blog/what-is-the-oldest-country-in-the-world/). Old spaces collect stories nobody asked for, much like [the eye that stares out of the dollar bill](/blog/illuminati-on-the-dollar-bill/).
 
 ## Paris inherited its catacombs from quarrymen
 

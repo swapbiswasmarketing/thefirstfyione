@@ -39,7 +39,7 @@ A second detail goes unmentioned almost everywhere. The colophon carrying Julian
 
 ## The list was a gentleman's word game
 
-There are **164 entries**. Blades describes it as "the list of proper terms to be used by gentlemen and those curious in their speech", which is a fair account of the job it did: proving in company that you had the vocabulary.
+There are **164 entries**. Blades describes it as "the list of proper terms to be used by gentlemen and those curious in their speech", which is a fair account of the job it did: proving in company that you had the vocabulary. Later word games left entries of their own: floccinaucinihilipilification, first recorded in 1741 and [once the longest word in the Oxford English Dictionary](/blog/what-is-the-longest-word-in-the-world/), was built as a learned joke from four Latin words in an Eton College grammar.
 
 Many entries are animals. The rest include **a Cast of Brede**, **a Clustre of Grapys**, **a Clustre of Nottis**, **a Couple or a payer of botillis** and, under a heading about beasts and fowls, **a Rage of the teethe**. Toothache made the cut.
 

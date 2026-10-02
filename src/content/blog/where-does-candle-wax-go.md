@@ -27,7 +27,7 @@ Which means a candle is stranger than it looks: it is a device for slowly conver
 
 ## A machine with one moving part
 
-Candle wax is a **hydrocarbon** - its molecules are built almost entirely of hydrogen and carbon atoms. That pairing is the whole trick, because both elements burn beautifully.
+Candle wax is a **hydrocarbon** - its molecules are built almost entirely of hydrogen and carbon atoms. That pairing is the whole trick, because both elements burn beautifully. Petroleum solvents are built the same way, which is why fire was the main hazard for [early dry cleaners who washed clothes in gasoline](/blog/how-does-dry-cleaning-work/).
 
 The process runs in a loop:
 

@@ -29,7 +29,7 @@ No. Daylight saving was a wartime fuel measure. Germany adopted it on **April 30
 
 ## The farm lobby is what ended it
 
-The switch began on **March 31, 1918**, and [History.com's account of the rollout](https://www.history.com/articles/8-things-you-may-not-know-about-daylight-saving-time) records the agriculture industry as strongly opposed from that first season. A year later the opposition had its way. In 1919 Congress voted to repeal the daylight saving section of the 1918 law. President **Woodrow Wilson** vetoed the repeal. Congress overrode the veto, and the national clock change was gone.
+The switch began on **March 31, 1918**, and [History.com's account of the rollout](https://www.history.com/articles/8-things-you-may-not-know-about-daylight-saving-time) records the agriculture industry as strongly opposed from that first season. A year later the opposition had its way. In 1919 Congress voted to repeal the daylight saving section of the 1918 law. President **Woodrow Wilson** vetoed the repeal. Congress overrode the veto, and the national clock change was gone. That November, Wilson proclaimed the first [Armistice Day, the holiday now called Veterans Day](/blog/why-do-we-celebrate-veterans-day/).
 
 What survived was patchy. The [WebExhibits Daylight Saving Time exhibit](https://www.webexhibits.org/daylightsaving/e.html) records that the practice continued as a local option in a few states, among them **Massachusetts and Rhode Island**, and in cities including **New York, Philadelphia and Chicago**. The [Congressional Research Service](https://www.everycrsreport.com/reports/R45208.html) dates the national gap precisely: year-round standard time held from **1920 through 1941**.
 
