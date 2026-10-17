@@ -1,6 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { contactEmail, consentDefaults, clarityEnabled, newsletterLive, SITE_URL } from "../data/site";
+import {
+  contactEmail,
+  contactLive,
+  consentDefaults,
+  consentMessage,
+  clarityEnabled,
+  adsenseLive,
+  adsServing,
+  newsletterLive,
+  SITE_URL,
+} from "../data/site";
 import { pageNode } from "../lib/schema";
 import { pageCard } from "../lib/og";
 
@@ -12,14 +22,22 @@ import { pageCard } from "../lib/og";
 const lastUpdated = "October 17, 2026";
 
 const url = `${SITE_URL}/privacy/`;
-const description =
-  "What Strictly FYI collects when you read it: Google Analytics through Tag Manager, Vercel hosting logs, and what changes for readers in the EEA, UK and Switzerland.";
+const tools = [
+  `Google Analytics${clarityEnabled ? " and Microsoft Clarity" : ""} via Tag Manager`,
+  ...(adsenseLive && adsServing ? ["Google AdSense ads"] : []),
+  "Vercel logs",
+];
+const description = `What Strictly FYI collects: ${tools.join(", ")}, and what changes in the EEA, UK and Switzerland.`;
+const mail = `mailto:${contactEmail}`;
+const tags = adsenseLive && adsServing ? "analytics and advertising tags" : "analytics tags";
+const adsOn = adsenseLive && adsServing;
 ---
 
 <Layout
   title="Privacy - Strictly FYI"
   description={description}
   card={pageCard("privacy")}
+  ads={false}
   contentGroup="About"
   schema={[pageNode("WebPage", url, "Privacy", description)]}
 >
@@ -28,19 +46,25 @@ const description =
       <p class="pv-kicker">The fine print &middot; Last updated {lastUpdated}</p>
       <h1 class="pv-title">Privacy</h1>
       <p class="pv-dek">
-        Strictly FYI is a reading site. It has no accounts, no comments and no ads, and it sets no cookies of its own.
-        What is collected comes from the hosting logs and the analytics tag described below, and from any email
-        you send.
+        Strictly FYI is a reading site. It has no accounts and no comments{adsOn ? "" : " and no ads"}, and it
+        sets no cookies of its own. What is collected comes from the hosting logs and the {tags} described
+        below{contactLive ? ", and from any email you send" : ""}.
       </p>
     </header>
 
     <div class="pv-body">
       <section>
         <h2>Who runs this site</h2>
-        <p>
-          Strictly FYI is an independent publication. For anything on this page, including a request about your
-          data, write to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
-        </p>
+        {contactLive ? (
+          <p>
+            Strictly FYI is an independent publication. For anything on this page, including a request about your
+            data, write to <a href={mail}>{contactEmail}</a>.
+          </p>
+        ) : (
+          <p>
+            Strictly FYI is an independent publication. It does not publish a contact address.
+          </p>
+        )}
       </section>
 
       <section>
@@ -74,23 +98,43 @@ const description =
         </p>
         {clarityEnabled && (
           <p>
-            Microsoft Clarity records session replays and heatmaps: how the page was scrolled, clicked and resized. It
-            receives your IP address and browser details and sets the <code>_clck</code> and <code>_clsk</code>
-            cookies. Text you type into fields is masked. Microsoft's terms are in the
-            <a href="https://privacy.microsoft.com/privacystatement">Microsoft Privacy Statement</a>.
+            Microsoft Clarity, also loaded by Tag Manager, records how pages are used: session replays and heatmaps
+            of scrolling, clicks and resizing. It receives your IP address and browser details, sets the
+            <code>_clck</code> and <code>_clsk</code> cookies, and is given the Google Analytics browser and session
+            identifiers, so a recording can be matched to its visit in Google Analytics. Microsoft's terms are in
+            the <a href="https://privacy.microsoft.com/privacystatement">Microsoft Privacy Statement</a>.
           </p>
         )}
       </section>
+
+      {adsOn && (
+        <section>
+          <h2>Advertising</h2>
+          <p>
+            Ads on this site are served by Google AdSense. Google and its partners use cookies to show ads, including
+            ads based on your earlier visits to this and other websites, and to measure them. You can turn off
+            personalised ads in Google's <a href="https://myadcenter.google.com/">My Ad Center</a>, and opt out of
+            other companies' interest-based ads at <a href="https://www.aboutads.info/choices/">aboutads.info</a>.
+            How Google uses this data is set out in
+            <a href="https://policies.google.com/technologies/ads">How Google uses cookies in advertising</a>. No ads
+            run on the search, error or privacy pages.
+          </p>
+        </section>
+      )}
 
       {consentDefaults && (
         <section>
           <h2>Visitors in the EEA, the UK and Switzerland</h2>
           <p>
-            For readers in these regions, analytics storage is switched off before any tag loads. Google Analytics
-            sets no cookies and reads none on your device{clarityEnabled ? ", and session recording does not run" : ""}.
-            Google's tags may still send a cookieless signal with no identifier, which Google uses only for
-            aggregate measurement. That is why there is no consent banner: analytics stays off in these regions
-            instead of asking.
+            For readers in these regions, storage for analytics{adsOn ? " and ads" : ""} is switched off before
+            any tag loads{consentMessage ? ", and stays off unless you accept it" : ""}. Google Analytics then sets no
+            cookies and reads none on your device; Google's tags may still send a cookieless signal with no
+            identifier, which Google uses only for aggregate measurement.
+            {clarityEnabled &&
+              " Microsoft Clarity runs in its no-consent mode there: it sets no cookies and gives each page view its own identifier, so one visit is not linked to the next."}
+            {consentMessage
+              ? " Google's consent message asks whether you accept cookies for ads and measurement. You can change your answer at any time with Privacy and cookie settings at the foot of every page."
+              : " There is no consent banner: storage stays off in these regions instead of asking."}
           </p>
         </section>
       )}
@@ -100,27 +144,39 @@ const description =
           <h2>The newsletter</h2>
           <p>
             If you subscribe, your email address is sent to Kit (kit.com), which stores the list, sends the
-            confirmation email and the newsletter, and records opens and clicks. Every email carries an unsubscribe
-            link, and unsubscribing removes you from future sends.
+            confirmation email and the newsletter, and records opens and clicks. Kit is a US company. Every email
+            carries an unsubscribe link, and unsubscribing removes you from future sends.
+          </p>
+        </section>
+      )}
+
+      {contactLive && (
+        <section>
+          <h2>Email</h2>
+          <p>
+            If you write to <a href={mail}>{contactEmail}</a>, the message is kept for as long as it is needed to answer
+            it and to keep a record of corrections.
           </p>
         </section>
       )}
 
       <section>
-        <h2>Email</h2>
-        <p>
-          If you write to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>, the message is kept for as long as it is
-          needed to answer it and to keep a record of corrections.
-        </p>
-      </section>
-
-      <section>
         <h2>Your rights</h2>
         <p>
-          Depending on where you live, you can ask what data about you is held, ask for it to be corrected or
-          deleted, and object to its use. Write to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. Readers in
-          the EEA, the UK and Switzerland can also complain to their national data protection authority. Analytics data is
-          processed by Google in the United States.
+          {contactLive ? (
+            <>
+              Depending on where you live, you can ask what data about you is held, ask for it to be corrected or
+              deleted, and object to its use: write to <a href={mail}>{contactEmail}</a>.
+            </>
+          ) : (
+            <>
+              Depending on where you live, you have the right to know what data about you is held, to have it
+              corrected or deleted, and to object to its use.
+            </>
+          )}
+          Readers in the EEA, the UK and Switzerland can also complain to their national data protection authority.
+          Analytics{adsOn ? " and advertising" : ""} data is processed by Google{clarityEnabled ? " and Microsoft" : ""} in
+          the United States.
         </p>
       </section>
     </div>

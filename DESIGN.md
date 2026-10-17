@@ -87,7 +87,11 @@ Landmarks: banner (masthead or running head), main, contentinfo. One `h1` per pa
 - Entry titles carry no brand suffix. Every internal URL ends with a slash. `noindex` pages leave the sitemap automatically.
 - Clicks are tracked with `data-track="event"` plus `data-track-*` attributes; scripts call `track()` from `src/lib/track.ts`. The event list lives in MEASUREMENT.md; consent behaviour in CONSENT.md.
 
-## 11. Code house rules
+## 11. Ads
+
+Auto ads only, switched by `adsenseClient` in `src/data/site.ts`. No ads on pages without publisher content (the 404, search and privacy pages pass `ads={false}`). Page chrome carries `data-no-auto-ads` (running head and masthead `all`, entry head and colophon `inside`) so an ad never lands inside the masthead, the headline block or the footer. New page chrome gets the same attribute. Consent for ads: CONSENT.md.
+
+## 12. Code house rules
 
 - No HTML comments in `.astro` templates (they ship); use `{/* */}` or comments inside frontmatter, style and script.
 - Elements created with `document.createElement` miss Astro's scoped styles: render markup (or a `<template>`) and toggle classes.

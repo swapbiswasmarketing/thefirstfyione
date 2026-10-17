@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SubscribeForm from "../components/SubscribeForm.astro";
-import { cats, catLabel, deptHref, deptWord, fmtDate, fmtDay, newsletterLive, SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "../data/site";
+import { adsenseLive, adsServing, cats, catLabel, deptHref, deptWord, fmtDate, fmtDay, newsletterLive, SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "../data/site";
 import {
   getEntries,
   entryHref,
@@ -141,7 +141,7 @@ const schema = [
   card={pageCard("home")}
   contentGroup="Front page"
 >
-  <header class="mast wrap" slot="masthead">
+  <header class="mast wrap" slot="masthead" data-no-auto-ads={adsenseLive && adsServing ? "all" : undefined}>
     <div class="dateline">
       <span><span class="dl-long">Vol. {ed.vol} &middot; </span>No. {pad3(ed.no)}</span>
       <span class="dateline-mid">A field guide to the fascinating</span>
@@ -381,8 +381,8 @@ const schema = [
       <div class="follow-copy">
         {newsletterLive ? (
           <>
-            <h2 class="follow-head" id="follow-h">By post &amp; by <span class="hl">inbox</span>.</h2>
-            <p class="follow-sub">New entries by email as they are filed. One click to leave.</p>
+            <h2 class="follow-head" id="follow-h">By <span class="hl">inbox</span> &amp; by feed.</h2>
+            <p class="follow-sub">New entries by email. Confirm once from your inbox; every email has a one-click unsubscribe.</p>
           </>
         ) : (
           <>

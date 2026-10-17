@@ -9,7 +9,12 @@ import {
   fmtDay,
   fmtDate,
   contactEmail,
+  contactLive,
   newsletterLive,
+  adsenseClient,
+  adsenseLive,
+  adsServing,
+  consentMessage,
   SITE_URL,
   SITE_NAME,
   SITE_DESCRIPTION,
@@ -39,6 +44,9 @@ interface Props {
   /* GA4 content group and entry id, pushed to the dataLayer before GTM loads. */
   contentGroup?: string;
   entryId?: string;
+  /* Auto ads may run on this page. Off for pages without publisher content
+     (404, search, privacy), which AdSense policy keeps ads away from. */
+  ads?: boolean;
 }
 
 const {
@@ -55,7 +63,9 @@ const {
   schema = [],
   contentGroup,
   entryId,
+  ads = true,
 } = Astro.props;
+const adsOn = adsenseLive && adsServing && ads;
 
 const site = new URL(SITE_URL);
 const path = Astro.url.pathname;
@@ -92,7 +102,7 @@ const preGtm = gtmId
   ? [
       "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}",
       consentDefaults
-        ? `gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:${JSON.stringify(consentRegions)}});`
+        ? `gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',${consentMessage ? "wait_for_update:500," : ""}region:${JSON.stringify(consentRegions)}});`
         : "",
       `dataLayer.push(${JSON.stringify({ content_group: group, entry_id: entryId ?? "" }).replace(/</g, "\\u003c")});`,
     ].join("")
@@ -138,6 +148,15 @@ const speculationRules = JSON.stringify({
         <script is:inline set:html={preGtm} />
         <script is:inline set:html={gtmSnippet} />
       </>
+    )}
+    {adsenseLive && <meta name="google-adsense-account" content={adsenseClient} />}
+    {adsOn && (
+      <script
+        is:inline
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+        crossorigin="anonymous"
+      ></script>
     )}
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -192,7 +211,7 @@ const speculationRules = JSON.stringify({
     <slot name="masthead" />
 
     {!bare && (
-      <header class="runhead">
+      <header class="runhead" data-no-auto-ads={adsOn ? "all" : undefined}>
         <div class="wrap">
           <div class="rh-top">
             <span>Strictly FYI &middot; Vol. {ed.vol}</span>
@@ -220,7 +239,7 @@ const speculationRules = JSON.stringify({
       <slot />
     </main>
 
-    <footer class="colophon cv-auto">
+    <footer class="colophon cv-auto" data-no-auto-ads={adsOn ? "inside" : undefined}>
       <div class="wrap">
         <div class="colophon-top">
           <p class="imprint">
@@ -230,8 +249,17 @@ const speculationRules = JSON.stringify({
           </p>
           <nav class="colophon-nav" aria-label="Footer">
             <a href="/blog/">Read</a> &middot; <a href="/topics/">Topics</a> &middot; <a href="/search/">Search</a> &middot;
-            <a href="/about/">About</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/rss.xml">RSS</a> &middot;
-            <a href={`mailto:${contactEmail}`}>Contact</a>
+            <a href="/about/">About</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/rss.xml">RSS</a>
+            {contactLive && (
+              <>
+                {" "}&middot; <a href={`mailto:${contactEmail}`}>Contact</a>
+              </>
+            )}
+            {consentMessage && (
+              <span data-consent-ui hidden>
+                {" "}&middot; <button type="button" class="consent-link">Privacy and cookie settings</button>
+              </span>
+            )}
           </nav>
         </div>
         <div class="colophon-feet">
@@ -328,6 +356,13 @@ const speculationRules = JSON.stringify({
       .imprint { font-family: var(--mono); font-size: 0.71rem; line-height: 1.75; color: var(--ink-faint); max-width: 36rem; }
       .imprint-name { color: var(--ink); }
       .colophon-nav { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint); line-height: 1.9; }
+      .consent-link {
+        font: inherit; color: var(--ink-soft); background: none; border: none; padding: 0; cursor: pointer;
+        transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+      }
+      @media (hover: hover) and (pointer: fine) {
+        .consent-link:hover { background: var(--hl); color: var(--ink); }
+      }
       .colophon-nav a, .depts a {
         color: var(--ink-soft); text-decoration: none;
         transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
@@ -374,6 +409,25 @@ const speculationRules = JSON.stringify({
         },
         { capture: true }
       );
+
+      /* "Privacy and cookie settings" reopens Google's consent message (the
+         certified CMP that AdSense loads for the EEA, the UK and Switzerland).
+         It appears only where that message applies, once its API is ready, so
+         nobody elsewhere sees a control that does nothing. */
+      const consentUi = document.querySelector<HTMLElement>("[data-consent-ui]");
+      if (consentUi) {
+        type Fc = { callbackQueue?: object[]; showRevocationMessage?: () => void };
+        type Tcf = (cmd: string, v: number, cb: (data: { gdprApplies?: boolean } | null, ok: boolean) => void) => void;
+        const w = window as unknown as { googlefc?: Fc; __tcfapi?: Tcf };
+        w.googlefc = w.googlefc || {};
+        (w.googlefc.callbackQueue = w.googlefc.callbackQueue || []).push({
+          CONSENT_DATA_READY: () =>
+            w.__tcfapi?.("getTCData", 2, (data, ok) => {
+              if (ok && data?.gdprApplies) consentUi.hidden = false;
+            }),
+        });
+        consentUi.querySelector("button")?.addEventListener("click", () => w.googlefc?.showRevocationMessage?.());
+      }
     </script>
   </body>
 </html>

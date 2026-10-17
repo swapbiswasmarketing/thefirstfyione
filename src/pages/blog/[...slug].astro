@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import SubscribeForm from "../../components/SubscribeForm.astro";
 import { render } from "astro:content";
-import { contactEmail, deptHref, fmtDate, fmtLong, newsletterLive } from "../../data/site";
+import { adsenseLive, adsServing, contactEmail, contactLive, deptHref, fmtDate, fmtLong, newsletterLive } from "../../data/site";
 import {
   getEntries,
   buildRelated,
@@ -154,7 +154,7 @@ const newerLink = newer && !seen.has(newer.id) ? newer : undefined;
     <span hidden data-pagefind-meta={`reading:${readingLabel(post)}`}></span>
     <span hidden data-pagefind-filter={`department:${section}`}></span>
 
-    <header class="entry-head">
+    <header class="entry-head" data-no-auto-ads={adsenseLive && adsServing ? "inside" : undefined}>
       <nav class="crumbs" aria-label="Breadcrumb" data-pagefind-ignore>
         <ol>
           {trail.map((c, i) => (
@@ -213,9 +213,11 @@ const newerLink = newer && !seen.has(newer.id) ? newer : undefined;
           </section>
         ) : null}
 
-        <p class="corrections" data-pagefind-ignore>
-          Spotted an error? <a href={correctionHref}>Write to the corrections desk</a>.
-        </p>
+        {contactLive && (
+          <p class="corrections" data-pagefind-ignore>
+            Spotted an error? <a href={correctionHref}>Write to the corrections desk</a>.
+          </p>
+        )}
 
         <div class="share" role="group" aria-labelledby="entry-share-label" data-pagefind-ignore>
           <span class="share-label" id="entry-share-label">Pass it on</span>

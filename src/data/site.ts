@@ -7,7 +7,11 @@ export const SITE_NAME = "Strictly FYI";
 export const SITE_DESCRIPTION =
   "A general-interest field guide to the fascinating - science, history, tech, culture, and everyday curiosities worth knowing. Strictly for your information.";
 
-export const contactEmail = "hello@strictly.fyi";
+/* The public contact address, used by the footer, the corrections lines, About
+   and the privacy page. Empty: the site prints no address and no mailto link
+   anywhere. Set it only to a mailbox that actually receives mail. */
+export const contactEmail = "swapbiswas.marketing@gmail.com";
+export const contactLive = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmail);
 
 export const catLabel: Record<string, string> = {
   science: "Science",
@@ -67,13 +71,36 @@ export const consentRegions = [
 
 /* Microsoft Clarity runs only if its tag is published in the GTM container.
    The privacy page describes it only while this is true, so flip it in the
-   same change that publishes the tag. */
-export const clarityEnabled = false;
+   same change that publishes the tag. Published in container version 3
+   (2026-10-17), on All Pages, with no extra consent requirement. */
+export const clarityEnabled = true;
+
+/* Google AdSense publisher ID: "ca-pub-" plus 16 digits. Set, it ships the
+   verification meta tag on every page, /ads.txt, and the Auto ads loader on
+   pages with publisher content (never on the 404, search or privacy pages).
+   Empty, the site carries no ads code at all.
+   Vercel's Hobby plan does not allow ads: its Fair Use Guidelines count "the
+   inclusion of advertisements ... like Google AdSense" as commercial use,
+   which needs a Pro plan. */
+export const adsenseClient = "ca-pub-3086200953871328";
+export const adsenseLive = /^ca-pub-\d{16}$/.test(adsenseClient);
+/* Whether ads actually serve: the Auto ads loader, the privacy page's
+   advertising section and the data-no-auto-ads guards. Off until AdSense has
+   approved strictly.fyi as a site (the meta tag and ads.txt above are all its
+   review needs) and the hosting plan allows ads (see the Vercel note above). */
+export const adsServing = false;
+
+/* Google's consent message for the EEA, the UK and Switzerland (AdSense >
+   Privacy & messaging > European regulations), the certified CMP AdSense needs
+   to serve ads there. Set true once that message is published: the consent
+   default then waits up to 500ms for its answer, the footer offers a "Privacy
+   and cookie settings" link that reopens it, and the privacy page describes it. */
+export const consentMessage = false;
 
 /* Newsletter. The numeric Kit form ID, digits only. The form posts straight to
    Kit's public form endpoint, so no API key ever lives in this public repo, and
    Kit runs the confirmation email. An empty value renders the honest fallback:
    no email field, no promised cadence, just the feed. */
-export const kitFormId = "";
+export const kitFormId = "10059862";
 export const newsletterLive = /^[0-9]{5,12}$/.test(kitFormId);
 export const kitFormAction = newsletterLive ? `https://app.kit.com/forms/${kitFormId}/subscriptions` : "";

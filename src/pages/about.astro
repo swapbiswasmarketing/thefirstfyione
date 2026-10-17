@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SubscribeForm from "../components/SubscribeForm.astro";
-import { contactEmail, newsletterLive } from "../data/site";
+import { contactEmail, contactLive, newsletterLive } from "../data/site";
 import { pageNode, crumbs, abs, ORG_ID } from "../lib/schema";
 import { pageCard } from "../lib/og";
 
@@ -123,11 +123,13 @@ const correctionHref = `mailto:${contactEmail}?subject=${encodeURIComponent("Cor
             When an entry gets something wrong, the text is corrected where the error was, and the
             dateline under the headline shows the date of the fix.
           </p>
-          <p>
-            To report one, write to the corrections desk at <a href={correctionHref}>{contactEmail}</a>,
-            or use the link at the end of any entry. Name the entry, say what is wrong, and include a
-            source that shows it.
-          </p>
+          {contactLive && (
+            <p>
+              To report one, write to the corrections desk at <a href={correctionHref}>{contactEmail}</a>,
+              or use the link at the end of any entry. Name the entry, say what is wrong, and include a
+              source that shows it.
+            </p>
+          )}
         </div>
       </div>
     </section>

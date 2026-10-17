@@ -7,7 +7,7 @@ How strictly.fyi handles analytics consent, why there is no cookie banner, and w
 Two files carry it.
 
 **`src/data/site.ts`**
-- `gtmId = "GTM-WLHM6RXG"`: the only analytics snippet the site ships. GA4 (`G-BGFVBKTFPJ`) lives as a tag inside that container. Microsoft Clarity (project `y9i0a4eq2q`) is not published there; `clarityEnabled` stays false until it is. State on 2026-10-17: the published container holds one tag, the Google tag for G-BGFVBKTFPJ on Initialization - All Pages, with no additional consent requirement (advanced mode: cookieless pings in-region), no GA4 event tag and no Clarity tag. An empty `gtmId` renders no analytics at all.
+- `gtmId = "GTM-WLHM6RXG"`: the only analytics snippet the site ships. GA4 (`G-BGFVBKTFPJ`) and Microsoft Clarity (project `y9i0a4eq2q`) live as tags inside that container, and `clarityEnabled` is true. State on 2026-10-17 (container version 3): the Google tag for G-BGFVBKTFPJ on Initialization - All Pages, and the Clarity tag on All Pages, which is given the GA4 client and session IDs as its user and session IDs. Neither has an additional consent requirement, so in-region the Google tag sends cookieless pings (advanced mode) and Clarity runs in its own no-consent mode (no cookies, one ID per page view, enforced by Microsoft for the EEA, UK and Switzerland since 31 October 2025). There is no GA4 event tag yet, so the site's custom events stop at the dataLayer. An empty `gtmId` renders no analytics at all.
 - `consentDefaults = true`: turns on the region-scoped consent default below.
 - `consentRegions`: the 39 places the default applies to: the 27 EU member states (`AT BE BG HR CY CZ DK EE FI FR DE GR HU IE IT LV LT LU MT NL PL PT RO SK SI ES SE`), the rest of the EEA (`IS LI NO`), `GB`, `CH`, and the EU regions that carry their own codes (`AX GF GP MQ RE YT MF`).
 - `clarityEnabled = false`: whether a Clarity tag is published in the container. The privacy page describes Clarity only while this is true.
@@ -57,3 +57,16 @@ Run it before publishing any container version that touches tags or consent.
 3. Publish with a version note naming the tags and consent settings that changed.
 
 If test 1 shows the tags blocked, check that no consent-default tag was added in GTM (step 2 above) and that the region list in `src/data/site.ts` holds only the intended codes.
+
+## Advertising (Google AdSense)
+
+What the code does, all switched by `src/data/site.ts`:
+- `adsenseClient` set: every page carries the `google-adsense-account` verification meta tag and `/ads.txt` is generated from the same ID (`src/pages/ads.txt.ts`). That is all AdSense needs to review the site.
+- `adsServing = true` (off as of 2026-10-17): the Auto ads loader runs on pages with publisher content, and the privacy page gains its Advertising section. Turn it on only once AdSense has approved strictly.fyi and the hosting plan allows ads. The 404, search and privacy pages pass `ads={false}` to the Layout, so they never load it. The running head, the front-page masthead, the entry head and the colophon carry `data-no-auto-ads`, which Google's Auto ads code reads, so no ad lands inside the page chrome (the portfolio measured a 0.15 layout shift from a header ad before it did the same).
+- Empty `adsenseClient`: no ads code at all.
+
+Before ads serve:
+1. **Hosting.** Vercel's Hobby plan forbids ads: its Fair Use Guidelines count "the inclusion of advertisements, including but not limited to online advertising platforms like Google AdSense" as commercial use, which needs Pro. Upgrade the project first, or set `adsenseClient = ""` until it is.
+2. **The consent message.** Google's EU User Consent Policy requires a Google-certified consent management platform for ads in the EEA and the UK; without one, only limited ads serve there. Google's own is free: AdSense > Privacy & messaging > European regulations. Publish it for the EEA, the UK and Switzerland, and turn on its consent mode setting so the message updates the same four signals the preGtm default sets.
+3. **Then set `consentMessage = true`** and deploy. The consent default gains `wait_for_update: 500`, so tags wait up to half a second for the message's answer; the colophon shows "Privacy and cookie settings", which reopens the message (only where GDPR applies, once Google's API is ready); and the privacy page describes the message.
+4. **After that, the posture in "Why there is no banner" changes:** in-region readers can now grant storage, and the Google tag's consent checks follow their answer. Clarity does not read Google's consent: without a bridge it stays in its no-consent mode in-region even after a reader accepts. The portfolio's BaseLayout has a bridge that passes the message's answer to `clarity('consentv2', ...)` if that is ever wanted.
