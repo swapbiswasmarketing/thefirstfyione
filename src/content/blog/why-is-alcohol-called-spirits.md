@@ -53,7 +53,7 @@ Other distillates carried the name too. Augustus Webb of New York coined the nam
 
 In **1615** the English traveller George Sandys, describing Turkish women, wrote that they put between the eyelids and the eye ["a certaine blacke powder with a fine long pensil, made of a minerall brought from the kingdome of Fez, and called Alcohole"](https://archive.org/details/b30330671/page/n82/mode/1up). That powder is **kohl**.
 
-The [Online Etymology Dictionary](https://www.etymonline.com/word/alcohol) traces *alcohol* to Arabic *al-kuhul*, kohl, "the fine metallic powder used to darken the eyelids," by way of Medieval Latin *alcohol*, "powdered ore of antimony." Kohl was traditionally made by [crushing stibnite](https://en.wikipedia.org/wiki/Kohl_(cosmetics)), an antimony sulfide mineral.
+The [Online Etymology Dictionary](https://www.etymonline.com/word/alcohol) traces *alcohol* to Arabic *al-kuhul*, kohl, "the fine metallic powder used to darken the eyelids," by way of Medieval Latin *alcohol*, "powdered ore of antimony," much as coffee came from [Arabic *qahwah*, originally a word for wine](/blog/where-does-coffee-come-from/), through Turkish. Kohl was traditionally made by [crushing stibnite](https://en.wikipedia.org/wiki/Kohl_(cosmetics)), an antimony sulfide mineral.
 
 In English the word meant powder first. A glossary of "straunge wordes" in the [**1543** English translation](https://archive.org/details/b30338955/page/n564/mode/1up) of the Italian surgeon Giovanni da Vigo explains that "barbarous" authors use "alchohol" or "alcofoll" "for moost fyne poudre." Paracelsus (1493-1541) used it for a fine powder "but also a volatile liquid," and by the 1670s English applied it to "any sublimated substance, the pure spirit of anything."
 

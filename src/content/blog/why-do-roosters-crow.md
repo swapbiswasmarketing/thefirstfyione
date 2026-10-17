@@ -37,7 +37,7 @@ A rhythm that keeps going once every outside time cue is gone is called free-run
 
 The popular story has the rising sun waking the rooster and the rooster answering it, a reasonable farmyard guess that gets the first crow wrong. Light can trigger a crow, but the crowing starts before any light arrives and keeps a near-24-hour rhythm when the light never changes.
 
-The sun also works through the clock. The daily cycle of light and dark is "the most effective synchronizer for the circadian clock", in the 2015 paper's words, so sunlight sets the rooster's clock and the clock sets off the crow.
+The sun also works through the clock. The daily cycle of light and dark is "the most effective synchronizer for the circadian clock", in the 2015 paper's words, so sunlight sets the rooster's clock and the clock sets off the crow. The golden hamster, [nearly every captive one descended from a single 1930 litter](/blog/where-do-hamsters-come-from/), is "a prime model for studying the mechanisms controlling circadian rhythms," in the words of a 2008 paper in Biology Letters.
 
 Outside prompts are why a rooster seems to crow all day: light or another rooster's crow can [set him off at any hour](https://www.asianscientist.com/2013/03/in-the-lab/circadian-rhythms-control-rooster-crowing-researchers-2013/), though "the crowing was mostly induced in the morning," Yoshimura told [ABC Science](https://www.abc.net.au/science/archive/articles/2013/03/19/3717985.htm). He said the findings suggest the clock regulates a rooster's sensitivity to outside cues as well as when he crows.
 
@@ -55,7 +55,7 @@ The subordinates can crow: prompted by light or a recording of crowing, they cro
 
 ## The crow is a territory claim kept from the junglefowl
 
-The same study describes crowing as "the main territorial announcement of the ancestral red junglefowl" and "a reliable indicator of the status, size and health of the emitter". A wild junglefowl group typically holds a small territory around a roosting tree, and the males announce its borders with loud crowing, "emitted mainly during dawn and dusk".
+The same study describes crowing as "the main territorial announcement of the ancestral red junglefowl" and "a reliable indicator of the status, size and health of the emitter". A wild junglefowl group typically holds a small territory around a roosting tree, and the males announce its borders with loud crowing, "emitted mainly during dawn and dusk". A male tawny owl's hoot does the same job after dark, [announcing a territory he may hold for life](/blog/why-do-owls-hoot/).
 
 Domestication, [a gradual slide from red junglefowl to chicken](/blog/what-came-first-the-chicken-or-the-egg/), kept the call and edited it. The study's domestic White Leghorns had a longer, lower last syllable than red junglefowl recorded in northern India, with more formants, the resonance peaks in a call's sound.
 

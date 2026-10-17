@@ -57,7 +57,7 @@ About seven days after a spring tide, the Moon reaches first or third quarter an
 
 The shape of the real oceans and their friction hold back the peak, so the biggest tides arrive **one to two days** after new or full moon, NTSLF explains. NOAA's [tide glossary](https://tidesandcurrents.noaa.gov/glossary.html) calls the delay the age of phase inequality, or the age of tide. The 1953 storm struck about two days after its full moon.
 
-Pliny the Elder, the Roman encyclopedist who [dismissed the cinnamon-bird stories as a pricing trick](/blog/how-is-cinnamon-made/), had recorded the delay by the first century AD. The biggest tides came "not exactly at the full nor at the new moon, but after them," his *Natural History* says, in [Bostock and Riley's 1855 translation](https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0137:book=2:chapter=99).
+Pliny the Elder, the Roman encyclopedist who [dismissed the cinnamon-bird stories as a pricing trick](/blog/how-is-cinnamon-made/), had recorded the delay by the first century AD. The biggest tides came "not exactly at the full nor at the new moon, but after them," his *Natural History* says, in [Bostock and Riley's 1855 translation](https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0137:book=2:chapter=99). Robert Plot leaned on the same book in 1677, matching what is now [the first known dinosaur bone](/blog/when-were-dinosaurs-discovered/), a stone thigh bone from an Oxfordshire quarry, to a nine-foot-nine Arabian giant Pliny had described.
 
 ## Nobody is sure where the name came from
 
@@ -71,7 +71,7 @@ The spelling [springtide](https://www.etymonline.com/word/springtide) did double
 
 ## Equinox or solstice, depending on the coast
 
-On coasts with two roughly equal tides a day, like Britain's, they are "particularly large close to the equinoxes (21 March and 21 September) when the sun is overhead at the equator," NTSLF says. Pliny noticed this as well: tides rise "higher at the equinoxes, and more so at the autumnal than at the vernal."
+On coasts with two roughly equal tides a day, like Britain's, they are "particularly large close to the equinoxes (21 March and 21 September) when the sun is overhead at the equator," NTSLF says. Pliny, who also recorded how early Rome [announced midday by sighting the sun](/blog/what-does-am-stand-for/), noticed this as well: tides rise "higher at the equinoxes, and more so at the autumnal than at the vernal."
 
 Coasts with one tide a day, like many in the Gulf of Mexico, barely register the spring and neap cycle; for that kind of tide NOAA's glossary calls the spring range "of no practical significance." The biggest ranges there follow the Moon's swing north and south of the equator, peaking when lunar declination is greatest, NTSLF says.
 

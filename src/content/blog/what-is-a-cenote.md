@@ -55,7 +55,7 @@ In 1995 [Hildebrand and four colleagues](https://www.nature.com/articles/376415a
 
 The popular shorthand says the asteroid that killed the dinosaurs created the cenotes. The impact decided where the ring's holes would line up, but it did not dig them.
 
-When it struck, **66 million years ago**, the Yucatan lay under a shallow sea. The crater became a basin that filled with sediment. [NASA's Photojournal](https://science.nasa.gov/photojournal/shaded-relief-with-height-as-color-yucatan-peninsula-mexico) says scientists believe the impact altered the rock beneath, so that the limestone laid down later, which erodes very easily, wore away more near the crater rim than elsewhere.
+When it struck, **66 million years ago**, some 100 million years after the lifetime of [Megalosaurus, the first dinosaur ever named](/blog/when-were-dinosaurs-discovered/), the Yucatan lay under a shallow sea. The crater became a basin that filled with sediment. [NASA's Photojournal](https://science.nasa.gov/photojournal/shaded-relief-with-height-as-color-yucatan-peninsula-mexico) says scientists believe the impact altered the rock beneath, so that the limestone laid down later, which erodes very easily, wore away more near the crater rim than elsewhere.
 
 On that account, the erosion made the ring of sinkholes and a trough only 3 to 5 metres deep and about 5 kilometres wide, so subtle that on foot you "probably would not notice it". The holes in the ring are younger than the impact that lined them up.
 

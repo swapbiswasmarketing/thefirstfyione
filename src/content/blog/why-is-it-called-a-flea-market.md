@@ -63,7 +63,7 @@ In June 1891, Paris papers used the name for a ragged open-air market at the Mon
 
 ## Saint-Ouen dates its own name to about 1904
 
-The [official history](https://www.pucesdeparissaintouen.com/les-puces/) of the Saint-Ouen market traces it to the **1870s**, when ragpickers driven out of Paris settled beyond the city's fortifications, and gives **1885** as its official birth date. Their trade was threatened in **1883**, when Prefect Eugene Poubelle ordered lidded rubbish bins for the buildings of Paris.
+The [official history](https://www.pucesdeparissaintouen.com/les-puces/) of the Saint-Ouen market traces it to the **1870s**, when ragpickers, whose trade had once [supplied Europe's paper mills with old rags](/blog/how-is-paper-made/), were driven out of Paris and settled beyond the city's fortifications, and gives **1885** as its official birth date. Their trade was threatened in **1883**, when Prefect Eugene Poubelle ordered lidded rubbish bins for the buildings of Paris.
 
 The same history calls the name anonymous, "apparue vers 1904," appearing around 1904, and says the satirical magazine L'Assiette au beurre made the market famous in **1910** with an entire issue. The newspapers above had used the name at least 13 years earlier.
 

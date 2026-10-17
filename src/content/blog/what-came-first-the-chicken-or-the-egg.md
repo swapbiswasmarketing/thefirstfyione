@@ -68,7 +68,7 @@ A companion paper in [Antiquity](https://www.cambridge.org/core/product/identifi
 
 ## There is no first chicken
 
-The riddle's second move is the definitional dodge, the one that asks whether you meant a chicken's egg specifically. That version assumes a first chicken existed, one bird standing on the far side of a line its parents were on the near side of. No such bird hatched. Domestication is a process, and the boundary between red junglefowl and chicken is a label applied afterwards to a continuum.
+The riddle's second move is the definitional dodge, the one that asks whether you meant a chicken's egg specifically. That version assumes a first chicken existed, one bird standing on the far side of a line its parents were on the near side of. No such bird hatched. Domestication is a process, and the boundary between red junglefowl and chicken is a label applied afterwards to a continuum, unlike the pet golden hamster, which [traces to a brother and sister mated in Jerusalem in 1930](/blog/where-do-hamsters-come-from/).
 
 The genetics push harder still. Yellow skin in domestic chickens does not trace to the red junglefowl at all. Jonas Eriksson, Greger Larson and colleagues traced the allele to another junglefowl species, most likely the grey junglefowl, *Gallus sonneratii*, and called their result "the first conclusive evidence for a hybrid origin of the domestic chicken" in [PLoS Genetics](https://pmc.ncbi.nlm.nih.gov/articles/PMC2265484/). The chicken is not the tidy descendant of one wild species, which makes a single founding bird harder to imagine than ever.
 

@@ -41,7 +41,7 @@ At a meeting on **September 17, 1956**, attended by Buchholz, Brooks and four ot
 
 ## The word came from bite, and the y was deliberate
 
-The first published use, Buchholz wrote, came in a **June 1959** paper by Gerrit Blaauw, Brooks and himself, "Processing Data in Bits and Pieces." In a 1995 letter to BYTE, Louis G. Dooley wrote that the word "was coined around 1956 to 1957" on SAGE, an air-defense project at MIT Lincoln Laboratory, but his letter cites no document.
+The first published use, Buchholz wrote, came in a **June 1959** paper by Gerrit Blaauw, Brooks and himself, "Processing Data in Bits and Pieces." In a 1995 letter to BYTE, Louis G. Dooley wrote that the word "was coined around 1956 to 1957" on SAGE, an air-defense project at MIT Lincoln Laboratory, but his letter cites no document. The googol has a similar gap: the word reached print in 1938, while [Kasner's relatives placed its coining closer to 1920](/blog/what-is-the-biggest-number/).
 
 *Planning a Computer System*, the 1962 book on Stretch that Buchholz edited, explains the spelling on page 40: "The term is coined from bite, but respelled to avoid accidental mutation to bit."
 

@@ -53,7 +53,7 @@ The war stories all make the same mistake as [the story of American troops in Be
 
 The [American Heritage Dictionary](https://ahdictionary.com/word/search.html?q=gringo) and Etymonline both point to **griego**, Spanish for Greek, and both hedge. The AHD says gringo is possibly an alteration of griego; Etymonline says "perhaps" and warns that "this may be folk etymology". The Real Academia labels the etymology *disc.*, its abbreviation for disputed.
 
-The best evidence survives in the current dictionary: the Real Academia defines gringo as "lenguaje ininteligible", unintelligible language, with griego as a synonym. Its [entry for griego](https://dle.rae.es/griego) defines that word as language "considerado incomprensible" and lists gringo as a synonym. It is the Spanish counterpart of "it's Greek to me."
+The best evidence survives in the current dictionary: the Real Academia defines gringo as "lenguaje ininteligible", unintelligible language, with griego as a synonym. Its [entry for griego](https://dle.rae.es/griego) defines that word as language "considerado incomprensible" and lists gringo as a synonym. It is the Spanish counterpart of "it's Greek to me," the line Casca speaks in Shakespeare's *Julius Caesar* and still English's everyday byword for [the hardest language to learn](/blog/what-is-the-hardest-language-to-learn/).
 
 In 1805 Antonio de Capmany's [French-Spanish dictionary](https://archive.org/details/nuevodiccionario00capm), printed in Madrid, needed Spanish for the French idioms for speech nobody can follow: *parler hebreu, bas-breton, haut-allemand* (to speak Hebrew, Low Breton or High German). It gave *hablar en griego, en guirigay, en gringo*: **to speak Greek, gibberish or gringo**.
 

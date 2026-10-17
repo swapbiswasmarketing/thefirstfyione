@@ -23,7 +23,7 @@ The fish is the beluga sturgeon, *Huso huso*, whose range is now limited to the 
 
 ## Why is caviar so expensive?
 
-Because the supply is throttled at the source. A female beluga sturgeon reaches reproductive capacity at **14 to 20 years of age** and thereafter **reproduces once every 4 to 8 years**, according to the Fish and Wildlife Service. Wild stocks collapsed a century ago, and international trade has been licensed since 1998.
+Because the supply is throttled at the source. A female beluga sturgeon reaches reproductive capacity at **14 to 20 years of age** and thereafter **reproduces once every 4 to 8 years**, according to the Fish and Wildlife Service. Wild stocks collapsed a century ago, and international trade has been licensed since 1998. White truffles are expensive for a similar reason: attempts to [farm them have often failed](/blog/where-do-truffles-grow/), so supply stays low.
 
 ## Maturity is only half the clock
 

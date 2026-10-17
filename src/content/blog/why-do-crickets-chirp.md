@@ -59,7 +59,7 @@ So the arithmetic is species-specific. The rasping field cricket under a porch s
 
 ## Everything that can hear the song is listening
 
-A calling song has to carry. That makes it useful to more than the intended recipient, and on Kauai the extra listener was *Ormia ochracea*, a small parasitoid fly. Zuk, Rotenberry and Tinghitella, [reporting in Biology Letters in 2006](https://pmc.ncbi.nlm.nih.gov/articles/PMC1834006/), note that the fly is North American in origin, uses song to find its hosts, and deposits larvae that "burrow into the cricket and develop inside, killing the host upon emergence". Close to **30% of calling males** on Kauai were carrying it.
+A calling song has to carry. That makes it useful to more than the intended recipient, and on Kauai the extra listener was *Ormia ochracea*, a small parasitoid fly. Zuk, Rotenberry and Tinghitella, [reporting in Biology Letters in 2006](https://pmc.ncbi.nlm.nih.gov/articles/PMC1834006/), note that the fly is North American in origin, uses song to find its hosts, and deposits larvae that "burrow into the cricket and develop inside, killing the host upon emergence". Close to **30% of calling males** on Kauai were carrying it. Visual signals leak the same way: on small Bahamian islands with an introduced predatory lizard, male brown anoles [made their head-bob displays smaller](/blog/why-do-lizards-do-push-ups/).
 
 ## Kauai switched the song off in 12 to 20 generations
 

@@ -49,7 +49,7 @@ Not one line proposes moving a clock. History.com states the misattribution plai
 
 ## The same 1918 act drew America's time zones
 
-The statute that gave the United States daylight saving is titled "An Act to preserve daylight and provide standard time for the United States", and it did both jobs in one text. The Congressional Research Service records that the 1918 law, also called the Calder Act, established **five standard time zones** for the continental United States and Alaska and set the summer clock change alongside them. The railroads had run on four standard time zones of their own since **1883**, and the act put future boundary changes in the hands of the **Interstate Commerce Commission**.
+The statute that gave the United States daylight saving is titled "An Act to preserve daylight and provide standard time for the United States", and it did both jobs in one text. The Congressional Research Service records that the 1918 law, also called the Calder Act, established **five standard time zones** for the continental United States and Alaska and set the summer clock change alongside them. The railroads had run on four standard time zones of their own since **1883**, and the act put future boundary changes in the hands of the **Interstate Commerce Commission**. Zones are the reason 12:00 on a modern clock comes from the time zone rather than [the sun's midday](/blog/what-does-am-stand-for/), and daylight saving moves solar noon an hour later on the clock.
 
 > When the farm lobby won in 1919, it repealed only the daylight saving section. The zones stayed. Eastern, Central, Mountain and Pacific are the surviving half of the same law that produced the clock change everyone credits to farming.
 

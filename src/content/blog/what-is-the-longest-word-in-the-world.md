@@ -51,7 +51,7 @@ Dictionaries followed the newspapers. By 1939 the word was in the New Words sect
 
 ## Titin's name is a formula with no fixed length
 
-Titin is a giant muscle protein, and its chemical name strings its amino acids together in order, from methionyl at the start to isoleucine at the end. Oxford's language experts set out where such names stand on their [AskOxford site](https://web.archive.org/web/20080913173417/http://www.askoxford.com/asktheexperts/faq/aboutwords/longestword): "The formal names of chemical compounds are almost unlimited in length," and "Dictionary writers tend to regard such names as 'verbal formulae', rather than as English words."
+Titin is a giant muscle protein, and its chemical name strings its amino acids together in order, from methionyl at the start to isoleucine at the end. Oxford's language experts set out where such names stand on their [AskOxford site](https://web.archive.org/web/20080913173417/http://www.askoxford.com/asktheexperts/faq/aboutwords/longestword): "The formal names of chemical compounds are almost unlimited in length," and "Dictionary writers tend to regard such names as 'verbal formulae', rather than as English words." Counting has the same problem in a purer form: there is [no biggest number](/blog/what-is-the-biggest-number/), because adding 1 to any number gives a bigger one.
 
 Titin comes in several sizes, each with its own name. The [189,819-letter version on Wiktionary](https://en.wiktionary.org/wiki/Appendix:Protologisms/Long_words/Titin) spells out a form of **26,926 amino acids**, the length of the small N2-B form found in heart muscle.
 

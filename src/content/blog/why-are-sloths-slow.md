@@ -68,7 +68,7 @@ None of that makes a sloth feeble. A 2026 Journal of Anatomy analysis of Hoffman
 
 The Smithsonian's National Zoo page on the southern two-toed sloth states that sloths are "primarily nocturnal, sleeping for 15 hours during the day and waking up at night to eat." The figure has a real measurement behind it: sloths in captivity had been clocked at **15.85 hours of sleep a day**.
 
-Niels Rattenborg and colleagues tested it. In **Biology Letters** in 2008 they published the first EEG recordings of sleep in unrestricted animals in the wild, using a miniaturised recorder on three adult female brown-throated three-toed sloths in the canopy at Barro Colorado Island. The wild sloths slept 9.63 hours a day, over six hours less than previously reported in captivity.
+Niels Rattenborg and colleagues tested it. In **Biology Letters** in 2008 they published the first EEG recordings of sleep in unrestricted animals in the wild, using a miniaturised recorder on three adult female brown-throated three-toed sloths in the canopy at Barro Colorado Island. The wild sloths slept 9.63 hours a day, over six hours less than previously reported in captivity. Better instruments have cut down other famous animal numbers the same way, among them [the sailfish's 68 mph](/blog/what-is-the-fastest-fish/).
 
 > The sleepiest-mammal statistic was recorded on captive sloths. When Rattenborg's team carried the electrodes up into the canopy, six of those hours went away.
 

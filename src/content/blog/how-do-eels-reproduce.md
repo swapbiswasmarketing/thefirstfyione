@@ -21,7 +21,7 @@ faqs:
 
 In 1876, a young medical student named Sigmund Freud stood at a research bench in Trieste with a scalpel, a microscope, and a simple assignment: find the testes of an eel. He dissected **400 of them**. He found nothing. The future theorist of human sexuality began his career defeated by the sex life of a fish, and he was in excellent company.
 
-Because here is the strange truth: science has still never watched eels do it.
+Because here is the strange truth: science has still never watched eels do it, though it has filmed [earthworms mating in the laboratory](/blog/how-do-worms-reproduce/).
 
 ## How do eels reproduce?
 

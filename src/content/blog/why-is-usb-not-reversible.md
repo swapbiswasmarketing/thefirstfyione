@@ -49,7 +49,7 @@ Wikipedia's article on [USB hardware](https://en.wikipedia.org/wiki/USB_hardware
 
 **"By design, it is difficult to insert a USB plug into its receptacle incorrectly."**
 
-The same passage reports the official remedy: "The USB specification requires that the cable plug and receptacle be marked so the user can recognize the proper orientation." A mechanical problem was handed a documentation solution, and the human race has been overruling it ever since.
+The same passage reports the official remedy: "The USB specification requires that the cable plug and receptacle be marked so the user can recognize the proper orientation." A mechanical problem was handed a documentation solution, and the human race has been overruling it ever since. Television sellers lived with a marking rule of their own for half a century: from 1966 to 2019, a US federal rule let them quote [a screen's diagonal only with a label saying so](/blog/how-are-tvs-measured/) beside the number.
 
 ## The rock star in the 2009 advert is an actor
 

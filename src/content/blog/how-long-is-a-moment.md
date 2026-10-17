@@ -29,7 +29,7 @@ But the real story is how that number was made, and what it was made of.
 
 ## The monk who put a number on it
 
-Bede spent much of his life on a problem that sounds simple and is not: figuring out exactly when Easter should fall. That calculation, called computus, forced medieval scholars to become obsessive about slicing time into ever-smaller named pieces.
+Bede spent much of his life on a problem that sounds simple and is not: figuring out exactly [when Easter should fall](/blog/why-does-easter-change-every-year/). That calculation, called computus, forced medieval scholars to become obsessive about slicing time into ever-smaller named pieces.
 
 Bede's system carved the hour into a full set of subdivisions: **4 puncta, 10 minuta, 15 partes, or 40 momenta**. The momentum, the moment, was among the finest practical cuts, the smallest span a working timekeeper could actually point to.
 

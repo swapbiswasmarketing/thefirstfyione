@@ -33,7 +33,7 @@ The basic requirement, in NOAA's [geomagnetism FAQ](https://www.ncei.noaa.gov/pr
 
 Magnet poles were named for what they do. Hang a magnet freely and one end turns north, so the two ends became the north and south poles, "or more properly, north-seeking and south-seeking poles," as the OpenStax [College Physics](https://openstax.org/books/college-physics-2e/pages/22-1-magnets) textbook puts it.
 
-Compasses were in use before magnetism was fully understood, the University of Colorado's [geomagnetism group](https://geomag.colorado.edu/historical-main-field-change-and-declination) notes. The needle's ends already had their names, and the magnetic pole near the geographic North Pole was called north too, for where it lies. In physics terms it is a **south magnetic pole**, where magnetic field lines enter the Earth, and convention keeps the name "irregardless of the physics."
+Compasses were in use before magnetism was fully understood, the University of Colorado's [geomagnetism group](https://geomag.colorado.edu/historical-main-field-change-and-declination) notes. The needle's ends already had their names, and the magnetic pole near the geographic North Pole, [Santa's address in American tradition since at least 1866](/blog/where-does-santa-live/), was called north too, for where it lies. In physics terms it is a **south magnetic pole**, where magnetic field lines enter the Earth, and convention keeps the name "irregardless of the physics."
 
 The field also slants into the ground in the north: at the north magnetic pole, the north end of a dip needle points straight down. Compasses built for the northern hemisphere therefore carry a small weight on the south end of the needle to hold it level, and southern-hemisphere models carry it on the north end.
 
@@ -55,7 +55,7 @@ Magnetic storms can swing the needle within hours, worst at northern latitudes, 
 
 ## The earliest clear description already saw the needle miss due south
 
-By Joseph Needham's reckoning in *Science and Civilisation in China*, the earliest clear description of a magnetic needle compass in any language is in the *Dream Pool Essays* of the Song-dynasty statesman Shen Kuo, written around **1088**. In Needham's translation, a needle rubbed with lodestone "is able to point to the south. But it always inclines slightly to the east, and does not point directly at the south." Shen advised hanging it from "a single cocoon fibre of new silk."
+By Joseph Needham's reckoning in *Science and Civilisation in China*, a history that also [dates dark quartz spectacles to the Ming dynasty](/blog/when-were-sunglasses-invented/), the earliest clear description of a magnetic needle compass in any language is in the *Dream Pool Essays* of the Song-dynasty statesman Shen Kuo, written around **1088**. In Needham's translation, a needle rubbed with lodestone "is able to point to the south. But it always inclines slightly to the east, and does not point directly at the south." Shen advised hanging it from "a single cocoon fibre of new silk."
 
 Needham called that "a clear statement of the magnetic declination," four centuries before 1492, the traditional date of its discovery by Columbus. Europe caught on before Columbus: by about 1450, Needham found, German makers of compass sundials were already marking the declination on their dials.
 

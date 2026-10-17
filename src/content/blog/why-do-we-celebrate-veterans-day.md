@@ -41,7 +41,7 @@ Men kept dying until the deadline: the American author Joseph Persico has calcul
 
 ## The peace treaty came in 1919, or 1921 for the United States
 
-Calling November 11 the end of World War I is a shorthand. An armistice is a temporary cessation of hostilities, and the [VA's history of the holiday](https://department.va.gov/veterans-day/history-of-veterans-day/) dates the official end of the war to the Treaty of Versailles, signed on **June 28, 1919**. That treaty took effect on January 10, 1920.
+Calling November 11 the end of World War I is a shorthand. An armistice is a temporary cessation of hostilities, and the [VA's history of the holiday](https://department.va.gov/veterans-day/history-of-veterans-day/) dates the official end of the war to the Treaty of Versailles, signed on **June 28, 1919**. That treaty took effect on January 10, 1920. Older November 11ths in American history need a correction of their own: the Mayflower Compact is dated 11 November 1620 on the old Julian calendar, which puts [the Pilgrims' signing at Cape Cod](/blog/when-did-the-mayflower-land/) on 21 November by today's count.
 
 The United States never ratified that treaty. It fell seven votes short in the Senate on March 19, 1920, and the US signed its own peace with Germany, the Treaty of Berlin, on **August 25, 1921**, according to the State Department's [Office of the Historian](https://history.state.gov/milestones/1914-1920/paris-peace).
 

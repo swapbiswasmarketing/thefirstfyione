@@ -33,7 +33,7 @@ A worker honey bee dies after stinging a mammal because the sting is barbed and 
 
 James Dorey, Amy-Marie Gilpin and Rosalyn Gloag laid out the arithmetic in [The Conversation](https://theconversation.com/most-bees-dont-die-after-stinging-and-other-surprising-bee-facts-227162) in April 2024: "Only eight out of almost 21,000 bee species in the world die when they sting." Those eight are the honey bees, genus Apis. For **99.96% of bee species**, dying is not what stinging does.
 
-The rest of the roll call is odder than the headline. **537 species**, about 2.6% of all bees, are the stingless bees of the tribe Meliponini. Hundreds of other species have given up stinging entirely, and the vast majority of bees are solitary rather than social, so most of the world's bees have no colony to die for in the first place.
+The rest of the roll call is odder than the headline. **537 species**, about 2.6% of all bees, are the stingless bees of the tribe Meliponini. The same article counts 11 stingless species in Australia that "can also be kept in hives and make honey," a food the honey bees make [by drying nectar rather than digesting it](/blog/how-do-bees-make-honey/). Hundreds of other species have given up stinging entirely, and the vast majority of bees are solitary rather than social, so most of the world's bees have no colony to die for in the first place.
 
 | Bee | Can it sting you? | Does it die? |
 |---|---|---|
@@ -44,7 +44,7 @@ The rest of the roll call is odder than the headline. **537 species**, about 2.6
 
 ## The barb only bites into skin that stretches
 
-The sting is a stylet flanked by two barbed lancets that walk themselves into a wound, one side catching while the other slides forward. Reviewing sting morphology across the social wasps in the journal [Insects](https://pmc.ncbi.nlm.nih.gov/articles/PMC8397143/) in 2021, Bissessarsingh and Starr describe what heavy barbing buys: it "increases the likelihood of the stinger remaining fatally embedded in the skin of a vertebrate adversary". The same review records the exception in a single line, crediting Tautz with the observation that a honey bee can withdraw the stinger after stinging an arthropod.
+The sting is a stylet flanked by two barbed lancets that walk themselves into a wound, one side catching while the other slides forward. Reviewing sting morphology across the social wasps, insects that [make the paper of their nests from wood](/blog/how-is-paper-made/), in the journal [Insects](https://pmc.ncbi.nlm.nih.gov/articles/PMC8397143/) in 2021, Bissessarsingh and Starr describe what heavy barbing buys: it "increases the likelihood of the stinger remaining fatally embedded in the skin of a vertebrate adversary". The same review records the exception in a single line, crediting Tautz with the observation that a honey bee can withdraw the stinger after stinging an arthropod.
 
 Whether that makes the barb a weapon aimed at vertebrates or an accident of geometry is not settled. Bissessarsingh and Starr report Tautz's reading that the bee's inability to withdraw from a vertebrate may be an evolutionary mistake, while the barbs themselves look like equipment for exactly that fight. Questions carry assumptions, and this one carries a shaky assumption, which puts it in the company of [the riddle about the raven and the writing desk](/blog/why-is-a-raven-like-a-writing-desk/).
 

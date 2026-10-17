@@ -29,7 +29,7 @@ The Minnesota Vikings, [named partly to reflect Minnesota's Scandinavian America
 
 ## The toast is named after a shared bowl
 
-[Etymonline](https://www.etymonline.com/word/skoal) traces skoal, "also skol", to Danish *skaal*, "a toast," literally "bowl, cup", and, citing the OED, says it "might have been popularized or introduced by the visit of James VI of Scotland to Denmark in 1589." The [Dictionary of the Older Scottish Tongue](https://dsl.ac.uk/entry/dost/scoll_n) quotes a Scots poem of **about 1590**, "we drink such scoles", and marks the word as Scottish only until the 19th century.
+[Etymonline](https://www.etymonline.com/word/skoal) traces skoal, "also skol", to Danish *skaal*, "a toast," literally "bowl, cup", and, citing the OED, says it "might have been popularized or introduced by the visit of James VI of Scotland to Denmark in 1589." The [Dictionary of the Older Scottish Tongue](https://dsl.ac.uk/entry/dost/scoll_n) quotes a Scots poem of **about 1590**, "we drink such scoles", and marks the word as Scottish only until the 19th century. The three languages that share the toast also share a place in the US State Department's easiest group for English speakers, at 24 weeks of class each, though [its 1993 scores expected Americans to speak Danish less well than Swedish or Norwegian](/blog/what-is-the-hardest-language-to-learn/).
 
 "It means bowl," Gregg White, who teaches Swedish at the American Swedish Institute, told [CBS Minnesota](https://www.cbsnews.com/minnesota/news/what-does-skol-actually-mean/), describing the custom behind it: the first person picked up the bowl, took a sip, said the word and passed it to the next.
 

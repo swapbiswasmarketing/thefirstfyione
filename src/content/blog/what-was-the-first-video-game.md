@@ -48,7 +48,7 @@ Bertie the Brain stood four metres tall in the Engineering Building at the Canad
 
 Ferranti's Nimrod was twelve feet wide, appeared at the Festival of Britain on **5 May 1951**, and played only Nim. Players pressed buttons that corresponded to lights. Both machines existed to make a company look clever, and both spelled out their game in bulbs.
 
-OXO, in 1952, is the first of the group to put its board on a cathode ray tube under stored-program control. Alexander Douglas wrote it for EDSAC at Cambridge, and the player picked a square with a rotary telephone dial.
+OXO, in 1952, is the first of the group to put its board on a cathode ray tube under stored-program control, the kind of tube whose round early screens [may explain why TVs are still measured diagonally](/blog/how-are-tvs-measured/). Alexander Douglas wrote it for EDSAC at Cambridge, and the player picked a square with a rotary telephone dial.
 
 ## The 1947 patent stuck its targets to the glass
 

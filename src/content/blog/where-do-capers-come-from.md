@@ -41,7 +41,7 @@ Because the buds are small and delicate, "they have to be harvested individually
 
 > "Harvesting labor is what makes capers expensive," the University of Wisconsin's extension page says.
 
-Size sets the value. In Italy capers are graded from **7 to 16**, their size in millimeters, and Purdue's factsheet says buds under a centimeter across are worth more than the larger grades. Other kitchen crops share the bottleneck: Ceylon cinnamon is [peeled from the stem by hand](/blog/how-is-cinnamon-made/), and US [sesame](/blog/where-do-sesame-seeds-come-from/) could not be harvested without hand labor until 1982.
+Size sets the value. In Italy capers are graded from **7 to 16**, their size in millimeters, and Purdue's factsheet says buds under a centimeter across are worth more than the larger grades. Other kitchen crops share the bottleneck: Ceylon cinnamon is [peeled from the stem by hand](/blog/how-is-cinnamon-made/), and US [sesame](/blog/where-do-sesame-seeds-come-from/) could not be harvested without hand labor until 1982. Oxtail is capped the other way: each animal has one tail, so [its supply follows the slaughter count](/blog/where-do-oxtails-come-from/) rather than the hours of picking.
 
 ## The bite is the bud's own mustard oil
 
