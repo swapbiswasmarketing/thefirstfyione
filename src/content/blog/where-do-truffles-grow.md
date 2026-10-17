@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-120"
+almanac: "Italy wrote the dog into its national truffle law."
 featured: false
 faqs:
   - q: "Why do truffles grow underground?"

@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-065"
+almanac: "The Roman Empire itself carried on in the east, ruled from Constantinople, until Ottoman forces under Sultan Mehmed II took the city on 29 May 1453."
 featured: false
 faqs:
   - q: "When did Rome fall?"

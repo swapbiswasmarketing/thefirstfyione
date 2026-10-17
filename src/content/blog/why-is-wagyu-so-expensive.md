@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-094"
+almanac: "Kobe beef does not even need A5."
 featured: false
 faqs:
   - q: "What is wagyu beef?"

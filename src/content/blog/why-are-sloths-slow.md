@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-015"
+almanac: "Wild brown-throated three-toed sloths sleep 9.63 hours a day."
 featured: false
 faqs:
   - q: "Why are sloths so slow?"

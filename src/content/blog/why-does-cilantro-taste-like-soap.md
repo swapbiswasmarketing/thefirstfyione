@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-076"
+almanac: "When 23andMe asked its customers \"Does fresh cilantro taste like soap to you?\", 12.4% of the 18,495 who answered yes or no said yes."
 featured: false
 faqs:
   - q: "What percentage of people think cilantro tastes like soap?"

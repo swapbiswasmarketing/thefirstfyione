@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "curiosity"
 readingTime: "4 min read"
 filecode: "FYI-029"
+almanac: "Spotted hyenas giggle mostly during food fights, and the call signals frustration and submission rather than amusement."
 featured: false
 faqs:
   - q: "Why do hyenas laugh?"

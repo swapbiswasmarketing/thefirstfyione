@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-110"
+almanac: "The paper of a US dollar bill is 75 percent cotton and 25 percent linen."
 featured: false
 faqs:
   - q: "What is paper made of?"

@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-096"
+almanac: "The battle for Kota Bharu, in British Malaya, began more than an hour before the attack on Pearl Harbor started."
 featured: false
 faqs:
   - q: "What was Japan's goal in attacking Pearl Harbor?"

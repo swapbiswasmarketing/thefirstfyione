@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-051"
+almanac: "Federal doctrine now presses police to drop 10-4 on the radios it was written for."
 featured: false
 faqs:
   - q: "What does 10-4 mean?"

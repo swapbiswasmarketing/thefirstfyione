@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-060"
+almanac: "A sail is the same length on both sides and still lifts, because it is curved when rigged."
 featured: false
 faqs:
   - q: "How do planes fly?"

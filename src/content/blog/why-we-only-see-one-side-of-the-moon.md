@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-016"
+almanac: "A Moon that had stopped rotating would show Earth every side of itself once a month."
 featured: false
 faqs:
   - q: "Why do we only see one side of the Moon?"

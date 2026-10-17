@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-086"
+almanac: "In 1985 a compass over most of Alaska pointed between 20 and 30 degrees east of true north."
 featured: false
 faqs:
   - q: "Does a compass point to true north?"

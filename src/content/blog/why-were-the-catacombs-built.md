@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "history"
 readingTime: "4 min read"
 filecode: "FYI-031"
+almanac: "In 1774, three hundred metres of a public road on the southern edge of Paris stopped being a road."
 featured: false
 faqs:
   - q: "Why were the catacombs built?"

@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "curiosity"
 readingTime: "4 min read"
 filecode: "FYI-030"
+almanac: "Cricket ears sit on the tibia of the front legs, so a cricket hears the world through its knees."
 featured: false
 faqs:
   - q: "Why do crickets chirp?"

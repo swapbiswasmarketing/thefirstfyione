@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-064"
+almanac: "Until the last planned hold is over, a T-minus reading is shorter than the real time left to liftoff."
 featured: false
 faqs:
   - q: "What does T-minus mean?"

@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-115"
+almanac: "The cheetah's 25.9 m/s is about three times the sailfish's estimated limit of 8.3 meters per second."
 featured: false
 faqs:
   - q: "What is the fastest fish in the ocean?"

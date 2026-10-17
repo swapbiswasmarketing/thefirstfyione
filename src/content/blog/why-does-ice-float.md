@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "everyday"
 readingTime: "4 min read"
 filecode: "FYI-047"
+almanac: "Build the water out of deuterium instead of ordinary hydrogen and the ice sinks at ordinary pressure."
 featured: false
 faqs:
   - q: "Why does ice float on water?"

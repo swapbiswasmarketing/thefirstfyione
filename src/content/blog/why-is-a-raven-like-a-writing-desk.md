@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "curiosity"
 readingTime: "4 min read"
 filecode: "FYI-026"
+almanac: "Carroll wrote a joke that performs its own punchline, published it thirty-one years late, and lost it to a proofreader doing his job properly."
 featured: false
 faqs:
   - q: "Why is a raven like a writing desk?"

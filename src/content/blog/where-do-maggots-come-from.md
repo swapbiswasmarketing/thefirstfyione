@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-090"
+almanac: "Many flesh flies skip egg-laying and deposit live maggots instead."
 featured: false
 faqs:
   - q: "Can maggots appear without flies?"

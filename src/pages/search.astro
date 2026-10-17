@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SearchResults from "../components/SearchResults.astro";
+import { getEntries } from "../lib/entries";
+import { pageCard } from "../lib/og";
+
+/* A results page for whatever was typed is thin by definition, so /search/ is
+   noindex (and kept out of the sitemap). The form is a plain GET, so ?q= links
+   work; the searching itself happens in the browser, through Pagefind. */
+const entries = await getEntries();
+const tries = ["honey", "cats", "Rome", "moon"];
+
+/* Runs before anything below it is parsed: with a query in the address, the
+   page paints straight into its results layout (suggestions hidden, room held
+   for the rows) instead of shifting once the index answers. */
+const prepaint =
+  `(function(){try{var q=new URLSearchParams(location.search).get("q")||"";` +
+  `if(q.trim().length>1)document.documentElement.setAttribute("data-sq","")}catch(e){}})();`;
+---
+
+<Layout
+  title="Search the Archive - Strictly FYI"
+  description="Search every Strictly FYI entry: the questions, the answers and the queries filed with them, across science, history, tech, culture and everyday life."
+  card={pageCard("search")}
+  noindex
+>
+  <div class="search wrap">
+    <script is:inline set:html={prepaint}></script>
+    <header class="se-head">
+      <p class="se-kicker">Search &middot; {entries.length} entries on file</p>
+      <h1 class="se-title">Find it in the <span class="hl-live">archive</span>.</h1>
+      <p class="se-dek">
+        Every entry is searchable in full: the question, the answer and the queries filed with it.
+      </p>
+    </header>
+
+    <form class="se-form" role="search" action="/search/" method="get">
+      <label class="se-label" for="q">Search the archive</label>
+      <div class="se-row">
+        <input
+          id="q"
+          name="q"
+          type="search"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          enterkeyhint="search"
+          placeholder="Why do owls hoot?"
+        />
+        <button class="btn btn-solid" type="submit">Search</button>
+      </div>
+    </form>
+
+    <noscript>
+      <p class="se-noscript">
+        Search runs in the browser, so it needs JavaScript. Without it, the <a href="/blog/">archive</a> lists
+        every entry newest first, and each <a href="/topics/">department</a> has a page of its own.
+      </p>
+    </noscript>
+
+    <p class="se-try" data-sr-idle>
+      Try
+      {tries.map((t, i) => (
+        <>
+          <a href={`/search/?q=${encodeURIComponent(t)}`} data-sr-try={t}>{t}</a>{i < tries.length - 2 ? ", " : i === tries.length - 2 ? " or " : "."}
+        </>
+      ))}
+    </p>
+
+    <SearchResults mode="form" input="q" />
+  </div>
+</Layout>
+
+<style>
+  .search { padding-top: clamp(1.75rem, 5vw, 3rem); }
+
+  .se-kicker {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .se-title {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.4rem, 7vw, 5rem); line-height: 0.98; letter-spacing: -0.025em;
+    margin: 0.55rem 0 0;
+  }
+  .se-dek {
+    font-family: var(--serif); font-size: clamp(1.05rem, 2vw, 1.25rem);
+    color: var(--ink-soft); max-width: 32rem; margin-top: 0.9rem; line-height: 1.5;
+  }
+
+  /* -------- THE BOX -------- */
+  .se-form { margin-top: clamp(1.75rem, 4vw, 2.5rem); max-width: 46rem; }
+  .se-label {
+    display: block; margin-bottom: 0.35rem;
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .se-row { display: flex; align-items: flex-end; gap: 0.75rem 1rem; }
+  .se-row input {
+    flex: 1 1 auto; min-width: 0;
+    -webkit-appearance: none; appearance: none;
+    border: none; border-bottom: 1.5px solid var(--ink); border-radius: 0; background: transparent;
+    padding: 0.45rem 0; color: var(--ink);
+    font-family: var(--display); font-size: clamp(1.35rem, 3vw, 1.8rem); line-height: 1.2;
+  }
+  .se-row input::placeholder { color: var(--ink-faint); opacity: 1; }
+  .se-row .btn { flex: none; }
+
+  .se-noscript, .se-try {
+    margin-top: 0.9rem;
+    font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--ink-soft);
+  }
+  .se-noscript a, .se-try a { color: var(--ink); transition: background var(--t-hover) var(--ease-out); }
+  .se-try[hidden] { display: none; }
+  :global(html[data-sq]) .se-try { display: none; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .se-noscript a:hover, .se-try a:hover { background: var(--hl); }
+  }
+
+  @media (max-width: 520px) {
+    .se-row .btn { padding-inline: 1rem; }
+  }
+</style>

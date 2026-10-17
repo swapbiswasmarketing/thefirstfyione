@@ -5,6 +5,7 @@ pubDate: 2026-06-16
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-003"
+almanac: "When archaeologists opened ancient Egyptian tombs, they found pots of honey thousands of years old that were reportedly still edible."
 featured: false
 faqs:
   - q: "Why does honey never spoil?"

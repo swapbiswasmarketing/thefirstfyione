@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "culture"
 readingTime: "4 min read"
 filecode: "FYI-041"
+almanac: "By 1796 a cock-tail was a horse with a docked tail."
 featured: false
 faqs:
   - q: "Why are cocktails called cocktails?"

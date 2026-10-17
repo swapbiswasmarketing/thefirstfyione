@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "curiosity"
 readingTime: "4 min read"
 filecode: "FYI-099"
+almanac: "An 1821 article on growing tobacco in the Baltimore farm paper American Farmer recommended raising turkeys to eat the worms."
 featured: false
 faqs:
   - q: "What is a group of turkeys called?"

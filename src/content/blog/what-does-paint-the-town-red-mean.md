@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-078"
+almanac: "The Marquis of Waterford and his friends really did paint doors, a watchman and an inn sign red."
 featured: false
 faqs:
   - q: "Where does the phrase paint the town red come from?"

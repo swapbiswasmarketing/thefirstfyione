@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-097"
+almanac: "The shape of the real oceans and their friction hold back the peak, so the biggest tides arrive one to two days after new or full moon."
 featured: false
 faqs:
   - q: "What causes a spring tide?"

@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-025"
+almanac: "Oregon's whale was blown up on purpose."
 featured: false
 faqs:
   - q: "Why do whales explode?"

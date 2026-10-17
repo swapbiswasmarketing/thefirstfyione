@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-061"
+almanac: "A grandparent's first cousin averages 221 cM against a second cousin's 229, so DNA alone cannot always tell which one a match is."
 featured: false
 faqs:
   - q: "How do you determine 1st, 2nd, and 3rd cousins?"

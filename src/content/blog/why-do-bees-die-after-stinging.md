@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "science"
 readingTime: "4 min read"
 filecode: "FYI-019"
+almanac: "A honey bee's sting behaves less like a needle and more like a screw that drives itself."
 featured: false
 faqs:
   - q: "Why do bees die after stinging?"

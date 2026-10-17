@@ -5,6 +5,7 @@ pubDate: 2026-08-28
 category: "everyday"
 readingTime: "4 min read"
 filecode: "FYI-011"
+almanac: "A candle actually burns wax vapor, a few millimeters above the liquid."
 featured: false
 faqs:
   - q: "Where does the wax go when you burn a candle?"

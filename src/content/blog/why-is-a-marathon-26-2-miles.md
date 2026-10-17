@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-119"
+almanac: "Herodotus, the main source for the battle of Marathon in 490 BC, does describe a long run, but from Athens to Sparta, before the fighting."
 featured: false
 faqs:
   - q: "Did Pheidippides really run from Marathon to Athens?"

@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-108"
+almanac: "Keller owed her turn at the wheel to the Pope."
 featured: false
 faqs:
   - q: "Did Helen Keller really fly a plane?"

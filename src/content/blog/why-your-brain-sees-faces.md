@@ -5,6 +5,7 @@ pubDate: 2026-06-24
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-002"
+almanac: "Newborns preferentially look at face-like patterns within hours of birth, before they've learned what a face even is."
 featured: false
 faqs:
   - q: "Why do I see faces in objects?"

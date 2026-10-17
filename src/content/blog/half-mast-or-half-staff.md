@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "history"
 readingTime: "4 min read"
 filecode: "FYI-038"
+almanac: "A flag at half-staff is never run straight up to the middle of the pole."
 featured: false
 faqs:
   - q: "Why is it called half mast instead of half staff?"

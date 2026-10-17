@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "culture"
 readingTime: "4 min read"
 filecode: "FYI-040"
+almanac: "A radio carried only by police had little use for a code meaning police."
 featured: false
 faqs:
   - q: "Why are police called 12?"

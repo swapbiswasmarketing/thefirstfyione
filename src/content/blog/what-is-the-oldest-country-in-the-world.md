@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-089"
+almanac: "Japan still marks Jimmu's legendary accession every February 11, as National Foundation Day."
 featured: false
 faqs:
   - q: "What was the first country in the world?"

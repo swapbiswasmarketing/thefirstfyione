@@ -1,0 +1,164 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { contactEmail, consentDefaults, clarityEnabled, newsletterLive, SITE_URL } from "../data/site";
+import { pageNode } from "../lib/schema";
+import { pageCard } from "../lib/og";
+
+/* Bump by hand whenever a section below changes meaning. The sections are
+   driven by the same constants that switch the behaviour on (src/data/site.ts),
+   so the page cannot describe a tag the site does not run, or miss one it does,
+   as long as every new tag in the GTM container also gets a line here
+   (see CONSENT.md). */
+const lastUpdated = "October 17, 2026";
+
+const url = `${SITE_URL}/privacy/`;
+const description =
+  "What Strictly FYI collects when you read it: Google Analytics through Tag Manager, Vercel hosting logs, and what changes for readers in the EEA, UK and Switzerland.";
+---
+
+<Layout
+  title="Privacy - Strictly FYI"
+  description={description}
+  card={pageCard("privacy")}
+  contentGroup="About"
+  schema={[pageNode("WebPage", url, "Privacy", description)]}
+>
+  <article class="priv wrap">
+    <header class="pv-head">
+      <p class="pv-kicker">The fine print &middot; Last updated {lastUpdated}</p>
+      <h1 class="pv-title">Privacy</h1>
+      <p class="pv-dek">
+        Strictly FYI is a reading site. It has no accounts, no comments and no ads, and it sets no cookies of its own.
+        What is collected comes from the hosting logs and the analytics tag described below, and from any email
+        you send.
+      </p>
+    </header>
+
+    <div class="pv-body">
+      <section>
+        <h2>Who runs this site</h2>
+        <p>
+          Strictly FYI is an independent publication. For anything on this page, including a request about your
+          data, write to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Hosting</h2>
+        <p>
+          The site is served by Vercel. Like any web host, Vercel receives your IP address and browser details with
+          each request in order to deliver the page and protect the service, and keeps them in its logs for a short
+          period. The fonts and the search index are served from this site, so reading an entry sends no request to a
+          font or search provider.
+        </p>
+      </section>
+
+      <section>
+        <h2>Analytics</h2>
+        <p>
+          Google Tag Manager loads Google Analytics 4, which records which pages are read, where a visit came from,
+          approximate location derived from the IP address (Google Analytics does not store the address itself),
+          device and browser type, and these interactions: how far an entry was read; which FAQ answers were opened;
+          which links were followed from the front page and from an entry's See also list; the archive's department
+          filter; the random-file, feed, share and search buttons; links followed to other sites, such as an
+          entry's sources; the words typed into this site's search box; and the address of any page that was not
+          found, with the words searched for it. Nothing typed into an email field is ever sent to analytics.
+        </p>
+        <p>
+          Google Analytics sets two cookies, <code>_ga</code> and <code>_ga_&lt;id&gt;</code>, which identify a
+          browser across visits for up to two years. Event data is kept for the retention period set in the
+          Analytics property, which Google limits to at most 14 months. How Google uses this data is set out in
+          <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or
+          apps that use our services</a>. You can block it with any content blocker or with Google's
+          <a href="https://tools.google.com/dlpage/gaoptout">opt-out browser add-on</a>.
+        </p>
+        {clarityEnabled && (
+          <p>
+            Microsoft Clarity records session replays and heatmaps: how the page was scrolled, clicked and resized. It
+            receives your IP address and browser details and sets the <code>_clck</code> and <code>_clsk</code>
+            cookies. Text you type into fields is masked. Microsoft's terms are in the
+            <a href="https://privacy.microsoft.com/privacystatement">Microsoft Privacy Statement</a>.
+          </p>
+        )}
+      </section>
+
+      {consentDefaults && (
+        <section>
+          <h2>Visitors in the EEA, the UK and Switzerland</h2>
+          <p>
+            For readers in these regions, analytics storage is switched off before any tag loads. Google Analytics
+            sets no cookies and reads none on your device{clarityEnabled ? ", and session recording does not run" : ""}.
+            Google's tags may still send a cookieless signal with no identifier, which Google uses only for
+            aggregate measurement. That is why there is no consent banner: analytics stays off in these regions
+            instead of asking.
+          </p>
+        </section>
+      )}
+
+      {newsletterLive && (
+        <section>
+          <h2>The newsletter</h2>
+          <p>
+            If you subscribe, your email address is sent to Kit (kit.com), which stores the list, sends the
+            confirmation email and the newsletter, and records opens and clicks. Every email carries an unsubscribe
+            link, and unsubscribing removes you from future sends.
+          </p>
+        </section>
+      )}
+
+      <section>
+        <h2>Email</h2>
+        <p>
+          If you write to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>, the message is kept for as long as it is
+          needed to answer it and to keep a record of corrections.
+        </p>
+      </section>
+
+      <section>
+        <h2>Your rights</h2>
+        <p>
+          Depending on where you live, you can ask what data about you is held, ask for it to be corrected or
+          deleted, and object to its use. Write to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. Readers in
+          the EEA, the UK and Switzerland can also complain to their national data protection authority. Analytics data is
+          processed by Google in the United States.
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .priv { padding-top: clamp(1.75rem, 5vw, 3rem); }
+  .pv-kicker {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .pv-title {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.4rem, 7vw, 4.6rem); line-height: 0.96; letter-spacing: -0.03em;
+    margin: 0.6rem 0 0;
+  }
+  .pv-dek {
+    font-family: var(--serif); font-style: italic; color: var(--ink-soft);
+    font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.45; max-width: 36rem; margin: 1rem 0 0;
+  }
+  .pv-body { border-top: 1px solid var(--ink); margin-top: 1.8rem; max-width: 40rem; }
+  .pv-body section { padding: 1.4rem 0 0.4rem; border-bottom: 1px solid var(--rule); }
+  .pv-body section:last-child { border-bottom: none; }
+  .pv-body h2 {
+    font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+    line-height: 1.1; margin: 0 0 0.6rem;
+  }
+  .pv-body p {
+    font-family: var(--serif); font-size: 1.1rem; line-height: 1.65; color: #24252b; margin: 0 0 1rem;
+  }
+  .pv-body a {
+    text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.16em;
+    text-decoration-color: var(--rule-mid);
+    transition: background var(--t-hover) var(--ease-out);
+  }
+  .pv-body code { font-family: var(--mono); font-size: 0.85em; background: var(--paper-deep); padding: 0.1em 0.3em; }
+  @media (hover: hover) and (pointer: fine) {
+    .pv-body a:hover { background: var(--hl); text-decoration-color: var(--ink); }
+  }
+</style>

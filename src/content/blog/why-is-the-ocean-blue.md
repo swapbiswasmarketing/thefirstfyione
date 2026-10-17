@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-062"
+almanac: "A glass of water looks clear because its path is too short: a 10 cm glass loses only about 3 percent of its red."
 featured: false
 faqs:
   - q: "Why is the ocean blue?"

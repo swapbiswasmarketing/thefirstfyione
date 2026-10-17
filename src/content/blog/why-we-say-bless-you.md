@@ -5,6 +5,7 @@ pubDate: 2026-07-23
 category: "culture"
 readingTime: "4 min read"
 filecode: "FYI-008"
+almanac: "People were responding to sneezes with set phrases well before there was a pope to issue anything."
 featured: false
 faqs:
   - q: "Why do we say bless you when someone sneezes?"

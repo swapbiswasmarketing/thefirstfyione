@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-070"
+almanac: "If tryptophan were the reason turkey makes people sleepy, chicken would do the job just as well."
 featured: false
 faqs:
   - q: "Is turkey the only meat that makes you sleepy?"

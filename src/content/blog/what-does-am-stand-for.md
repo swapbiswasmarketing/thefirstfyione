@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "tech"
 readingTime: "4 min read"
 filecode: "FYI-106"
+almanac: "As late as its 2000 edition, the US government's own style manual called noon 12 a.m. and midnight 12 p.m., the reverse of today's convention."
 featured: false
 faqs:
   - q: "What do AM and PM stand for?"

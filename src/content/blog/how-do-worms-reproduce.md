@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "science"
 readingTime: "4 min read"
 filecode: "FYI-111"
+almanac: "The idea that a halved earthworm grows into two worms does not hold for the common species."
 featured: false
 faqs:
   - q: "Are worms hermaphrodites?"

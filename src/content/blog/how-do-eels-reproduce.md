@@ -5,6 +5,7 @@ pubDate: 2026-08-28
 category: "science"
 readingTime: "4 min read"
 filecode: "FYI-014"
+almanac: "The leptocephalus is so unlike an adult eel that it was originally classified as a separate species."
 featured: false
 faqs:
   - q: "How do eels reproduce?"

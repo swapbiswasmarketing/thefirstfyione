@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-054"
+almanac: "Stealing the wine was easy for Jean-Jacques Rousseau; the bread was the hard part."
 featured: false
 faqs:
   - q: "What does 'let them eat cake' mean?"

@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-093"
+almanac: "Andy Hildebrand, an electrical engineer who had spent more than a decade in the oil industry, invented Auto-Tune."
 featured: false
 faqs:
   - q: "Who invented autotune and why?"

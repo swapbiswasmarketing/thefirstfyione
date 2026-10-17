@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "tech"
 readingTime: "4 min read"
 filecode: "FYI-049"
+almanac: "In standard USB plugs the data pins are recessed compared with the power pins, so power and ground make contact first on the way in."
 featured: false
 faqs:
   - q: "Why is USB not reversible?"

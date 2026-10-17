@@ -1,0 +1,163 @@
+---
+/* One ledger row, shared by the archive, the department pages, search results
+   and the 404. Only the title is a link. Its ::before stretches over the whole
+   row, so the department kicker can be a second, separate link without nesting
+   anchors, and the row's accessible name is the title alone.
+
+   With `blank` it renders the empty shell that search clones from a <template>.
+   Cloned nodes keep this component's scope attribute, so these styles reach
+   them; the [data-slot] hooks are what the search script fills in. */
+import { entryHref, readingLabel, type Entry } from "../lib/entries";
+import { catLabel, deptHref, fmtDate } from "../data/site";
+import { keepTogether } from "../lib/typeset";
+
+interface Props {
+  entry?: Entry;
+  blank?: boolean;
+  /* Heading level of the title: 2 under a page h1, 3 under a section h2. */
+  level?: 2 | 3;
+  /* Department kicker link. Off on a department's own page, where it repeats. */
+  dept?: boolean;
+  dek?: boolean;
+  date?: boolean;
+  size?: "lg" | "sm";
+  /* content-visibility for long lists, so off-screen rows skip layout. */
+  cv?: boolean;
+}
+
+const { entry, blank = false, level = 2, dept = true, dek = true, date = true, size = "lg", cv = false } = Astro.props;
+const Title = level === 3 ? "h3" : "h2";
+const cat = entry?.data.category ?? "";
+const slot = (name: string) => (blank ? name : undefined);
+---
+
+<li class:list={["row", size, { cv }]} data-cat={cat || undefined}>
+  <span class="row-num" data-slot={slot("num")}>{entry?.data.filecode ?? (blank ? "" : "FYI")}</span>
+  <div class="row-body">
+    {dept && (blank ? (
+      <a class="row-dept" data-slot="dept" hidden></a>
+    ) : (
+      <a class="row-dept" href={deptHref(cat)}>{catLabel[cat] ?? "Curiosity"}</a>
+    ))}
+    <Title class="row-title"><a class="row-link" href={entry ? entryHref(entry) : undefined} data-slot={slot("link")}>{entry ? <Fragment set:html={keepTogether(entry.data.title)} /> : null}</a></Title>
+    {dek && <p class="row-dek" data-slot={slot("dek")}>{entry?.data.description}</p>}
+  </div>
+  <p class="row-meta">
+    {date && entry && <time datetime={entry.data.pubDate.toISOString()}>{fmtDate(entry.data.pubDate)}</time>}
+    {entry ? <span>{readingLabel(entry)}</span> : <span data-slot={slot("reading")}></span>}
+  </p>
+</li>
+
+<style>
+  .row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4.8rem minmax(0, 1fr) 11rem;
+    gap: 0 1.6rem;
+    align-items: start;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+    transition: background var(--t-hover) var(--ease-out);
+  }
+  .row:first-child { border-top: 0; }
+
+  .row-num {
+    justify-self: start;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em;
+    color: var(--ink-faint); padding-top: 0.4rem; white-space: nowrap;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
+
+  /* Head and dek share one right edge so the row reads as a set column
+     rather than two ragged blocks. */
+  .row-body { min-width: 0; max-width: 43.75rem; }
+
+  /* Sits above the stretched title link. The padding and the matching negative
+     margin grow the tap target to about 24px without moving the text. */
+  .row-dept {
+    position: relative; z-index: 1;
+    display: inline-block;
+    padding: 0.32rem 0.25rem; margin: -0.32rem -0.25rem;
+    font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--ink-faint); text-decoration: none;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
+  .row-dept[hidden] { display: none; }
+
+  .row-title {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.35rem, 2.6vw, 1.85rem); line-height: 1.1;
+    letter-spacing: -0.015em; margin: 0.3rem 0 0.4rem;
+  }
+  .row-link { color: var(--ink); text-decoration: none; }
+  .row-link::before { content: ""; position: absolute; inset: 0; }
+  /* The ring goes on the stretched box, just outside the row so it clears the
+     flush-left filecode and the flush-right date; 3px plus its 2px width stays
+     inside the 8px clip margin set for content-visibility below. */
+  .row-link:focus-visible { outline: none; }
+  .row-link:focus-visible::before { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+  .row-dek {
+    font-family: var(--serif); font-size: 1.02rem;
+    line-height: 1.5; color: var(--ink-soft);
+  }
+  /* Search excerpts arrive as Pagefind HTML, so their <mark> is unscoped. */
+  .row-dek :global(mark) {
+    background: linear-gradient(transparent 52%, var(--hl) 52%, var(--hl) 90%, transparent 90%);
+    color: inherit; padding: 0 0.04em;
+  }
+
+  .row-meta {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem;
+    font-family: var(--mono); font-size: 0.68rem; color: var(--ink-faint);
+    padding-top: 0.35rem; text-align: right;
+  }
+  .row-meta[hidden] { display: none; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .row:has(.row-link:hover) { background: color-mix(in srgb, var(--hl) 14%, transparent); }
+    .row:has(.row-link:hover) .row-num { background: var(--hl); color: var(--ink); }
+    .row-dept:hover { background: var(--hl); color: var(--ink); }
+  }
+
+  /* The compact row: search results and the 404. */
+  .row.sm { grid-template-columns: 4.8rem minmax(0, 1fr) 7.5rem; padding: 1.15rem 0; }
+  .row.sm .row-title { font-size: clamp(1.15rem, 2vw, 1.4rem); margin: 0.25rem 0 0.3rem; }
+  .row.sm .row-dek { font-size: 0.98rem; }
+  .row.sm .row-num { padding-top: 0.3rem; }
+
+  /* Off-screen rows skip style and layout until they scroll near. The clip
+     margin keeps edge-flush focus rings visible under paint containment, and
+     the @supports gate leaves browsers without it (Safari) untouched. The
+     intrinsic size sizes the content box, so each value is the measured median
+     row height (200, 210 and 270px across the three layouts) less the 48px of
+     padding and the 1px rule. */
+  @supports (overflow-clip-margin: 8px) {
+    .row.cv { content-visibility: auto; contain-intrinsic-size: auto 151px; overflow-clip-margin: 8px; }
+  }
+  /* A printed list must not skip anything. */
+  @media print {
+    .row.cv { content-visibility: visible; }
+  }
+
+  @media (max-width: 860px) {
+    .row, .row.sm { grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0 1.1rem; }
+    .row-meta {
+      grid-column: 2; flex-direction: row; align-items: baseline; flex-wrap: wrap;
+      gap: 0.25rem 0.8rem; text-align: left; justify-content: flex-start;
+      margin-top: 0.6rem; padding-top: 0;
+    }
+    @supports (overflow-clip-margin: 8px) {
+      .row.cv { contain-intrinsic-size: auto 161px; }
+    }
+  }
+  @media (max-width: 520px) {
+    .row, .row.sm { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .row-num { padding-top: 0; margin-bottom: 0.5rem; }
+    .row.sm .row-num { padding-top: 0; }
+    .row-meta { grid-column: 1; }
+    @supports (overflow-clip-margin: 8px) {
+      .row.cv { contain-intrinsic-size: auto 221px; }
+    }
+  }
+</style>

@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-085"
+almanac: "The first byte could be a single bit, and its y was there to stop the word itself from turning into bit."
 featured: false
 faqs:
   - q: "Why is a byte 8 bits?"

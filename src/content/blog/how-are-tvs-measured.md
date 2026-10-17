@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-100"
+almanac: "For 52 and a half years, a US federal rule said that a television's size, unless the seller said otherwise, meant the width of its picture."
 featured: false
 faqs:
   - q: "Why are TVs measured diagonally?"

@@ -1,0 +1,192 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { cats, deptHref, deptWord } from "../../data/site";
+import { topicsIndex } from "../../data/topics";
+import { getEntries, deptCounts, entryHref } from "../../lib/entries";
+import { abs, pageNode, crumbs } from "../../lib/schema";
+import { pageCard } from "../../lib/og";
+
+const entries = await getEntries();
+const counts = deptCounts(entries);
+const plural = (n: number) => `${n} ${n === 1 ? "entry" : "entries"}`;
+
+/* Each department with its three newest entries, already in filed order. */
+const desks = cats.map((c) => ({
+  ...c,
+  count: counts[c.key] ?? 0,
+  latest: entries.filter((p) => p.data.category === c.key).slice(0, 3),
+}));
+
+const url = abs("/topics/");
+const schema = [
+  pageNode("CollectionPage", url, "Topics", topicsIndex.meta, {
+    breadcrumb: { "@id": `${url}#breadcrumb` },
+    mainEntity: { "@id": `${url}#list` },
+  }),
+  {
+    "@type": "ItemList",
+    "@id": `${url}#list`,
+    numberOfItems: cats.length,
+    itemListElement: cats.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: abs(deptHref(c.key)),
+      name: c.name,
+    })),
+  },
+  crumbs(url, [{ name: "Topics", url }]),
+];
+---
+
+<Layout
+  title={`${topicsIndex.title} - Strictly FYI`}
+  description={topicsIndex.meta}
+  card={pageCard("topics")}
+  schema={schema}
+>
+  <div class="topics wrap">
+    <header class="tp-head">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Topics</span>
+      </nav>
+      <div class="rule-thickthin"></div>
+
+      <p class="tp-kicker">The departments &middot; {cats.length} sections &middot; {plural(entries.length)} on file</p>
+      <h1 class="tp-title">The archive, by <span class="hl-live">department</span>.</h1>
+      <p class="tp-dek">
+        Every entry is filed under exactly one of {deptWord} departments. Each department page opens with a short
+        introduction and lists its entries newest first.
+      </p>
+    </header>
+
+    <div class="desks">
+      {desks.map((d) => (
+        <section class="desk" aria-labelledby={`desk-${d.key}`}>
+          <p class="desk-n">&sect;{d.n} &middot; {plural(d.count)}</p>
+          <h2 class="desk-name" id={`desk-${d.key}`}>
+            <a href={deptHref(d.key)}>{d.name}</a>
+          </h2>
+          <p class="desk-note">{d.note}.</p>
+          {d.latest.length > 0 && (
+            <>
+              <p class="desk-label">Latest filed</p>
+              <ol class="desk-latest">
+                {d.latest.map((p) => (
+                  <li>
+                    <span class="desk-code">{p.data.filecode ?? "FYI"}</span>
+                    <a href={entryHref(p)}>{p.data.title}</a>
+                  </li>
+                ))}
+              </ol>
+            </>
+          )}
+          <a class="coupon desk-more" href={deptHref(d.key)}>[ All {plural(d.count)} in {d.name} ]</a>
+        </section>
+      ))}
+    </div>
+
+    <p class="tp-foot">
+      Looking for one question in particular? <a href="/search/">Search the archive</a>, or
+      <a href="/blog/">read it all</a>, newest first.
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .topics { padding-top: clamp(1.25rem, 4vw, 2rem); }
+
+  /* -------- HEAD -------- */
+  .crumbs {
+    display: flex; gap: 0.45rem; flex-wrap: wrap; padding-bottom: 0.6rem;
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .crumbs a {
+    color: var(--ink-soft); text-decoration: none;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
+  .tp-kicker {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--ink-faint); margin-top: 1.4rem;
+  }
+  .tp-title {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.4rem, 7vw, 5rem); line-height: 0.98; letter-spacing: -0.025em;
+    margin: 0.55rem 0 0; max-width: 14em;
+  }
+  .tp-dek {
+    font-family: var(--serif); font-size: clamp(1.05rem, 2vw, 1.25rem);
+    color: var(--ink-soft); max-width: 34rem; margin-top: 0.9rem; line-height: 1.5;
+  }
+
+  /* -------- THE SIX DESKS --------
+     Hairline-ruled cells: the grid gap is the rule colour showing through. */
+  .desks {
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px;
+    margin-top: clamp(2rem, 5vw, 3rem);
+    background: var(--rule-mid);
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+  }
+  .desk {
+    display: flex; flex-direction: column; gap: 0.35rem;
+    background: var(--paper); padding: 1.4rem 0 1.5rem;
+  }
+  .desk-n {
+    font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .desk-name {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.9rem, 3.4vw, 2.5rem); line-height: 1; letter-spacing: -0.025em;
+  }
+  .desk-name a {
+    color: var(--ink); text-decoration: none;
+    background-image: linear-gradient(transparent 54%, var(--hl) 54%, var(--hl) 92%, transparent 92%);
+    background-repeat: no-repeat; background-size: 0% 100%;
+    transition: background-size var(--t-hover) var(--ease-out);
+  }
+  .desk-note {
+    font-family: var(--serif); font-style: italic; font-size: 1.08rem; color: var(--ink-soft);
+  }
+  .desk-label {
+    margin-top: 0.8rem; padding-top: 0.6rem; border-top: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .desk-latest { list-style: none; display: grid; gap: 0.55rem; }
+  .desk-latest li { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: 0 0.6rem; align-items: baseline; }
+  .desk-code { font-family: var(--mono); font-size: 0.64rem; color: var(--ink-faint); white-space: nowrap; }
+  .desk-latest a {
+    font-family: var(--serif); font-size: 1.02rem; line-height: 1.35; color: var(--ink);
+    text-decoration: none;
+    transition: background var(--t-hover) var(--ease-out);
+  }
+  .desk-more { align-self: flex-start; margin-top: auto; padding-top: 0.9rem; }
+
+  @media (min-width: 640px) {
+    .desks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .desk { padding: 1.4rem 1.4rem 1.5rem; }
+    .desk:nth-child(odd) { padding-left: 0; }
+    .desk:nth-child(even) { padding-right: 0; }
+  }
+  @media (min-width: 1000px) {
+    .desks { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .desk:nth-child(odd), .desk:nth-child(even) { padding: 1.4rem 1.5rem 1.6rem; }
+    .desk:nth-child(3n + 1) { padding-left: 0; }
+    .desk:nth-child(3n) { padding-right: 0; }
+  }
+
+  .tp-foot {
+    margin-top: 1.6rem;
+    font-family: var(--serif); font-style: italic; font-size: 1.08rem; color: var(--ink-soft);
+  }
+  .tp-foot a { color: var(--ink); transition: background var(--t-hover) var(--ease-out); }
+
+  @media (hover: hover) and (pointer: fine) {
+    .crumbs a:hover, .desk-latest a:hover, .tp-foot a:hover { background: var(--hl); color: var(--ink); }
+    .desk-name a:hover { background-size: 100% 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .desk-name a { transition: none; }
+  }
+</style>

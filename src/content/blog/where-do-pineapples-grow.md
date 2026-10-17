@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-079"
+almanac: "By FAO's figures, the United States grew more pineapples than any other country in 1961, but by 1975 Thailand grew twice as much."
 featured: false
 faqs:
   - q: "Do pineapples grow on trees?"

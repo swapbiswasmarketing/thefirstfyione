@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-104"
+almanac: "Graham's number is a tower of 3s, and the On-Line Encyclopedia of Integer Sequences lists its final digits, which close with 2464195387."
 featured: false
 faqs:
   - q: "Is infinity a number?"

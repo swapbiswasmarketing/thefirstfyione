@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "history"
 readingTime: "4 min read"
 filecode: "FYI-033"
+almanac: "Chaps are, by construction, two separate legs fastened to the waist with straps or a belt, with no seat between them."
 featured: false
 faqs:
   - q: "Why do cowboys wear chaps?"

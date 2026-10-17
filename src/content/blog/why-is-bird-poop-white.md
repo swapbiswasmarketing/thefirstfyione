@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "science"
 readingTime: "4 min read"
 filecode: "FYI-017"
+almanac: "Birds have no bladder, so urine from the kidneys drains straight into the cloaca, the single exit that also carries waste from the gut."
 featured: false
 faqs:
   - q: "Why is bird poop white?"

@@ -1,5 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SubscribeForm from "../components/SubscribeForm.astro";
+import { contactEmail, newsletterLive } from "../data/site";
+import { pageNode, crumbs, abs, ORG_ID } from "../lib/schema";
+import { pageCard } from "../lib/og";
 
 const principles = [
   {
@@ -23,15 +27,47 @@ const principles = [
     d: "One rule decides what runs: does it make you think 'huh, I didn't know that'? If not, it stays in the drawer.",
   },
 ];
+
+const description =
+  "What Strictly FYI is: a general-interest field guide to the fascinating, written for curious people who like knowing how things really work.";
+const url = abs("/about/");
+
+/* One trail for the visible breadcrumb and the BreadcrumbList. The
+   Organization's publishingPrinciples points at #house-rules below. */
+const trail = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about/" },
+];
+const schema = [
+  pageNode("AboutPage", url, "About Strictly FYI", description, {
+    mainEntity: { "@id": ORG_ID },
+    breadcrumb: { "@id": `${url}#breadcrumb` },
+  }),
+  crumbs(url, trail.slice(1).map((c) => ({ name: c.name, url: abs(c.href) }))),
+];
+const correctionHref = `mailto:${contactEmail}?subject=${encodeURIComponent("Correction")}`;
 ---
 
 <Layout
-  title="About · Strictly FYI"
-  description="What Strictly FYI is: a general-interest field guide to the fascinating, written for curious people who like knowing how things really work."
+  title="About - Strictly FYI"
+  description={description}
+  card={pageCard("about")}
+  schema={schema}
+  contentGroup="About"
 >
   <div class="about wrap">
     <header class="ab-head">
-      <p class="ab-kicker">About the publication · Est. MMXXVI</p>
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          {trail.map((c, i) => (
+            <li>
+              {i > 0 && <span class="crumb-sep" aria-hidden="true">/</span>}
+              {i < trail.length - 1 ? <a href={c.href}>{c.name}</a> : <span aria-current="page">{c.name}</span>}
+            </li>
+          ))}
+        </ol>
+      </nav>
+      <p class="ab-kicker">About the publication &middot; Est. MMXXVI</p>
       <h1 class="ab-title">A field guide to the <span class="hl-live">fascinating</span>.</h1>
     </header>
 
@@ -63,12 +99,12 @@ const principles = [
       </div>
     </section>
 
-    <section class="rules">
-      <p class="rules-head">House rules · How we pick and write</p>
+    <section class="rules" id="house-rules" aria-labelledby="house-rules-head">
+      <h2 class="rules-head" id="house-rules-head">House rules &middot; How we pick and write</h2>
       <ol class="rules-list">
         {principles.map((p) => (
           <li class="rule-row">
-            <span class="rule-n">§{p.n}</span>
+            <span class="rule-n">&sect;{p.n}</span>
             <span class="rule-body">
               <span class="rule-t">{p.t}</span>
               <span class="rule-d">{p.d}</span>
@@ -78,16 +114,45 @@ const principles = [
       </ol>
     </section>
 
-    <section class="ab-foot">
-      <div>
-        <p class="ab-foot-head">Get five interesting things a week.</p>
-        <p class="ab-foot-sub">
-          The weekly FYI: a handful of genuinely fascinating, well-sourced things in your inbox.
-          That is the whole pitch.
-        </p>
+    <section class="corr" id="corrections" aria-labelledby="corrections-head">
+      <h2 class="rules-head" id="corrections-head">Corrections &middot; When an entry is wrong</h2>
+      <div class="corr-body">
+        <p class="corr-lede">Errors are fixed in the entry itself, and the entry is marked Updated.</p>
+        <div class="corr-col">
+          <p>
+            When an entry gets something wrong, the text is corrected where the error was, and the
+            dateline under the headline shows the date of the fix.
+          </p>
+          <p>
+            To report one, write to the corrections desk at <a href={correctionHref}>{contactEmail}</a>,
+            or use the link at the end of any entry. Name the entry, say what is wrong, and include a
+            source that shows it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ab-foot" aria-labelledby="ab-foot-head">
+      <div class="ab-foot-pitch">
+        {newsletterLive ? (
+          <>
+            <p class="ab-foot-head" id="ab-foot-head">Get new entries by email.</p>
+            <p class="ab-foot-sub">Confirm once from your inbox. Every email has an unsubscribe link.</p>
+          </>
+        ) : (
+          <>
+            <p class="ab-foot-head" id="ab-foot-head">New entries, as they are filed.</p>
+            <p class="ab-foot-sub">
+              Every new entry goes into the RSS feed when it is published. Add the feed to any reader; no
+              email address needed.
+            </p>
+          </>
+        )}
+        <div class="ab-foot-form">
+          <SubscribeForm location="about" size="lg" />
+        </div>
       </div>
       <div class="ab-foot-actions">
-        <a href="/#subscribe" class="btn btn-solid">Subscribe →</a>
         <a href="/blog/" class="btn">Read the archive</a>
       </div>
     </section>
@@ -98,14 +163,30 @@ const principles = [
   .about { padding-top: clamp(1.75rem, 5vw, 3rem); }
 
   /* -------- HEAD -------- */
+  .crumbs ol {
+    list-style: none; display: flex; gap: 0.45rem; min-width: 0;
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint); padding-bottom: 1.1rem;
+  }
+  /* Flex rows, so the whitespace between a separator and its link renders as
+     nothing and every gap is the same 0.45rem. */
+  .crumbs li { display: flex; gap: 0.45rem; flex: none; white-space: nowrap; }
+  .crumbs a {
+    color: var(--ink-soft); text-decoration: none;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
+
   .ab-kicker {
     font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em;
     text-transform: uppercase; color: var(--ink-faint);
   }
+  /* Measures are in em and rem, not ch: ch follows whichever face has loaded,
+     so a font swap would rewrap the text. Converted at the loaded faces' zero
+     widths: Playfair Display 700 0.645em, Newsreader 0.55em. */
   .ab-title {
     font-family: var(--display); font-weight: 700;
     font-size: clamp(2.4rem, 7.5vw, 5.5rem); line-height: 0.96; letter-spacing: -0.03em;
-    margin: 0.6rem 0 1.4rem; max-width: 16ch;
+    margin: 0.6rem 0 1.4rem; max-width: 10.3em;
   }
 
   /* -------- BODY: lede rail + column -------- */
@@ -120,7 +201,7 @@ const principles = [
   }
   .ab-lede em { font-style: normal; }
 
-  .ab-col { min-width: 0; max-width: 62ch; font-family: var(--serif); font-size: 1.15rem; line-height: 1.7; color: #24252b; }
+  .ab-col { min-width: 0; max-width: 39.2rem; font-family: var(--serif); font-size: 1.15rem; line-height: 1.7; color: #24252b; }
   .ab-col p { margin: 0 0 1.15rem; }
   .ab-col strong { font-weight: 600; color: var(--ink); }
   .ab-col em { font-style: italic; }
@@ -130,17 +211,19 @@ const principles = [
     font-size: clamp(1.25rem, 2.6vw, 1.55rem); line-height: 1.3; color: var(--ink);
   }
 
-  /* -------- HOUSE RULES -------- */
-  .rules { margin-top: clamp(2.5rem, 6vw, 4rem); }
+  /* -------- HOUSE RULES + CORRECTIONS -------- */
+  .rules, .corr { margin-top: clamp(2.5rem, 6vw, 4rem); }
+  /* A mono label set as an h2: undo the global heading face. */
   .rules-head {
-    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--mono); font-weight: 400; font-size: 0.68rem; line-height: 1.6;
+    letter-spacing: 0.14em; text-transform: uppercase; text-wrap: wrap;
     color: var(--ink-faint); padding-bottom: 0.6rem;
     border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
     padding-top: 0.6rem;
   }
   .rules-list { list-style: none; margin: 0; padding: 0; }
   .rule-row {
-    display: grid; grid-template-columns: 5ch minmax(0, 1fr); gap: 0 1.5rem;
+    display: grid; grid-template-columns: 3.2rem minmax(0, 1fr); gap: 0 1.5rem;
     padding: 1.35rem 0; border-bottom: 1px solid var(--rule); align-items: baseline;
   }
   .rule-n { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint); }
@@ -150,7 +233,27 @@ const principles = [
   }
   .rule-d {
     display: block; font-family: var(--serif); font-size: 1.05rem; line-height: 1.6;
-    color: var(--ink-soft); margin-top: 0.45rem; max-width: 60ch;
+    color: var(--ink-soft); margin-top: 0.45rem; max-width: 35.2rem;
+  }
+
+  .corr-body {
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem 3rem;
+    padding: 1.35rem 0 1.5rem; border-bottom: 1px solid var(--rule);
+  }
+  .corr-lede {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.3rem, 2.6vw, 1.75rem); line-height: 1.15; letter-spacing: -0.015em;
+    max-width: 15em;
+  }
+  .corr-col p {
+    font-family: var(--serif); font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft);
+    max-width: 35.2rem;
+  }
+  .corr-col p + p { margin-top: 0.8rem; }
+  .corr-col a {
+    color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em; text-decoration-color: var(--rule-mid);
+    transition: background var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out);
   }
 
   /* -------- FOOT -------- */
@@ -162,17 +265,25 @@ const principles = [
   .ab-foot-head {
     font-family: var(--display); font-weight: 700;
     font-size: clamp(1.5rem, 3.6vw, 2.4rem); line-height: 1.08; letter-spacing: -0.02em;
-    max-width: 18ch;
+    max-width: 11.6em;
   }
   .ab-foot-sub {
-    font-family: var(--serif); color: var(--ink-soft); max-width: 46ch; margin-top: 0.6rem;
+    font-family: var(--serif); color: var(--ink-soft); max-width: 26.5rem; margin-top: 0.6rem;
   }
+  .ab-foot-form { margin-top: 1rem; }
   .ab-foot-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+  /* -------- HOVER (gated) -------- */
+  @media (hover: hover) and (pointer: fine) {
+    .crumbs a:hover { background: var(--hl); color: var(--ink); }
+    .corr-col a:hover { background: var(--hl); text-decoration-color: var(--ink); }
+  }
 
   /* -------- RESPONSIVE -------- */
   @media (min-width: 900px) {
     .ab-body { grid-template-columns: 5fr 7fr; gap: 3rem; }
     .ab-lede { border-right: 1px solid var(--rule); padding-right: 2rem; }
+    .corr-body { grid-template-columns: 5fr 7fr; }
   }
   @media (max-width: 520px) {
     .rule-row { grid-template-columns: 1fr; gap: 0.35rem; }

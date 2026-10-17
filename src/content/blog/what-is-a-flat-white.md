@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-102"
+almanac: "A flat white tastes stronger because it has less milk, not because it has more caffeine."
 featured: false
 faqs:
   - q: "What is the difference between a flat white and a latte?"

@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-074"
+almanac: "Four pet cats have been filmed sitting inside a square that was not there."
 featured: false
 faqs:
   - q: "Why do cats like to sit in boxes?"

@@ -5,6 +5,7 @@ pubDate: 2026-08-28
 category: "curiosity"
 readingTime: "4 min read"
 filecode: "FYI-012"
+almanac: "The real Illuminati used an owl as its emblem, never an eye or a pyramid, and it was defunct before the U.S. Constitution was ratified."
 featured: false
 faqs:
   - q: "Is the Illuminati symbol on the dollar bill?"

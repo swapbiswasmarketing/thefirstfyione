@@ -1,0 +1,511 @@
+---
+/* Pagefind results as ledger rows. One script serves two modes:
+   - "form" follows the search box on /search/ as the reader types;
+   - "path" runs once on the 404 and turns the address that missed into a query.
+   Pagefind is used through its raw JS API, not its UI. The index loads on first
+   use, and only the fragments of rows actually rendered are fetched, because
+   result.data() costs one request per result. Rows are cloned from a
+   <template> holding a blank LedgerRow, so they carry its scoped styles.
+
+   Path mode shows its default slot (static rows) until a search finds
+   something, then swaps the heading and the rows in place. */
+import LedgerRow from "./LedgerRow.astro";
+import { cats, deptHref } from "../data/site";
+
+interface Props {
+  mode: "form" | "path";
+  /* id of the search input (form mode). */
+  input?: string;
+  /* Rows per batch. */
+  limit?: number;
+  /* Path mode: the section heading before and after a match. */
+  fallbackHeading?: string;
+  matchHeading?: string;
+}
+
+const {
+  mode,
+  input = "q",
+  limit = mode === "path" ? 5 : 10,
+  fallbackHeading = "Recently filed",
+  matchHeading = "Perhaps you meant",
+} = Astro.props;
+
+/* Pagefind's department filter holds the display name; rows link the slug page. */
+const depts = JSON.stringify(Object.fromEntries(cats.map((c) => [c.name, deptHref(c.key)])));
+---
+
+{mode === "form" ? (
+  <div class="sr sr-form" data-sr data-mode="form" data-input={input} data-limit={limit} data-depts={depts}>
+    <p class="sr-status" role="status" data-sr-status></p>
+    <ol class="ledger sr-list" data-sr-list></ol>
+    <button type="button" class="btn sr-more" data-sr-more hidden>Show more entries</button>
+
+    <div class="sr-note" data-sr-empty hidden>
+      <p>Nothing on file matches that. Fewer words, or a shorter form of one, usually helps.</p>
+      <p>
+        Or browse instead: the <a href="/blog/">archive</a> lists every entry newest first, and each
+        department has a page of its own:
+        {cats.map((c, i) => (
+          <>
+            <a href={deptHref(c.key)}>{c.name}</a>{i < cats.length - 1 ? ", " : "."}
+          </>
+        ))}
+      </p>
+    </div>
+
+    {/* The dev line only ships from astro dev, which never has an index. */}
+    <div class="sr-note" data-sr-error hidden>
+      <p>Search could not load its index just now.</p>
+      <p>
+        Try again in a moment, or browse the <a href="/blog/">archive</a> instead.
+        {import.meta.env.DEV && "The index is built with the site, so a dev server has none: run a full build to search."}
+      </p>
+    </div>
+
+    <template data-sr-row><LedgerRow blank level={2} size="sm" date={false} /></template>
+  </div>
+) : (
+  <section class="sr sr-path" data-sr data-mode="path" data-limit={limit} data-depts={depts} data-match-heading={matchHeading} aria-labelledby="sr-head">
+    <h2 class="sr-head" id="sr-head" data-sr-head>{fallbackHeading}</h2>
+    <p class="sr-status" role="status" data-sr-status></p>
+    <ol class="ledger sr-list" data-sr-list><slot /></ol>
+    <template data-sr-row><LedgerRow blank level={3} size="sm" dek={false} date={false} /></template>
+  </section>
+)}
+
+<style>
+  .ledger { list-style: none; margin: 0; padding: 0; }
+  .sr-list { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  .sr-list:empty { display: none; }
+
+  /* While a query is live, the results area holds a screen's height, so the
+     colophon is never on screen when the rows land. */
+  :global(html[data-sq]) .sr-form { min-height: 100vh; }
+
+  .sr-status {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.05em; line-height: 1.5;
+    color: var(--ink-soft); min-height: 1.5em; padding: 0.75rem 0;
+  }
+
+  /* .btn sets its own display, which beats the user-agent [hidden] rule. */
+  .sr-more { margin-top: 1.4rem; }
+  .sr-more[hidden] { display: none; }
+
+  .sr-note {
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+    padding: 1.4rem 0 1.5rem;
+    font-family: var(--serif); font-size: 1.1rem; line-height: 1.6; color: var(--ink-soft);
+  }
+  .sr-note[hidden] { display: none; }
+  .sr-note p + p { margin-top: 0.7rem; }
+  .sr-note p:first-child {
+    font-family: var(--display); font-style: italic; font-weight: 600;
+    font-size: clamp(1.2rem, 2.4vw, 1.45rem); line-height: 1.3; color: var(--ink);
+  }
+  .sr-note a { color: var(--ink); transition: background var(--t-hover) var(--ease-out); }
+
+  .sr-path { margin-top: clamp(2.5rem, 6vw, 4rem); }
+  .sr-head {
+    font-family: var(--mono); font-weight: 400; font-size: 0.68rem; line-height: 1.6;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
+    padding-top: 0.6rem; border-top: 1px solid var(--ink);
+  }
+  .sr-path .sr-status { padding: 0.2rem 0 0.6rem; }
+  .sr-path .sr-list { border-top-color: var(--rule-mid); }
+
+  @media (hover: hover) and (pointer: fine) {
+    .sr-note a:hover { background: var(--hl); }
+  }
+</style>
+
+<script>
+  import { track } from "../lib/track";
+
+  interface PagefindData {
+    url: string;
+    excerpt: string;
+    meta: Record<string, string | undefined>;
+    filters?: Record<string, string[] | undefined>;
+  }
+  interface PagefindResult {
+    id: string;
+    data: () => Promise<PagefindData>;
+  }
+  interface Pagefind {
+    options: (o: Record<string, unknown>) => Promise<void>;
+    init: () => Promise<void>;
+    preload: (term: string) => Promise<void>;
+    search: (term: string) => Promise<{ results: PagefindResult[] } | null>;
+  }
+
+  let loading: Promise<Pagefind> | null = null;
+
+  /* The index exists only after the post-build indexing step, never in astro
+     dev, so the path is a variable the bundler leaves alone. A failed load is
+     forgotten so the next query can try again. */
+  function pagefind(): Promise<Pagefind> {
+    if (!loading) {
+      const path = "/pagefind/pagefind.js";
+      loading = (import(/* @vite-ignore */ path) as Promise<Pagefind>).then(async (pf) => {
+        /* Pagefind reads the last word as a prefix, so by default "cats" ranked
+           the catacombs entry first. A higher term similarity puts whole-word
+           matches ahead of longer words that merely start the same way. */
+        await pf.options({ excerptLength: 24, ranking: { termSimilarity: 4 } });
+        await pf.init();
+        return pf;
+      });
+      loading.catch(() => {
+        loading = null;
+      });
+    }
+    return loading;
+  }
+
+  /* Pagefind indexes the h1 with the body, so an excerpt often opens with the
+     tail of the title the row already shows. Drop that echo, plus the full stop
+     Pagefind puts between blocks, when enough text is left after it. */
+  function trimTitle(el: HTMLElement, title: string) {
+    const text = (el.textContent || "").toLowerCase();
+    const t = title.toLowerCase();
+    let cut = 0;
+    for (let i = 0; i < t.length - 11; i++) {
+      if (i > 0 && t[i - 1] !== " ") continue;
+      if (text.startsWith(t.slice(i))) {
+        cut = t.length - i;
+        break;
+      }
+    }
+    while (cut && cut < text.length && /[\s.]/.test(text[cut])) cut++;
+    if (!cut || text.length - cut < 40) return;
+
+    const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    for (let n = walk.nextNode(); n && cut > 0; n = walk.nextNode()) {
+      const value = n.nodeValue || "";
+      n.nodeValue = value.slice(cut);
+      cut -= Math.min(cut, value.length);
+    }
+    el.querySelectorAll("mark").forEach((m) => {
+      if (!m.textContent) m.remove();
+    });
+  }
+
+  function makeRow(tpl: HTMLTemplateElement, d: PagefindData, depts: Record<string, string>): HTMLElement {
+    const li = (tpl.content.firstElementChild as HTMLElement).cloneNode(true) as HTMLElement;
+    const slot = <T extends HTMLElement>(name: string) => li.querySelector<T>(`[data-slot="${name}"]`);
+
+    const link = slot<HTMLAnchorElement>("link");
+    if (link) {
+      link.href = d.url;
+      link.textContent = d.meta.title || d.url;
+    }
+    const num = slot("num");
+    if (num) num.textContent = d.meta.filecode || "";
+
+    const name = d.filters?.department?.[0];
+    const dept = slot<HTMLAnchorElement>("dept");
+    if (dept && name && depts[name]) {
+      dept.href = depts[name];
+      dept.textContent = name;
+      dept.hidden = false;
+    }
+
+    /* Pagefind escapes the page text and adds only <mark>, and the text is the
+       site's own, so this is not reader input. */
+    const dek = slot("dek");
+    if (dek) {
+      if (d.excerpt) {
+        dek.innerHTML = d.excerpt;
+        if (d.meta.title) trimTitle(dek, d.meta.title);
+        /* Excerpts are cut from the middle of the text; say so at a cut. */
+        const t = (dek.textContent || "").trim();
+        if (/^[a-z]/.test(t)) dek.prepend("... ");
+        if (/[A-Za-z0-9,;:]$/.test(t)) dek.append(" ...");
+      } else dek.remove();
+    }
+
+    const reading = slot("reading");
+    if (reading) {
+      if (d.meta.reading) reading.textContent = d.meta.reading;
+      else reading.parentElement?.setAttribute("hidden", "");
+    }
+    return li;
+  }
+
+  /* Pagefind reads the last word of a query as a prefix and, when nothing
+     starts with it, falls back to ever shorter prefixes: "zzqxvb" matches the
+     Z in QWERTY and "flibbertigibbet" matches flies. For a one-word query the
+     hits count only if the top result's highlighted words (or its title)
+     share the query's stem; otherwise the honest answer is no match. */
+  async function trusted(q: string, found: PagefindResult[]): Promise<boolean> {
+    if (!found.length) return false;
+    const w = q.toLowerCase().replace(/[^a-z0-9]/g, "");
+    if (q.trim().includes(" ") || w.length < 3) return true;
+    const d = await found[0].data();
+    const clean = (x: string) => x.toLowerCase().replace(/[^a-z0-9]/g, "");
+    const marks = [...(d.excerpt || "").matchAll(/<mark>(.*?)<\/mark>/g)].map((m) => clean(m[1]));
+    const words = marks.length ? marks : (d.meta.title || "").split(/\s+/).map(clean);
+    const stem = w.slice(0, Math.max(3, w.length - 3));
+    return words.some((m) => (m.length >= 3 && w.startsWith(m)) || (m.length >= stem.length && m.startsWith(stem)));
+  }
+
+  const plural = (n: number) => `${n} ${n === 1 ? "entry matches" : "entries match"}`;
+
+  /* A reader can type anything into a search box. An email address never goes
+     into an analytics parameter. */
+  const redact = (q: string) => q.replace(/[^\s@]+@[^\s@]+/g, "[email]");
+
+  /* -------- /search/: follow the box -------- */
+  function formMode(root: HTMLElement) {
+    const input = document.getElementById(root.dataset.input || "q") as HTMLInputElement | null;
+    const list = root.querySelector<HTMLElement>("[data-sr-list]");
+    const status = root.querySelector<HTMLElement>("[data-sr-status]");
+    const more = root.querySelector<HTMLButtonElement>("[data-sr-more]");
+    const empty = root.querySelector<HTMLElement>("[data-sr-empty]");
+    const error = root.querySelector<HTMLElement>("[data-sr-error]");
+    const tpl = root.querySelector<HTMLTemplateElement>("template[data-sr-row]");
+    if (!input || !list || !status || !more || !empty || !error || !tpl) return;
+
+    const depts = JSON.parse(root.dataset.depts || "{}") as Record<string, string>;
+    const limit = Number(root.dataset.limit) || 10;
+    const idle = [...document.querySelectorAll<HTMLElement>("[data-sr-idle]")];
+
+    const initial = new URLSearchParams(location.search).get("q") || "";
+
+    let seq = 0; /* bumps per query, so a slow answer to an old one is dropped */
+    let typing = 0;
+    let settling = 0;
+    let term = "";
+    let inUrl = initial;
+    let ready = false; /* the rows on screen belong to `term` */
+    let reported = "";
+    let results: PagefindResult[] = [];
+    let shown = 0;
+
+    const clear = () => {
+      list.replaceChildren();
+      more.hidden = true;
+      empty.hidden = true;
+      error.hidden = true;
+      results = [];
+      shown = 0;
+    };
+
+    /* A query settles after a pause, on Enter, on a result click or when the
+       page is left. Only then is ?q= rewritten, since every replaceState can
+       count as a page view in GA4, and only then is the search event pushed,
+       once per term. */
+    const settle = () => {
+      clearTimeout(settling);
+      if (term !== inUrl) {
+        const url = new URL(location.href);
+        if (term && redact(term) === term) url.searchParams.set("q", term);
+        else url.searchParams.delete("q");
+        history.replaceState(history.state, "", url);
+        inUrl = term;
+      }
+      if (!ready || term.length < 2 || term === reported) return;
+      reported = term;
+      track("search", { search_term: redact(term), results_count: results.length, search_location: "page" });
+    };
+
+    async function render() {
+      const my = seq;
+      const batch = results.slice(shown, shown + limit);
+      const data = await Promise.all(batch.map((r) => r.data()));
+      if (my !== seq) return;
+      list!.append(...data.map((d) => makeRow(tpl!, d, depts)));
+      shown += batch.length;
+      more!.hidden = shown >= results.length;
+    }
+
+    async function run(raw: string, settled = false) {
+      const q = raw.trim().replace(/\s+/g, " ");
+      const my = ++seq;
+      clearTimeout(settling);
+      ready = false;
+      term = q;
+      for (const el of idle) el.hidden = q.length >= 2;
+      /* Reserves room for results (see the page's pre-paint script), so rows
+         arriving later push nothing that is already on screen. */
+      document.documentElement.toggleAttribute("data-sq", q.length >= 2);
+
+      if (q.length < 2) {
+        clear();
+        status!.textContent = q ? "Searches start at two letters." : "";
+        settling = window.setTimeout(settle, 1200);
+        return;
+      }
+
+      let pf: Pagefind;
+      try {
+        pf = await pagefind();
+      } catch {
+        if (my !== seq) return;
+        clear();
+        error!.hidden = false;
+        status!.textContent = "Search is not available right now.";
+        return;
+      }
+
+      const res = await pf.search(q);
+      if (my !== seq || !res) return;
+      const ok = await trusted(q, res.results);
+      if (my !== seq) return;
+      clear();
+      results = ok ? res.results : [];
+      if (results.length) {
+        await render();
+        if (my !== seq) return;
+        status!.textContent = `${plural(results.length)} "${q}".`;
+      } else {
+        empty!.hidden = false;
+        status!.textContent = `No entries match "${q}".`;
+      }
+      ready = true;
+      if (settled) settle();
+      else settling = window.setTimeout(settle, 1200);
+    }
+
+    input.addEventListener("input", () => {
+      clearTimeout(typing);
+      const q = input.value;
+      typing = window.setTimeout(() => run(q), 200);
+      const t = q.trim();
+      if (t.length >= 2) document.documentElement.setAttribute("data-sq", "");
+      if (t.length >= 2) pagefind().then((pf) => pf.preload(t)).catch(() => {});
+    });
+    input.addEventListener("focus", () => void pagefind().catch(() => {}), { once: true });
+
+    input.form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      clearTimeout(typing);
+      run(input.value, true);
+    });
+
+    /* One batch at a time: a second click while fragments load would render
+       the same slice twice and skip the next one. */
+    let busy = false;
+    more.addEventListener("click", async () => {
+      if (busy) return;
+      busy = true;
+      more.disabled = true;
+      try {
+        await render();
+      } finally {
+        busy = false;
+        more.disabled = false;
+      }
+    });
+    list.addEventListener("click", (e) => {
+      if ((e.target as Element).closest("a")) settle();
+    }, { capture: true });
+    addEventListener("pagehide", settle);
+
+    /* Focus only with a fine pointer: on a phone it throws the keyboard over
+       the results. */
+    const desk = matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    /* Suggested terms on the page fill the box instead of reloading it. */
+    document.querySelectorAll<HTMLAnchorElement>("a[data-sr-try]").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        input.value = a.dataset.srTry || a.textContent || "";
+        clearTimeout(typing);
+        run(input.value, true);
+        if (desk) input.focus({ preventScroll: true });
+      });
+    });
+
+    if (initial.trim()) {
+      input.value = initial;
+      run(initial, true);
+    } else if (desk) {
+      input.focus({ preventScroll: true });
+    }
+  }
+
+  /* -------- 404: search the address that missed -------- */
+  const STOP = new Set(
+    (
+      "a an and are as at be by can do does did for from has have how in is it its of on or that the this " +
+      "to was were what when where which who why will with blog topics html htm php asp aspx index amp 404 " +
+      "call called come comes get gets got made make makes mean means meaning really stand stands work works"
+    ).split(" ")
+  );
+
+  function termsFrom(path: string): string[] {
+    let p = path;
+    try {
+      p = decodeURIComponent(path);
+    } catch {
+      /* keep the raw path */
+    }
+    const words = p.toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 1 && !STOP.has(w));
+    return [...new Set(words)].slice(0, 6);
+  }
+
+  async function pathMode(root: HTMLElement) {
+    const list = root.querySelector<HTMLElement>("[data-sr-list]");
+    const head = root.querySelector<HTMLElement>("[data-sr-head]");
+    const status = root.querySelector<HTMLElement>("[data-sr-status]");
+    const tpl = root.querySelector<HTMLTemplateElement>("template[data-sr-row]");
+    if (!list || !head || !status || !tpl) return;
+    const depts = JSON.parse(root.dataset.depts || "{}") as Record<string, string>;
+    const limit = Number(root.dataset.limit) || 5;
+
+    const terms = termsFrom(location.pathname);
+    if (!terms.length) return;
+    document.querySelectorAll<HTMLAnchorElement>("a[data-sr-searchlink]").forEach((a) => {
+      a.href = `/search/?q=${encodeURIComponent(terms.join(" "))}`;
+    });
+
+    let pf: Pagefind;
+    try {
+      pf = await pagefind();
+    } catch {
+      return;
+    }
+
+    /* Pagefind matches every term, so relax step by step: all terms, then
+       drop trailing terms one at a time, then each remaining term alone. The
+       strictest matches lead, and looser ones top the list up to the limit.
+       Once something has matched, a lone word adds at most two more, so one
+       loose word cannot crowd out the rest. */
+    const queries: string[] = [];
+    for (let k = terms.length; k > 0; k--) queries.push(terms.slice(0, k).join(" "));
+    queries.push(...terms.slice(1));
+
+    const picked: PagefindResult[] = [];
+    const seen = new Set<string>();
+    for (const q of queries) {
+      if (picked.length >= limit) break;
+      const hits = (await pf.search(q))?.results ?? [];
+      const found = (await trusted(q, hits)) ? hits : [];
+      let room = !q.includes(" ") && picked.length > 0 ? 2 : limit;
+      for (const r of found) {
+        if (picked.length >= limit || room <= 0) break;
+        if (seen.has(r.id)) continue;
+        seen.add(r.id);
+        picked.push(r);
+        room--;
+      }
+    }
+
+    /* The term is what the broken address asked for; the count is how many
+       suggestions it produced. */
+    const asked = terms.join(" ");
+    track("search", { search_term: redact(asked), results_count: picked.length, search_location: "notfound" });
+    if (!picked.length) return;
+
+    const data = await Promise.all(picked.map((r) => r.data()));
+    list.replaceChildren(...data.map((d) => makeRow(tpl, d, depts)));
+    head.textContent = root.dataset.matchHeading || "Perhaps you meant";
+    status.textContent = `From a search of the archive for "${asked}".`;
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-sr]").forEach((root) => {
+    if (root.dataset.mode === "path") void pathMode(root);
+    else formMode(root);
+  });
+</script>

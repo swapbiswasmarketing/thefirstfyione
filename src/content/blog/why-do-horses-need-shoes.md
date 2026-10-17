@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "everyday"
 readingTime: "4 min read"
 filecode: "FYI-046"
+almanac: "In Swedish harness racing, taking the shoes off is the upgrade."
 featured: false
 faqs:
   - q: "Why do horses need shoes?"

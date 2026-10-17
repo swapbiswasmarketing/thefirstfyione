@@ -5,6 +5,7 @@ pubDate: 2026-08-28
 category: "history"
 readingTime: "4 min read"
 filecode: "FYI-013"
+almanac: "There has been nothing worth shaving off a quarter for six decades."
 featured: false
 faqs:
   - q: "Why do coins have ridges on the edges?"

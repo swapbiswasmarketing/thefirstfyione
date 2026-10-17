@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-057"
+almanac: "English speakers were saying take French leave, for slipping off without notice, by 1741, and the French call it leaving the English way."
 featured: false
 faqs:
   - q: "Why do they call it an Irish goodbye?"

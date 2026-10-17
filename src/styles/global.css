@@ -6,6 +6,188 @@
    Square geometry, hairline rules, no card shadows, no gradients.
    ============================================================ */
 
+/* ------------------------------------------------------------
+   Type, self-hosted.
+   The woff2 files live in src/assets/fonts/ and are referenced relatively,
+   so Vite fingerprints them into /_astro/ (immutable on Vercel; new bytes get
+   a new URL). No fonts.googleapis.com round trip, no second origin.
+   - Playfair Display: Google's latin files, byte for byte. The family has a
+     Reserved Font Name, so a subset or instance could not keep its name.
+   - Newsreader, Space Mono: no Reserved Font Name, so they are subset by
+     scripts/fonts/subset-fonts.py. Newsreader's opsz axis is clipped to 14-24
+     because it is only ever set at 14.7-24px; Google serves the full 6-72
+     file (132 KB roman, 147 KB italic against 74 KB and 49 KB here). Setting
+     it outside that range draws the nearest end's design: widen the clip in
+     the script first.
+   - Inter is gone: no visible element drew a glyph in it. Space Mono 700 is
+     gone: no label is designed bold, and with weight synthesis off, a weight
+     a label inherits from a heading simply renders the 400.
+   No preload: the fallback paint already counts as LCP on this all-text site,
+   and preloading two faces measured +312 ms FCP on the homepage and +400 ms on
+   an entry (slow 4G lab), for fonts that finished only ~110 ms sooner.
+   ------------------------------------------------------------ */
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../assets/fonts/playfair-display-roman-latin.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-00B4, U+00B6-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../assets/fonts/playfair-display-italic-latin.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-00B4, U+00B6-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("../assets/fonts/newsreader-roman-latin.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/newsreader-italic-latin.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/fonts/space-mono-400-latin.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-00AC, U+00AE-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+
+/* ------------------------------------------------------------
+   Metric-matched fallbacks: what renders until each web face arrives.
+   A local system face, scaled with size-adjust so the site's own text sets to
+   the same width, and given the web face's ascent and descent, so the swap
+   re-breaks almost no lines and moves no baselines. Each size-adjust is the
+   value at which the fewest blocks of the site's real text (prose, deks, row
+   titles, headings, pull-quotes, the nameplate) change line count in their
+   real column widths, measured in Chromium. The overrides are the web face's
+   hhea metrics divided by size-adjust, because they apply after size-adjust
+   scales the em. Measured font-swap CLS with these faces: under 0.005 on the
+   front page, the archive and entries at 390, 768 and 1280px, against up to
+   0.56 with plain system fallbacks. Rules for editing these:
+   - Weight-specific faces: body sets font-synthesis-weight: none, so a regular
+     local face would draw 700 headings in regular weight during the swap.
+   - unicode-range equals the web face's cmap, so a fallback can only stand in
+     for a glyph the web font will draw; anything else keeps its system glyph
+     before and after the swap.
+   - Newsreader's widths move with opsz (about 4% wider at 16px than at 19px),
+     and one size-adjust cannot follow that, so its faces are tuned to entry
+     prose; 16px row deks re-break slightly more often.
+   - Georgia backs the serif faces as well as the display ones: scaled, it
+     re-breaks fewer paragraphs than Times does, and the serif faces measured
+     no extra layout time. The mono face is the one that costs: about 15 ms of
+     style and layout on a desktop cold load (more at 4x CPU throttling) while
+     it is in use, for 2-10x less font-swap CLS on the archive. Liberation
+     Mono and Cousine are metric-compatible with Courier New, so Linux and
+     ChromeOS get the same numbers.
+   - Re-measure whenever a face, a weight or a subset changes.
+   ------------------------------------------------------------ */
+/* 400 is the search and sign-up inputs, which set --display without a weight. */
+@font-face {
+  font-family: "FYI Display Fallback";
+  font-style: normal;
+  font-weight: 400 500;
+  src: local("Georgia");
+  size-adjust: 100.4%;
+  ascent-override: 107.8%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+  unicode-range: U+0020-007E, U+00A0-00B4, U+00B6-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "FYI Display Fallback";
+  font-style: normal;
+  font-weight: 600 800;
+  src: local("Georgia Bold"), local("Georgia-Bold");
+  size-adjust: 88.8%;
+  ascent-override: 121.8%;
+  descent-override: 28.3%;
+  line-gap-override: 0%;
+  unicode-range: U+0020-007E, U+00A0-00B4, U+00B6-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+/* 900 is only the nameplate, set in capitals, which run wider against
+   Georgia Bold than mixed-case headings do. */
+@font-face {
+  font-family: "FYI Display Fallback";
+  font-style: normal;
+  font-weight: 900;
+  src: local("Georgia Bold"), local("Georgia-Bold");
+  size-adjust: 92.2%;
+  ascent-override: 117.4%;
+  descent-override: 27.2%;
+  line-gap-override: 0%;
+  unicode-range: U+0020-007E, U+00A0-00B4, U+00B6-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "FYI Display Fallback";
+  font-style: italic;
+  font-weight: 600 900;
+  src: local("Georgia Bold Italic"), local("Georgia-BoldItalic");
+  size-adjust: 84.3%;
+  ascent-override: 128.4%;
+  descent-override: 29.8%;
+  line-gap-override: 0%;
+  unicode-range: U+0020-007E, U+00A0-00B4, U+00B6-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "FYI Serif Fallback";
+  font-style: normal;
+  font-weight: 400 500;
+  src: local("Georgia");
+  size-adjust: 91.2%;
+  ascent-override: 80.6%;
+  descent-override: 29.1%;
+  line-gap-override: 0%;
+  unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "FYI Serif Fallback";
+  font-style: normal;
+  font-weight: 600 700;
+  src: local("Georgia Bold"), local("Georgia-Bold");
+  size-adjust: 84.6%;
+  ascent-override: 86.9%;
+  descent-override: 31.3%;
+  line-gap-override: 0%;
+  unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "FYI Serif Fallback";
+  font-style: italic;
+  font-weight: 400 700;
+  src: local("Georgia Italic"), local("Georgia-Italic");
+  size-adjust: 83.4%;
+  ascent-override: 88.1%;
+  descent-override: 31.8%;
+  line-gap-override: 0%;
+  unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+@font-face {
+  font-family: "FYI Mono Fallback";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Courier New"), local("CourierNewPSMT"), local("Liberation Mono"), local("LiberationMono"), local("Cousine");
+  size-adjust: 102%;
+  ascent-override: 109.8%;
+  descent-override: 35.4%;
+  line-gap-override: 0%;
+  unicode-range: U+0020-007E, U+00A0-00AC, U+00AE-00FF, U+0131, U+0152-0153, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2032-2033, U+2039-203A, U+20AC, U+2122, U+2212;
+}
+
 :root {
   /* --- Paper --- */
   --paper: #f6f3ec;
@@ -27,15 +209,20 @@
   --rule: rgba(22, 23, 27, 0.14);
   --rule-mid: rgba(22, 23, 27, 0.26);
 
-  /* --- Type --- */
-  --display: "Playfair Display", Georgia, "Times New Roman", serif;
-  --serif: "Newsreader", Georgia, "Times New Roman", serif;
-  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --mono: "Space Mono", ui-monospace, "Consolas", monospace;
+  /* --- Type. After each fallback face, the plain system stack is ordered by
+     width match too: Times is closest to Newsreader, Courier New to Space
+     Mono (Consolas, the old first pick, is 11% narrower). --sans loads no
+     web font; nothing on the site is set in it. --- */
+  --display: "Playfair Display", "FYI Display Fallback", Georgia, "Times New Roman", serif;
+  --serif: "Newsreader", "FYI Serif Fallback", "Times New Roman", Times, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "Space Mono", "FYI Mono Fallback", "Courier New", ui-monospace, monospace;
 
-  /* --- Metrics --- */
+  /* --- Metrics. Widths in rem, never ch: ch is measured on whichever font
+     happens to be loaded, so a ch box changes size when the web font swaps
+     in. --measure is the old 68-character reading column (700px), fixed. --- */
   --wrap: 1160px;
-  --measure: 68ch;
+  --measure: 43.75rem;
 
   /* --- Motion. Built-in easings are too weak to read as intentional. --- */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -62,7 +249,7 @@ html {
 }
 
 body {
-  font-family: var(--sans);
+  font-family: var(--serif);
   color: var(--ink);
   background: var(--paper);
   line-height: 1.6;
@@ -79,16 +266,22 @@ body {
 body > main { flex: 1 0 auto; }
 
 /* Print grain. Breaks the digital flatness of a solid fill.
-   Fixed, so it reads as the texture of the paper rather than of the content. */
+   Fixed, so it reads as the texture of the paper rather than of the content.
+   The tile is black and carries the noise in its alpha (the feColorMatrix),
+   so plain source-over darkens the paper the way multiply did. The matrix is
+   the old multiply grain's darkening, a * (1 - colour), linearised by
+   luminance: same mean (1.61 levels on paper) and same texture (sd 0.63),
+   max pixel difference 4/255. A blend mode on a fixed full-viewport layer
+   makes the compositor copy and re-blend the whole backdrop on every
+   scrolled or animated frame; this does not. */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: var(--z-grain);
   pointer-events: none;
-  mix-blend-mode: multiply;
   opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.0727 -0.2447 -0.0248 0.2756 0.1577'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 h1, h2, h3, h4 {
@@ -106,7 +299,7 @@ a { color: var(--ink); text-underline-offset: 0.18em; text-decoration-thickness:
 
 img { max-width: 100%; display: block; }
 
-:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 1px; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 0; }
 
 .wrap { width: min(var(--wrap), 92vw); margin-inline: auto; }
 .wrap-narrow { width: min(720px, 92vw); margin-inline: auto; }
@@ -145,6 +338,10 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
   color: var(--ink-soft);
 }
+
+/* Keeps a hyphenated compound or a number and its unit on one line in
+   headlines (src/lib/typeset.ts). */
+.nb { white-space: nowrap; }
 
 /* Static highlighter, for copy that is already on screen */
 .hl {
@@ -236,6 +433,7 @@ img { max-width: 100%; display: block; }
     transition-duration: 0.01ms !important;
   }
   .hl-live { background-size: 100% 100%; animation: none; }
+  .stagger > * { animation: none !important; }
 }
 
 ::selection { background: var(--hl); color: var(--ink); }
@@ -243,3 +441,47 @@ img { max-width: 100%; display: block; }
 ::-webkit-scrollbar-track { background: var(--paper); }
 ::-webkit-scrollbar-thumb { background: var(--rule-mid); }
 ::-webkit-scrollbar-thumb:hover { background: var(--ink-faint); }
+
+/* ------------------------------------------------------------
+   Utilities for page owners
+   ------------------------------------------------------------ */
+
+/* [hidden] is only a user-agent rule, so any author display value (a flex
+   row, a grid cell) silently beats it. until-found keeps its own UA rule
+   (content-visibility: hidden), so find-in-page can still open it. */
+[hidden]:not([hidden="until-found" i]) { display: none !important; }
+
+/* Off-screen skipping for long below-the-fold blocks: the browser skips their
+   style, layout and paint until they near the viewport. Paint containment
+   clips anything drawn past the box, including a focus ring flush with its
+   edge, so this only switches on where overflow-clip-margin can give that
+   clip room; elsewhere the block renders as usual. While skipped, the block
+   is as tall as --cv-size; "auto" swaps in its real height once it has
+   rendered. Set --cv-size to the block's usual height. Use it on full-width
+   blocks only (not on flex or grid items sized by their content), and never
+   on a block above a #fragment target: smooth scrolling would land short. */
+@supports (overflow-clip-margin: 8px) {
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto var(--cv-size, 30rem);
+    overflow-clip-margin: 8px;
+  }
+}
+
+/* ------------------------------------------------------------
+   Print: ink on white paper. No grain, no tint, no motion.
+   ------------------------------------------------------------ */
+@page { margin: 16mm 14mm; }
+
+@media print {
+  html, body { background: #fff; color: #000; }
+  body { display: block; min-height: 0; }
+  body::after { display: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .cv-auto { content-visibility: visible; }
+  .hl-live { background-size: 100% 100%; }
+  a { color: inherit; }
+  h1, h2, h3, h4 { break-after: avoid; }
+  p, li { orphans: 3; widows: 3; }
+  blockquote, figure, table, pre, img { break-inside: avoid; }
+}

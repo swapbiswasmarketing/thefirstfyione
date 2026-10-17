@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-116"
+almanac: "The oldest eyewear against the sun's glare is Arctic slit goggles, nearly 2,000 years old and without a lens."
 featured: false
 faqs:
   - q: "Who invented sunglasses?"

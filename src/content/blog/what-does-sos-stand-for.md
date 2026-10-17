@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-055"
+almanac: "The Titanic often gets the credit for the first SOS, but the call was on the air nearly three years earlier."
 featured: false
 faqs:
   - q: "What does SOS stand for?"

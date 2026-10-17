@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-067"
+almanac: "Most cinnamon sold in the United States is cassia."
 featured: false
 faqs:
   - q: "Where does cinnamon come from?"

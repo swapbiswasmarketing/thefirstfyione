@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-087"
+almanac: "The caper family sits in the plant order Brassicales with cabbage and mustard."
 featured: false
 faqs:
   - q: "What are capers?"

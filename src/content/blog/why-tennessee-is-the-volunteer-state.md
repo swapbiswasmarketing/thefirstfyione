@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "history"
 readingTime: "3 min read"
 filecode: "FYI-035"
+almanac: "The Secretary of War asked Tennessee for 2,800 volunteers for the Mexican-American War and roughly 30,000 offered to serve."
 featured: false
 faqs:
   - q: "Why is Tennessee called the Volunteer State?"

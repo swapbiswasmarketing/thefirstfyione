@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "history"
 readingTime: "4 min read"
 filecode: "FYI-032"
+almanac: "The poop deck is named from the Latin puppis, meaning a ship's stern, which reached English around 1400 through the Old French poupe."
 featured: false
 faqs:
   - q: "Why is it called a poop deck?"

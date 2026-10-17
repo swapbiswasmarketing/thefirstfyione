@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "science"
 readingTime: "4 min read"
 filecode: "FYI-020"
+almanac: "A fly that walks across your plate has already sampled it before its mouthparts arrive."
 featured: false
 faqs:
   - q: "Why do flies rub their hands together?"

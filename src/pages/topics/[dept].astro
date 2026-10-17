@@ -1,0 +1,210 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import LedgerRow from "../../components/LedgerRow.astro";
+import { cats, deptHref, deptWord } from "../../data/site";
+import { topics, introParts, introText } from "../../data/topics";
+import { getEntries, deptCounts, entryHref, type Entry } from "../../lib/entries";
+import { abs, pageNode, itemList, crumbs } from "../../lib/schema";
+import { pageCard } from "../../lib/og";
+
+export async function getStaticPaths() {
+  const entries = await getEntries();
+  const counts = deptCounts(entries);
+  return cats.map((cat) => ({
+    params: { dept: cat.key },
+    props: { cat, list: entries.filter((p) => p.data.category === cat.key), counts },
+  }));
+}
+
+interface Props {
+  cat: (typeof cats)[number];
+  list: Entry[];
+  counts: Record<string, number>;
+}
+
+const { cat, list, counts } = Astro.props;
+const copy = topics[cat.key];
+if (!copy) throw new Error(`src/data/topics.ts has no copy for the "${cat.key}" department`);
+
+/* An intro may only link entries that exist in this department. Failing the
+   build here beats shipping a link to a renamed or re-filed entry. */
+const byId = new Map(list.map((p) => [p.id, p]));
+const parts = introParts(copy.intro).map((part) => {
+  if (!part.slug) return { text: part.text };
+  const target = byId.get(part.slug);
+  if (!target) throw new Error(`topics.ts: the ${cat.key} intro links "${part.slug}", which is not a ${cat.name} entry`);
+  return { text: part.text, href: entryHref(target) };
+});
+
+/* Copy limits are editorial, so they warn instead of failing the build. */
+const words = introText(copy.intro).split(/\s+/).filter(Boolean).length;
+if (words < 60 || words > 120) console.warn(`[topics] ${cat.key} intro is ${words} words; aim for 60-120`);
+if (copy.meta.length < 140 || copy.meta.length > 160)
+  console.warn(`[topics] ${cat.key} meta description is ${copy.meta.length} characters; aim for 140-160`);
+
+const url = abs(deptHref(cat.key));
+const others = cats.filter((c) => c.key !== cat.key);
+const plural = (n: number) => `${n} ${n === 1 ? "entry" : "entries"}`;
+
+const schema = [
+  pageNode("CollectionPage", url, cat.name, copy.meta, {
+    breadcrumb: { "@id": `${url}#breadcrumb` },
+    mainEntity: { "@id": `${url}#list` },
+  }),
+  itemList(url, list),
+  crumbs(url, [
+    { name: "Topics", url: abs("/topics/") },
+    { name: cat.name, url },
+  ]),
+];
+---
+
+<Layout
+  title={`${copy.title} - Strictly FYI`}
+  description={copy.meta}
+  card={pageCard(`topic-${cat.key}`)}
+  schema={schema}
+>
+  <div class="dept-page wrap">
+    <header class="dp-head">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/topics/">Topics</a> <span aria-hidden="true">/</span>
+        <span aria-current="page">{cat.name}</span>
+      </nav>
+      <div class="rule-thickthin"></div>
+
+      <p class="dp-kicker">&sect;{cat.n} &middot; Department &middot; {plural(list.length)} filed</p>
+      <h1 class="dp-title"><span class="hl-live">{cat.name}</span></h1>
+
+      <div class="dp-lede">
+        <p class="dp-note">{cat.note}.</p>
+        <p class="dp-intro">
+          {parts.map((part) => (part.href ? <a href={part.href}>{part.text}</a> : part.text))}
+        </p>
+      </div>
+    </header>
+
+    <p class="dp-count">Every entry filed under {cat.name}, newest first</p>
+    <ol class="ledger dp-ledger">
+      {list.map((p) => <LedgerRow entry={p} dept={false} cv />)}
+    </ol>
+
+    <section class="dp-others" aria-labelledby="dp-others-head">
+      <h2 class="dp-others-head" id="dp-others-head">The other departments</h2>
+      <ul class="dp-others-list">
+        {others.map((c) => (
+          <li>
+            <a class="dp-other" href={deptHref(c.key)}>
+              <span class="dp-other-n">&sect;{c.n} &middot; {plural(counts[c.key] ?? 0)}</span>
+              <span class="dp-other-name">{c.name}</span>
+              <span class="dp-other-note">{c.note}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="dp-all">
+        <a class="coupon" href="/blog/">[ The whole archive ]</a>
+        <a class="coupon" href="/topics/">[ All {deptWord} departments ]</a>
+      </p>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .dept-page { padding-top: clamp(1.25rem, 4vw, 2rem); }
+
+  /* -------- HEAD -------- */
+  .crumbs {
+    display: flex; gap: 0.45rem; flex-wrap: wrap; padding-bottom: 0.6rem;
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .crumbs a {
+    color: var(--ink-soft); text-decoration: none;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
+
+  .dp-kicker {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--ink-faint); margin-top: 1.4rem;
+  }
+  .dp-title {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.8rem, 9vw, 6rem); line-height: 0.95; letter-spacing: -0.03em;
+    margin: 0.5rem 0 0;
+  }
+
+  /* Lede rail and text column, as on the About page. */
+  .dp-lede {
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem 3rem;
+    margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--ink);
+  }
+  .dp-note {
+    font-family: var(--display); font-weight: 600; font-style: italic;
+    font-size: clamp(1.35rem, 2.8vw, 1.9rem); line-height: 1.25; letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .dp-intro {
+    font-family: var(--serif); font-size: 1.15rem; line-height: 1.65; color: #24252b;
+    max-width: 36rem;
+  }
+  .dp-intro a {
+    color: var(--ink);
+    transition: background var(--t-hover) var(--ease-out);
+  }
+
+  @media (min-width: 880px) {
+    .dp-lede { grid-template-columns: 5fr 7fr; }
+  }
+
+  /* -------- THE LEDGER -------- */
+  .dp-count {
+    margin-top: clamp(2.25rem, 5vw, 3.25rem); padding: 0.6rem 0;
+    border-top: 1px solid var(--ink);
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .ledger { list-style: none; margin: 0; padding: 0; }
+  .dp-ledger { border-top: 1px solid var(--rule-mid); border-bottom: 1px solid var(--ink); }
+
+  /* -------- THE OTHER DEPARTMENTS -------- */
+  .dp-others { margin-top: clamp(2.5rem, 6vw, 4rem); }
+  .dp-others-head {
+    font-family: var(--mono); font-weight: 400; font-size: 0.68rem; line-height: 1.6;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
+    padding: 0.6rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+  }
+  .dp-others-list {
+    list-style: none; display: grid; grid-template-columns: minmax(0, 1fr);
+  }
+  .dp-others-list li { border-bottom: 1px solid var(--rule); }
+  .dp-other {
+    display: grid; gap: 0.2rem; padding: 1rem 0.1rem;
+    color: var(--ink); text-decoration: none;
+    transition: background var(--t-hover) var(--ease-out);
+  }
+  .dp-other:focus-visible { outline-offset: -2px; }
+  .dp-other-n {
+    font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .dp-other-name {
+    font-family: var(--display); font-weight: 700; font-size: 1.45rem; line-height: 1.1; letter-spacing: -0.015em;
+  }
+  .dp-other-note { font-family: var(--serif); font-style: italic; color: var(--ink-soft); }
+
+  @media (min-width: 640px) {
+    .dp-others-list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
+  }
+  @media (min-width: 960px) {
+    .dp-others-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  }
+
+  .dp-all { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin-top: 1.4rem; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .crumbs a:hover, .dp-intro a:hover { background: var(--hl); color: var(--ink); }
+    .dp-other:hover { background: color-mix(in srgb, var(--hl) 14%, transparent); }
+  }
+</style>

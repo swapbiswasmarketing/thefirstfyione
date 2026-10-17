@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-059"
+almanac: "Roosters that went 14 days without a sunrise kept up their predawn crowing anyway, on a near-24-hour rhythm that only slowly weakened."
 featured: false
 faqs:
   - q: "Why do roosters crow?"

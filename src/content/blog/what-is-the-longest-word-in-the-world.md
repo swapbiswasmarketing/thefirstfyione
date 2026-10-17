@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-082"
+almanac: "The longest word in English dictionaries reached them by way of a puzzlers' meeting."
 featured: false
 faqs:
   - q: "What is the longest word in the English language?"

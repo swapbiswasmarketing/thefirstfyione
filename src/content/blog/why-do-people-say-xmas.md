@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "culture"
 readingTime: "4 min read"
 filecode: "FYI-039"
+almanac: "Coleridge wrote Xmas in 1801, Byron in 1811, Lewis Carroll in 1864, and Oliver Wendell Holmes Jr. in a letter in 1923."
 featured: false
 faqs:
   - q: "What does the X in Xmas actually stand for?"

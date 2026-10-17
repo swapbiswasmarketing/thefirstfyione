@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-101"
+almanac: "Santa Claus Village began as a cabin for Eleanor Roosevelt."
 featured: false
 faqs:
   - q: "Does Santa live at the North Pole or in Finland?"

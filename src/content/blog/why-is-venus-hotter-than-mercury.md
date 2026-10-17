@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-018"
+almanac: "Venus orbits 30 percent closer to the Sun than Earth and still takes in less solar energy than Earth does."
 featured: false
 faqs:
   - q: "Why is Venus hotter than Mercury?"

@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "science"
 readingTime: "4 min read"
 filecode: "FYI-021"
+almanac: "Solar wind supplies the power, but the glowing electrons come from Earth's own magnetic tail."
 featured: false
 faqs:
   - q: "What causes the northern lights?"

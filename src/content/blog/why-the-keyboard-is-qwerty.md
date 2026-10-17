@@ -5,6 +5,7 @@ pubDate: 2026-07-20
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-007"
+almanac: "Every letter in the word TYPEWRITER appears on the top row."
 featured: false
 faqs:
   - q: "Why is the keyboard QWERTY and not alphabetical?"

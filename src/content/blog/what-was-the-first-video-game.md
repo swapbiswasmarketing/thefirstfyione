@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "tech"
 readingTime: "4 min read"
 filecode: "FYI-048"
+almanac: "The earliest patent for a game played on a screen was filed in 1947."
 featured: false
 faqs:
   - q: "Was Pong the first video game?"

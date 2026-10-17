@@ -1,80 +1,145 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getCollection, render } from "astro:content";
-import { catLabel, fmtDate, fmtLong } from "../../data/site";
+import SubscribeForm from "../../components/SubscribeForm.astro";
+import { render } from "astro:content";
+import { contactEmail, deptHref, fmtDate, fmtLong, newsletterLive } from "../../data/site";
+import {
+  getEntries,
+  buildRelated,
+  deptNeighbours,
+  deptCounts,
+  entryHref,
+  readingLabel,
+  wordCount,
+  type Entry,
+  type Related,
+} from "../../lib/entries";
+import { pageNode, crumbs, orgRef, abs, deptName, ORG_ID, WEBSITE_ID } from "../../lib/schema";
+import { entryCard } from "../../lib/og";
+import { keepTogether } from "../../lib/typeset";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  const sorted = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-  return posts.map((post) => ({ params: { slug: post.id }, props: { post, sorted } }));
+  const posts = await getEntries();
+  /* buildRelated scores every pair, so it runs once per build, here, and each
+     page receives only its own picks. */
+  const related = buildRelated(posts, 3);
+  const counts = deptCounts(posts);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      related: related.get(post.id) ?? [],
+      ...deptNeighbours(post, posts),
+      deptTotal: counts[post.data.category] ?? 1,
+    },
+  }));
 }
 
-const { post, sorted } = Astro.props;
+interface Props {
+  post: Entry;
+  related: Related[];
+  newer?: Entry;
+  older?: Entry;
+  deptTotal: number;
+}
+
+const { post, related, newer, older, deptTotal } = Astro.props;
 const { Content, headings } = await render(post);
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
-const more = sorted.filter((p) => p.id !== post.id).slice(0, 3);
 
-const site = Astro.site ?? new URL("https://strictly.fyi");
-const url = new URL(`/blog/${post.id}/`, site).href;
-const published = post.data.pubDate.toISOString();
-const modified = (post.data.updatedDate ?? post.data.pubDate).toISOString();
-const section = catLabel[post.data.category] ?? "Curiosity";
+const { title, description, category } = post.data;
 const filecode = post.data.filecode ?? "FYI";
+const section = deptName(category);
+const path = entryHref(post);
+const url = abs(path);
+const card = entryCard(post);
+const faqs = post.data.faqs ?? [];
 
-const shareText = encodeURIComponent(post.data.title);
+/* "Updated" is a claim that the text changed after filing, so it shows only
+   when updatedDate is genuinely later than pubDate. */
+const pub = post.data.pubDate;
+const upd = post.data.updatedDate;
+const revised = upd !== undefined && upd.valueOf() > pub.valueOf();
+const published = pub.toISOString();
+const modified = (revised && upd ? upd : pub).toISOString();
+
+/* One trail drives both the visible breadcrumb and the BreadcrumbList, so the
+   two cannot disagree. crumbs() prepends Home itself. */
+const trail = [
+  { name: "Home", href: "/" },
+  { name: "Topics", href: "/topics/" },
+  { name: section, href: deptHref(category) },
+  { name: title, href: path },
+];
+
+const pageId = `${url}#webpage`;
+const schema: Record<string, unknown>[] = [
+  pageNode("WebPage", url, title, description, { breadcrumb: { "@id": `${url}#breadcrumb` } }),
+  {
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: title,
+    description,
+    url,
+    mainEntityOfPage: { "@id": pageId },
+    isPartOf: { "@id": WEBSITE_ID },
+    image: { "@type": "ImageObject", url: abs(card.url), width: card.width, height: card.height },
+    datePublished: published,
+    dateModified: modified,
+    author: orgRef,
+    publisher: { "@id": ORG_ID },
+    articleSection: section,
+    wordCount: wordCount(post.body ?? ""),
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    identifier: filecode,
+  },
+  crumbs(url, trail.slice(1).map((c) => ({ name: c.name, url: abs(c.href) }))),
+];
+/* FAQ rich results are gone from Google, so this only mirrors the visible
+   questions, item for item, for parsers that read the graph. */
+if (faqs.length > 0) {
+  schema.push({
+    "@type": "FAQPage",
+    "@id": `${url}#faq`,
+    isPartOf: { "@id": pageId },
+    inLanguage: "en-US",
+    mainEntity: faqs.map((f, i) => ({
+      "@type": "Question",
+      name: f.q,
+      url: `${url}#q-${i + 1}`,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  });
+}
+
+const shareText = encodeURIComponent(title);
 const shareUrl = encodeURIComponent(url);
 const xShare = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
 const fbShare = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
 const liShare = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+const correctionHref = `mailto:${contactEmail}?subject=${encodeURIComponent(`Correction: ${filecode} ${title}`)}`;
+const deptLink = deptTotal > 1 ? `See all ${deptTotal} ${section} entries` : `See the ${section} department`;
 
-const articleLd = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  headline: post.data.title,
-  description: post.data.description,
-  image: new URL("/og.png", site).href,
-  datePublished: published,
-  dateModified: modified,
-  articleSection: section,
-  author: { "@type": "Organization", name: "Strictly FYI", url: site.href },
-  publisher: { "@type": "Organization", name: "Strictly FYI", logo: { "@type": "ImageObject", url: new URL("/og.png", site).href } },
-  mainEntityOfPage: { "@type": "WebPage", "@id": url },
-};
-const breadcrumbLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: site.href },
-    { "@type": "ListItem", position: 2, name: "Read", item: new URL("/blog/", site).href },
-    { "@type": "ListItem", position: 3, name: post.data.title, item: url },
-  ],
-};
-const faqLd = post.data.faqs?.length
-  ? {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: post.data.faqs.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    }
-  : null;
+/* A neighbour that already made See also is listed once, up there. */
+const seen = new Set(related.map((r) => r.entry.id));
+const olderLink = older && !seen.has(older.id) ? older : undefined;
+const newerLink = newer && !seen.has(newer.id) ? newer : undefined;
 ---
 
 <Layout
-  title={`${post.data.title} · Strictly FYI`}
-  description={post.data.description}
+  title={title}
+  description={description}
+  card={card}
   type="article"
   publishedTime={published}
   modifiedTime={modified}
   section={section}
   wrap="1040px"
+  schema={schema}
+  contentGroup={section}
+  entryId={filecode}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(articleLd)} is:inline />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} is:inline />
-  {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} is:inline />}
-
   <div class="read-progress" aria-hidden="true"><span id="rp-bar"></span></div>
   <button id="to-top" class="to-top" type="button" aria-label="Back to top" hidden>
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -82,33 +147,44 @@ const faqLd = post.data.faqs?.length
     </svg>
   </button>
 
-  <article class="post wrap">
-    <!-- ============ ENTRY HEAD ============ -->
+  {/* Pagefind indexes only this article: the header's title and dek, the prose
+      and the FAQ. Everything else inside it is chrome and opts out. */}
+  <article class="post wrap" data-pagefind-body data-entry-id={filecode} data-entry-cat={category}>
+    <span hidden data-pagefind-meta={`filecode:${filecode}`}></span>
+    <span hidden data-pagefind-meta={`reading:${readingLabel(post)}`}></span>
+    <span hidden data-pagefind-filter={`department:${section}`}></span>
+
     <header class="entry-head">
-      <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a> <span aria-hidden="true">/</span>
-        <a href="/blog/">Archive</a> <span aria-hidden="true">/</span>
-        <a href={`/blog/?cat=${post.data.category}`}>{section}</a>
+      <nav class="crumbs" aria-label="Breadcrumb" data-pagefind-ignore>
+        <ol>
+          {trail.map((c, i) => (
+            <li>
+              {i > 0 && <span class="crumb-sep" aria-hidden="true">/</span>}
+              {i < trail.length - 1 ? <a href={c.href}>{c.name}</a> : <span aria-current="page">{c.name}</span>}
+            </li>
+          ))}
+        </ol>
       </nav>
       <div class="rule-thickthin"></div>
 
-      <p class="entry-file">{filecode} · {section.toUpperCase()} · Filed {fmtDate(post.data.pubDate)}</p>
-      <h1 class="entry-title">{post.data.title}</h1>
-      <p class="entry-dek">{post.data.description}</p>
+      <p class="entry-file" data-pagefind-ignore>{filecode} &middot; {section} &middot; Filed {fmtDate(pub)}</p>
+      <h1 class="entry-title" set:html={keepTogether(title)} />
+      <p class="entry-dek">{description}</p>
 
-      <div class="byline">
+      <div class="byline" data-pagefind-ignore>
         <span class="byline-by">By <span class="byline-name">Strictly FYI</span></span>
         <span class="leader" aria-hidden="true"></span>
-        <time datetime={published}>{fmtLong(post.data.pubDate)}</time>
-        {post.data.updatedDate && <span class="byline-upd">Updated {fmtDate(post.data.updatedDate)}</span>}
-        {post.data.readingTime && <span>{post.data.readingTime}</span>}
+        <time datetime={published}>{fmtLong(pub)}</time>
+        {revised && upd && (
+          <span class="byline-upd">Updated <time datetime={modified}>{fmtDate(upd)}</time></span>
+        )}
+        <span>{readingLabel(post)}</span>
       </div>
     </header>
 
-    <!-- ============ BODY: MARGIN RAIL + COLUMN ============ -->
     <div class="post-shell">
       {toc.length >= 3 && (
-        <nav class="toc" id="toc" aria-label="On this page">
+        <nav class="toc" id="toc" aria-label="On this page" data-pagefind-ignore>
           <p class="toc-head">In this entry</p>
           <ol>
             {toc.map((h) => (
@@ -125,59 +201,136 @@ const faqLd = post.data.faqs?.length
           <Content />
         </div>
 
-        <!-- ============ SHARE ============ -->
-        <div class="share">
-          <span class="share-label">Pass it on</span>
-          <a class="share-btn" href={xShare} target="_blank" rel="noopener">[ X ]</a>
-          <a class="share-btn" href={fbShare} target="_blank" rel="noopener">[ Facebook ]</a>
-          <a class="share-btn" href={liShare} target="_blank" rel="noopener">[ LinkedIn ]</a>
-          <button class="share-btn copy-link" type="button" data-url={url}>[ Copy link ]</button>
-        </div>
-
-        <!-- ============ FAQ ============ -->
-        {post.data.faqs?.length && (
-          <section class="faq" aria-label="Frequently asked questions">
-            <p class="faq-head">Queries on file</p>
-            {post.data.faqs.map((f) => (
-              <details class="faq-item">
+        {faqs.length > 0 ? (
+          <section class="faq" aria-labelledby="entry-faq-head">
+            <h2 class="faq-head" id="entry-faq-head" data-pagefind-ignore>Queries on file</h2>
+            {faqs.map((f, i) => (
+              <details class="faq-item" id={`q-${i + 1}`}>
                 <summary>{f.q}</summary>
                 <p>{f.a}</p>
               </details>
             ))}
           </section>
-        )}
+        ) : null}
 
-        <!-- ============ STANDING NOTICE ============ -->
-        <section class="notice">
+        <p class="corrections" data-pagefind-ignore>
+          Spotted an error? <a href={correctionHref}>Write to the corrections desk</a>.
+        </p>
+
+        <div class="share" role="group" aria-labelledby="entry-share-label" data-pagefind-ignore>
+          <span class="share-label" id="entry-share-label">Pass it on</span>
+          <button class="share-btn native-share" type="button" data-title={title} data-url={url} hidden>[ Share ]</button>
+          <a
+            class="share-btn"
+            href={xShare}
+            target="_blank"
+            rel="noopener"
+            aria-label="Share on X"
+            data-track="share_click"
+            data-track-share-platform="x"
+            data-track-entry-id={filecode}
+          >[ X ]</a>
+          <a
+            class="share-btn"
+            href={fbShare}
+            target="_blank"
+            rel="noopener"
+            aria-label="Share on Facebook"
+            data-track="share_click"
+            data-track-share-platform="facebook"
+            data-track-entry-id={filecode}
+          >[ Facebook ]</a>
+          <a
+            class="share-btn"
+            href={liShare}
+            target="_blank"
+            rel="noopener"
+            aria-label="Share on LinkedIn"
+            data-track="share_click"
+            data-track-share-platform="linkedin"
+            data-track-entry-id={filecode}
+          >[ LinkedIn ]</a>
+          <button class="share-btn copy-link" type="button" data-url={url} hidden>[ Copy link ]</button>
+        </div>
+
+        <section class="notice" aria-labelledby="entry-notice-head" data-pagefind-ignore>
           <p class="notice-kicker">The standing notice</p>
-          <p class="notice-head">Liked this? Get five like it every week.</p>
-          <p class="notice-sub">Five interesting things, five minutes, no filler.</p>
-          <a href="/#subscribe" class="coupon">[ Yes, send me the weekly dispatch → ]</a>
+          {newsletterLive ? (
+            <>
+              <p class="notice-head" id="entry-notice-head">Liked this? Get new entries by email.</p>
+              <p class="notice-sub">Confirm once from your inbox. Every email has an unsubscribe link.</p>
+            </>
+          ) : (
+            <>
+              <p class="notice-head" id="entry-notice-head">Liked this? Follow the feed.</p>
+              <p class="notice-sub">
+                Every new entry goes into the RSS feed when it is published. Add the feed to any reader; no email
+                address needed.
+              </p>
+            </>
+          )}
+          <SubscribeForm location="entry" entryId={filecode} />
         </section>
+
+        <p class="print-source" data-pagefind-ignore>{filecode} &middot; {url}</p>
       </div>
     </div>
 
-    <!-- ============ KEEP READING ============ -->
-    {more.length > 0 && (
-      <section class="keep">
-        <p class="keep-head">Also in the archive</p>
-        <ol class="keep-list">
-          {more.map((p) => (
-            <li>
-              <a href={`/blog/${p.id}/`} class="keep-row">
-                <span class="keep-num">{p.data.filecode ?? "FYI"}</span>
-                <span class="keep-body">
-                  <span class="keep-kicker">{catLabel[p.data.category]}</span>
-                  <span class="keep-title">{p.data.title}</span>
-                </span>
-                <span class="keep-time">{p.data.readingTime ?? ""}</span>
+    <div class="keep cv-auto" data-pagefind-ignore>
+      {related.length > 0 && (
+        <section aria-labelledby="entry-see-also">
+          <h2 class="keep-head" id="entry-see-also">See also</h2>
+          <ol class="keep-list">
+            {related.map((r, i) => (
+              <li>
+                <a
+                  href={entryHref(r.entry)}
+                  class="keep-row"
+                  data-track="related_click"
+                  data-track-related-position={String(i + 1)}
+                  data-track-related-reason={r.reason}
+                  data-track-entry-id={filecode}
+                >
+                  <span class="keep-num">{r.entry.data.filecode ?? "FYI"}</span>
+                  <span class="keep-body">
+                    <span class="keep-kicker">{deptName(r.entry.data.category)}</span>
+                    <span class="keep-title" set:html={keepTogether(r.entry.data.title)} />
+                  </span>
+                  <span class="keep-time">{readingLabel(r.entry)}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {(olderLink || newerLink) && (
+        <nav class="dept-nav" aria-labelledby="entry-dept-nav">
+          <h2 class="keep-head" id="entry-dept-nav">More in {section}</h2>
+          <div class="dn-grid">
+            {olderLink && (
+              <a class="dn dn-older" href={entryHref(olderLink)}>
+                <span class="dn-kicker">Older &middot; {olderLink.data.filecode ?? "FYI"}</span>
+                <span class="dn-title">{olderLink.data.title}</span>
               </a>
-            </li>
-          ))}
-        </ol>
-        <a href="/blog/" class="keep-all">See all entries →</a>
-      </section>
-    )}
+            )}
+            {newerLink && (
+              <a class="dn dn-newer" href={entryHref(newerLink)}>
+                <span class="dn-kicker">Newer &middot; {newerLink.data.filecode ?? "FYI"}</span>
+                <span class="dn-title">{newerLink.data.title}</span>
+              </a>
+            )}
+          </div>
+        </nav>
+      )}
+
+      <p class="keep-links">
+        <a href={deptHref(category)} class="keep-all">{deptLink}</a>
+        <a href="/blog/" class="keep-all">See the full archive</a>
+      </p>
+    </div>
+
+    <p class="vh" id="entry-status" role="status" data-pagefind-ignore></p>
   </article>
 </Layout>
 
@@ -185,10 +338,18 @@ const faqLd = post.data.faqs?.length
   .post { padding-top: clamp(1.25rem, 4vw, 2rem); }
 
   /* -------- ENTRY HEAD -------- */
-  .crumbs {
+  .crumbs ol {
+    list-style: none; display: flex; gap: 0.45rem; min-width: 0;
     font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--ink-faint); display: flex; gap: 0.45rem; flex-wrap: wrap; padding-bottom: 0.6rem;
+    color: var(--ink-faint); padding-bottom: 0.6rem;
   }
+  /* Flex rows, so the whitespace between a separator and its link renders as
+     nothing and every gap is the same 0.45rem. */
+  .crumbs li { display: flex; gap: 0.45rem; flex: none; white-space: nowrap; }
+  /* The current page is the headline right below, so its crumb may truncate
+     rather than push the trail onto a second line. */
+  .crumbs li:last-child { flex: 0 1 auto; min-width: 0; }
+  .crumbs [aria-current] { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .crumbs a {
     color: var(--ink-soft); text-decoration: none;
     transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
@@ -198,15 +359,18 @@ const faqLd = post.data.faqs?.length
     font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--ink-faint); margin-top: 1.4rem;
   }
+  /* Measures are in em and rem, not ch: ch follows whichever face has loaded,
+     so a font swap would rewrap the text. Converted at the loaded faces' zero
+     widths: Playfair Display 700 0.645em, Newsreader 0.555em. */
   .entry-title {
     font-family: var(--display); font-weight: 700;
     font-size: clamp(2.15rem, 5.6vw, 4.25rem); line-height: 0.99; letter-spacing: -0.025em;
-    margin: 0.6rem 0 0; max-width: 20ch;
+    margin: 0.6rem 0 0; max-width: 12.9em;
   }
   .entry-dek {
     font-family: var(--serif); font-style: italic; font-weight: 400;
     font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.42;
-    color: var(--ink-soft); max-width: 52ch; margin-top: 1rem;
+    color: var(--ink-soft); max-width: 28.8em; margin-top: 1rem;
   }
 
   .byline {
@@ -226,7 +390,10 @@ const faqLd = post.data.faqs?.length
     gap: 2.5rem;
     padding-top: 2.25rem;
   }
-  .post-col { min-width: 0; max-width: 68ch; }
+  /* break-word lets the corpus's 45-letter word wrap on a phone instead of being
+     cut off by the page's overflow clip; it does not change min-content sizing,
+     so wide tables still scroll inside .table-wrap. */
+  .post-col { min-width: 0; max-width: var(--measure); overflow-wrap: break-word; }
 
   /* -------- TABLE OF CONTENTS -------- */
   .toc { font-family: var(--mono); border-top: 1px solid var(--ink); padding-top: 0.7rem; }
@@ -244,6 +411,8 @@ const faqLd = post.data.faqs?.length
     transition: color var(--t-hover) var(--ease-out), border-color var(--t-hover) var(--ease-out);
   }
   .toc a.active { color: var(--ink); border-left-color: var(--ink); }
+  /* The sticky TOC scrolls, and a scroll box clips an outside ring. */
+  .toc a:focus-visible { outline-offset: -2px; }
 
   /* -------- PROSE -------- */
   .prose {
@@ -266,18 +435,34 @@ const faqLd = post.data.faqs?.length
     color: var(--ink);
   }
 
+  /* The section number counts on the h2 itself, not on its ::before, so the
+     mark can move onto the section link without the numbering going with it. */
   .prose :global(h2) {
+    counter-increment: sec;
     font-family: var(--display); font-weight: 700;
     font-size: clamp(1.55rem, 3.2vw, 2.1rem); line-height: 1.1; letter-spacing: -0.02em;
     margin: 2.9rem 0 0.9rem; padding-top: 1.1rem; border-top: 1px solid var(--rule);
   }
-  .prose :global(h2)::before {
-    counter-increment: sec;
-    content: "§ " counter(sec, decimal-leading-zero);
+  .prose :global(h2)::before,
+  .prose :global(.sec-link)::before {
+    content: "\00A7" " " counter(sec, decimal-leading-zero);
+  }
+  .prose :global(h2)::before,
+  .prose :global(.sec-link) {
     display: block; font-family: var(--mono); font-weight: 400;
     font-size: 0.66rem; letter-spacing: 0.13em; color: var(--ink-faint);
     margin-bottom: 0.55rem;
   }
+  /* With script, the mark is a link that copies the section's address. It
+     keeps the exact box of the plain mark, so nothing moves when it arrives. */
+  .prose :global(h2.has-sec-link)::before { content: none; }
+  .prose :global(.sec-link) {
+    width: fit-content; text-decoration: none;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
+  .prose :global(.sec-link.copied) { background: var(--hl); color: var(--ink); }
+  .prose :global(.sec-link.copied)::after { content: " - link copied"; }
+
   .prose :global(h3) {
     font-family: var(--display); font-weight: 600;
     font-size: 1.35rem; margin: 2.1rem 0 0.5rem;
@@ -320,10 +505,110 @@ const faqLd = post.data.faqs?.length
   .prose :global(mark) { background: var(--hl); padding: 0 0.14em; }
   .prose :global(img) { margin: 2rem 0; border: 1px solid var(--rule); }
 
+  /* -------- LEDGER TABLES --------
+     The markdown pipeline wraps every table in div.table-wrap, a focusable
+     region, and marks numeric cells .num. html and body clip overflow-x, so
+     the wrapper is the only place a wide table can scroll. Ruled like a
+     ledger: a heavy rule on top, ink under the header, hairlines between rows. */
+  .prose :global(.table-wrap) {
+    margin: 2rem 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .prose :global(.table-wrap:focus-visible) { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.45;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  .prose :global(th) {
+    font-family: var(--mono); font-weight: 400; font-size: 0.64rem; line-height: 1.5;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+    text-align: left; vertical-align: bottom;
+    padding: 0.85rem 1.1rem 0.6rem 0;
+    border-bottom: 1px solid var(--ink);
+  }
+  /* A floor under each column: a phone scrolls a wide table sideways instead
+     of squeezing every column to a word or two per line. */
+  .prose :global(td) {
+    min-width: 6rem;
+    padding: 0.75rem 1.1rem 0.75rem 0;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+  }
+  .prose :global(th:last-child), .prose :global(td:last-child) { padding-right: 0; }
+  .prose :global(td:first-child) { font-weight: 600; color: var(--ink); }
+  .prose :global(tr:last-child td) { border-bottom: 0; }
+  /* Figures align right only in a column that is all figures, which is when
+     the plugin marks the header .num as well. In a column that mixes figures
+     with prose, a right-aligned "45 letters" under a left-aligned sentence
+     reads as ragged, so those cells keep the column's left edge. Without
+     :has() every cell simply stays left-aligned. */
+  .prose :global(th.num),
+  .prose :global(table:has(th.num:nth-child(1)) td.num:nth-child(1)),
+  .prose :global(table:has(th.num:nth-child(2)) td.num:nth-child(2)),
+  .prose :global(table:has(th.num:nth-child(3)) td.num:nth-child(3)),
+  .prose :global(table:has(th.num:nth-child(4)) td.num:nth-child(4)),
+  .prose :global(table:has(th.num:nth-child(5)) td.num:nth-child(5)),
+  .prose :global(table:has(th.num:nth-child(6)) td.num:nth-child(6)) { text-align: right; }
+  /* Script flags tables that overflow their column; the note stays pinned to
+     the left edge while the table scrolls under it. */
+  .prose :global(.table-wrap.is-wide)::after {
+    content: "Table scrolls sideways";
+    position: sticky; left: 0;
+    display: block; width: fit-content;
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 0.5rem 0 0.55rem;
+  }
+
+  /* -------- FAQ -------- */
+  .faq { margin-top: 3rem; }
+  .faq-head {
+    font-family: var(--mono); font-weight: 400; font-size: 0.66rem; line-height: 1.6;
+    letter-spacing: 0.13em; text-transform: uppercase; text-wrap: wrap;
+    color: var(--ink-faint); padding-bottom: 0.6rem; border-bottom: 1px solid var(--ink);
+  }
+  .faq-item { border-bottom: 1px solid var(--rule); }
+  .faq-item summary {
+    font-family: var(--display); font-weight: 600; font-size: 1.18rem; line-height: 1.3;
+    cursor: pointer; padding: 1rem 2.2rem 1rem 0; list-style: none; position: relative;
+    transition: color var(--t-hover) var(--ease-out);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  /* Weight 400 is set, not inherited: the summary's 600 would fetch a second
+     Space Mono file for a single plus sign. */
+  .faq-item summary::after {
+    content: "+"; position: absolute; right: 0.15rem; top: 0.95rem;
+    font-family: var(--mono); font-weight: 400; font-size: 1.15rem; color: var(--ink-faint);
+  }
+  .faq-item[open] summary::after { content: "\2212"; color: var(--ink); }
+  .faq-item[open] summary { color: var(--ink); }
+  .faq-item p {
+    font-family: var(--serif); font-size: 1.05rem; line-height: 1.65;
+    color: var(--ink-soft); padding: 0 2.2rem 1.1rem 0; margin: 0;
+  }
+
+  /* -------- CORRECTIONS -------- */
+  .corrections {
+    font-family: var(--serif); font-style: italic; font-size: 1.02rem; line-height: 1.5;
+    color: var(--ink-soft); margin-top: 1.6rem;
+  }
+  .corrections a {
+    color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em; text-decoration-color: var(--rule-mid);
+    transition: background var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out);
+  }
+
   /* -------- SHARE -------- */
   .share {
     display: flex; align-items: center; gap: 0.35rem 1rem; flex-wrap: wrap;
-    margin-top: 3rem; padding: 0.9rem 0;
+    margin-top: 2.4rem; padding: 0.9rem 0;
     border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule);
   }
   .share-label {
@@ -337,32 +622,9 @@ const faqLd = post.data.faqs?.length
     transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out),
       transform var(--t-press) var(--ease-out);
   }
+  .share-btn[hidden] { display: none; }
   .share-btn:active { transform: scale(0.97); }
   .copy-link.done { background: var(--hl); color: var(--ink); }
-
-  /* -------- FAQ -------- */
-  .faq { margin-top: 3rem; }
-  .faq-head {
-    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase;
-    color: var(--ink-faint); padding-bottom: 0.6rem; border-bottom: 1px solid var(--ink);
-  }
-  .faq-item { border-bottom: 1px solid var(--rule); }
-  .faq-item summary {
-    font-family: var(--display); font-weight: 600; font-size: 1.18rem; line-height: 1.3;
-    cursor: pointer; padding: 1rem 2.2rem 1rem 0; list-style: none; position: relative;
-    transition: color var(--t-hover) var(--ease-out);
-  }
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary::after {
-    content: "+"; position: absolute; right: 0.15rem; top: 0.95rem;
-    font-family: var(--mono); font-size: 1.15rem; color: var(--ink-faint);
-  }
-  .faq-item[open] summary::after { content: "\2212"; color: var(--ink); }
-  .faq-item[open] summary { color: var(--ink); }
-  .faq-item p {
-    font-family: var(--serif); font-size: 1.05rem; line-height: 1.65;
-    color: var(--ink-soft); padding: 0 2.2rem 1.1rem 0; margin: 0;
-  }
 
   /* -------- STANDING NOTICE -------- */
   .notice {
@@ -379,16 +641,20 @@ const faqLd = post.data.faqs?.length
   }
   .notice-sub { font-family: var(--serif); color: var(--ink-soft); margin-bottom: 1rem; }
 
-  /* -------- KEEP READING -------- */
+  /* Only paper shows this. */
+  .print-source { display: none; }
+
+  /* -------- SEE ALSO + MORE IN THE DEPARTMENT -------- */
   .keep { margin-top: clamp(3rem, 7vw, 4.5rem); }
   .keep-head {
-    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--mono); font-weight: 400; font-size: 0.68rem; line-height: 1.6;
+    letter-spacing: 0.14em; text-transform: uppercase; text-wrap: wrap;
     color: var(--ink-faint); padding-bottom: 0.6rem; border-bottom: 1px solid var(--ink);
   }
   .keep-list { list-style: none; margin: 0; padding: 0; }
   .keep-list li { border-bottom: 1px solid var(--rule); }
   .keep-row {
-    display: grid; grid-template-columns: 8ch minmax(0, 1fr) auto; gap: 0 1.4rem;
+    display: grid; grid-template-columns: 5.15rem minmax(0, 1fr) auto; gap: 0 1.4rem;
     align-items: baseline; padding: 1.1rem 0; text-decoration: none; color: var(--ink);
     transition: background var(--t-hover) var(--ease-out);
   }
@@ -405,12 +671,37 @@ const faqLd = post.data.faqs?.length
     font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.15; margin-top: 0.25rem;
   }
   .keep-time { font-family: var(--mono); font-size: 0.66rem; color: var(--ink-faint); white-space: nowrap; }
+
+  .dept-nav { margin-top: clamp(2rem, 5vw, 2.75rem); }
+  .dn-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid var(--rule); }
+  .dn {
+    display: block; padding: 1.1rem 1.4rem 1.2rem 0; text-decoration: none; color: var(--ink);
+    transition: background var(--t-hover) var(--ease-out);
+  }
+  .dn-newer { grid-column: 2; text-align: right; padding: 1.1rem 0 1.2rem 1.4rem; }
+  .dn-older + .dn-newer { border-left: 1px solid var(--rule); }
+  .dn-kicker {
+    display: block; font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .dn-title {
+    display: block; font-family: var(--display); font-weight: 600;
+    font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.2; margin-top: 0.35rem;
+  }
+
+  .keep-links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; margin-top: 1.3rem; }
   .keep-all {
-    display: inline-block; margin-top: 1.2rem;
+    display: inline-block;
     font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px;
     transition: background var(--t-hover) var(--ease-out);
   }
+
+  /* .cv-auto (global.css) lets the browser skip this block until it nears the
+     viewport. Safe here: it is off-screen until the reader is done, and
+     nothing below it is a #fragment target. --cv-size is the measured median
+     height (31rem wide, 44.5rem on a phone). */
+  .keep { --cv-size: 31rem; }
 
   /* -------- READING FURNITURE -------- */
   .read-progress {
@@ -418,28 +709,40 @@ const faqLd = post.data.faqs?.length
     background: transparent; z-index: var(--z-float);
   }
   .read-progress span { display: block; height: 100%; width: 0%; background: var(--ink); }
+  /* visibility, not just opacity, so the hidden button also leaves the tab order. */
   .to-top {
     position: fixed; right: 1.2rem; bottom: 1.2rem; width: 42px; height: 42px;
     display: grid; place-items: center; border-radius: 0;
     background: var(--paper-2); color: var(--ink); border: 1.5px solid var(--ink);
     cursor: pointer; z-index: var(--z-float);
-    opacity: 0; pointer-events: none; transform: translateY(8px);
+    opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(8px);
     transition: opacity 0.22s var(--ease-out), transform 0.22s var(--ease-out),
-      background var(--t-hover) var(--ease-out);
+      background var(--t-hover) var(--ease-out), visibility 0s linear 0.22s;
   }
   .to-top[hidden] { display: none; }
-  .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+  .to-top.show {
+    opacity: 1; visibility: visible; pointer-events: auto; transform: none;
+    transition: opacity 0.22s var(--ease-out), transform 0.22s var(--ease-out),
+      background var(--t-hover) var(--ease-out), visibility 0s;
+  }
   .to-top:active { transform: scale(0.94); }
   .to-top svg { width: 18px; height: 18px; }
+
+  .vh {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
 
   /* -------- HOVER (gated) -------- */
   @media (hover: hover) and (pointer: fine) {
     .crumbs a:hover { background: var(--hl); color: var(--ink); }
     .toc a:hover { color: var(--ink); border-left-color: var(--rule-mid); }
     .prose :global(a):hover { background: var(--hl); text-decoration-color: var(--ink); }
+    .prose :global(.sec-link):hover { background: var(--hl); color: var(--ink); }
+    .corrections a:hover { background: var(--hl); text-decoration-color: var(--ink); }
     .share-btn:hover { background: var(--hl); color: var(--ink); }
     .faq-item summary:hover { color: #000; }
-    .keep-row:hover { background: color-mix(in srgb, var(--hl) 14%, transparent); }
+    .keep-row:hover, .dn:hover { background: color-mix(in srgb, var(--hl) 14%, transparent); }
     .keep-row:hover .keep-num { background: var(--hl); color: var(--ink); }
     .keep-all:hover { background: var(--hl); }
     .to-top:hover { background: var(--hl); }
@@ -452,56 +755,203 @@ const faqLd = post.data.faqs?.length
       gap: 3.5rem;
     }
     .toc { position: sticky; top: 2rem; align-self: start; max-height: calc(100dvh - 4rem); overflow-y: auto; }
-    .entry-title { max-width: 18ch; }
+    .entry-title { max-width: 11.6em; }
   }
   @media (max-width: 1079px) {
-    .toc { max-width: 68ch; }
+    .toc { max-width: var(--measure); }
     .toc ol { columns: 2; column-gap: 2rem; }
     .toc li { break-inside: avoid; }
   }
   @media (max-width: 620px) {
+    .keep { --cv-size: 44.5rem; }
     .toc ol { columns: 1; }
-    .keep-row { grid-template-columns: 7ch minmax(0, 1fr); gap: 0 1rem; }
+    .keep-row { grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0 1rem; }
     .keep-time { grid-column: 2; margin-top: 0.35rem; }
+    .dn-grid { grid-template-columns: minmax(0, 1fr); }
+    .dn, .dn-newer { grid-column: 1; text-align: left; padding: 1rem 0 1.1rem; }
+    .dn-older + .dn-newer { border-left: 0; border-top: 1px solid var(--rule); }
     .prose { font-size: 1.12rem; }
     .prose > :global(p:first-of-type)::first-letter { font-size: 3.4em; }
+    .prose :global(table) { font-size: 0.95rem; }
+    /* Four or more columns never fit a phone, so they scroll regardless; a
+       wider floor trades a little more scrolling for rows that are not four
+       lines tall. */
+    .prose :global(table:has(th:nth-child(4)) td) { min-width: 8.5rem; }
     .byline { gap: 0.6rem; }
     .leader { display: none; }
+  }
+
+  /* -------- PRINT --------
+     global.css sets the page box, white paper and no grain for every page.
+     An entry also prints as one plain column: no site chrome, every FAQ
+     answer open (script opens them), and each citation's address printed
+     after its link, since the sources are the point of a field guide. */
+  @media print {
+    :global(body) { display: block; min-height: 0; }
+    :global(.skip), :global(.runhead), :global(.colophon) { display: none !important; }
+    .crumbs, .toc, .share, .notice, .keep, .corrections, .read-progress, .to-top { display: none !important; }
+
+    .post { padding-top: 0; }
+    .entry-file { margin-top: 0.8rem; }
+    .entry-title { font-size: 26pt; max-width: none; }
+    .entry-dek { font-size: 13pt; max-width: none; }
+    .byline { margin-top: 1rem; }
+    .byline-upd { background: none; padding: 0; text-decoration: underline; }
+    .post-shell { display: block; padding-top: 1.2rem; }
+    .post-col { max-width: none; }
+
+    .prose { font-size: 11pt; line-height: 1.55; color: #000; }
+    .prose :global(a[href^="http"])::after,
+    .prose :global(a[href^="/"])::after {
+      font-family: var(--mono); font-size: 0.72em; font-weight: 400; font-style: normal;
+      color: #444; word-break: break-all;
+    }
+    .prose :global(a[href^="http"])::after { content: " [" attr(href) "]"; }
+    .prose :global(a[href^="/"])::after { content: " [strictly.fyi" attr(href) "]"; }
+    .prose :global(mark) { background: none; text-decoration: underline; }
+    .prose :global(tr), .faq-item { break-inside: avoid; }
+    .prose :global(.table-wrap) { overflow: visible; }
+    .prose :global(.table-wrap)::after { display: none; }
+    .prose :global(table) { font-size: 9.5pt; }
+    .prose :global(td) { min-width: 0; }
+
+    .faq { margin-top: 1.6rem; }
+    .faq-item summary { padding-right: 0; }
+    .faq-item summary::after { display: none; }
+    .faq-item p { padding-right: 0; color: #000; }
+
+    .print-source {
+      display: block; margin-top: 1.6rem; padding-top: 0.5rem; border-top: 1px solid #000;
+      font-family: var(--mono); font-size: 8pt; letter-spacing: 0.06em; color: #444;
+    }
   }
 </style>
 
 <script>
-  /* Reading progress, back-to-top and the table of contents all follow one
-     rAF-throttled read of scroll position. */
+  import { track } from "../../lib/track";
+
+  /* Everything here enhances markup that already works without it: the entry
+     reads, the FAQ opens and the share links go out with script off. */
+  const article = document.querySelector<HTMLElement>("article.post");
+  const entryId = article?.dataset.entryId ?? "";
+  const entryCat = article?.dataset.entryCat ?? "";
+  const prose = document.querySelector<HTMLElement>(".prose");
+  const status = document.getElementById("entry-status");
+  const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Clear, then set on the next frame, so a repeated message is announced again. */
+  function say(msg: string) {
+    if (!status) return;
+    status.textContent = "";
+    requestAnimationFrame(() => {
+      status.textContent = msg;
+    });
+  }
+
+  /* ---- Reading progress, back to top, the TOC and read depth ----
+     All follow one rAF-throttled paint(). It reads geometry first and writes
+     after, and even its first run waits for a frame, so nothing forces a
+     layout while the page is still settling. */
   const bar = document.getElementById("rp-bar");
   const toTop = document.getElementById("to-top");
-  const links = document.querySelectorAll<HTMLAnchorElement>("[data-toc]");
-  const sections = [...links]
+  const tocLinks = [...document.querySelectorAll<HTMLAnchorElement>("[data-toc]")];
+  const sections = tocLinks
     .map((a) => document.getElementById(a.dataset.toc!))
     .filter((el): el is HTMLElement => !!el);
 
+  /* Read depth is measured against .prose, so 100 means the entry text was
+     finished, not the FAQ or the footer. Each milestone fires once per view,
+     and only once a person has scrolled: the jump to a #fragment and a
+     restored scroll position on reload are not reading. */
+  const MILESTONES = [25, 50, 75, 100];
+  const sent = new Set<number>();
+  const INPUTS = ["wheel", "touchstart", "keydown", "pointerdown"];
+  let armed = false;
+  let live = false;
   let ticking = false;
 
+  const pctNow = () => {
+    if (!prose) return 0;
+    const r = prose.getBoundingClientRect();
+    return r.height > 0 ? Math.min(100, Math.round(((innerHeight - r.top) / r.height) * 100)) : 0;
+  };
+
+  /* A jump is not reading either: a TOC or section link, a #q-N deep link, a
+     hash change, Home or End. The milestones a jump passes are marked as seen
+     without being sent, for as long as the smooth scroll it starts keeps going. */
+  let jumpUntil = 0;
+  const jump = () => {
+    jumpUntil = performance.now() + 400;
+  };
+  document.addEventListener(
+    "click",
+    (e) => {
+      if ((e.target as Element | null)?.closest?.('a[href^="#"]')) jump();
+    },
+    true
+  );
+  addEventListener("hashchange", jump);
+  addEventListener(
+    "keydown",
+    (e) => {
+      if (e.key === "End" || e.key === "Home") jump();
+    },
+    true
+  );
+
+  /* Arriving mid-page means everything above was never read here, so it is
+     counted as seen, once. Only real arrivals count: a #fragment, or a reload
+     or back-forward visit that restored a scroll position before any input.
+     A fresh visit never does, because the browser can apply the first wheel's
+     scroll before this handler runs, and that scroll is reading. */
+  const nav = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+  const restored = nav?.type === "reload" || nav?.type === "back_forward";
+  let restingY = 0; /* the scroll position before the first input, kept by paint() */
+
+  function arm() {
+    armed = true;
+    INPUTS.forEach((t) => removeEventListener(t, arm, true));
+    if (location.hash || (restored && restingY > 0)) {
+      const p = pctNow();
+      for (const m of MILESTONES) if (p >= m) sent.add(m);
+    }
+  }
+  INPUTS.forEach((t) => addEventListener(t, arm, { capture: true, passive: true }));
+
   function paint() {
+    ticking = false;
     const doc = document.documentElement;
     const st = doc.scrollTop || document.body.scrollTop;
-    const h = doc.scrollHeight - doc.clientHeight;
-    if (bar) bar.style.transform = `scaleX(${h > 0 ? st / h : 0})`;
-    if (toTop) toTop.classList.toggle("show", st > 600);
+    if (!armed) restingY = st;
+    const max = doc.scrollHeight - doc.clientHeight;
+    const vh = window.innerHeight;
 
     /* Derived from position rather than from intersection events, so jumping
        to an anchor or pressing End still lands on the right section. */
-    if (sections.length) {
-      const line = window.innerHeight * 0.28;
-      let active = "";
-      for (const s of sections) {
-        if (s.getBoundingClientRect().top <= line) active = s.id;
+    let active = "";
+    const line = vh * 0.28;
+    for (const s of sections) if (s.getBoundingClientRect().top <= line) active = s.id;
+    const r = live && prose && sent.size < MILESTONES.length ? prose.getBoundingClientRect() : null;
+
+    if (bar) bar.style.transform = `scaleX(${max > 0 ? Math.min(1, st / max) : 0})`;
+    toTop?.classList.toggle("show", st > 600);
+    for (const a of tocLinks) a.classList.toggle("active", !!active && a.dataset.toc === active);
+
+    if (r && r.height > 0) {
+      const pct = Math.min(100, Math.round(((vh - r.top) / r.height) * 100));
+      const jumping = performance.now() < jumpUntil;
+      for (const m of MILESTONES) {
+        if (pct < m || sent.has(m)) continue;
+        sent.add(m);
+        if (!jumping) track("blog_read_progress", { read_percent: m, entry_id: entryId, entry_category: entryCat });
       }
-      links.forEach((a) => a.classList.toggle("active", !!active && a.dataset.toc === active));
     }
-    ticking = false;
   }
+
   function onScroll() {
+    if (armed) live = true;
+    const now = performance.now();
+    if (now < jumpUntil) jumpUntil = Math.max(jumpUntil, now + 200);
     if (!ticking) {
       ticking = true;
       requestAnimationFrame(paint);
@@ -511,30 +961,154 @@ const faqLd = post.data.faqs?.length
   if (bar) {
     bar.style.width = "100%";
     bar.style.transformOrigin = "0 50%";
+    bar.style.transform = "scaleX(0)";
   }
   if (toTop) toTop.hidden = false;
   document.addEventListener("scroll", onScroll, { passive: true });
-  paint();
+  requestAnimationFrame(paint);
 
   toTop?.addEventListener("click", () => {
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    window.scrollTo({ top: 0, behavior: reduced() ? "auto" : "smooth" });
   });
 
-  /* Copy link */
+  /* ---- Share ---- */
   const copyBtn = document.querySelector<HTMLButtonElement>(".copy-link");
-  copyBtn?.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(copyBtn.dataset.url || location.href);
-      const prev = copyBtn.textContent;
-      copyBtn.textContent = "[ Copied ✓ ]";
-      copyBtn.classList.add("done");
-      setTimeout(() => {
-        copyBtn.textContent = prev;
+  if (copyBtn && navigator.clipboard) {
+    const idle = copyBtn.textContent ?? "";
+    let timer = 0;
+    const flash = (label: string, ok: boolean) => {
+      copyBtn.textContent = label;
+      copyBtn.classList.toggle("done", ok);
+      clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        copyBtn.textContent = idle;
         copyBtn.classList.remove("done");
-      }, 1800);
-    } catch {
-      /* Clipboard blocked. The link is in the address bar either way. */
+      }, ok ? 1800 : 3200);
+    };
+    copyBtn.hidden = false;
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(copyBtn.dataset.url || location.href);
+        flash("[ Copied ]", true);
+        say("Link copied");
+        /* Counted only once the clipboard has the link. */
+        track("share_click", { share_platform: "copy_link", entry_id: entryId });
+      } catch {
+        flash("[ Copy failed - use the address bar ]", false);
+        say("Copy failed. The address bar has the link.");
+      }
+    });
+  }
+
+  const nativeBtn = document.querySelector<HTMLButtonElement>(".native-share");
+  if (nativeBtn && typeof navigator.share === "function") {
+    nativeBtn.hidden = false;
+    nativeBtn.addEventListener("click", async () => {
+      try {
+        await navigator.share({ title: nativeBtn.dataset.title, url: nativeBtn.dataset.url });
+        track("share_click", { share_platform: "native", entry_id: entryId });
+      } catch {
+        /* Closing the share sheet rejects with AbortError: nothing was shared. */
+      }
+    });
+  }
+
+  /* ---- FAQ ----
+     Opens made by script (a #q-N link, printing) are not a reader choosing a
+     question, so they are kept out of faq_open. */
+  const faqs = [...document.querySelectorAll<HTMLDetailsElement>("details.faq-item")];
+  const quiet = new Set<HTMLDetailsElement>();
+  faqs.forEach((d, i) => {
+    let counted = false;
+    /* toggle does not bubble, so each item needs its own listener. */
+    d.addEventListener("toggle", () => {
+      if (quiet.delete(d) || !d.open || counted) return;
+      counted = true;
+      track("faq_open", { faq_index: i + 1, entry_id: entryId });
+    });
+  });
+
+  function openFromHash(onLoad: boolean) {
+    const m = /^#q-([0-9]+)$/.exec(location.hash);
+    const d = m ? document.getElementById(`q-${m[1]}`) : null;
+    if (!(d instanceof HTMLDetailsElement)) return;
+    if (!d.open) {
+      quiet.add(d);
+      d.open = true;
+    }
+    requestAnimationFrame(() => {
+      d.scrollIntoView({ block: "start", behavior: onLoad || reduced() ? "instant" : "smooth" });
+    });
+  }
+  openFromHash(true);
+  addEventListener("hashchange", () => openFromHash(false));
+
+  /* Closed answers do not print. Open them for the printout, then put back
+     the ones the reader had closed. */
+  let printOpened: HTMLDetailsElement[] = [];
+  addEventListener("beforeprint", () => {
+    printOpened = faqs.filter((d) => !d.open);
+    for (const d of printOpened) {
+      quiet.add(d);
+      d.open = true;
     }
   });
+  addEventListener("afterprint", () => {
+    for (const d of printOpened) {
+      quiet.add(d);
+      d.open = false;
+    }
+    printOpened = [];
+  });
+
+  /* ---- Section links ----
+     Each h2's section mark becomes a link that copies the section's address.
+     It is added here, not at build time: Astro derives heading ids and TOC
+     labels from the heading's text, and build-time text would change both. */
+  if (prose) {
+    prose.querySelectorAll<HTMLHeadingElement>("h2").forEach((h, i) => {
+      if (!h.id) return;
+      const a = document.createElement("a");
+      a.className = "sec-link";
+      a.href = `#${encodeURIComponent(h.id)}`;
+      a.title = "Copy a link to this section";
+      a.setAttribute("aria-label", `Section ${String(i + 1).padStart(2, "0")}`);
+      h.prepend(a);
+      h.classList.add("has-sec-link");
+    });
+
+    prose.addEventListener("click", async (e) => {
+      const a = (e.target as Element | null)?.closest<HTMLAnchorElement>("a.sec-link");
+      if (!a || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      const id = decodeURIComponent(a.hash.slice(1));
+      history.replaceState(null, "", a.hash);
+      document.getElementById(id)?.scrollIntoView({ block: "start", behavior: reduced() ? "auto" : "smooth" });
+      try {
+        await navigator.clipboard.writeText(`${location.origin}${location.pathname}${a.hash}`);
+        a.classList.add("copied");
+        say(`Link to ${a.getAttribute("aria-label")?.toLowerCase() ?? "this section"} copied`);
+        setTimeout(() => a.classList.remove("copied"), 1500);
+      } catch {
+        /* No clipboard: the address bar now shows the section's link instead. */
+      }
+    });
+  }
+
+  /* ---- Tables ----
+     Flags the tables that overflow their column so CSS can say they scroll.
+     ResizeObserver reports after layout, so reading scrollWidth in its
+     callback costs nothing extra; the class change waits for the next frame. */
+  const wraps = prose ? [...prose.querySelectorAll<HTMLElement>(".table-wrap")] : [];
+  if (wraps.length > 0 && "ResizeObserver" in window) {
+    const ro = new ResizeObserver(() => {
+      const wide = wraps.map((w) => w.scrollWidth > w.clientWidth + 1);
+      requestAnimationFrame(() => wraps.forEach((w, i) => w.classList.toggle("is-wide", wide[i])));
+    });
+    for (const w of wraps) {
+      ro.observe(w);
+      const t = w.querySelector("table");
+      if (t) ro.observe(t);
+    }
+  }
 </script>

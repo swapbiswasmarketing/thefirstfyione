@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-053"
+almanac: "A nursing kitten pumps its front paws against its mother's belly mostly when the milk is coming more slowly than it can drink."
 featured: false
 faqs:
   - q: "Why do cats make biscuits?"

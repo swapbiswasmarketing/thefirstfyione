@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-072"
+almanac: "The Swedish Academy's dictionary first cites skal as an exclamation urging someone to drink in 1614, centuries after the Viking Age."
 featured: false
 faqs:
   - q: "Why do the Vikings say Skol?"

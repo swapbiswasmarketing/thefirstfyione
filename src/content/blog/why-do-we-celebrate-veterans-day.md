@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-083"
+almanac: "The Uniform Holiday Bill, signed on June 28, 1968, set Veterans Day on the fourth Monday in October."
 featured: false
 faqs:
   - q: "Why is Veterans Day on November 11?"

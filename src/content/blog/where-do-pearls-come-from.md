@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-077"
+almanac: "By the 13th century, carved pieces of wood and lead inserted into mussels in China were coming out as nacre-covered figures of Buddha."
 featured: false
 faqs:
   - q: "Do pearls come from sand?"

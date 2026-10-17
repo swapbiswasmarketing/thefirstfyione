@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-081"
+almanac: "Dry-cleaned clothes are washed in a liquid."
 featured: false
 faqs:
   - q: "What is dry cleaning?"

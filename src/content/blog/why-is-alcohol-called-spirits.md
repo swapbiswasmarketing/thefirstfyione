@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-088"
+almanac: "Spirit and alcohol started out in different languages: a Latin word for breath and an Arabic word for the powder that darkened eyelids."
 featured: false
 faqs:
   - q: "Why is liquor called spirits?"

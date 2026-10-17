@@ -5,6 +5,7 @@ pubDate: 2026-08-28
 category: "history"
 readingTime: "4 min read"
 filecode: "FYI-010"
+almanac: "Bacon's writings subdivide the moment into 12 ounces of 47 atoms each."
 featured: false
 faqs:
   - q: "How long is a moment exactly?"

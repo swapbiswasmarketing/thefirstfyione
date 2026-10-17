@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-091"
+almanac: "Cotton Candy grapes are made by ordinary cross-breeding."
 featured: false
 faqs:
   - q: "Are cotton candy grapes genetically modified?"

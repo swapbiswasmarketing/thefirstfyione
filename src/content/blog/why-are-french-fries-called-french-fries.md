@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-042"
+almanac: "French frying meant the food went into a kettle of hot fat deep enough to cover it."
 featured: false
 faqs:
   - q: "Why are french fries called french fries?"

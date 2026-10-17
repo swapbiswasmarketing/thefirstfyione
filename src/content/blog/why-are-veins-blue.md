@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "science"
 readingTime: "4 min read"
 filecode: "FYI-022"
+almanac: "Red light penetrates deep enough to reach a vein and be absorbed there, so the skin over a vein returns less red than the skin beside it does."
 featured: false
 faqs:
   - q: "Why are veins blue?"

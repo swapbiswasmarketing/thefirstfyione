@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-063"
+almanac: "In 1891 a field goal outscored a touchdown, 5 points to 4."
 featured: false
 faqs:
   - q: "Why is American football called football?"

@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-112"
+almanac: "Nearly every golden hamster in a cage descends from a brother and sister mated in Jerusalem in 1930."
 featured: false
 faqs:
   - q: "Are all pet hamsters related?"

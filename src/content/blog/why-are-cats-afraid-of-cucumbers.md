@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-024"
+almanac: "The inherited fear of snakes has never been shown in a domestic cat."
 featured: false
 faqs:
   - q: "Why are cats afraid of cucumbers?"

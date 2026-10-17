@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "history"
 readingTime: "4 min read"
 filecode: "FYI-034"
+almanac: "In Greenlandic the country has a name of its own, Kalaallit Nunaat, land of the Kalaallit, with no green in it."
 featured: false
 faqs:
   - q: "Why is Greenland called Greenland?"

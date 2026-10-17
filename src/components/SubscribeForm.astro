@@ -1,0 +1,162 @@
+---
+/* The one place a reader can sign up. While kitFormId (src/data/site.ts) is
+   empty there is no newsletter, so this renders the feed instead of a form
+   that pretends to work. Once the ID is set, the form posts to Kit's public
+   endpoint: without JS as a native POST, with JS as a fetch that reports the
+   real result. The surrounding promise copy belongs to the page, which should
+   check newsletterLive before promising any cadence. */
+import { newsletterLive, kitFormAction, SITE_URL } from "../data/site";
+
+interface Props {
+  /* Where the form sits, for analytics: homepage, entry, about, archive. */
+  location: string;
+  entryId?: string;
+  size?: "lg" | "sm";
+}
+
+const { location, entryId = "", size = "sm" } = Astro.props;
+const uid = `sub-${location}`;
+const feedUrl = `${SITE_URL}/rss.xml`;
+---
+
+{newsletterLive ? (
+  <form
+    class:list={["sub-form", size]}
+    action={kitFormAction}
+    method="post"
+    data-sub-form
+    data-location={location}
+    data-entry-id={entryId}
+    novalidate
+  >
+    <label class="sub-label" for={`${uid}-email`}>Your email address</label>
+    <input
+      id={`${uid}-email`}
+      type="email"
+      name="email_address"
+      autocomplete="email"
+      inputmode="email"
+      required
+      placeholder="you@example.com"
+      aria-describedby={`${uid}-msg`}
+    />
+    <input class="sub-hp" type="text" name="fyi_hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <button type="submit" class="coupon">[ Send me new entries ]</button>
+    <p class="sub-msg" id={`${uid}-msg`} role="status"></p>
+  </form>
+) : (
+  <div class:list={["sub-feed", size]}>
+    <a
+      class="coupon sub-feed-link"
+      href="/rss.xml"
+      data-track="cta_click"
+      data-track-cta-type="rss"
+      data-track-cta-location={location}
+    >[ Follow the feed ]</a>
+    <button type="button" class="coupon sub-copy" data-feed={feedUrl} data-location={location} hidden>[ Copy the feed address ]</button>
+    <p class="sub-msg" role="status"></p>
+  </div>
+)}
+
+<style>
+  .sub-form { display: grid; gap: 0.4rem; }
+  .sub-label {
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .sub-form input[type="email"] {
+    border: none; border-bottom: 1.5px solid var(--ink); background: transparent; border-radius: 0;
+    padding: 0.5rem 0; font-family: var(--display); color: var(--ink); width: 100%;
+    font-size: 1.2rem;
+    transition: border-color var(--t-hover) var(--ease-out), background var(--t-hover) var(--ease-out);
+  }
+  .sub-form.lg input[type="email"] { font-size: 1.5rem; }
+  .sub-form input[type="email"]::placeholder { color: var(--ink-faint); }
+  .sub-form input[type="email"]:focus {
+    outline: none;
+    background: linear-gradient(transparent 70%, var(--hl) 70%);
+  }
+  .sub-form input[aria-invalid="true"] { border-bottom-color: #b3261e; }
+  .sub-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .sub-form .coupon { justify-self: start; margin-top: 0.6rem; }
+  .sub-form button[disabled] { opacity: 0.6; cursor: progress; }
+
+  .sub-feed { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1.2rem; }
+  .sub-feed.lg .coupon { font-size: 0.95rem; }
+  .sub-copy[hidden] { display: none; }
+
+  .sub-msg { font-family: var(--mono); font-size: 0.78rem; color: var(--ink); min-height: 1.2em; flex-basis: 100%; }
+  .sub-msg:empty { min-height: 0; }
+  .sub-form .sub-msg:empty { min-height: 1.2em; }
+  .sub-msg.err { color: #b3261e; }
+</style>
+
+<script>
+  import { track } from "../lib/track";
+
+  const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  document.querySelectorAll<HTMLFormElement>("form[data-sub-form]").forEach((form) => {
+    const input = form.querySelector<HTMLInputElement>('input[type="email"]');
+    const trap = form.querySelector<HTMLInputElement>('input[name="fyi_hp"]');
+    const msg = form.querySelector<HTMLElement>(".sub-msg");
+    const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    let sent = false;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!input || !msg || !btn || sent) return;
+      if (trap && trap.value) return;
+
+      const value = input.value.trim();
+      if (!EMAIL.test(value)) {
+        input.setAttribute("aria-invalid", "true");
+        msg.textContent = value ? "That address does not look right. Check it and try again." : "Enter an email address first.";
+        msg.classList.add("err");
+        input.focus();
+        return;
+      }
+
+      input.removeAttribute("aria-invalid");
+      msg.classList.remove("err");
+      msg.textContent = "Sending...";
+      btn.disabled = true;
+
+      try {
+        const body = new FormData();
+        body.append("email_address", value);
+        const res = await fetch(form.action, { method: "POST", body, headers: { Accept: "application/json" } });
+        const data = (await res.json().catch(() => ({}))) as { status?: string };
+        if (!res.ok || (data.status && data.status !== "success")) throw new Error("rejected");
+        sent = true;
+        input.value = "";
+        msg.textContent = "Filed. Check your inbox to confirm.";
+        track("newsletter_signup", { signup_location: form.dataset.location, entry_id: form.dataset.entryId });
+      } catch {
+        msg.textContent = "That did not go through. Try again, or follow the feed.";
+        msg.classList.add("err");
+        btn.disabled = false;
+      }
+    });
+
+    input?.addEventListener("input", () => {
+      input.removeAttribute("aria-invalid");
+      if (msg && !sent) { msg.textContent = ""; msg.classList.remove("err"); }
+    });
+  });
+
+  /* The copy button needs the clipboard, so it only appears once script runs. */
+  document.querySelectorAll<HTMLButtonElement>(".sub-copy").forEach((b) => {
+    b.hidden = false;
+    b.addEventListener("click", async () => {
+      const status = b.parentElement?.querySelector<HTMLElement>(".sub-msg");
+      try {
+        await navigator.clipboard.writeText(b.dataset.feed || "");
+        if (status) status.textContent = "Copied. Paste it into any feed reader.";
+        track("cta_click", { cta_type: "rss_copy", cta_location: b.dataset.location });
+      } catch {
+        if (status) status.textContent = `The feed lives at ${b.dataset.feed}`;
+      }
+    });
+  });
+</script>

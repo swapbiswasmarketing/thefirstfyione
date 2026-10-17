@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-084"
+almanac: "Only about 3% of bird species have a penis that can be inserted."
 featured: false
 faqs:
   - q: "Do birds have penises?"

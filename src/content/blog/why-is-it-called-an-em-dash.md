@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "culture"
 readingTime: "3 min read"
 filecode: "FYI-044"
+almanac: "A capital M set in 12-point type is not 12 points of anything."
 featured: false
 faqs:
   - q: "Why is it called an em dash?"

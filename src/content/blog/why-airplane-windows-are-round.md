@@ -5,6 +5,7 @@ pubDate: 2026-07-02
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-001"
+almanac: "In 1952, Britain's de Havilland Comet became the first commercial jet airliner."
 featured: true
 faqs:
   - q: "Why are airplane windows round?"

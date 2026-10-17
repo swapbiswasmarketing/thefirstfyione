@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-113"
+almanac: "Caesar reset the calendar by giving 46 BC a total of 445 days."
 featured: false
 faqs:
   - q: "Did Augustus take a day from February to make August longer?"

@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-069"
+almanac: "A mood ring is a thermometer for the skin of your finger."
 featured: false
 faqs:
   - q: "How do mood rings work?"

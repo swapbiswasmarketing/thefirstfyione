@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-066"
+almanac: "To eat a la gringa is to split the bill so that each person pays for what they had."
 featured: false
 faqs:
   - q: "What does gringo mean in slang?"

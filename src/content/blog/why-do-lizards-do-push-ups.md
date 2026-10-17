@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-117"
+almanac: "In field trials crested anoles did extra push-ups at a model snake, apparently telling the predator it had been seen."
 featured: false
 faqs:
   - q: "Why do lizards bob their heads?"

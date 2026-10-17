@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-027"
+almanac: "English has exactly one attested word for a group of ravens, and the birds it describes are mostly adolescents loitering near a carcass."
 featured: false
 faqs:
   - q: "What is a group of ravens called?"

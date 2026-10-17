@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-052"
+almanac: "The part of a water tower that looks important, the tank, is the part the town drains a little every day."
 featured: false
 faqs:
   - q: "How do they get water in the water tower?"

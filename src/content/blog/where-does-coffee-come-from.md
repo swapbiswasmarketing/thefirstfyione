@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-114"
+almanac: "One plant shipped to Amsterdam in 1706 started arabica farming in the Caribbean in 1723."
 featured: false
 faqs:
   - q: "What country did coffee originate from?"

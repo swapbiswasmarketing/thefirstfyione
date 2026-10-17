@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "everyday"
 readingTime: "4 min read"
 filecode: "FYI-045"
+almanac: "A female beluga sturgeon reaches reproductive capacity at 14 to 20 years of age and thereafter reproduces once every 4 to 8 years."
 featured: false
 faqs:
   - q: "Why is caviar so expensive?"

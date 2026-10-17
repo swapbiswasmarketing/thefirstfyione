@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "culture"
 readingTime: "4 min read"
 filecode: "FYI-043"
+almanac: "The public-domain text of Strunk's Elements of Style contains no rule about where a conjunction may stand."
 featured: false
 faqs:
   - q: "Can you start a sentence with but?"

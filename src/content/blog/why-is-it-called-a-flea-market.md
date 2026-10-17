@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-095"
+almanac: "New York's Fly Market closed in 1822, 65 years before the earliest known \"flea market\" in English print."
 featured: false
 faqs:
   - q: "What is a flea market?"

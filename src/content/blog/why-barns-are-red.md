@@ -5,6 +5,7 @@ pubDate: 2026-07-25
 category: "curiosity"
 readingTime: "4 min read"
 filecode: "FYI-009"
+almanac: "Barns turned red as a side effect of trying to keep them standing."
 featured: false
 faqs:
   - q: "Why are barns painted red?"

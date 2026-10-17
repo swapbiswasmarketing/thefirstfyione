@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-107"
+almanac: "An old cow's backbone is thrown out, and her tail can still be sold."
 featured: false
 faqs:
   - q: "What animal does oxtail come from?"

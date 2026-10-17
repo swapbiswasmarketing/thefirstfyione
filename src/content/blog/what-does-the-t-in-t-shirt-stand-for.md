@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "everyday"
 readingTime: "5 min read"
 filecode: "FYI-058"
+almanac: "The earliest printed use in the Oxford English Dictionary is a Daily Princetonian advertisement dated 4 March 1912, which lists T shirts."
 featured: false
 faqs:
   - q: "What does the T in T-shirt stand for?"

@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "curiosity"
 readingTime: "5 min read"
 filecode: "FYI-028"
+almanac: "At least 125 million years separate the first amniotes in the fossil record from the oldest preserved eggshell anyone has ever dug up."
 featured: false
 faqs:
   - q: "What came first, the chicken or the egg?"

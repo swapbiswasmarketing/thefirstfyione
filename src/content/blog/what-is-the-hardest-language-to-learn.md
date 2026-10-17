@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-103"
+almanac: "Among Jewish immigrants to Israel in the 1970s, those who grew up speaking Arabic were the most proficient in Hebrew, other things being equal."
 featured: false
 faqs:
   - q: "What is the hardest language to learn for English speakers?"

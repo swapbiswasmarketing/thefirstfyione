@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "science"
 readingTime: "4 min read"
 filecode: "FYI-023"
+almanac: "Point a camera at the ground directly under a Mars rover and the picture that comes back is not red."
 featured: false
 faqs:
   - q: "Why is Mars red?"

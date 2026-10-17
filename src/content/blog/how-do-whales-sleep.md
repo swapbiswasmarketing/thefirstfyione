@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-050"
+almanac: "Sperm whales are the only whales known to rest vertically."
 featured: false
 faqs:
   - q: "How do whales sleep underwater if they need air?"

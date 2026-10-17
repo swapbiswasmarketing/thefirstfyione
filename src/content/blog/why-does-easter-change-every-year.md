@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "culture"
 readingTime: "5 min read"
 filecode: "FYI-109"
+almanac: "Easter last fell on March 22 in 1818, and the next will be in 2285."
 featured: false
 faqs:
   - q: "How is the date of Easter determined?"

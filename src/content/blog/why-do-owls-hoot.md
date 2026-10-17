@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-121"
+almanac: "Tawny owls can live for more than 20 years, often in the same territory and even the same nest hole."
 featured: false
 faqs:
   - q: "Do all owls hoot?"

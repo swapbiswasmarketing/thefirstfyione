@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "history"
 readingTime: "4 min read"
 filecode: "FYI-037"
+almanac: "Agrarian interests led the fight that repealed daylight saving in 1919."
 featured: false
 faqs:
   - q: "Did daylight saving time start for farmers?"

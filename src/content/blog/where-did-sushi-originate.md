@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-071"
+almanac: "The rice that now defines sushi began as the part people threw away."
 featured: false
 faqs:
   - q: "Is sushi from Japan or China?"

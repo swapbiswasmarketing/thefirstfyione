@@ -12,6 +12,10 @@ dist/
 .env.*
 !.env.example
 
+# Search Console credentials, tokens and exports (scripts/gsc.mjs). The repo
+# is public: keep this line above any credential that lands in the tree.
+.gsc/
+
 # os / editor
 .DS_Store
 Thumbs.db

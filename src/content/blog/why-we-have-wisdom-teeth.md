@@ -4,6 +4,7 @@ description: "Why do we have wisdom teeth if they so often get impacted or pulle
 pubDate: 2026-07-03
 category: "science"
 filecode: "FYI-004"
+almanac: "Some people are now born without one, some, or even all of their wisdom teeth."
 readingTime: "4 min read"
 featured: true
 faqs:

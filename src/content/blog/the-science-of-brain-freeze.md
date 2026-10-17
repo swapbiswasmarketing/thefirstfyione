@@ -4,6 +4,7 @@ description: "Why do we get brain freeze? The real science of the ice-cream head
 pubDate: 2026-06-26
 category: "science"
 filecode: "FYI-005"
+almanac: "Brain freeze has a proper medical name, and it is gloriously oversized: sphenopalatine ganglioneuralgia."
 readingTime: "4 min read"
 featured: false
 faqs:

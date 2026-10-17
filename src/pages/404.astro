@@ -1,10 +1,34 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import LedgerRow from "../components/LedgerRow.astro";
+import SearchResults from "../components/SearchResults.astro";
+import { cats, deptHref, deptWord } from "../data/site";
+import { getEntries, entryHref } from "../lib/entries";
+import { pageCard } from "../lib/og";
+
+const entries = await getEntries();
+
+/* Shown as is without script, and when the address gives search nothing to go on. */
+const recent = entries.slice(0, 5);
+
+/* For the random file: generated at build, so the list never drifts. */
+const ids = JSON.stringify(entries.map((p) => p.id)).replace(/</g, "\\u003c");
+
+/* The filler box runs one almanac line from an entry that has one. Without
+   any yet, it keeps the house flamingo. */
+const almanac = entries
+  .filter((p) => p.data.almanac)
+  .map((p) => ({ text: p.data.almanac as string, href: entryHref(p), code: p.data.filecode ?? "FYI" }));
 ---
 
-<Layout title="404 · Strictly FYI" description="This page is not in the archive.">
+<Layout
+  title="Page Not Found - Strictly FYI"
+  description={`This page is not in the archive. Search for what you were after, pull a random file, or browse the ${deptWord} departments of Strictly FYI instead.`}
+  card={pageCard("notfound")}
+  noindex
+>
   <div class="nf wrap">
-    <p class="nf-kicker">Errata · Error 404 · Page not filed</p>
+    <p class="nf-kicker">Errata &middot; Error 404 &middot; Page not filed</p>
     <div class="rule-thickthin"></div>
 
     <div class="nf-body">
@@ -15,17 +39,51 @@ import Layout from "../layouts/Layout.astro";
           moved on. Here is the way back.
         </p>
         <div class="nf-actions">
-          <a href="/blog/" class="btn btn-solid">Read the archive →</a>
+          <a href="/blog/" class="btn btn-solid">Read the archive</a>
           <a href="/" class="btn">Back to the front page</a>
         </div>
+        <p class="nf-random">
+          <a href="/blog/" class="coupon" data-random data-track="random_entry" data-track-random-location="notfound">[ Pull a random file ]</a>
+        </p>
       </div>
 
-      <aside class="nf-margin">
+      <aside class="nf-margin" aria-label="Filler item">
         <p class="nf-margin-head">Filler item</p>
-        <p class="nf-fact">A group of flamingos is called a <em>flamboyance</em>.</p>
-        <p class="nf-margin-foot">Nº 000 · Unfiled</p>
+        {/* Every line is stacked in one grid cell, so the box is as tall as the
+            longest one and picking a different line never moves the page. */}
+        <div class="nf-facts">
+          {almanac.length > 0 ? (
+            almanac.map((f, i) => (
+              <div class="nf-item" data-fact data-on={i === 0 ? "true" : undefined}>
+                <p class="nf-fact">{f.text}</p>
+                <p class="nf-margin-foot"><a href={f.href}>From the file &middot; {f.code}</a></p>
+              </div>
+            ))
+          ) : (
+            <div class="nf-item" data-on="true">
+              <p class="nf-fact">A group of flamingos is called a <em>flamboyance</em>.</p>
+              <p class="nf-margin-foot">&#8470; 000 &middot; Unfiled</p>
+            </div>
+          )}
+        </div>
       </aside>
     </div>
+
+    <SearchResults mode="path" fallbackHeading="Recently filed" matchHeading="Perhaps you meant">
+      {recent.map((p) => <LedgerRow entry={p} level={3} size="sm" dek={false} date={false} />)}
+    </SearchResults>
+
+    <div class="nf-more">
+      <a href="/search/" class="coupon" data-sr-searchlink data-track="cta_click" data-track-cta-type="search" data-track-cta-location="notfound">[ Search the archive ]</a>
+      <nav class="nf-depts" aria-label="Departments">
+        <span class="nf-depts-head">Or browse a department:</span>
+        {cats.map((c) => (
+          <a href={deptHref(c.key)}><span aria-hidden="true">&sect;{c.n} </span>{c.name}</a>
+        ))}
+      </nav>
+    </div>
+
+    <script type="application/json" id="nf-files" is:inline set:html={ids} />
   </div>
 </Layout>
 
@@ -46,13 +104,14 @@ import Layout from "../layouts/Layout.astro";
   .nf-title {
     font-family: var(--display); font-weight: 700;
     font-size: clamp(2.3rem, 7vw, 4.75rem); line-height: 0.97; letter-spacing: -0.03em;
-    max-width: 15ch;
+    max-width: 9.7em;
   }
   .nf-dek {
     font-family: var(--serif); font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.55;
-    color: var(--ink-soft); max-width: 46ch; margin: 1.1rem 0 1.8rem;
+    color: var(--ink-soft); max-width: 31.75rem; margin: 1.1rem 0 1.8rem;
   }
   .nf-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .nf-random { margin-top: 1.1rem; }
 
   /* The margin box: a filler item, exactly what a paper runs when copy comes up short. */
   .nf-margin { border: 1px solid var(--ink); background: var(--paper-2); align-self: start; }
@@ -60,6 +119,9 @@ import Layout from "../layouts/Layout.astro";
     font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--ink-soft); padding: 0.6rem 1rem; border-bottom: 1px solid var(--ink);
   }
+  .nf-facts { display: grid; }
+  .nf-item { grid-area: 1 / 1; display: flex; flex-direction: column; visibility: hidden; }
+  .nf-item[data-on] { visibility: visible; }
   .nf-fact {
     font-family: var(--display); font-style: italic; font-weight: 600;
     font-size: clamp(1.2rem, 2.4vw, 1.5rem); line-height: 1.3; color: var(--ink);
@@ -67,12 +129,66 @@ import Layout from "../layouts/Layout.astro";
   }
   .nf-fact em { font-style: normal; background: linear-gradient(transparent 54%, var(--hl) 54%, var(--hl) 92%, transparent 92%); }
   .nf-margin-foot {
+    margin-top: auto;
     font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em;
     color: var(--ink-faint); text-align: right; padding: 0 1rem 0.8rem;
   }
+  .nf-margin-foot a { color: var(--ink-soft); transition: background var(--t-hover) var(--ease-out); }
 
   @media (min-width: 880px) {
     .nf-body { grid-template-columns: 7fr 5fr; gap: 3rem; }
     .nf-margin { margin-left: auto; max-width: 24rem; width: 100%; }
   }
+
+  /* -------- WAYS ON -------- */
+  .nf-more {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+    gap: 0.8rem 2rem; margin-top: 1.2rem;
+  }
+  .nf-depts {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem 1rem;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .nf-depts-head { color: var(--ink-faint); }
+  .nf-depts a {
+    color: var(--ink-soft); text-decoration: none;
+    transition: background var(--t-hover) var(--ease-out), color var(--t-hover) var(--ease-out);
+  }
+  .nf-depts a span { color: var(--ink-faint); }
+
+  @media (hover: hover) and (pointer: fine) {
+    .nf-depts a:hover, .nf-margin-foot a:hover { background: var(--hl); color: var(--ink); }
+  }
 </style>
+
+<script>
+  import { track } from "../lib/track";
+
+  /* Broken inbound links show up in GA4 as their own event, once per load. */
+  track("page_not_found", { page_path: location.pathname });
+
+  /* The random file: picked when the page loads (and again on a back-forward
+     restore), so the plain link, a new tab and the data-track click all agree.
+     Without script it stays a link to the archive. */
+  let ids: string[] = [];
+  try {
+    ids = JSON.parse(document.getElementById("nf-files")?.textContent || "[]");
+  } catch {
+    ids = [];
+  }
+  const random = document.querySelector<HTMLAnchorElement>("[data-random]");
+  const pick = () => {
+    if (random && ids.length) random.href = `/blog/${ids[Math.floor(Math.random() * ids.length)]}/`;
+  };
+  pick();
+  addEventListener("pageshow", (e) => {
+    if (e.persisted) pick();
+  });
+
+  /* One almanac line at random; without script the first one shows. */
+  const facts = [...document.querySelectorAll<HTMLElement>("[data-fact]")];
+  if (facts.length > 1) {
+    const on = facts[Math.floor(Math.random() * facts.length)];
+    for (const f of facts) f.toggleAttribute("data-on", f === on);
+  }
+</script>

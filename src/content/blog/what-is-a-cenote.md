@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-068"
+almanac: "The Maya drew water from the ring of sinkholes for centuries, long before anyone knew it traced the rim of a crater 180 kilometres wide."
 featured: false
 faqs:
   - q: "What is a cenote?"

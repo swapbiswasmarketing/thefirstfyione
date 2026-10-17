@@ -26,7 +26,7 @@ Premise stacking, belaboring the obvious, self-echo (restating the thesis paragr
 
 - **"Strictly FYI."** - every entry ends with this two-word sign-off. The linter is patched to ignore it as a fragment. Do not spend one of the two allowed fragments on anything that competes with it in the same closing paragraph.
 - **Assertive sentence-case H2s** ("The plague story, which nobody can source") are the house heading voice. The one head-question H2 ("How long is a moment?") with a direct answer beneath is the AEO surface and is always allowed. Editorial Wh-headings beyond those still warn at 3+ - vary them.
-- **Voice is third-person curious narrator**, with "you" welcome and "we" meaning "people in general". No first-person operator persona - this site has no byline author speaking from experience, so no "In my experience" framing, ever. Authority comes from named sources, not from a narrator's résumé.
+- **Voice is third-person curious narrator**, with "you" welcome and "we" meaning "people in general". No first-person operator persona - this site has no byline author speaking from experience, so no "In my experience" framing, ever. Authority comes from named sources, not from a narrator's resume.
 - **The debunk register**: naming a myth and labeling it folklore is the brand. Do it plainly and without sneering; never repeat the myth as fact in a heading or FAQ answer.
 - One `>` blockquote pull-quote per entry is house furniture, not a "plain-text quotable one-liner" - but it must carry the entry's best verified insight, not a manufactured aphorism.
 

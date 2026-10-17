@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-075"
+almanac: "The wedding maid of honor is named after the court post, which came first."
 featured: false
 faqs:
   - q: "What does a lady in waiting do?"

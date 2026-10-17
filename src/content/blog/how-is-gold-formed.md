@@ -5,6 +5,7 @@ pubDate: 2026-09-24
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-056"
+almanac: "About 99% of Earth's gold lies in the core, under nearly 3,000 km of rock."
 featured: false
 faqs:
   - q: "How is gold formed?"

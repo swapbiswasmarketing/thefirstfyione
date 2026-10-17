@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-092"
+almanac: "Steve Wilhite's acceptance speech at the Webby Awards was five words long, and he put it on a screen."
 featured: false
 faqs:
   - q: "How do you pronounce GIF: gif or jif?"

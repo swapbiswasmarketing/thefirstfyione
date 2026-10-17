@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-118"
+almanac: "William Buckland named the first dinosaur, Megalosaurus, in 1824."
 featured: false
 faqs:
   - q: "Who discovered the first dinosaur?"

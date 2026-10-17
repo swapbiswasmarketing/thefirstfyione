@@ -5,6 +5,7 @@ pubDate: 2026-09-03
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-036"
+almanac: "On 22 May 1644 a Ming general named Wu Sangui opened the gates of the Great Wall at Shanhai Pass and let the Manchu army through from the north."
 featured: false
 faqs:
   - q: "Did the Great Wall of China work?"

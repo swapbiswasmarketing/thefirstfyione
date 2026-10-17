@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "history"
 readingTime: "5 min read"
 filecode: "FYI-098"
+almanac: "William Bradford, later Plymouth Colony's second governor and its historian, walked into a deer snare on Cape Cod in November 1620."
 featured: false
 faqs:
   - q: "Where did the Mayflower first land?"

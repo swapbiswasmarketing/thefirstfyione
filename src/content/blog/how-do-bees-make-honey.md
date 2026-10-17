@@ -5,6 +5,7 @@ pubDate: 2026-10-17
 category: "science"
 readingTime: "5 min read"
 filecode: "FYI-105"
+almanac: "A worker honey bee makes about 1/12 of a teaspoon of honey in her whole life."
 featured: false
 faqs:
   - q: "How much honey does a bee make in its lifetime?"

@@ -4,6 +4,7 @@ description: "Why do we need mosquitoes when they kill hundreds of thousands of 
 pubDate: 2026-06-19
 category: "science"
 filecode: "FYI-006"
+almanac: "Only female mosquitoes bite, and even they do not need blood to survive."
 readingTime: "4 min read"
 featured: false
 faqs:

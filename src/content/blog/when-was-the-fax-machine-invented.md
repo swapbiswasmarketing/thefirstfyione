@@ -5,6 +5,7 @@ pubDate: 2026-10-01
 category: "tech"
 readingTime: "5 min read"
 filecode: "FYI-080"
+almanac: "Paris was sending handwriting to Lyon by wire 11 years before Bell patented the telephone."
 featured: false
 faqs:
   - q: "Who invented the fax machine?"
