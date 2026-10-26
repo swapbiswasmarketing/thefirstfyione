@@ -48,7 +48,7 @@ Size sets the value. In Italy capers are graded from **7 to 16**, their size in 
 
 The caper family sits in the plant order Brassicales with cabbage and mustard, and the caper and mustard families "have long been known to be closely related families," as a [2002 study](https://doi.org/10.3732/ajb.89.11.1826) of their chloroplast DNA put it.
 
-Like those relatives, the caper bush makes compounds called glucosinolates. In intact plant cells an enzyme, myrosinase, is kept apart from them, the [Linus Pauling Institute](https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/isothiocyanates) at Oregon State University explains. When the cells are damaged, the two meet and form isothiocyanates, the mustard oils behind a pungent aroma and spicy taste.
+Like those relatives, the caper bush makes compounds called glucosinolates. In intact plant cells an enzyme, myrosinase, is kept apart from them, the [Linus Pauling Institute](https://lpi.oregonstate.edu/mic/dietary-factors/phytochemicals/isothiocyanates) at Oregon State University explains. When the cells are damaged, the two meet and form isothiocyanates, the mustard oils behind a pungent aroma and spicy taste. Glucosinolates are also what Canadian breeders bred down in rapeseed, a member of the mustard family, to make [the seed sold as canola](/blog/is-canola-oil-banned-in-europe/).
 
 In raw caper buds the main glucosinolate is glucocapparin, about **90%** of the total in a [2002 analysis](https://doi.org/10.1021/jf020530+) of wild capers from Turkey. Its mustard oil is methyl isothiocyanate, which Purdue's factsheet credits with the caper's strong flavor.
 

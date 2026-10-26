@@ -44,7 +44,7 @@ A worm found a partner by following a trail across the soil surface. The two the
 
 Then the pair lay belly to belly in an S-shape for **69 to 200 minutes**, against the few seconds of the [cloacal kiss most birds use](/blog/how-do-birds-mate/). Other worms often touched a mating pair, and those matings were shorter than undisturbed ones.
 
-Darwin described the outdoor version. In the pairing season, he wrote, worms from adjoining burrows expose most of their bodies "for an hour or two in the early morning." He judged that "their sexual passion is strong enough to overcome for a time their dread of light."
+Darwin described the outdoor version. In the pairing season, he wrote, worms from adjoining burrows expose most of their bodies "for an hour or two in the early morning." He judged that "their sexual passion is strong enough to overcome for a time their dread of light." Decades before the worm book, Darwin had spent eight years on [barnacles](/blog/what-are-barnacles/), most of which are hermaphrodites that still mate.
 
 ## The eggs are fertilized after the worms part
 

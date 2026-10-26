@@ -82,4 +82,6 @@ Even the best short answers draw objections. Mark Drela, a professor of fluid dy
 
 Babinsky replies that if a vacuum were the explanation, it would be "hard to explain why sometimes the flow does nonetheless separate from the surface." Drela "is correct in everything else," he adds, but "there is no quick and easy explanation."
 
+Magnets have the same trouble: asked on the BBC what goes on between two of them, Richard Feynman said he [could not explain the attraction](https://www.sciencealert.com/watch-richard-feynman-on-why-he-can-t-tell-you-how-magnets-work) in terms of anything familiar, and [the full answer for magnets](/blog/how-do-magnets-work/) is quantum mechanical.
+
 The two parcels in the classroom drawing never had an appointment: the one that goes over the top reaches the back of the wing first. The wing stays up by turning air downward, and what the experts still argue over is how to explain that in a single sentence. Strictly FYI.

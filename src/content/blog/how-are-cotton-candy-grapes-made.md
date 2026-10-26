@@ -58,6 +58,8 @@ The [FDA](https://www.fda.gov/food/agricultural-biotechnology/science-and-histor
 
 Embryo culture copies and inserts no genes either. The FDA counts cross-breeding among the "traditional modification methods" people have used "for thousands of years." [The MD-2 pineapple](/blog/where-do-pineapples-grow/) came out of the same kind of breeding, a cross of two earlier hybrids at the Pineapple Research Institute of Hawaii. Japanese Black cattle, the breed behind most [Wagyu](/blog/why-is-wagyu-so-expensive/), also came out of crossing, of native cattle with European breeds in the early 1900s.
 
+The first genetically engineered product the FDA approved for use in food came much later, in 1990, when bacteria carrying a cow gene began making [an enzyme for cheese](/blog/how-is-cheese-made/), [the Los Angeles Times reported](https://www.latimes.com/archives/la-xpm-1990-03-24-mn-681-story.html).
+
 ## High sugar, low acid and a candy-scented compound
 
 Most commercial grapes are vinifera, with a neutral flavor of sugar and acid and "no strong aromatic component," the patent explains, so breeders have used native American species to "incorporate aromatic flavors into the vinifera species." It describes IFG Seven's flavor as "Similar to Toffee or Cotton Candy having a hint of Vitis riparia flavor." *Vitis riparia* is the riverbank grape in the [USDA PLANTS database](https://plants.usda.gov/plant-profile/VIRI), a wild vine that grows from central and eastern Canada south to Texas.

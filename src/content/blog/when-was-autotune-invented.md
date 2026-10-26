@@ -59,7 +59,7 @@ In **1982** he co-founded Landmark Graphics, which built 3D mapping workstations
 
 Auto-Tune is often described as oil-exploration technology put to work on music. Its patent never mentions oil or geophysics, and it states its aim plainly: "The purpose of the invention is to correct intonation errors of vocals or other soloists in real time in studio and performance conditions."
 
-What crossed over was the inventor's math. Antares's [company history](https://www.antarestech.com/about) says he realized "the same techniques he'd used to map oil fields could track and correct the pitch of a human voice."
+What crossed over was the inventor's math. Antares's [company history](https://www.antarestech.com/about) says he realized "the same techniques he'd used to map oil fields could track and correct the pitch of a human voice." Popular histories of Bluetooth make a bigger leap, crediting the radio trick behind it to [Hedy Lamarr's wartime patent](/blog/when-was-bluetooth-invented/), though frequency hopping had been described decades before her.
 
 ## Autocorrelation finds the repeat in a sung note
 

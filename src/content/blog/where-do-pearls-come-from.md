@@ -36,7 +36,7 @@ Sand is not ruled out. The book accepts a hard intruder, "such as a grain of san
 
 ## Every pearl grows inside a pearl sac
 
-The sac is made of **epithelium**, the cell layer covering the mantle. The mantle is the sheet of tissue that lays down the shell. When a foreign body lodges between the shell and the mantle, the FAO manual explains, the mantle's outer epithelium folds around it and forms a sac, and the sac's cells secrete nacre over it in concentric micro-layers: thin sheets of **aragonite**, a crystal form of calcium carbonate, bound by an organic material called conchiolin.
+The sac is made of **epithelium**, the cell layer covering the mantle. The mantle is the sheet of tissue that lays down the shell. When a foreign body lodges between the shell and the mantle, the FAO manual explains, the mantle's outer epithelium folds around it and forms a sac, and the sac's cells secrete nacre over it in concentric micro-layers: thin sheets of **aragonite**, a crystal form of calcium carbonate, bound by an organic material called conchiolin. In [scallops](/blog/what-are-scallops/), bivalve mollusks like the pearl oysters, the edge of the mantle can carry up to 200 eyes.
 
 Left to chance, this seldom happens: the manual calls natural pearl production "accidental" and says it "occurs very rarely." It is firm on the sac itself: "Pearls are not produced without the formation of the pearl-sac."
 
@@ -72,7 +72,7 @@ The donor's cells last the whole process. A [2007 study](https://pubmed.ncbi.nlm
 
 Kokichi Mikimoto usually gets the credit for the cultured pearl, and the [Japan Patent Office](https://www.jpo.go.jp/e/introduction/rekishi/10hatsumeika/) counts him among its ten great Japanese inventors. By its account he succeeded in **1893** with semicircular pearls grown from a protuberance inside the shell, and patented them in 1896. Round pearls needed a method that Tatsuhei Mise and Tokichi Nishikawa filed patents for in **1907**; Mikimoto, [nippon.com notes](https://www.nippon.com/en/views/b02334/), joined their work with his own and won a round-pearl patent in **1916**.
 
-Others had tried with cruder results, the [Western Australian Museum](https://museum.wa.gov.au/explore/lustre-online-text-panels/growing-pearls) notes. By the 13th century, carved pieces of wood and lead inserted into mussels in China were coming out as nacre-covered figures of Buddha, and by 1761 Carl Linnaeus had put limestone beads into mussel shells and got small, poor-quality pearls.
+Others had tried with cruder results, the [Western Australian Museum](https://museum.wa.gov.au/explore/lustre-online-text-panels/growing-pearls) notes. By the 13th century, carved pieces of wood and lead inserted into mussels in China were coming out as nacre-covered figures of Buddha, and by 1761 Carl Linnaeus had put limestone beads into mussel shells and got small, poor-quality pearls. Linnaeus had also filed [barnacles](/blog/what-are-barnacles/) with the mollusks, though they turned out to be crustaceans, kin to crabs and lobsters.
 
 Whole cultured pearls became commercially important in the 1920s, about the time natural pearl production began to decline, according to [GIA](https://www.gia.edu/pearl-history-lore). The Atlantic sturgeon behind [caviar](/blog/why-is-caviar-so-expensive/) declined drastically within decades of heavy fishing. Pearl beds took far longer: thousands of years of pearl fishing "decimated the natural pearl beds," GIA says.
 

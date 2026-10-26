@@ -32,7 +32,7 @@ A flea market is named for the insect. The English name is usually traced to the
 
 ## The New York Fly Market story fails on dates
 
-The Fly did come from Dutch, through the name of a marsh rather than the market itself. Records from as early as **1655** call a salt marsh along the East River "Smee's Vlie, Smidt's Vley," which English-speaking New Yorkers turned into "Smith's Fly." They were "adopting the sound of the name, without the sense," Thomas F. De Voe wrote in [*The Market Book*](https://archive.org/details/cu31924013878784), his 1862 history of public markets.
+The Fly did come from Dutch, through the name of a marsh rather than the market itself. Records from as early as **1655** call a salt marsh along the East River "Smee's Vlie, Smidt's Vley," which English-speaking New Yorkers turned into "Smith's Fly." They were "adopting the sound of the name, without the sense," Thomas F. De Voe wrote in [*The Market Book*](https://archive.org/details/cu31924013878784), his 1862 history of public markets. The same habit of spelling Dutch by ear gave the 1823 poem that named Santa's reindeer its last pair, [Dunder and Blixem](/blog/what-are-the-names-of-santas-reindeer/), from the Dutch words for thunder and lightning.
 
 The city granted a petition for the market in **1699**, and the market house went up about seven years later at the foot of Maiden Lane. It was a food market, with butchers among its stallholders.
 

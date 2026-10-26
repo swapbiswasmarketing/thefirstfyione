@@ -46,7 +46,7 @@ In a 1997 paper, Pope and Fry, at Texas A&M, reported pure water's absorption fr
 
 Percentages are calculated from Pope and Fry's coefficients for pure water.
 
-Blue goes much further, though [NOAA](https://oceanservice.noaa.gov/facts/oceanblue.html) says no light penetrates deeper than 3,280 feet (1,000 m). A glass of water looks clear because its path is too short: a 10 cm glass loses only about 3 percent of its red.
+Blue goes much further, though [NOAA](https://oceanservice.noaa.gov/facts/oceanblue.html) says no light penetrates deeper than 3,280 feet (1,000 m). Scallops are built for what gets through: the mirror behind each of a [scallop's eyes](/blog/what-are-scallops/) is tuned to reflect the blue-green light that reaches the animal underwater. A glass of water looks clear because its path is too short: a 10 cm glass loses only about 3 percent of its red.
 
 Veins work differently. [Skin over a vein still returns more red than blue](/blog/why-are-veins-blue/), and reads as blue only beside the redder skin around it.
 

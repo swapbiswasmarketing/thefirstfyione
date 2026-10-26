@@ -78,6 +78,8 @@ The second says William Webb Ellis invented rugby in 1823 by running with the ba
 
 Even the commemorative stone at Rugby School calls the game football: it honours Webb Ellis's "fine disregard for the rules of football".
 
+A sport's founders can keep a legend going themselves: one of pickleball's inventors [held to the story that a dog named the game](/blog/when-was-pickleball-invented/) until he died, though the dog came along after the game.
+
 ## Soccer is British slang
 
 The word Americans use for the other football is British. [Etymonline](https://www.etymonline.com/word/soccer) traces it to "Assoc.", short for association, and [Andy Mitchell of Scottish Sport History](https://www.scottishsporthistory.com/sports-history-news-and-blog/the-mysterious-origin-of-soccer-what-happened-in-1885) has it in print by **1885**, in three English school magazines, spelled "Soccer" or "Socker". Stefan Szymanski of the University of Michigan found that it was "only later adopted by Americans to distinguish it from gridiron", and that British use peaked between 1960 and 1980, [according to the university's 2014 release](https://phys.org/news/2014-06-british-americans-bad-rap-word.html).

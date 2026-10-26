@@ -77,6 +77,8 @@ The famous 68 mph is about 30 meters per second, twice the top of that range.
 
 On paper the sailfish wins: 68 mph against the **58 mph** (25.9 m/s) that GPS and motion-sensor collars recorded on wild cheetahs in Botswana, the top speed across 367 runs by five animals, [reported in Nature](https://www.nature.com/articles/nature12295) in 2013. On the measurements, the cheetah's 25.9 m/s is about three times the sailfish's estimated limit of 8.3 meters per second.
 
+"We can't beat most animals in a sprint, but we best many of them in endurance running," the Harvard anthropologist Daniel Lieberman [told the *Harvard Gazette*](https://news.harvard.edu/gazette/story/2004/11/running-paced-human-evolution/) in 2004, making the still-disputed case that the human body [evolved to run long distances](/blog/when-was-running-invented/).
+
 ## The black marlin and tuna records lean on reels too
 
 Wikipedia's list gives its top fish speed to the black marlin, **80 mph** (129 km/h), noting that "a hooked black marlin has been recorded stripping line off a fishing reel" at that rate. It cites a 2008 BBC video clip and tags the figure "dubious." Svendsen's team says the early estimates of about 35 meters per second rest on "fishermen's records of hooked specimens" and are "most likely overestimations," and notes that "no previous study has unequivocally tested the maximum speed attainable in billfishes."

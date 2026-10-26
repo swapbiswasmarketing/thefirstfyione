@@ -86,4 +86,6 @@ That is the record of a report to the throne, not proof that paper began there. 
 
 Egypt's papyrus, developed as early as 3000 BCE, is older still but counts as a different material. Its makers laid strips of the plant side by side, added a crosswise layer and pounded the two "together into a laminate," while paper, in the museum's definition, is "pulped plant fiber" formed into a sheet on a screen.
 
+The oldest known papyri with text, [written over 4,500 years ago](https://en.wikipedia.org/wiki/Diary_of_Merer), are the logbook of an inspector whose crew [shipped limestone to the Great Pyramid](/blog/how-were-the-pyramids-built/).
+
 The Academy's own summary of Reaumur's memoir, in the same 1719 volume, [opens](https://archive.org/details/histoiredelacad19acad/page/n24/mode/1up) with a poor opinion of wasps. They are enemies of the [honey bees](/blog/how-do-bees-make-honey/) "we love," it says, and "the work they do is absolutely useless to us." Most paper is now made the way their nests are, from wood fibre matted into sheets. Strictly FYI.

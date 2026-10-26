@@ -40,7 +40,7 @@ Lauren Finka, a cat behaviour expert at Cats Protection, told [BBC Science Focus
 
 It is "not unusual for domesticated animals to retain juvenile traits into adulthood," Scientific American notes. The pattern is called neoteny, and the magazine says it also explains why dogs look and act more like wolf cubs than adult wolves.
 
-The same article describes a kneading cat as "often purring as it does so," and Beaver's chapter records that **purring by both mother and kittens** often accompanies nursing. Wikipedia suggests the pairing "may indicate the origin of kneading as a remnant instinct."
+The same article describes a kneading cat as "often purring as it does so," and Beaver's chapter records that **purring by both mother and kittens** often accompanies nursing. Wikipedia suggests the pairing "may indicate the origin of kneading as a remnant instinct." The purr itself comes from the larynx, which in a 2023 experiment [vibrated at purring rates with no nerve signal reaching it](/blog/why-do-cats-purr/).
 
 > Kneading, meowing and purring are "all things that humans unknowingly encourage cats to maintain in their repertoire," Lauren Finka of Cats Protection told BBC Science Focus.
 

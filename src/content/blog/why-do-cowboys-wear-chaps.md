@@ -51,7 +51,7 @@ In **1885**, Theodore Roosevelt published his own sketches of ranch life on the 
 
 Ranch country has not changed its mind. Writing for the South Dakota cattle paper Tri-State Livestock News in **2018**, [Savanna Simmons was blunt about it](https://cavvysavvy.tsln.com/blog/chaps-hinder-less/): "Also, they're pronounced SHaps."
 
-The Spanish underneath is contested. Etymonline dates English *chaps* to **1844** as a clipping of *chaparejos*, from *chaparreras*, and ties the root to *chaparro*, the oak that also gives us *chaparral*. Wikipedia records a rival derivation from *chaparron*, a cloudburst. Working vocabulary often keeps two plausible parents; [the number American police get called over the radio has the same unsettled paper trail](/blog/why-are-police-called-12/).
+The Spanish underneath is contested. Etymonline dates English *chaps* to **1844** as a clipping of *chaparejos*, from *chaparreras*, and ties the root to *chaparro*, the oak that also gives us *chaparral*. Wikipedia records a rival derivation from *chaparron*, a cloudburst. Working vocabulary often keeps two plausible parents; [the number American police get called over the radio has the same unsettled paper trail](/blog/why-are-police-called-12/). Barbecue reached English from American Spanish as well, from [barbacoa](/blog/what-is-barbacoa/), a word for a wooden frame whose own origin the Real Academia's dictionary hedges as perhaps Taino.
 
 ## The styles track the weather, not the look
 

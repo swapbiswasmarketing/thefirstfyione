@@ -32,7 +32,7 @@ Those shares come from the USDA's [Livestock Slaughter 2025 Summary](https://esm
 
 ## The USDA files oxtail with the liver and the tongue
 
-The government's own name for the cut uses both words, beef and ox. In the USDA's [Institutional Meat Purchase Specifications](https://www.ams.usda.gov/sites/default/files/media/LSimps700.pdf), item 721 is "Beef Oxtail, Trimmed," listed in the series for variety meats and edible by-products beside beef liver, heart, tongue, kidneys and tripe.
+The government's own name for the cut uses both words, beef and ox. In the USDA's [Institutional Meat Purchase Specifications](https://www.ams.usda.gov/sites/default/files/media/LSimps700.pdf), item 721 is "Beef Oxtail, Trimmed," listed in the series for variety meats and edible by-products beside beef liver, heart, tongue, kidneys and tripe. The same series lists cheek meat, head meat and brains, the parts of a cow's head that South Texas cooks, traditionally in a pit, as [barbacoa](/blog/what-is-barbacoa/).
 
 The tail comes off the carcass "at the juncture of the second and third coccygeal vertebrae," the tail bones, and unless the buyer says otherwise its thin end is "tipped" to remove two or three more. Buyers can take the tails whole or disjointed.
 

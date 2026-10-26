@@ -55,7 +55,7 @@ Then the chain reaches **iron**, and the arithmetic changes. Iron sits at the po
 
 What follows is fast. With nothing generating outward pressure, the core collapses under its own weight and the star tears itself apart as a **supernova**, flinging its accumulated material into space. Iron builds up in the universe precisely because it is where fusion stops being profitable, and explosions distribute it. Elements past that dead end need a different route, and [gold is formed](/blog/how-is-gold-formed/) mostly when colliding neutron stars flood atomic nuclei with neutrons faster than they can decay.
 
-That material eventually collects into new stars, planets, soil and ore. The iron in the ground, in the rust, in the pigment, in the paint, came from there. The same iron rusted on Mars, though [the red there is a coat of dust over ground NASA calls brown, gold and tan](/blog/is-mars-really-red/).
+That material eventually collects into new stars, planets, soil and ore. The iron in the ground, in the rust, in the pigment, in the paint, came from there. The same iron rusted on Mars, though [the red there is a coat of dust over ground NASA calls brown, gold and tan](/blog/is-mars-really-red/). Iron is also one of the few materials, alongside cobalt, nickel and gadolinium, that [show strong magnetic effects](/blog/how-do-magnets-work/).
 
 ## So, why are barns red?
 

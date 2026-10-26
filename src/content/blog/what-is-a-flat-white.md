@@ -38,6 +38,8 @@ In Australia, "it's typically a 3 to 1 drink: 3 parts milk to 1 part espresso," 
 
 Prince calls it "a drink that slots in between the traditional cappuccino, and the latte." In the historian Garritt Van Dyk's description, it blends the crema of the espresso with a thin layer of microfoam, "without the thicker foam of a latte or cappuccino." The proportions shift by country: in the USA, Prince notes, the ratio "sometimes gets pushed up to 4 parts milk, and sometimes as low as a 2:1 ratio."
 
+Milk has a stiffer fate in cheese, where [most of its water drains away as whey](/blog/how-is-cheese-made/).
+
 ## Sydney's claim rests on a photographed 1985 menu
 
 Van Dyk, a history lecturer at Australia's University of Newcastle, notes claims "from England to New Zealand" and calls Preston's "the best case for coining the term." Preston "claims he was the first to use the term on a menu, and has documented this use through photographs," he writes.

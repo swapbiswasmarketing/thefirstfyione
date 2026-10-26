@@ -42,7 +42,7 @@ Her article does not say how the pilot's words reached her. Thomson filled that 
 
 ## The 20 minutes come from the newspaper
 
-*The Bulletin* said Keller "took over the pilot's controls for 20 minutes" in "a Douglas Skymaster," according to the text quoted by the fact-checking site [Lead Stories](https://leadstories.com/hoax-alert/2026/01/fact-check-helen-keller-life-achievements-were-not-faked.html). That is the figure that spread. Keller's own account, in the foundation's journal, says **several minutes**, and neither source explains the gap.
+*The Bulletin* said Keller "took over the pilot's controls for 20 minutes" in "a Douglas Skymaster," according to the text quoted by the fact-checking site [Lead Stories](https://leadstories.com/hoax-alert/2026/01/fact-check-helen-keller-life-achievements-were-not-faked.html). That is the figure that spread. Keller's own account, in the foundation's journal, says **several minutes**, and neither source explains the gap. [Einstein's IQ](/blog/what-was-einsteins-iq/) spread the same way, as numbers printed by writers with no test on record behind any of them.
 
 The date has drifted as well. The archive catalogs the clipping as [June 1946](https://helenkellerarchive.afb.org/?a=d&d=A-HK01-02-B034-F01-009), and [Britannica's explainer](https://www.britannica.com/story/how-did-helen-keller-fly-a-plane) opens with a June 1946 flight. Neither can be right, since Keller did not leave New York until October 17.
 

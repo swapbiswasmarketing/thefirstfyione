@@ -60,7 +60,7 @@ The [**2008** edition](https://www.govinfo.gov/content/pkg/GPO-STYLEMANUAL-2008/
 
 "At midnight on Friday, October 20th" could mean the start of that day or its end, NIST notes, so it calls naming 11:59 p.m. or 12:01 a.m. instead "a good idea, especially legal documents such as contracts and insurance policies." It is also "common for transport timetables to use 23:59 or 00:01 to make it really clear which day they mean," according to NPL.
 
-The 24-hour clock settles most of it. NIST suggests **0000** for midnight at the beginning of a date and **2400** for midnight at its end, and NPL says it is "generally accepted that the moment the clock hits midnight marks the start of a new day." The 2000 GPO manual's numerals chapter wrote times that way too, listing "0025, 2359 (astronomical and military time)."
+The 24-hour clock settles most of it. NIST suggests **0000** for midnight at the beginning of a date and **2400** for midnight at its end, and NPL says it is "generally accepted that the moment the clock hits midnight marks the start of a new day." The 2000 GPO manual's numerals chapter wrote times that way too, listing "0025, 2359 (astronomical and military time)." Calendar years have no such zero: since the English historian Bede began counting years backward in the eighth century, 1 BC has run [straight into AD 1](/blog/when-was-jesus-actually-born/).
 
 ## In Latin, midday also meant the south
 

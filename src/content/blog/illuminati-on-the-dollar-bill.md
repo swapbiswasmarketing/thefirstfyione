@@ -42,7 +42,7 @@ The floating eye has a name: the **Eye of Providence**. It was a common Christia
 
 For the American seal, the eye was suggested in **August 1776** by Pierre du Simitiere, the artistic consultant to the first design committee. The final seal, assembled by Congress secretary **Charles Thomson** with heraldist William Barton, kept it above a pyramid of **13 courses** - one per state - left deliberately unfinished, with **MDCCLXXVI** (1776) on the base. The mottos are scholarly Latin: *Annuit Coeptis*, "He has favored our undertakings," and *Novus Ordo Seclorum*, "a new order of the ages," a phrase adapted from **Virgil**.
 
-An unfinished building, a watchful eye, a line of Roman poetry. As eighteenth-century national symbolism goes, this is about as subtle as a commencement speech.
+An unfinished building, a watchful eye, a line of Roman poetry. As eighteenth-century national symbolism goes, this is about as subtle as a commencement speech. The Egyptian pyramids behind the motif were finished, by organized crews of workers rather than slaves, and [one crew's logbook survives](/blog/how-were-the-pyramids-built/).
 
 ## Even the Freemason version has a timeline problem
 

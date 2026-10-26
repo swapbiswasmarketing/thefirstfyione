@@ -35,7 +35,7 @@ Santa lives at the **North Pole** in the American and Canadian tradition, an add
 
 ## A children's verse put the North Pole into words in 1869
 
-Clement C. Moore's "A Visit from Saint Nicholas," printed in full in the same 1866 issue, gives its St. Nicholas a sleigh, "eight tiny rein-deer" and a chimney to come down, but never says where he flies in from. The words "North Pole" came later.
+Clement C. Moore's "A Visit from Saint Nicholas," printed in full in the same 1866 issue, gives its St. Nicholas a sleigh, "eight tiny rein-deer" that it [calls by name, down to Donder and Blitzen](/blog/what-are-the-names-of-santas-reindeer/), and a chimney to come down, but never says where he flies in from. The words "North Pole" came later.
 
 Jeremy Seal writes in [*Nicholas: The Epic Journey from Saint to Santa Claus*](https://archive.org/details/nicholasepicjour00seal) that in **1869** the text for a color edition of Nast's drawings came from "a children's poem called 'Santa Claus and His Works.'" Its author, George P. Webster, set Santa in a town much like the steepled one on Nast's page, "a nice little city called Santa Claus-ville, / With its houses and church at the foot of the hill." The full text is reprinted in E. Willis Jones's [*The Santa Claus Book*](https://archive.org/details/santaclausbook0000jone), and further on, the poem gives Santa's summer address.
 
@@ -53,7 +53,7 @@ By the usual account, Finland's answer came by radio. In **1927**, a child asked
 
 Korvatunturi rises to **486 metres** on the Finland-Russia border, in Urho Kekkonen National Park in Savukoski. From a distance its peaks "look like the ears of a fox or a wolf," says the fell's [visitor site](https://korvatunturi.fi/en/region-information/information-about-korvatunturi/), and "these ears can hear even the smallest whispers carried by the north wind."
 
-[thisisFINLAND](https://finland.fi/christmas/the-ambassador-of-christmas/), a site produced by Finland's Ministry for Foreign Affairs, says Santa lives there "with his wife and hundreds of elves," and that "From the top of Korvatunturi, they can hear the Christmas wishes of all the children in the world." A marked **18 km** trail from Kemihaara leads to a view of the fell, but going all the way to it takes a border zone permit from the Finnish Border Guard.
+[thisisFINLAND](https://finland.fi/christmas/the-ambassador-of-christmas/), a site produced by Finland's Ministry for Foreign Affairs, says Santa lives there "with his wife and hundreds of elves," and that "From the top of Korvatunturi, they can hear the Christmas wishes of all the children in the world." A Lapland sleigh would have had a local kind of team, too: the sled reindeer of Finland and Scandinavia were traditionally castrated bulls, which, unlike full males, [kept their antlers through the winter](/blog/do-female-reindeer-have-antlers/). A marked **18 km** trail from Kemihaara leads to a view of the fell, but going all the way to it takes a border zone permit from the Finnish Border Guard.
 
 ## Santa Claus Village began as a cabin for Eleanor Roosevelt
 

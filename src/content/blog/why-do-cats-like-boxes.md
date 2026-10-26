@@ -45,7 +45,7 @@ The cats with boxes had lower stress scores on days 3 and 4. A follow-up at a sh
 
 The box did not fix everything. In the 2019 trial nearly all the cats lost weight in quarantine, 6.3% of their starting weight with a box and 7.7% without, and the box made **no significant difference** to weight loss, adoption rates or length of stay.
 
-Cats with no box improvise. The 2019 paper notes that stressed cats housed with nowhere to hide show more alert resting behind the litter box, which it interprets as alternative hiding behavior.
+Cats with no box improvise. The 2019 paper notes that stressed cats housed with nowhere to hide show more alert resting behind the litter box, which it interprets as alternative hiding behavior. A stressed cat is not always a quiet one, either: cats [purr when frightened or at the vet as well as in comfort](/blog/why-do-cats-purr/).
 
 ## The snug-fit theory rests on kittens and pigs
 
@@ -75,7 +75,7 @@ The authors concluded that cats "may treat the subjective Kanizsa contours as th
 
 They blamed their small dataset mostly on owners dropping out of a six-day design and suggested repeating the test in controlled settings.
 
-The 2021 study was not the first test of cats on illusory edges. In 1988 a Northwestern University team trained cats to respond to a figure defined by subjective contours and reported ["the first direct evidence that a nonhuman perceives subjective contours."](https://pubmed.ncbi.nlm.nih.gov/3250081/) Smith's paper notes that the 1988 study used two cats.
+The 2021 study was not the first test of cats on illusory edges. In 1988 a Northwestern University team trained cats to respond to a figure defined by subjective contours and reported ["the first direct evidence that a nonhuman perceives subjective contours."](https://pubmed.ncbi.nlm.nih.gov/3250081/) Smith's paper notes that the 1988 study used two cats. An even older test of [how finely cats see](/blog/can-cats-see-in-the-dark/) also rested on two cats.
 
 ## The warmth figure rests on one disputed range
 

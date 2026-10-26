@@ -42,6 +42,8 @@ On 31 July 1874 the *Omaha Daily Republican* looked ahead to the day "when all t
 
 A looser form is older. [Green's Dictionary of Slang](https://greensdictofslang.com/entry/uowyn6q) quotes an 1865 letter, published in Bell Irvin Wiley's *The Life of Johnny Reb* (1943), whose writer hoped to "visit the Theaters may be get on a big Whope & Paint the thing red."
 
+The same dictionary dates other American jibes of the period: its quotations for [Irish twins](/blog/what-are-irish-twins/), siblings born less than a year apart, begin with [a Louisville newspaper in 1852](https://greensdictofslang.com/entry/oqjx6dq).
+
 The exact phrase took off in the **1880s**: Grammarphobia's authors have seen "a couple of examples from 1880, and dozens from later in the '80s." A few of the examples that followed:
 
 | Date | Newspaper | The line |

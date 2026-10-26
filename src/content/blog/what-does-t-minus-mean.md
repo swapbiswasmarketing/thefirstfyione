@@ -56,7 +56,7 @@ One answer is time. A 2010 [NASA release](https://web.archive.org/web/2010110901
 
 The other answer came from the firing room. In a [NASA podcast published on 28 June 2006](https://web.archive.org/web/20230506045011/https://www.nasa.gov/multimedia/podcasting/ksc_leinbach_transcript.html), shuttle launch director **Mike Leinbach** said he had put the question to his elders when he joined the space programme about 20 years earlier, "and it turns out that T stands for test. Because it's not always related to time." The T, he explained, could mark the start of a test, "independent of the time of day."
 
-[PolitiFact](https://www.politifact.com/factchecks/2023/may/05/instagram-posts/affinity-for-the-devil-no-nasas-t-minus-countdown/), ruling in 2023 on an Instagram claim that NASA's T-minus countdown was a mocking reference to Satan, concluded that the letter "stands simply for 'time' or 'test.'"
+[PolitiFact](https://www.politifact.com/factchecks/2023/may/05/instagram-posts/affinity-for-the-devil-no-nasas-t-minus-countdown/), ruling in 2023 on an Instagram claim that NASA's T-minus countdown was a mocking reference to Satan, concluded that the letter "stands simply for 'time' or 'test.'" Either reading makes the T an initial, as the I and Q are in [IQ, short for intelligence quotient](/blog/what-does-iq-stand-for/).
 
 ## A 1929 silent film is credited with the launch countdown
 

@@ -59,7 +59,7 @@ The usual explanation for 660 BC is credited to [Naka Michiyo](https://ja.wikipe
 
 > The fifty-eighth year of each cycle, Murdoch wrote, "was supposed by the Chinese to be the year in which some revolution was liable to take place."
 
-The year 601, the ninth of Empress Suiko's reign, was such a year, and 660 BC falls exactly 1,260 years before it. Murdoch thought this "the most plausible account" of how the chronicle's authors chose their starting date.
+The year 601, the ninth of Empress Suiko's reign, was such a year, and 660 BC falls exactly 1,260 years before it. Murdoch thought this "the most plausible account" of how the chronicle's authors chose their starting date. Japan's is not the only calendar count fixed centuries after the year it starts from: the AD count began in Easter tables of 525, and its year 1 most likely falls [a few years after the birth of Jesus](/blog/when-was-jesus-actually-born/) it counts from.
 
 Where the verifiable line begins is debated, but the candidates fall in the fifth and sixth centuries AD: Yuryaku, 21st on the official list, who died in 479, and [Kinmei](https://en.wikipedia.org/wiki/Emperor_Kinmei), the 29th, who reigned from 539 to 571. A 2016 *New York Times* explainer by Russell Goldman, [reprinted by *The Seattle Times*](https://www.seattletimes.com/nation-world/5-things-to-know-about-japans-emperor-and-imperial-family/), called the imperial house "the oldest continuous monarchy in the world," though "evidence of the first 25 emperors is shrouded in myth."
 

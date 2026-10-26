@@ -49,7 +49,7 @@ Stained clothes are first "spotted" with chemicals. The IARC's figures for the r
 | Spin, 3 to 5 min | The drum turns at 350 to 450 revolutions per minute | 2 to 3 gallons left per 100 pounds |
 | Dry, 10 to 25 min | Air at 120 to 150 F evaporates the rest | Condensed back to liquid |
 
-The filters are coated with diatomaceous earth and activated carbon to remove loose dyes and insoluble dirt, and most dry cleaners also distill the solvent for reuse. Afterward the clothes are pressed with steam.
+The filters are coated with diatomaceous earth and activated carbon to remove loose dyes and insoluble dirt, and most dry cleaners also distill the solvent for reuse. Afterward the clothes are pressed with steam. A 1992 dictionary of hacker slang used the dry cleaner's claim check, which links the drop-off to the pickup, to define the programmers' cookie that later gave the [web cookie](/blog/what-is-a-cookie-on-a-website/) its name.
 
 ## Early dry cleaners washed clothes in gasoline and turpentine
 

@@ -44,13 +44,13 @@ All of this predates the World Wide Web. Tim Berners-Lee wrote his first proposa
 
 The 1987 spec stores each pixel as an index of 1 to 8 bits into a color table: "This translates to a range of 2 (B & W) to 256 colors," because [eight bits](/blog/what-is-a-byte/) can count 256 values. Each entry holds "three byte values representing the relative intensities of red, green and blue," so the 256 can be any of **16,777,216** shades. On many 1987 machines, *Online Today* noted, the decoder would translate images "into a lesser 32-color scheme."
 
-To shrink files, GIF uses LZW compression, which the spec credits to "work done by Lempel-Ziv & Welch," citing Terry Welch's June 1984 article in *IEEE Computer*. It is lossless, the [Library of Congress](https://www.loc.gov/preservation/digital/formats/fdd/fdd000133.shtml) notes, and the magazine quoted ratios of 2:1 to 8:1.
+To shrink files, GIF uses LZW compression, which the spec credits to "work done by Lempel-Ziv & Welch," citing Terry Welch's June 1984 article in *IEEE Computer*. It is lossless, the [Library of Congress](https://www.loc.gov/preservation/digital/formats/fdd/fdd000133.shtml) notes, and the magazine quoted ratios of 2:1 to 8:1. LZW is an algorithm in the strict sense, a finite list of exact steps, and the word for it [began as the name of a scholar in ninth-century Baghdad](/blog/what-is-an-algorithm/).
 
 ## The 89a spec said GIF was not meant for animation
 
 The [89a revision](https://www.w3.org/Graphics/GIF/spec-gif89a.txt) of **July 1989** added a delay, counted in "hundredths (1/100) of a second," before the next image, plus a transparent color. The original 1987 format already allowed several images in one file. Yet an appendix to the 89a spec is blunt: "The Graphics Interchange Format is not intended as a platform for animation, even though it can be done in a limited way."
 
-The endless loop came from a browser. Netscape Navigator 2.0 read a block labeled "NETSCAPE" and "2.0" as an order to loop the file, and "an iteration count of zero indicates infinite," Royal Frazier's [1990s guide](https://web.archive.org/web/19990418091037/http://www6.uniovi.es/gifanim/gifabout.htm) explained. Wilhite himself, the Times reported in 2013, had never made an animated GIF, though he named the 1996 "dancing baby" a favorite.
+The endless loop came from a browser. Netscape Navigator 2.0 read a block labeled "NETSCAPE" and "2.0" as an order to loop the file, and "an iteration count of zero indicates infinite," Royal Frazier's [1990s guide](https://web.archive.org/web/19990418091037/http://www6.uniovi.es/gifanim/gifabout.htm) explained. The same company's browser had supported [cookies](/blog/what-is-a-cookie-on-a-website/), the small pieces of data that let a website remember a visitor, since its first release. Wilhite himself, the Times reported in 2013, had never made an animated GIF, though he named the 1996 "dancing baby" a favorite.
 
 ## The compression was patented, and CompuServe did not know
 

@@ -77,6 +77,6 @@ Second cousins stand in the sixth degree by the Roman count, and genetics draws 
 
 ## Cousin's Latin root named one kind of cousin
 
-The word's Latin ancestor could be narrower than any of this. [Etymonline](https://www.etymonline.com/word/cousin) traces *cousin* to Latin *consobrinus*, originally "mother's sister's son", one of several Latin words for particular cousins. English used it loosely from the start: through Middle English, cousin "also was used of grandchildren, godchildren, etc."
+The word's Latin ancestor could be narrower than any of this. [Etymonline](https://www.etymonline.com/word/cousin) traces *cousin* to Latin *consobrinus*, originally "mother's sister's son", one of several Latin words for particular cousins. English used it loosely from the start: through Middle English, cousin "also was used of grandchildren, godchildren, etc." Family slang can be looser still: [Irish twins](/blog/what-are-irish-twins/) are not twins at all, but siblings born less than a year apart.
 
 So when someone at a family reunion introduces a cousin's child as a second cousin, the dictionary is on their side and the family tree is not. The tree asks for two counts and a subtraction, and it answers first cousin once removed. Strictly FYI.

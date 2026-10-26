@@ -50,7 +50,7 @@ Plot got the first step right. Writers such as Agricola and Kircher thought ston
 
 Then he looked for an owner. Pliny, the Roman encyclopedist who also [noted that the biggest tides come just after the full and new moon](/blog/what-is-a-spring-tide/), had written of an Arabian named Gabbara, "exactly of the height of Goliath, viz. nine foot nine inches high," a size, Plot wrote, ["very proportionable to our bone found at Cornwell."](https://archive.org/details/naturalhistoryof00plotuoft/page/n166/mode/1up) Plot was "rather inclined to believe" that the emperor Claudius had brought Gabbara to Britain, where he might have died.
 
-The bone itself is gone: "none of Plot's specimens survive in the collections," the Oxford museum says. It identifies his engraving, plate 8, figure 4, as the femur of **Megalosaurus**. The Natural History Museum is more cautious: scientists "can't confirm whether it was from a Megalosaurus."
+The bone itself is gone: "none of Plot's specimens survive in the collections," the Oxford museum says. It identifies his engraving, plate 8, figure 4, as the femur of **Megalosaurus**. The Natural History Museum is more cautious: scientists "can't confirm whether it was from a Megalosaurus." Plot's readers got an engraving rather than a photograph because [the cameras of his day](/blog/when-were-cameras-invented/) could throw a scene onto a screen for an artist to trace but had no way to keep it.
 
 ## Plot's book carries both 1676 and 1677
 
