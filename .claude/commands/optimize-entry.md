@@ -50,9 +50,10 @@ Diagnose exactly **one** gap from this menu, and state the evidence:
 - **Thin against the SERP:** under 700 prose words, or a question the top results answer that this entry skips.
 - **Answer shape:** no head-question H2, or an answer box in the wrong shape for the snippet the SERP shows.
 - **Title or description:** outside its band (60 / 140-165 characters), or a weak click-through at a good position in the entry's own Search Console data.
-- **FAQs that do not mirror the live PAA.**
+- **FAQs that pad instead of answer:** number or year variants of one question, raw search strings, the title question asked again, or answers the body does not support. Fix: delete or merge down to 0-3 distinct reader questions. Never add People Also Ask variants: the 2026-10 AdSense rejection read them as keyword padding.
+- **Bolted-on link sentences:** a sentence that exists only to carry a link to another entry (a change of subject or a loose analogy). Fix: delete the sentence, or keep it and drop the link if it is on-topic.
 - **A myth repeated without a label, or a record that has since changed.**
-- **Under-linked:** inbound at the floor (2). Fix with Step 5.
+- **Under-linked:** inbound below 2, and an existing host sentence already discusses this subject. Fix with Step 5.
 - **Reads machine-written:** trope FAILs such as "Here is the part".
 
 ## Step 4 - Apply only that change
@@ -60,11 +61,13 @@ Diagnose exactly **one** gap from this menu, and state the evidence:
 - **Locked, never changed:** slug (the file name), filecode, category, pubDate, featured, lead. The gate's field lock fails on the first four.
 - Pre-existing FAILs outside the text you touch are reported, not rewritten. They show as `FAIL-OLD` in Step 6 and are candidates for a later pass.
 - Every new fact goes through the Step 7 fact-check table of new-entry.md: WebFetch the page and confirm the exact figure or quote is on it.
+- If gates.cjs prints an `unlinked-figures` WARN, those sentences (or a `table:` with the figures listed) sit in paragraphs that link no source, so the claim gate has never checked them. For a table, link its source in the paragraph that introduces it or in a caption under it. Source each one in the sentence (confirming the figure, date or wording on the page), or correct, label or cut it. Errors found this way go in the corrections log under the Step 5 rule.
 - If the almanac line quotes text you changed, re-lift it from the new text (Step 6b of new-entry.md).
 
 ## Step 5 - Freshness and links
 - **updatedDate** moves to today only when new sourced facts or a new section ship. Never for link-only, title or description, FAQ reorder, schema, typo or de-slop edits: the template prints a visible "Updated" line and a dateModified, so a cosmetic bump is a false freshness claim. Exception: correcting a factual error always moves updatedDate to the day of the fix, however small the edit, because /about/#corrections promises readers a visible Updated date. **Never touch pubDate.**
-- **Reciprocal links**, when the gap is under-linking: `node scripts/link-audit.mjs --target=<slug>` ranks hosts that do not link yet. Add one natural sentence to 1-2 related hosts (never their frontmatter or dates), and only where the link helps a reader of that host.
+- **Corrections log:** a factual fix also gets a row at the top of `src/data/corrections.ts` (rendered at /corrections/): what the published entry said, what it says now, the day of the fix. Log a change only when the published text (`git show HEAD:src/content/blog/<slug>.md`) stated something false or materially misleading AND a source you opened shows it. Never log a correct statement you re-sourced, a hedge or rewording of a sentence that was not false, a sentence that accurately reported what its cited source said, a terminology preference, or an error that existed only in your own draft. Every claim in the row's "fixed" text must be on a page the entry cites. A log that overstates or misstates our errors is itself an error.
+- **Links from other entries**, when the gap is under-linking: `node scripts/link-audit.mjs --target=<slug>` ranks hosts that do not link yet. Link a phrase in an existing sentence of 1-2 hosts that already discusses this subject. Never add a sentence to carry a link, and never touch a host's frontmatter or dates. If no host already discusses the subject, leave it: See also and the department pages link every entry.
 
 ## Step 6 - Gates (verify by output)
 1. `node scripts/gates.cjs src/content/blog/<slug>.md --mode=existing --baseline=<scratch>/base/<slug>.gates.json` must end `GATES: PASS`. Pre-existing failures print as `FAIL-OLD` and do not block; any `FAIL` is new and must be fixed.

@@ -1,32 +1,27 @@
 ---
 title: "What Was the First Video Game? Not Pong, by 25 Years"
-description: "What was the first video game? Not Pong. A 1947 patent, a 1958 oscilloscope and 1962's Spacewar! each fail a different test, and each test is nameable."
+description: "A 1947 patent, a 1958 oscilloscope tennis game and 1962's Spacewar! each claim to be the first video game, and each fails a different test. Pong came later."
 pubDate: 2026-09-03
+updatedDate: 2026-10-31
 category: "tech"
 readingTime: "4 min read"
 filecode: "FYI-048"
-almanac: "The earliest patent for a game played on a screen was filed in 1947."
+almanac: "The first game concept to use an electronic display went to the patent office in 1947."
 featured: false
 faqs:
-  - q: "Was Pong the first video game?"
-    a: "No. Atari announced Pong on 29 November 1972 and it was the first video game to sell in real numbers, but it was not the first video game and not even the first arcade one. Nolan Bushnell and Ted Dabney shipped Computer Space in late 1971."
-  - q: "What is the oldest video game?"
-    a: "The oldest documented design is US Patent 2,455,992, the Cathode-Ray Tube Amusement Device, filed on 25 January 1947 by Thomas T. Goldsmith Jr. and Estle Ray Mann. It was a missile game on a cathode-ray tube, it used no computer and no memory, and it was never manufactured beyond a single handmade prototype."
   - q: "Was Tennis for Two the first video game?"
-    a: "By some definitions, yes: it was first shown on 18 October 1958 at Brookhaven National Laboratory's annual visitors' day, and hundreds of people queued to play it. Brookhaven, which built it, calls the game a forerunner of the modern video game rather than the first, and states that its system did not create a video signal."
-  - q: "What was the first arcade video game?"
-    a: "Computer Space, released in late 1971 by Nolan Bushnell and Ted Dabney. It was the first coin-operated video game sold commercially and the first commercially available video game of any kind, a year ahead of Pong."
-  - q: "What was the first home video game console?"
-    a: "The Magnavox Odyssey, designed by a team led by Ralph H. Baer at Sanders Associates and released in the United States in September 1972 at US$99.95. It displayed only white shapes on a black screen and shipped with plastic overlays for the TV."
+    a: "By some definitions, yes: it was first shown on 18 October 1958 at Brookhaven National Laboratory's annual visitors' day, and hundreds of people lined up to play it. Brookhaven, which built it, calls the game a forerunner of the modern video game rather than the first, and states that its system did not create a video signal."
+  - q: "Which arcade game went on sale before Pong?"
+    a: "Computer Space, designed by Nolan Bushnell and Ted Dabney and shown by Nutting Associates at a trade show in October 1971, a year ahead of Pong. The Galaxy Game, a coin-operated Spacewar! built by Bill Pitts and Hugh Tuck, went into Stanford's student union a month later, but only Computer Space was sold as a product."
 ---
 
-On 18 October 1958, a physicist named William Higinbotham wired a Donner Model 30 analog computer to a five-inch oscilloscope, set it on a table at Brookhaven National Laboratory's annual visitors' day, and invited the public to play tennis on it. Hundreds of people lined up. Higinbotham never patented the thing, because, as [Brookhaven's own history page](https://www.bnl.gov/about/history/firstvideo.php) records, the game "did not seem to be any more novel than the bouncing ball circuit in the instruction book".
+On 18 October 1958, at one of [Brookhaven National Laboratory's annual visitors' days](https://www.bnl.gov/about/history/firstvideo.php), the physicist William Higinbotham let the public play tennis on a five-inch oscilloscope driven by a [Donner Model 30 analog computer](https://www.museumofplay.org/blog/what-was-the-first-video-game/). Hundreds of people lined up. Higinbotham never patented the thing, because, as [Brookhaven's own history page](https://www.bnl.gov/about/history/firstvideo.php) records, the game "did not seem to be any more novel than the bouncing ball circuit in the instruction book". Brookhaven adds that a patent would have belonged to the federal government anyway.
 
 He was also eleven years too late to be first.
 
 ## What was the first video game?
 
-There is no single one, and every honest answer gives three. The earliest patent for a game played on a screen was filed in **1947**. The earliest real-time game a member of the public could walk up to and play was **Tennis for Two** in **1958**. The earliest that escaped its own building and got copied was **Spacewar!** in **1962**. Pong, in 1972, is none of the above.
+There is no single one: the answer depends on the rule you apply, and three candidates lead the argument. The first game concept to use an electronic display [went to the patent office in **1947**](https://en.wikipedia.org/wiki/Cathode-ray_tube_amusement_device). **Tennis for Two**, which the public played at Brookhaven in **1958**, was a computer game built for fun: Higinbotham thought ["it might liven up the place to have a game that people could play"](https://www.aps.org/apsnews/2008/09/first-video-game). **Spacewar!**, written at MIT in **1962**, escaped its own building: its program tapes were soon, in the words of its co-creator Martin Graetz, ["showing up all over the country"](https://www.wheels.org/spacewar/creative/SpacewarOrigin.html). Pong, which [Atari released in 1972](https://www.museumofplay.org/blog/what-was-the-first-video-game/), is none of the above.
 
 ## Each candidate falls to a different rule
 
@@ -34,47 +29,55 @@ The reason nobody picks a winner is that the candidates are eliminated by differ
 
 | Candidate | Date | Who | Why it does or does not count |
 |---|---|---|---|
-| Cathode-Ray Tube Amusement Device | Filed 25 Jan 1947 | Goldsmith and Mann | Player-steered dot on a CRT, but no computer and no memory. Targets were pictures placed on the tube face. Never built for sale. |
-| Bertie the Brain, Nimrod | 1950, 1951 | Josef Kates, Ferranti | Real games on real machines, but the board was a panel of light bulbs rather than a video display. |
-| OXO | 1952 | Alexander S. Douglas | Drew noughts and crosses on a CRT under stored-program control, on EDSAC, the single machine in the Cambridge Mathematical Laboratory. |
-| Tennis for Two | 18 Oct 1958 | William Higinbotham | Real-time, two-player, with gravity and a net. Ran on an oscilloscope and generated no video signal. Dismantled in 1959 for parts. |
-| Spacewar! | 1962 | Steve Russell and others, MIT | Digital, real-time, and copied to other sites. Needed a PDP-1, priced at US$120,000. |
+| Cathode-Ray Tube Amusement Device | Filed 25 Jan 1947 | Goldsmith and Mann | Player-steered dot on a CRT, but no computer and no memory. Targets were pictures placed on the tube face. Never manufactured beyond a handmade prototype. |
+| Bertie the Brain, Nimrod | 1950, 1951 | Josef Kates, Ferranti | Real games on real machines, but the board was a panel of light bulbs rather than a screen. |
+| OXO | 1952 | Alexander S. Douglas | Drew noughts and crosses on a CRT under stored-program control, but only on EDSAC, which never left Cambridge. |
+| Tennis for Two | 18 Oct 1958 | William Higinbotham | Moving ball, two players, gravity and a net. Ran on an oscilloscope and generated no video signal. Dismantled after 1959. |
+| Spacewar! | 1962 | Steve Russell and others, MIT | Digital, real-time, and copied to other sites. Needed a PDP-1, listed at US$120,000. |
 | Computer Space, Pong | 1971, 1972 | Bushnell and Dabney, Allan Alcorn | First sold, then first to sell well. Both arrive a decade after the interesting part of the argument. |
 
-The one rule everybody does share is buried in the word itself. Under the early technical definition, a product counted as a video game only if it transmitted a video signal to a display, which rules out games that sent their output to a printer or a teletype and the machines that spelled their boards in light bulbs. Countdowns have a first-of-its-kind argument too: [the earliest backward count](/blog/what-does-t-minus-mean/) is a Cambridge boat race in 1865, a Jules Verne cannon in 1889 or a rocket launch in a 1929 film, depending on what is being counted down to.
+Even the word "video" is disputed. Under early technical definitions a game counted only if it [needed to transmit a video signal to a display](https://en.wikipedia.org/wiki/Early_history_of_video_games), a test broad enough to include oscilloscopes that still rules out early computer games which sent their results to a printer or a teletype. Brookhaven's [account](https://www.bnl.gov/about/history/firstvideo.php) sets out the stricter reading some critics apply: the term "implies that electronic signals are converted to images on a screen using a raster pattern", the horizontal lines of a television, and by that test neither Tennis for Two nor anything before it qualifies: "Higinbotham's system did not create a video signal".
 
 ## Bertie and Nimrod were advertisements with a game attached
 
-Bertie the Brain stood four metres tall in the Engineering Building at the Canadian National Exhibition from **25 August to 9 September 1950**, playing noughts and crosses against passers-by on a grid of nine illuminated squares. Josef Kates built it to show off the additron tube, a vacuum tube he had shrunk down, and once the fair closed the machine was dismantled and largely forgotten as a novelty.
+Bertie the Brain was a [4-metre-tall noughts-and-crosses machine](https://spacing.ca/toronto/2014/08/13/meet-bertie-brain-worlds-first-arcade-game-built-toronto/) in the Rogers Majestic exhibit at the 1950 Canadian National Exhibition. Josef Kates built it to show off the Additron, a vacuum tube he had shrunk to miniature size, and [told an interviewer in 2014](https://spacing.ca/toronto/2014/08/13/meet-bertie-brain-worlds-first-arcade-game-built-toronto/) why he picked the game: "Practically everybody knows tic-tac-toe. I thought it would make a nice exhibit." Players pressed an illuminated keypad and Bertie answered on a lit board. When the fair closed it was taken apart and largely forgotten.
 
-Ferranti's Nimrod was twelve feet wide, appeared at the Festival of Britain on **5 May 1951**, and played only Nim. Players pressed buttons that corresponded to lights. Both machines existed to make a company look clever, and both spelled out their game in bulbs.
+Ferranti's Nimrod played only Nim, at the Festival of Britain's Exhibition of Science in South Kensington, which [opened on 4 May 1951](https://www.goodeveca.net/nimrod/facts.html). The machine stood 9 feet by 12 feet by 5 feet, yet [electronics took up less than 2% of that volume](https://www.goodeveca.net/nimrod/facts.html); most of the rest housed the display, and four of the six kilowatts it drew went to the lamps. Both machines existed to make a company look clever, and both spelled out their game in bulbs.
 
-OXO, in 1952, is the first of the group to put its board on a cathode ray tube under stored-program control, the kind of tube whose round early screens [may explain why TVs are still measured diagonally](/blog/how-are-tvs-measured/). Alexander Douglas wrote it for EDSAC at Cambridge, and the player picked a square with a rotary telephone dial.
+OXO, written in 1952 by Alexander Douglas for the EDSAC computer at Cambridge, drew its board on a cathode ray tube under stored-program control, and the player [chose a square with a rotary phone dial](https://videogamehistorian.wordpress.com/2014/01/22/the-priesthood-at-play-computer-games-in-the-1950s/). It may not even be the first computer game on a screen. The historian Alex Smith [could find no month for OXO](https://videogamehistorian.wordpress.com/2014/01/22/the-priesthood-at-play-computer-games-in-the-1950s/), so Christopher Strachey's draughts program for the Ferranti Mark 1, completed in July 1952, may have got there first.
 
-## The 1947 patent stuck its targets to the glass
+Even the name is uncertain: by [one account, in a history by Tony Hey and Gyuri Papay](https://en.wikipedia.org/wiki/OXO_(video_game)), Douglas did not give the game a name beyond "noughts and crosses", and the name OXO came decades later, from a simulation file made by the computer historian Martin Campbell-Kelly.
 
-US Patent 2,455,992 was filed on 25 January 1947 and granted on 14 December 1948 to Thomas T. Goldsmith Jr. and Estle Ray Mann. [The patent text](https://patents.google.com/patent/US2455992A/en) describes a missile game of pure analog circuitry: knobs move sliding contacts on resistors, the resistors bend the path of the electron beam, and a hit is signalled by defocusing the spot so it appears to explode.
+## The 1947 patent could not draw its own targets
 
-The wording gives away the limit. Targets, the patent says, "such as pictures of airplanes, for example, are placed upon the face of the tube". The machine never drew the thing you were shooting at. A person stuck it on the screen.
+The patent was [filed on 25 January 1947 and issued on 14 December 1948](https://patents.google.com/patent/US2455992A/en) to Thomas T. Goldsmith Jr. and Estle Ray Mann, who assigned it to the television maker Allen B. Du Mont Laboratories. [US Patent 2,455,992](https://patents.google.com/patent/US2455992A/en) describes a shooting game of pure analog circuitry, one that "requires care and skill in playing it": knobs move sliding contacts on resistors that steer the electron beam and set the point where it defocuses, and the player tries to make it burst "just as it reaches" a target, "thus simulating destruction or explosion of the object".
 
-> Twenty-five years later the first home console shipped with the same workaround. The Magnavox Odyssey could only put white shapes on a black screen, so Magnavox supplied plastic overlays that clung to the television by static electricity and provided the scenery the hardware could not.
+The wording gives away the limit. Targets, [the patent says](https://patents.google.com/patent/US2455992A/en), "such as pictures of airplanes, for example, are placed upon the face of the tube". The machine never drew the thing you were shooting at. A person had to put it there.
 
-Cost decisions like that one look ridiculous in hindsight and are almost always somebody solving a budget problem in the room they were standing in, the same way [the connector everyone flips twice before it goes in](/blog/why-is-usb-not-reversible/) got its shape.
+> Twenty-five years later [the first home console](https://www.museumofplay.org/blog/what-was-the-first-video-game/) shipped with the same workaround. The Magnavox Odyssey could put only [a few small white blocks and a vertical line on the screen](https://americanhistory.si.edu/collections/object/nmah_1302004), so it came with [plastic overlays that stuck to a TV screen by static electricity](https://www.computerhistory.org/revolution/computer-games/16/190) and supplied the scenery the hardware could not.
 
 ## Brookhaven hedges its own claim
 
-The laboratory that built Tennis for Two will not call it the first. Its history page settles on "unquestionably a forerunner of the modern video game" and states flatly that "Higinbotham's system did not create a video signal". Brookhaven technician Robert V. Dvorak put the whole apparatus together in about three weeks. After the 1959 showing it was taken apart so the components could be used for something else.
+The laboratory that built Tennis for Two will not call it the first. Its [history page](https://www.bnl.gov/about/history/firstvideo.php) settles on "unquestionably a forerunner of the modern video game" and quotes Peter Takacs of Brookhaven's Instrumentation Division on its real innovation: a fast germanium-transistor switch that showed ball, net and court in turn at 36 hertz, a rate at which the eye sees one image. Higinbotham needed [only a couple of hours to conceive the idea](https://www.aps.org/apsnews/2008/09/first-video-game), APS News, the American Physical Society's newspaper, records, and technician Robert Dvorak built the device.
+
+A year later the game came back with a [larger display screen and settings for tennis on the moon, Earth or Jupiter](https://www.aps.org/apsnews/2008/09/first-video-game), and after two years it was retired and its oscilloscope and computer were taken for other uses.
 
 ## Pong is wrong by a quarter century
 
-The [Strong National Museum of Play](https://www.museumofplay.org/blog/what-was-the-first-video-game/) notes that most people asked this question answer Pong, then corrects them: it "was not even the first arcade video game created by Atari founder Nolan Bushnell". Bushnell handed the design to Allan Alcorn as a secret warm-up exercise, and Atari announced the finished game on 29 November 1972. Bushnell and Dabney had already shipped Computer Space in late 1971, running on no microprocessor at all, just a state machine of 7400-series chips with the graphics held in diode arrays.
+The [Strong National Museum of Play](https://www.museumofplay.org/blog/what-was-the-first-video-game/) notes that a person stopped on the street with this question might well answer Pong, then corrects the record: it "was not even the first arcade video game created by Atari founder Nolan Bushnell". Bushnell and Ted Dabney had already taken Computer Space to the manufacturer Nutting Associates, which [debuted it at the October Music Operators Association show in 1971](https://www.museumofplay.org/games/computer-space/); it ran a simpler, single-player version of Spacewar! on custom hardware instead of a computer.
 
-Pong's genuine claim is money: Atari filled 2,500 orders by 1973 and had sold more than 8,000 cabinets by the end of 1974. Being the version most people saw first is a different achievement from being first, as Cher's 1998 hit "Believe" showed when it made [Auto-Tune](/blog/when-was-autotune-invented/) famous after about a year of discreet use on other records. The obvious explanation for a familiar thing turns out wrong often enough to be a working rule, right down to [what a fly is doing when it wrings its front legs together](/blog/why-do-flies-rub-their-hands/).
+Bushnell, who [had played the table tennis game on the Magnavox Odyssey](https://en.wikipedia.org/wiki/Pong), handed the project to Allan Alcorn, and [Atari announced the finished game on 29 November 1972](https://www.computerhistory.org/tdih/november/29/). Alcorn [told NPR in 2022](https://www.npr.org/transcripts/1140441610) that "the idea was to give me something to practice on because I had never designed a video game before".
+
+Pong's genuine claim is money: [by 1974, Atari had sold over 8,000 units](https://www.computerhistory.org/revolution/computer-games/16/183), the Computer History Museum records, and Atari would eventually sell 35,000. Being the version most people saw first is a different achievement from being first.
 
 ## Spacewar! is the one that got out of the building
 
-Steve Russell began coding Spacewar! on a DEC PDP-1 at MIT around December 1961, with Martin Graetz and Wayne Wiitanen on the concept, and the game was demonstrated at the MIT Science Open House at the end of April 1962. Copies travelled to PDP-1 installations at Stanford, the University of Minnesota and Bolt Beranek and Newman, which makes it, as far as anyone can document, the first video game available outside a single research institute.
+Steve Russell, Martin Graetz and Wayne Wiitanen dreamed up Spacewar! in 1961 for MIT's new DEC PDP-1, and Russell got down to coding once the computer's display arrived [in the last days of December](https://www.masswerk.at/spacewar/), with a first playable version running by February 1962. Graetz's [own account](https://www.wheels.org/spacewar/creative/SpacewarOrigin.html) says the game was "essentially complete by the end of April, 1962", and that a scoring facility was added before its first public showing, which he placed at MIT's Science Open House in May; the contemporary record puts that showing at [MIT's Parents' Weekend on 28 and 29 April 1962](https://www.masswerk.at/spacewar/).
 
-Available is doing heavy lifting there. A PDP-1 cost US$120,000, so the audience was anyone who already owned a room-sized computer. Spacewar! then fed directly into the first two coin-operated arcade machines, Galaxy Game and Computer Space, both in 1971, and only Computer Space was ever sold. Early technical decisions keep outliving the reasons for them, which is also [why the letters on your keyboard sit in that particular order](/blog/why-the-keyboard-is-qwerty/).
+That summer the group scattered, and [Russell followed John McCarthy to Stanford](https://www.wheels.org/spacewar/creative/SpacewarOrigin.html). [Spacewar! also ran on the PDP-1 at Bolt, Beranek and Newman](https://www.masswerk.at/spacewar/), until, the story goes, it was banned there for wearing out the console switches.
 
-Pick the rule and the answer falls out. A screen gives you 1947. A stored program gives you 1952. Real-time play gives you 1958. Distribution gives you 1962, and a paying customer gives you 1971. None of those five roads ends at Pong. Strictly FYI.
+The club it spread through was small. A PDP-1 listed at [US$120,000, plus US$14,300 for the display](https://www.masswerk.at/spacewar/), and DEC made the machine [in relatively small quantities (about 50)](https://www.computerhistory.org/pdp-1/introduction/).
+
+Computer Space, the cut-down version Nutting showed in October 1971, became a product, and [Nutting sold about 1,500 units](https://www.museumofplay.org/games/computer-space/). The Galaxy Game, [a faithful recreation of Spacewar! built by Bill Pitts and Hugh Tuck](https://videogamehistorian.wordpress.com/2015/09/03/a-nutty-idea/), went into Stanford's student union at a dime a game in November 1971, roughly a month after that show. Pitts eventually [gave up on turning it into a commercial product](https://videogamehistorian.wordpress.com/2015/09/03/a-nutty-idea/), because even a PDP-11 shared between several cabinets made the price too high.
+
+Pick the rule and the answer falls out. A screen gives you 1947. A stored program gives you 1952. A computer game made to entertain rather than to sell a technology gives you 1958. Distribution gives you 1962, and a paying customer gives you 1971. None of those five roads ends at Pong. Strictly FYI.

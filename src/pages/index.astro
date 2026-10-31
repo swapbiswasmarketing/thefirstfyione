@@ -8,12 +8,8 @@ import {
   readingLabel,
   openingParagraph,
   pullQuote,
-  askWord,
-  ASK_WORDS,
   deptCounts,
   edition,
-  inboundCounts,
-  byFiled,
   type Entry,
 } from "../lib/entries";
 import { pageNode, abs, ORG_ID } from "../lib/schema";
@@ -42,39 +38,40 @@ const take = (list: Entry[], n: number) => {
   return out;
 };
 
-/* The rest of the edition: four secondary stories under the lead, with their
-   deks, and a rail of headlines beside it. */
+/* Start here is the editor's own pick (featured: true), claimed before the
+   newest-first modules so a pinned entry is never also shown as merely recent. */
+const start = take(entries.filter((p) => p.data.featured), 5);
+
+/* Myths, checked: a hand-picked shelf of entries that correct a story most
+   readers have heard. Curated here, by slug, so it changes only when someone
+   decides it should. Each line states the story as it is usually told; the
+   entry's own title carries the verdict. A slug that matches no entry fails
+   the build instead of printing a dead link. */
+const MYTHS: { slug: string; story: string }[] = [
+  { slug: "where-do-pearls-come-from", story: "A pearl forms around a grain of sand." },
+  { slug: "did-daylight-saving-start-for-farmers", story: "Daylight saving time was brought in for farmers." },
+  { slug: "why-does-turkey-make-you-sleepy", story: "The tryptophan in turkey makes you sleepy." },
+  { slug: "how-do-planes-fly", story: "Air over a wing races to meet the air below it, and that lifts the plane." },
+  { slug: "why-are-veins-blue", story: "Veins look blue because blood without oxygen is blue." },
+  { slug: "what-is-the-fastest-fish", story: "A sailfish can swim 68 miles an hour." },
+];
+const myths = MYTHS.flatMap(({ slug, story }) => {
+  const p = entries.find((e) => e.id === slug);
+  if (!p) throw new Error(`index.astro MYTHS: no entry "${slug}"`);
+  /* The lead or a pinned entry keeps its own slot; the shelf skips it. */
+  if (shown.has(p.id)) return [];
+  shown.add(p.id);
+  return [{ story, p }];
+});
+
+/* The newest filings: four secondary stories under the lead, with their deks,
+   and a rail of headlines beside it. */
 const secondary = take(entries, 4);
 const rail = take(entries, 8);
-/* An edition smaller than the fold is topped up with earlier filings, and the
-   labels say so instead of calling everything "this edition". */
-const inEdition = (p: Entry) => p.data.pubDate.valueOf() === latestDay;
-const secondaryLabel = secondary.every(inEdition) ? "More from this edition" : "Recently filed";
-const railEdition = rail.filter(inEdition);
-const railEarlier = rail.filter((p) => !inEdition(p));
 
-/* 118 of the titles are questions, so the word a question opens with is the
-   most natural index the archive has. */
-const ASK_LABEL: Record<string, string> = { why: "Why", what: "What", how: "How", where: "Where", when: "When" };
-const desk = ASK_WORDS.map((w) => {
-  const all = entries.filter((p) => askWord(p.data.title) === w);
-  return { w, label: ASK_LABEL[w], count: all.length, items: take(all, 3) };
-});
-const splitQ = (title: string) => {
-  const i = title.indexOf("?");
-  return i === -1 ? { q: title, hook: "" } : { q: title.slice(0, i + 1), hook: title.slice(i + 1).trim() };
-};
-
-/* Start here: the operator's pinned entries first, then the entries the rest
-   of the archive links to most often. */
-const inbound = inboundCounts(entries);
-const startPinned = take(entries.filter((p) => p.data.featured), 2);
-const byCited = [...entries].sort((a, b) => (inbound.get(b.id) ?? 0) - (inbound.get(a.id) ?? 0) || byFiled(a, b));
-const startCited = take(byCited, 5 - startPinned.length);
-const start = [
-  ...startPinned.map((p) => ({ p, note: "Pinned" })),
-  ...startCited.map((p) => ({ p, note: `Cited by ${inbound.get(p.id) ?? 0} entries` })),
-];
+/* The pitch under the nameplate promises sources only while every entry has one. */
+const linksSources = (p: Entry) => /\]\(https?:\/\/(?!(?:www\.)?strictly\.fyi)/i.test(p.body ?? "");
+const allSourced = entries.every(linksSources);
 
 const counts = deptCounts(entries);
 const depts = cats.map((c) => ({
@@ -114,16 +111,20 @@ const leadHead = words.length ? `${words.join(" ")} ` : "";
 const leadOpening = (() => {
   const clean = openingParagraph(lead);
   if (clean.length <= 320) return clean;
-  const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [clean];
+  /* Split at the space after sentence-ending punctuation, allowing a closing quote
+     or bracket ('...WLAN." Two'). Splitting never drops text; the old match-based
+     version skipped any sentence that ended inside quotes, so the teaser could
+     start mid-paragraph. */
+  const sentences = clean.split(/(?<=[.!?]["')\]]*)\s+/);
   let out = "";
   for (const s of sentences) {
-    if (out.length + s.length > 340 && out.length > 0) break;
-    out += s;
+    const next = out ? `${out} ${s}` : s;
+    if (next.length > 340 && out.length > 0) break;
+    out = next;
   }
   return (out || clean.slice(0, 320)).trim();
 })();
 
-const pad3 = (n: number) => String(n).padStart(3, "0");
 const iso = (d: Date) => d.toISOString().slice(0, 10);
 
 const schema = [
@@ -143,7 +144,7 @@ const schema = [
 >
   <header class="mast wrap" slot="masthead" data-no-auto-ads={adsenseLive && adsServing ? "all" : undefined}>
     <div class="dateline">
-      <span><span class="dl-long">Vol. {ed.vol} &middot; </span>No. {pad3(ed.no)}</span>
+      <span>Vol. {ed.vol}</span>
       <span class="dateline-mid">A field guide to the fascinating</span>
       <span>
         <span class="dl-long">Last filed <time datetime={iso(ed.latest)}>{fmtDay(ed.latest)}</time></span>
@@ -154,9 +155,9 @@ const schema = [
     <div class="nameplate-row">
       <h1 class="nameplate"><span class="np">Strictly</span> <span class="np hl-live">FYI</span></h1>
       <p class="mast-meta">
-        <span><span class="fig">{ed.onFile}</span> entries on file</span>
-        <span><span class="fig">{ed.inEdition}</span> in this edition</span>
-        <span><span class="fig">{ed.questions}</span> questions answered</span>
+        <span>Plain-English answers</span>
+        <span>{allSourced ? "Sources linked in every entry" : "Myths checked and corrected"}</span>
+        <span><a href="/how-we-work/">How we work</a></span>
       </p>
     </div>
 
@@ -207,7 +208,7 @@ const schema = [
       </article>
 
       <section class="second" aria-labelledby="second-h">
-        <h2 class="sr-only" id="second-h">{secondaryLabel}</h2>
+        <h2 class="sr-only" id="second-h">Recently filed</h2>
         <div class="second-grid">
           {secondary.map((p, i) => (
             <article class="story">
@@ -224,58 +225,43 @@ const schema = [
       </div>
 
       <section class="rail" aria-labelledby="rail-h">
-        <h2 class="label-head" id="rail-h">{railEdition.length ? "Inside this edition" : "Recently filed"}</h2>
-        {[railEdition, railEarlier].map((group, g) =>
-          group.length > 0 && (
-            <>
-              {g === 1 && railEdition.length > 0 && <h3 class="label-head rail-sub">Filed earlier</h3>}
-              <ol class="rail-list stagger">
-                {group.map((p, i) => (
-                  <li class="row">
-                    <span class="row-num">{p.data.filecode}</span>
-                    <div class="row-body">
-                      <span class="row-kicker">{catLabel[p.data.category]} &middot; {readingLabel(p)}</span>
-                      <h3 class="row-head">
-                        <a class="row-link" href={entryHref(p)} data-track="home_module_click" data-track-module="edition" data-track-position={String(i + 1 + (g === 1 ? railEdition.length : 0))}><Fragment set:html={keepTogether(p.data.title)} /></a>
-                      </h3>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </>
-          )
-        )}
-        <a href="/blog/" class="rail-all">All {ed.inEdition} filed {fmtDate(ed.latest)}, in the archive</a>
+        <h2 class="label-head" id="rail-h">Also new</h2>
+        <ol class="rail-list stagger">
+          {rail.map((p, i) => (
+            <li class="row">
+              <span class="row-num">{p.data.filecode}</span>
+              <div class="row-body">
+                <span class="row-kicker">{catLabel[p.data.category]} &middot; {readingLabel(p)}</span>
+                <h3 class="row-head">
+                  <a class="row-link" href={entryHref(p)} data-track="home_module_click" data-track-module="edition" data-track-position={String(i + 1)}><Fragment set:html={keepTogether(p.data.title)} /></a>
+                </h3>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <a href="/blog/" class="rail-all">Browse the full archive</a>
       </section>
     </div>
 
-    {/* ============ THE QUESTION DESK ============ */}
-    <section class="desk" aria-labelledby="desk-h">
+    {/* ============ MYTHS, CHECKED ============ */}
+    <section class="myths" aria-labelledby="myths-h">
       <div class="shead">
-        <span class="kick">Index</span>
-        <h2 id="desk-h">The question desk</h2>
-        <span class="folio">Filed by the word each question opens with</span>
+        <span class="kick">On the record</span>
+        <h2 id="myths-h">Myths, checked</h2>
+        <span class="folio">Stories you have probably heard, against the record</span>
       </div>
-      <div class="desk-grid">
-        {desk.map((d) => (
-          <div class="desk-col">
-            <h3 class="desk-word"><span class="dw">{d.label}</span> <span class="dc">{d.count} on file</span></h3>
-            <ol class="desk-list">
-              {d.items.map((p, i) => {
-                const { q, hook } = splitQ(p.data.title);
-                return (
-                  <li class="desk-item">
-                    <a href={entryHref(p)} data-track="home_module_click" data-track-module={`desk_${d.w}`} data-track-position={String(i + 1)}>
-                      <span class="dq" set:html={keepTogether(q)} />
-                      {hook && <span class="dh">{hook}</span>}
-                    </a>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
+      <ol class="myth-grid">
+        {myths.map(({ story, p }, i) => (
+          <li class="myth">
+            <p class="myth-label">The story</p>
+            <p class="myth-story">{story}</p>
+            <p class="myth-label">The record</p>
+            <h3 class="myth-head">
+              <a class="row-link" href={entryHref(p)} data-track="home_module_click" data-track-module="myths" data-track-position={String(i + 1)}><Fragment set:html={keepTogether(p.data.title)} /></a>
+            </h3>
+          </li>
         ))}
-      </div>
+      </ol>
     </section>
 
     {/* ============ ALMANAC + START HERE ============ */}
@@ -294,7 +280,6 @@ const schema = [
           </figure>
           <div class="almanac-foot">
             <button type="button" class="coupon" id="fact-next" data-track="home_module_click" data-track-module="almanac_next" data-track-position="1" hidden>[ Another fact ]</button>
-            <span class="almanac-count">{facts.length} facts on file</span>
           </div>
           <script type="application/json" id="fact-data" set:html={factJson} is:inline />
           <script is:inline>
@@ -330,23 +315,25 @@ const schema = [
         </aside>
       )}
 
-      <section class="start" aria-labelledby="start-h">
-        <h2 class="label-head" id="start-h">Start here</h2>
-        <ol class="start-list">
-          {start.map(({ p, note }, i) => (
-            <li class="row">
-              <span class="row-num">{p.data.filecode}</span>
-              <div class="row-body">
-                <span class="row-kicker">{catLabel[p.data.category]} &middot; {note}</span>
-                <h3 class="row-head">
-                  <a class="row-link" href={entryHref(p)} data-track="home_module_click" data-track-module="start" data-track-position={String(i + 1)}><Fragment set:html={keepTogether(p.data.title)} /></a>
-                </h3>
-                <p class="row-dek">{p.data.description}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
+      {start.length > 0 && (
+        <section class="start" aria-labelledby="start-h">
+          <h2 class="label-head" id="start-h">Start here</h2>
+          <ol class="start-list">
+            {start.map((p, i) => (
+              <li class="row">
+                <span class="row-num">{p.data.filecode}</span>
+                <div class="row-body">
+                  <span class="row-kicker">{catLabel[p.data.category]} &middot; {readingLabel(p)}</span>
+                  <h3 class="row-head">
+                    <a class="row-link" href={entryHref(p)} data-track="home_module_click" data-track-module="start" data-track-position={String(i + 1)}><Fragment set:html={keepTogether(p.data.title)} /></a>
+                  </h3>
+                  <p class="row-dek">{p.data.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
     </div>
 
     {/* ============ DEPARTMENTS ============ */}
@@ -456,12 +443,18 @@ const schema = [
   /* The nameplate sets solid (line-height 0.84), so the house band would run
      into the double rule below it; stop it higher. */
   .nameplate .hl-live { background-image: linear-gradient(transparent 52%, var(--hl) 52%, var(--hl) 84%, transparent 84%); }
+  /* What the publication is, in three short lines beside the nameplate. The
+     column stays as narrow as the counters it replaced: the nameplate's size
+     is solved for that width, so a wider column would wrap STRICTLY FYI. */
   .mast-meta {
     display: grid; justify-items: end; flex-shrink: 0; margin: 0 0 0.45rem;
     font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--ink-faint); line-height: 1.75;
   }
-  .mast-meta .fig { color: var(--ink); }
+  .mast-meta a {
+    color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 1px;
+    transition: background var(--t-hover) var(--ease-out);
+  }
 
   .mast-tools {
     display: flex; align-items: center; justify-content: space-between; gap: 0.8rem 2rem; flex-wrap: wrap;
@@ -615,25 +608,25 @@ const schema = [
     transition: background var(--t-hover) var(--ease-out);
   }
 
-  /* -------- THE QUESTION DESK -------- */
-  .desk { margin-top: 0.6rem; }
-  .desk-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .desk-col { padding: 1.1rem 1.1rem 1.4rem; border-right: 1px solid var(--rule); min-width: 0; }
-  .desk-col:first-child { padding-left: 0; }
-  .desk-col:last-child { border-right: none; padding-right: 0; }
-  .desk-word {
-    display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem;
-    padding-bottom: 0.55rem; margin: 0 0 0.2rem; border-bottom: 1px solid var(--ink);
-    letter-spacing: normal;
+  /* -------- MYTHS, CHECKED -------- */
+  .myths { margin-top: 0.6rem; }
+  .myth-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .myth {
+    position: relative; min-width: 0; padding: 1.1rem 1.3rem 1.3rem;
+    border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
   }
-  .dw { font-family: var(--display); font-style: italic; font-weight: 700; font-size: 2.1rem; line-height: 1; }
-  .dc { font-family: var(--mono); font-weight: 400; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); white-space: nowrap; }
-  .desk-list { list-style: none; margin: 0; padding: 0; }
-  .desk-item { border-bottom: 1px solid var(--rule); }
-  .desk-item:last-child { border-bottom: none; }
-  .desk-item a { display: block; padding: 0.75rem 0; }
-  .dq { display: block; text-wrap: pretty; font-family: var(--display); font-weight: 600; font-size: 1.06rem; line-height: 1.18; }
-  .dh { display: block; font-family: var(--serif); font-style: italic; font-size: 0.92rem; line-height: 1.35; color: var(--ink-soft); margin-top: 0.25rem; }
+  .myth:nth-child(3n + 1) { padding-left: 0; }
+  .myth:nth-child(3n) { border-right: none; padding-right: 0; }
+  .myth:nth-last-child(-n + 3) { border-bottom: none; }
+  .myth-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin: 0; }
+  .myth-story {
+    font-family: var(--serif); font-style: italic; font-size: 1.02rem; line-height: 1.4; color: var(--ink-soft);
+    margin: 0.2rem 0 0.75rem; text-wrap: pretty;
+  }
+  .myth-head {
+    font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; text-wrap: pretty;
+    font-size: clamp(1.08rem, 1.45vw, 1.24rem); line-height: 1.16; margin: 0.2rem 0 0;
+  }
 
   /* -------- ALMANAC + START HERE -------- */
   .split {
@@ -668,7 +661,6 @@ const schema = [
     display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
     padding: 0.7rem 1.2rem 0.9rem; border-top: 1px dotted var(--rule-mid);
   }
-  .almanac-count { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-left: auto; }
   .start { min-width: 0; }
   .start .row-head { font-size: clamp(1.12rem, 1.6vw, 1.36rem); }
 
@@ -715,24 +707,23 @@ const schema = [
     .row:hover .row-num { background: var(--hl); color: var(--ink); }
     .row:hover .row-head, .story:hover .story-head { color: #000; }
     .story:hover .story-head a { background: linear-gradient(transparent 62%, var(--hl) 62%); }
-    .desk-item a:hover .dq, .dept-list a:hover { background: linear-gradient(transparent 60%, var(--hl) 60%); }
+    .dept-list a:hover { background: linear-gradient(transparent 60%, var(--hl) 60%); }
+    .myth:hover .myth-head a { background: linear-gradient(transparent 62%, var(--hl) 62%); }
+    .mast-meta a:hover { background: var(--hl); }
   }
 
   /* -------- RESPONSIVE -------- */
-  @media (max-width: 1080px) {
-    .desk-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-    .desk-col { grid-column: span 2; }
-    .desk-col:nth-child(n + 4) { grid-column: span 3; }
-    .desk-col:nth-child(3) { border-right: none; padding-right: 0; }
-    .desk-col:nth-child(4) { padding-left: 0; }
-    .desk-col:nth-child(n + 4) { border-top: 1px solid var(--rule); }
-  }
   @media (max-width: 900px) {
+    .myth-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .myth:nth-child(n) { padding: 1.1rem 1.3rem 1.3rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .myth:nth-child(2n + 1) { padding-left: 0; }
+    .myth:nth-child(2n) { border-right: none; padding-right: 0; }
+    .myth:nth-last-child(-n + 2) { border-bottom: none; }
+    .mast-meta { display: flex; flex-wrap: wrap; gap: 0 1.2rem; margin: 0; }
     .almanac { position: static; }
     .fact { min-height: 9.25rem; }
     .nameplate-row { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
     .nameplate { font-size: 12.6vw; }
-    .mast-meta { justify-items: start; grid-auto-flow: column; gap: 0 1.2rem; margin: 0; }
     .fold { grid-template-columns: 1fr; }
     .lead-col { border-right: none; padding: 1.4rem 0 0.4rem; border-bottom: 1px solid var(--ink); }
     .lead-dek { margin-left: 0; max-width: 34rem; }
@@ -748,13 +739,13 @@ const schema = [
     .shead .folio { grid-column: 1 / -1; text-align: left; }
   }
   @media (max-width: 620px) {
-    .desk-col, .desk-col:nth-child(n) { grid-column: auto; }
-    .desk-item a:focus-visible { outline-offset: -2px; }
+    .myth-grid { grid-template-columns: 1fr; }
+    .myth:nth-child(n) { padding: 1rem 0 1.1rem; border-right: none; border-bottom: 1px solid var(--rule); }
+    .myth:last-child { border-bottom: none; }
+    .mast-meta { display: grid; justify-items: start; gap: 0; }
     .dateline-mid { display: none; }
     .dl-long { display: none; }
     .dl-short { display: inline; }
-    .mast-meta { font-size: 0.6rem; gap: 0 1rem; }
-    .mast-meta > span:nth-child(3) { display: none; }
     .second-grid { grid-template-columns: 1fr; }
     .story:nth-child(n) { padding: 1rem 0 1.1rem; border-right: none; border-bottom: 1px solid var(--rule); }
     .story:last-child { border-bottom: none; }
@@ -764,8 +755,6 @@ const schema = [
     .mast-actions { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
     .mast-search input { width: 100%; flex: 1; }
     .lead-body { columns: 1; }
-    .desk-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; }
-    .desk-col, .desk-col:nth-child(n) { scroll-snap-align: start; padding: 1rem 1.1rem 1.1rem 0; border-top: none; border-right: 1px solid var(--rule); margin-right: 1.1rem; }
     .dept-grid { grid-template-columns: 1fr; }
     .dept, .dept:nth-child(n) { padding: 1.1rem 0 1.2rem; border-right: none; }
     .dept-list li:nth-child(3) { display: none; }
@@ -774,5 +763,4 @@ const schema = [
   @media (max-width: 380px) {
     .fact { min-height: 16.25rem; }
   }
-  .rail-sub { margin-top: 1.4rem; }
 </style>

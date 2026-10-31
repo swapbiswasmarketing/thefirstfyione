@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { contactEmail, contactLive, SITE_URL } from "../data/site";
+import { pageNode, ORG_ID } from "../lib/schema";
+import { pageCard } from "../lib/og";
+
+const url = `${SITE_URL}/contact/`;
+const description =
+  "How to reach Strictly FYI: report an error in an entry, suggest a question worth answering, or make a request about your data.";
+const mail = `mailto:${contactEmail}`;
+const subject = (s: string) => `${mail}?subject=${encodeURIComponent(s)}`;
+---
+
+<Layout
+  title="Contact - Strictly FYI"
+  description={description}
+  card={pageCard("contact")}
+  contentGroup="About"
+  schema={[pageNode("ContactPage", url, "Contact Strictly FYI", description, { about: { "@id": ORG_ID } })]}
+>
+  <article class="doc wrap">
+    <header>
+      <p class="doc-kicker">Contact</p>
+      <h1 class="doc-title">Write to Strictly FYI</h1>
+      <p class="doc-dek">
+        {contactLive
+          ? "Every message is read, and reports of errors come first."
+          : "Strictly FYI does not publish a contact address at the moment."}
+      </p>
+    </header>
+
+    <div class="doc-body">
+      {contactLive && (
+        <section id="email">
+          <h2>Email</h2>
+          <p>
+            The address for everything below is <a href={mail}>{contactEmail}</a>.
+          </p>
+        </section>
+      )}
+
+      <section id="errors">
+        <h2>Report an error</h2>
+        <p>
+          Name the entry (its title or its FYI number), say what is wrong, and include a source that shows it. A
+          confirmed error is fixed in the entry itself, the entry is marked Updated, and the fix is listed in the
+          <a href="/corrections/">corrections log</a>.
+          {contactLive && (
+            <>
+              {" "}<a href={subject("Correction")}>Write about a correction</a>.
+            </>
+          )}
+        </p>
+      </section>
+
+      <section id="questions">
+        <h2>Suggest a question</h2>
+        <p>
+          If there is something you have always wondered about, send it. Questions whose true answer is more
+          surprising than the usual one are the most likely to become entries.
+          {contactLive && (
+            <>
+              {" "}<a href={subject("Question")}>Suggest a question</a>.
+            </>
+          )}
+        </p>
+      </section>
+
+      <section id="privacy">
+        <h2>Privacy requests</h2>
+        <p>
+          To ask what data about you is held, or to have it corrected or deleted, write with "Privacy" in the
+          subject line. The <a href="/privacy/">privacy page</a> explains what is collected and why.
+        </p>
+      </section>
+
+      <section id="not">
+        <h2>What we cannot help with</h2>
+        <p>
+          Strictly FYI cannot give medical, legal or financial advice. It does not accept sponsored posts, guest
+          posts or paid links in its entries. How entries are researched and checked is set out in
+          <a href="/how-we-work/">How we work</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>

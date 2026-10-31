@@ -1,80 +1,77 @@
 ---
-title: "Is Mars Really Red? Only From Far Enough Away"
-description: "Is Mars really red? Only at a distance. NASA describes the ground as brown, gold and tan, and the rust that colours it is a mineral that needed liquid water."
+title: "Is Mars Really Red? Mainly From a Distance"
+description: "Mars looks red mainly from a distance. NASA names brown, gold and tan among its surface colours, and a 2025 study traces the red dust to rust that formed in water."
 pubDate: 2026-09-03
+updatedDate: 2026-10-31
 category: "science"
 readingTime: "4 min read"
 filecode: "FYI-023"
-almanac: "Point a camera at the ground directly under a Mars rover and the picture that comes back is not red."
+almanac: "Point a camera at the ground directly under a Mars rover and the picture that comes back is usually not red."
 featured: false
 faqs:
-  - q: "Why is Mars red?"
-    a: "Iron minerals in the Martian surface material have oxidised, or rusted, and fine dust carrying that rusted material is spread across the planet and lifted into the atmosphere. NASA says that airborne dust is what makes Mars appear mostly red when seen from a distance."
-  - q: "Is Mars red all the way through?"
-    a: "No. The reddish material is surface dust and oxidised minerals sitting at the top. NASA describes the Martian surface colours as brown, gold and tan, and its Jet Propulsion Laboratory says a close-up view shows a lot of Mars is more of a butterscotch colour."
   - q: "What colour is Mars up close?"
-    a: "Butterscotch, according to NASA JPL. Depending on which minerals are present, landscapes can also look golden, brown, tan or a little greenish. The strong red is largely a long-distance effect produced by dust suspended in the atmosphere."
-  - q: "What made the rust if there is no oxygen in the Martian air?"
-    a: "NASA lists the thin Martian atmosphere as mostly carbon dioxide, nitrogen and argon. A 2025 Nature Communications study led by Adomas Valantinas found the dominant iron oxide phase in Martian dust is ferrihydrite, a hydrated mineral that forms when iron oxidises in water, which points to liquid water rather than air as the source."
+    a: "Much of it is butterscotch, according to NASA JPL. Depending on which minerals are present, landscapes can also look golden, brown, tan or a little greenish. The strong red is largely a long-distance effect of rusty dust, which coats the ground and is kicked up into the atmosphere."
+  - q: "What rusted Mars if its air has almost no oxygen?"
+    a: "NASA's Mars fact sheet puts oxygen at 0.16 percent of the atmosphere. A 2025 Nature Communications study led by Adomas Valantinas found the dominant iron oxide in Martian dust is ferrihydrite, a hydrated mineral that forms when iron oxidises in water. Whether the oxidant came from the early atmosphere or from processes in surface water is, by the paper's own account, still an open question."
   - q: "When did Mars turn red?"
-    a: "A 2025 Nature Communications study on ferrihydrite in Martian dust places the rusting in a cold, wet period on early Mars, and says conditions like that could have existed in the late Hesperian, roughly 3 billion years ago. That challenges the older picture of red dust produced by recent, continuous dry oxidation."
+    a: "A 2025 Nature Communications study on ferrihydrite in Martian dust suggests the rusting happened in a cold, wet period on early Mars, and says conditions like that could have existed in the late Hesperian, roughly 3 billion years ago. That challenges the older reading of the red colour as anhydrous hematite formed through recent weathering."
 ---
 
-Point a camera at the ground directly under a Mars rover and the picture that comes back is not red. NASA's own summary of the surface lists the colours as brown, gold and tan. From an orbiter the ground reads closer to butterscotch. The colour behind the nickname only assembles itself at a distance, out of dust hanging in the air.
+Point a camera at the ground directly under a Mars rover and the picture that comes back is usually not red. Seen close up from an orbiter, lander or rover, [NASA's Jet Propulsion Laboratory says](https://www.jpl.nasa.gov/videos/mars-in-a-minute-is-mars-really-red/), a lot of Mars is closer to butterscotch. The full red of the nickname assembles at a distance, out of rusty dust that coats the surface and, [as NASA puts it](https://science.nasa.gov/mars/facts/), gets kicked up into the atmosphere.
 
-Rust is doing the colouring. The mineral responsible forms in water, and Mars today is what the researchers who identified it call a hyper-arid environment, which makes the planet's colour a leftover rather than a current event.
+Rust is doing the colouring. The mineral one recent study names as the main culprit, ferrihydrite, [forms in the presence of cool water](https://www.brown.edu/news/2025-02-25/why-mars-red), and the study suggests Mars went from wet to dry billions of years ago, which would make the pigment a leftover rather than something still being made.
 
 ## Is Mars really red?
 
-Mars is red from a distance and a different colour up close. Iron minerals in the Martian dirt have oxidised, or rusted, and windblown dust carries that rusted material across the entire planet, which is what an observer on Earth sees. On the ground, NASA describes the surface colours as brown, gold and tan.
+Mars looks red mainly from a distance, and up close much of it is butterscotch, brown, gold or tan. [NASA's Mars facts page](https://science.nasa.gov/mars/facts/) says "iron minerals in the Martian dirt oxidize, or rust, causing the surface to look red" and that "This dust gets kicked up into the atmosphere and from a distance makes the planet appear mostly red". The same page states it flatly, "The Red Planet is actually many colors", and names brown, gold and tan among the colours seen at the surface.
 
-Both halves of that come from the same place. [NASA's Mars facts page](https://science.nasa.gov/mars/facts/) says "iron minerals in the Martian dirt oxidize, or rust, causing the surface to look red" and that "This dust gets kicked up into the atmosphere and from a distance makes the planet appear mostly red". The same page states it flatly: "The Red Planet is actually many colors."
+## Up close much of the ground is butterscotch
 
-## Up close the ground is butterscotch
+NASA's Jet Propulsion Laboratory made a short explainer series called Mars in a Minute, and a 2011 episode carries this exact question as its title. [The answer JPL gives](https://www.jpl.nasa.gov/videos/mars-in-a-minute-is-mars-really-red/) is that a close-up view from an orbiter, lander or rover shows "a lot of Mars is actually more of a butterscotch color", and that "Depending on what minerals are around, some landscapes can be more golden, brown, tan, or even a little greenish".
 
-NASA's Jet Propulsion Laboratory runs a short explainer series called Mars in a Minute, and one episode carries this exact question as its title. [The answer JPL gives](https://www.jpl.nasa.gov/videos/mars-in-a-minute-is-mars-really-red/) is that a close-up view from an orbiter, lander or rover shows "a lot of Mars is actually more of a butterscotch color", and that "Depending on what minerals are around, some landscapes can be more golden, brown, tan, or even a little greenish".
+The same dust colours the sky. Rusty dust lofted into the atmosphere, in [JPL's words](https://www.jpl.nasa.gov/videos/mars-in-a-minute-is-mars-really-red/), "makes the martian sky look pink".
 
-The dust in the air changes the sky rather than the ground. Rusty dust lofted into the atmosphere, in JPL's words, "makes the martian sky look pink".
-
-| Where you are looking from | Colour NASA reports |
+| Where you are looking from | Colour in JPL's Mars in a Minute |
 |---|---|
 | Earth, naked eye | "a reddish tint" |
 | The martian sky, dust aloft | "pink" |
 | Orbiter, lander or rover, close up | "more of a butterscotch color" |
 | The ground, mineral by mineral | "golden, brown, tan, or even a little greenish" |
 
-## The Red Planet is not red all the way down
+## Under the dust the rock can be another colour
 
-The picture of Mars as red throughout, the way a brick is red throughout, is folklore rather than a measurement. What gets measured is a colour at the top: oxidised minerals and dust on and near the surface, with the rock beneath taking its colour from whatever minerals it contains. NASA's own list of surface colours is brown, gold and tan.
+Much of the red is a coat of rusty dust, and [drilling into a rock](https://science.nasa.gov/photojournal/first-curiosity-drilling-sample-in-the-scoop) can expose a different colour underneath.
 
-Curiosity supplied a direct look in February 2013. In NASA's caption for [the first powdered rock the rover drilled out](https://science.nasa.gov/photojournal/first-curiosity-drilling-sample-in-the-scoop), the sample from a slab called John Klein is **"gray-green"** in the white-balanced version, sitting in a scoop that still carried **"red residue"** from an earlier sample of windblown dust and sand.
+Curiosity supplied a direct look in February 2013. In NASA's caption for [the first powdered rock the rover drilled out](https://science.nasa.gov/photojournal/first-curiosity-drilling-sample-in-the-scoop), the sample from a slab called John Klein is **"gray-green"** in the white-balanced version, sitting in a scoop that still carried **"red residue"** from an earlier sample of windblown dust and sand. The caption says the two colours "reflect the oxidation state of iron in the samples", with the drilled powder the less oxidised of the two.
 
-Popular explanations often get assembled backwards from one striking image, [as they did for cats and cucumbers](/blog/why-are-cats-afraid-of-cucumbers/). A planet that shows up red in every telescope photograph invites the assumption that it must be red all the way in.
+Not every rock is a different colour inside. The first hole Curiosity drilled into Mount Sharp, in 2014, produced [reddish rock powder](https://www.jpl.nasa.gov/news/nasas-curiosity-mars-rover-finds-mineral-match/) with about eight percent hematite, an iron oxide that had already been mapped there from orbit.
 
-## The air on Mars did not do the rusting
+## Today's Martian air holds almost no oxygen
 
-The everyday image of rust involves damp air and ordinary oxygen. Mars offers almost none of either. NASA lists the thin Martian atmosphere as "made up mostly of carbon dioxide, nitrogen, and argon gases", and oxygen does not appear on that list.
+The everyday image of rust involves damp air and ordinary oxygen. Mars offers very little of either. [NASA](https://science.nasa.gov/mars/facts/) lists the thin Martian atmosphere as "made up mostly of carbon dioxide, nitrogen, and argon gases", and oxygen does not appear on that list.
 
-How little there is to breathe was demonstrated by an instrument built to fix the problem. NASA's MOXIE experiment rode to Mars aboard the Perseverance rover and made oxygen electrochemically, stripping one oxygen atom off each carbon dioxide molecule pumped in from the atmosphere. Across 16 runs it produced [122 grams of oxygen in total](https://www.jpl.nasa.gov/news/nasas-oxygen-generating-experiment-moxie-completes-mars-mission/), peaking at 12 grams an hour at 98 percent purity or better.
-
-Iron oxide is the pigment doing the colouring in both places, which is also why [barns on Earth ended up that shade](/blog/why-barns-are-red/) before anyone was selling paint ready-mixed in a tin.
+[NASA's Mars fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html) supplies the numbers. Oxygen makes up **0.16 percent** of the atmosphere by volume, water vapour about 210 parts per million, and surface pressure at the planet's mean radius is 6.36 millibars, varying with the season.
 
 ## The pigment has water in its formula
 
-In February 2025 a team led by Adomas Valantinas published a paper in Nature Communications called [Detection of ferrihydrite in Martian red dust records ancient cold and wet conditions on Mars](https://pmc.ncbi.nlm.nih.gov/articles/PMC11861699/). The finding is that the dominant iron oxide-bearing phase in Martian dust is **ferrihydrite**, formula Fe5O8H nH2O. The authors set that against the older reading in the second line of their abstract: "Previous studies attributed Mars' red color to anhydrous hematite formed through recent weathering."
+In February 2025 a team led by Adomas Valantinas published a paper in Nature Communications called [Detection of ferrihydrite in Martian red dust records ancient cold and wet conditions on Mars](https://pmc.ncbi.nlm.nih.gov/articles/PMC11861699/). Combining orbital, surface and laboratory spectra, it reports that the dominant iron oxide-bearing phase in Martian dust is **ferrihydrite**, formula Fe5O8H nH2O. The authors set that against the older reading in the second line of their abstract: "Previous studies attributed Mars' red color to anhydrous hematite formed through recent weathering." Dust spectra from different sites look so alike, they add, that they support the hypothesis that Martian dust is "well mixed on a global scale".
 
-The nH2O on the end is not decoration. Ferrihydrite is a hydrated iron oxide, and the paper describes it forming on Earth "through rapid Fe2+ oxidation in aqueous environments at circumneutral pH and low temperatures". Liquid water, and cold water at that.
+The nH2O on the end is not decoration. Ferrihydrite is a hydrated iron oxide, and on Earth, [the paper explains](https://pmc.ncbi.nlm.nih.gov/articles/PMC11861699/), it forms "in aqueous environments at circumneutral pH and low temperatures", turning into crystalline hematite when warmed or into goethite when water lingers. Liquid water, then, and cold water at that.
 
-That the mineral survives at all, the team writes, suggests it "formed during a cold, wet period on early Mars under oxidative conditions, followed by a transition to the current hyper-arid environment". Conditions like that, the paper adds, could have existed in the late Hesperian, **approximately 3 billion years ago**.
+Laboratory experiments and kinetic calculations, [the team reports](https://pmc.ncbi.nlm.nih.gov/articles/PMC11861699/), show that ferrihydrite "remains stable under present-day Martian conditions", and its persistence suggests it "formed during a cold, wet period on early Mars under oxidative conditions, followed by a transition to the current hyper-arid environment". Conditions like that, the paper adds, could have existed in the late Hesperian, **approximately 3 billion years ago**.
 
-> Ferrihydrite is a hydrated iron oxide, which puts water into the chemical formula of the pigment itself. On that reading the planet's most familiar feature is a residue of surface water, left behind in a cold, wet spell the paper places around 3 billion years ago.
+> Ferrihydrite is a hydrated iron oxide, which puts water into the chemical formula of the pigment itself. On that reading the planet's most familiar feature is a product of surface water, formed in a cold, wet spell the paper suggests could date to around 3 billion years ago.
+
+## The oxidant behind the rust is still unknown
+
+Knowing the rust formed in water does not settle what oxidised the iron. [The paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC11861699/) frames the key question as whether the iron was "oxidized by components in the atmosphere or by processes occurring in surface waters on Mars". The candidates it reviews include oxygen atoms produced by the breakdown of atmospheric gases, ultraviolet light acting on water, and free oxygen in the early atmosphere, which manganese-rich lake sediments in Gale Crater have been read as evidence for, though other oxidants such as perchlorate have been proposed for those deposits. The discussion ends by calling for further research "to clarify the redox conditions leading to ferrihydrite's formation on Mars".
+
+The ferrihydrite result itself is not settled either. [Brown University's announcement of the study](https://www.brown.edu/news/2025-02-25/why-mars-red) notes that the researchers know the findings cannot be fully confirmed until samples from Mars are brought back to Earth.
 
 ## The dust does the painting
 
-Martian dust is very fine. [A 2025 iScience paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC12496206/) on Martian dust simulant cites the commonly accepted value for the effective radius of Martian dust as approximately 1.5 micrometres.
+Martian dust is very fine. Imaging from the Spirit and Opportunity rovers put the [cross section weighted mean radius](https://pubmed.ncbi.nlm.nih.gov/15576613/) of airborne dust at 1.47 micrometres over Gusev crater and 1.52 micrometres at Meridiani Planum. Because "Martian dust is very small in size", Valantinas [told Brown](https://www.brown.edu/news/2025-02-25/why-mars-red), the team ground its laboratory mixtures of ferrihydrite and basalt to match the particle sizes on Mars.
 
-Particles that small travel. NASA notes that winds on Mars are occasionally strong enough to create dust storms that cover much of the planet, and the ferrihydrite team describes Martian dust as "well mixed on a global scale". One pigment, stirred everywhere, is why ground that is golden in one place and greenish in another still reads as a single colour from Earth. Path length works the other way for water: a glass of it looks clear, and [the ocean's blue](/blog/why-is-the-ocean-blue/) builds up only over metres, as each one absorbs more red light than blue.
+Particles that small travel. [NASA notes](https://science.nasa.gov/mars/facts/) that winds on Mars are occasionally strong enough to create dust storms that cover much of the planet, and that it can be months before all of the dust settles. One pigment, stirred everywhere, is why ground that is golden in one place and greenish in another still reads as a single colour from Earth.
 
-Ordinary signals carry more information than they look like they carry, [which is also true of the noise a field makes after dark](/blog/why-do-crickets-chirp/).
-
-Mars answers to its nickname because of what dust does to light on the way out. Land on it and the performance stops: brown, gold, tan, an occasional greenish tint, and a fine rusty powder over the top that is chemically a leftover from a wetter, colder world. The Red Planet is a name earned at a distance, and it does not survive the trip. Strictly FYI.
+Mars answers to its nickname because of rusty dust, spread over the ground and lifted into the air, seen from far enough away. Land on it and most of the effect falls away: brown, gold, tan, an occasional greenish tint, and a fine rusty powder over the top that, if the ferrihydrite analysis holds, is a leftover from a cold, wet early Mars. The Red Planet is a name earned at a distance, and much of it does not survive the trip. Strictly FYI.

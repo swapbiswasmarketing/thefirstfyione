@@ -307,6 +307,34 @@ function loadCorpus(dir = BLOG) {
 }
 const fileNo = (fc) => Number(String(fc || '').replace(/[^0-9]/g, '')) || 0;
 
+/* The day each entry file first entered git, read once per run, as
+   { local, utc }: the author date's calendar day in the committer's own time
+   zone and in UTC (the site's build clock). They differ only for a commit made
+   just after local midnight east of Greenwich. A pubDate earlier than both is
+   a backdated filing. A file that is not committed yet, or arrived by a rename,
+   is simply absent. */
+let addedCache = null;
+function firstAdded() {
+  if (addedCache) return addedCache;
+  addedCache = new Map();
+  try {
+    const rel = path.relative(ROOT, BLOG).split(path.sep).join('/');
+    const out = execFileSync('git', ['log', '--diff-filter=A', '--format=@%aI', '--name-only', '--', rel], { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 16 * 1024 * 1024 });
+    let day = null;
+    for (const line of out.split('\n')) {
+      if (line.startsWith('@')) {
+        const iso = line.slice(1).trim();
+        day = { local: iso.slice(0, 10), utc: new Date(iso).toISOString().slice(0, 10) };
+      } else if (day && /\.md$/i.test(line.trim())) {
+        const slug = path.basename(line.trim()).replace(/\.md$/i, '');
+        /* git log runs newest first, so the last date seen is the earliest add. */
+        addedCache.set(slug, day);
+      }
+    }
+  } catch { /* no git: nothing to compare against */ }
+  return addedCache;
+}
+
 /* ------------------------------------------------------------------------
  * The gates for one entry.
  * ---------------------------------------------------------------------- */
@@ -363,7 +391,8 @@ function gateEntry(e, corpus, mode, opts = {}) {
   else add('featured', 'FAIL', `"${fm.featured}" is not a boolean`);
   if (fm.lead !== undefined && fm.lead !== null && typeof fm.lead !== 'boolean') add('lead', 'FAIL', `"${fm.lead}" is not a boolean`);
   else if (fm.lead === true) {
-    const newest = Math.max(...corpus.entries.map((x) => (x.fm && validDate(x.fm.pubDate) ? Date.parse(x.fm.pubDate) : 0)));
+    const live = (x) => x.fm && validDate(x.fm.pubDate) && x.fm.pubDate <= today()[0];
+    const newest = Math.max(...corpus.entries.map((x) => (live(x) ? Date.parse(x.fm.pubDate) : 0)));
     if (isNew) add('lead', 'WARN', 'lead: true pins the front page; only on the operator\'s say-so');
     else if (validDate(fm.pubDate) && Date.parse(fm.pubDate) < newest) add('lead', 'WARN', 'lead: true is inert: it pins only while the entry belongs to the newest filing date');
     else add('lead', 'PASS', 'pinned as the front-page lead');
@@ -372,10 +401,27 @@ function gateEntry(e, corpus, mode, opts = {}) {
   /* Dates. pubDate is immutable; updatedDate only on a genuine refresh. */
   const [utcToday, localToday] = today();
   const pd = fm.pubDate;
+  const added = firstAdded().get(e.slug);
+  /* No day of grace: an entry committed after midnight went live that day, so
+     its pubDate is that day (or, in the hours when the local and UTC calendars
+     differ, the UTC day). Schedule a late-evening entry for the day it ships. */
+  const addedDay = added ? (added.utc === added.local ? added.local : `${added.local} local, ${added.utc} UTC`) : '';
   if (!validDate(pd)) add('pubDate', 'FAIL', `"${pd ?? ''}" (YYYY-MM-DD)`);
-  else if (pd > localToday && pd > utcToday) add('pubDate', 'FAIL', `${pd} is in the future`);
+  else if (pd > utcToday) add('pubDate', 'WARN', `scheduled: hidden from the site until a build on or after ${pd} (UTC); the daily-publish workflow rebuilds production on that day once VERCEL_DEPLOY_HOOK_URL is set`);
+  else if (added && pd < added.utc) add('pubDate', 'FAIL', `${pd} is earlier than the day the file first entered git (${addedDay}): a backdated filing; use the real first-publication date`);
   else if (isNew && pd !== utcToday && pd !== localToday) add('pubDate', 'WARN', `${pd}; a new entry is filed today (${localToday}) and never backdated`);
   else add('pubDate', 'PASS', String(pd));
+  /* Cadence, for a new entry: one entry a day and about three a week, so the
+     archive never again shows a same-day drop (scheduled pubDates spread them). */
+  if (isNew && validDate(pd)) {
+    const weekOf = (d) => { const t = new Date(`${d}T00:00:00Z`); const day = (t.getUTCDay() + 6) % 7; t.setUTCDate(t.getUTCDate() - day); return t.toISOString().slice(0, 10); };
+    const dated = corpus.entries.filter((x) => x.slug !== e.slug && x.fm && validDate(x.fm.pubDate));
+    const sameDay = dated.filter((x) => x.fm.pubDate === pd).map((x) => x.slug);
+    const sameWeek = dated.filter((x) => weekOf(x.fm.pubDate) === weekOf(pd)).length;
+    if (sameDay.length) add('cadence', 'WARN', `${sameDay.length} other entr${sameDay.length === 1 ? 'y is' : 'ies are'} dated ${pd} (${sameDay.slice(0, 3).join(', ')}): schedule this one for another day`);
+    else if (sameWeek >= 3) add('cadence', 'WARN', `${sameWeek} other entries fall in the week of ${weekOf(pd)}: the house cadence is about three a week`);
+    else add('cadence', 'PASS', `alone on ${pd}, ${sameWeek + 1} in its week`);
+  }
   if (fm.updatedDate !== undefined && fm.updatedDate !== null) {
     if (isNew) add('updatedDate', 'FAIL', 'a new entry carries no updatedDate');
     else if (!validDate(fm.updatedDate)) add('updatedDate', 'FAIL', `"${fm.updatedDate}" (YYYY-MM-DD)`);
@@ -385,16 +431,39 @@ function gateEntry(e, corpus, mode, opts = {}) {
   }
   if (fm.readingTime !== undefined && isNew) add('readingTime', 'WARN', 'not rendered any more: reading time is computed from the body; delete the field');
 
-  /* FAQs: 3-5 complete pairs that stand alone. */
+  /* FAQs are optional: 0-5 complete pairs that stand alone (house style for a
+     new entry is 0-3). Each one answers a distinct question a reader would ask;
+     a query variant ("in 2004?", "in 2010?") is keyword padding, never an FAQ. */
   const faqs = Array.isArray(fm.faqs) ? fm.faqs : [];
   const complete = faqs.filter((f) => f && typeof f === 'object' && typeof f.q === 'string' && f.q.trim() && typeof f.a === 'string' && f.a.trim());
-  if (faqs.length < 3 || faqs.length > 5 || complete.length !== faqs.length) add('faqs', 'FAIL', `${faqs.length} item(s), ${complete.length} complete (need 3-5 complete q/a pairs)`);
+  if (faqs.length > 5 || complete.length !== faqs.length) add('faqs', 'FAIL', `${faqs.length} item(s), ${complete.length} complete (0-5 complete q/a pairs)`);
+  else if (isNew && faqs.length > 3) add('faqs', 'WARN', `${faqs.length} q/a pairs (a new entry carries 0-3, each a distinct reader question)`);
   else add('faqs', 'PASS', `${faqs.length} q/a pairs`);
   const noQ = complete.filter((f) => !/\?\s*$/.test(f.q)).map((f) => f.q);
   if (noQ.length) add('faq-questions', soft, `${noQ.length} question(s) without a closing "?"`, noQ);
   const seenQ = new Set();
   const dupQ = complete.filter((f) => { const k = f.q.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); const dupe = seenQ.has(k); seenQ.add(k); return dupe; }).map((f) => f.q);
   if (dupQ.length) add('faq-questions', 'FAIL', `duplicate question(s): ${dupQ.join(' | ')}`, dupQ);
+  /* Two questions that differ only by a number or year are one question asked
+     twice for search engines. */
+  const numStem = (q) => q.toLowerCase().replace(/\d[\d,.]*(?:s\b)?/g, '#').replace(/[^a-z#]+/g, ' ').trim();
+  const stems = new Map();
+  for (const f of complete) { const k = numStem(f.q); if (/#/.test(k)) stems.set(k, [...(stems.get(k) || []), f.q]); }
+  const variants = [...stems.values()].filter((v) => v.length > 1);
+  if (variants.length) add('faq-variants', 'FAIL', `questions that differ only by a number: ${variants.map((v) => v.join(' / ')).join('; ')}; keep one`, variants.flat());
+  /* Near-duplicates: at least three shared content words and Jaccard 0.6, so two
+     distinct questions that happen to share a pair of words are not flagged, and
+     a pair already reported as number variants is not reported twice. */
+  const nearQ = [];
+  const variantSet = new Set(variants.flat());
+  for (let i = 0; i < complete.length; i++) for (let j = i + 1; j < complete.length; j++) {
+    const a = qTokens(complete[i].q);
+    const b = qTokens(complete[j].q);
+    const shared = new Set(a.filter((w) => b.includes(w))).size;
+    if (variantSet.has(complete[i].q) && variantSet.has(complete[j].q)) continue;
+    if (shared >= 3 && jaccard(a, b) >= 0.6) nearQ.push(`"${complete[i].q}" ~ "${complete[j].q}"`);
+  }
+  if (nearQ.length) add('faq-variants', 'WARN', `near-duplicate questions in this entry: ${nearQ.join('; ')}`, nearQ);
   const longA = complete.map((f, i) => ({ i: i + 1, n: sentences(f.a).length })).filter((x) => x.n > 3);
   if (longA.length) add('faq-answers', soft, longA.map((x) => `FAQ ${x.i}: ${x.n} sentences`).join(', ') + ' (1-3 sentences that stand alone)', longA.map((x) => `faq${x.i}`));
   else if (complete.length) add('faq-answers', 'PASS', '1-3 sentences each');
@@ -444,8 +513,11 @@ function gateEntry(e, corpus, mode, opts = {}) {
   const bodyLines = e.body.split('\n');
   const h2 = bodyLines.filter((l) => /^##\s/.test(l));
   const headQ = h2.find((h) => /\?\s*$/.test(h));
+  /* Advisory: a question H2 helps an answer box, but repeating the title's question
+     word for word on every entry is a template tell. Where the opening already
+     answers the question, a descriptive H2 is the better heading. */
   if (headQ) add('head-question-h2', 'PASS', headQ.replace(/^##\s+/, ''));
-  else add('head-question-h2', 'FAIL', 'one H2 must be phrased as the head question, with the direct answer as its first sentence');
+  else add('head-question-h2', 'WARN', 'no H2 phrased as a question: fine when the opening already gives the direct answer');
   if (bodyLines.some((l) => /^#\s/.test(l))) add('body-h1', 'FAIL', 'no H1 in the body; the layout renders the title');
   let quotes = 0;
   bodyLines.forEach((l, i) => { if (/^\s*>/.test(l) && !(i > 0 && /^\s*>/.test(bodyLines[i - 1]))) quotes++; });
@@ -469,26 +541,77 @@ function gateEntry(e, corpus, mode, opts = {}) {
   const broken = [...new Set(blogLinks.filter((l) => !corpus.bySlug.has(l.slug)).map((l) => l.href))];
   const badForm = [...new Set(internal.filter((l) => !l.slash || l.absolute).map((l) => l.href))];
   const self = blogLinks.filter((l) => l.slug === e.slug);
+  /* A link to a scheduled entry would 404 on the live site until that entry's
+     day, unless this entry itself goes live on or after that day. */
+  const utcNow = today()[0];
+  const liveFrom = validDate(fm.pubDate) && fm.pubDate > utcNow ? fm.pubDate : utcNow;
+  const scheduled = [...new Set(blogLinks.filter((l) => {
+    const t = corpus.bySlug.get(l.slug);
+    return t && t.fm && validDate(t.fm.pubDate) && t.fm.pubDate > liveFrom;
+  }).map((l) => `${l.slug} (${corpus.bySlug.get(l.slug).fm.pubDate})`))];
   if (broken.length) add('links-resolve', 'FAIL', `target(s) do not exist: ${broken.join(', ')}`, broken);
+  else if (scheduled.length) add('links-resolve', 'FAIL', `target(s) not published yet: ${scheduled.join(', ')}; the link would 404 until then`, scheduled);
   else add('links-resolve', 'PASS', `${blogLinks.length} /blog/ link(s) resolve`);
   if (badForm.length) add('link-format', 'FAIL', `internal links are relative and end in "/": ${badForm.join(' ')}`, badForm);
   if (self.length) add('self-link', 'FAIL', 'the entry links to itself');
-  const KNOWN = /^\/(?:blog\/|topics\/(?:[a-z]+\/)?|about\/|search\/|privacy\/|rss\.xml)?$/;
+  const KNOWN = /^\/(?:blog\/|topics\/(?:[a-z]+\/)?|about\/|search\/|privacy\/|how-we-work\/|contact\/|terms\/|corrections\/|rss\.xml)?$/;
   const odd = [...new Set(internal.filter((l) => !l.slug && !KNOWN.test(l.path)).map((l) => l.href))];
   if (odd.length) add('link-targets', 'WARN', `internal link(s) to a path the site may not have: ${odd.join(' ')}`, odd);
+  /* Links to other entries are optional and capped: a link earns its place only
+     where the paragraph already discusses the linked subject. The See also
+     block, the department pages and the archive link every entry anyway, so a
+     low count is never a reason to add a sentence. */
   const outTargets = [...new Set(blogLinks.filter((l) => l.slug !== e.slug).map((l) => l.slug))];
-  const [outLo, outHi] = isNew ? [2, 4] : [2, 6];
-  if (outTargets.length < outLo || outTargets.length > outHi) add('outbound-links', soft, `${plural(outTargets.length, 'entry', 'entries')} linked (want ${outLo}-${outHi}): ${outTargets.join(', ')}`);
-  else add('outbound-links', 'PASS', `${outTargets.length}: ${outTargets.join(', ')}`);
+  const outHi = isNew ? 4 : 6;
+  if (outTargets.length > outHi) add('outbound-links', soft, `${plural(outTargets.length, 'entry', 'entries')} linked (at most ${outHi}): ${outTargets.join(', ')}`);
+  else add('outbound-links', 'PASS', `${outTargets.length}${outTargets.length ? `: ${outTargets.join(', ')}` : ''}`);
   const inbound = [...(corpus.inbound.get(e.slug) || [])].filter((s) => s !== e.slug);
   if (inbound.length >= 2) add('inbound-links', 'PASS', `${inbound.length} entries link here`);
-  else add('inbound-links', 'FAIL', `${plural(inbound.length, 'entry', 'entries')} link here (floor 2): ${inbound.join(', ') || 'none'}; add a sentence to related entries (Step 9)`);
+  else add('inbound-links', 'WARN', `${plural(inbound.length, 'entry', 'entries')} link here in body text: ${inbound.join(', ') || 'none'}. Never add a sentence to another entry just to carry a link; link only where a host paragraph already discusses this subject`);
 
   /* Sources: the brand is "actually true". */
-  const ext = [...new Set(e.links.filter((l) => l.kind === 'external').map((l) => l.href))];
+  const extLinks = e.links.filter((l) => l.kind === 'external');
+  const ext = [...new Set(extLinks.map((l) => l.href))];
   if (isNew && ext.length < 3) add('citations', 'FAIL', `${ext.length} external source link(s); cite at least 3 primary or authoritative sources inline`);
   else if (!ext.length) add('citations', 'WARN', 'no external citation at all (verification debt)');
   else add('citations', 'PASS', `${ext.length} distinct source URL(s)`);
+  /* One page linked on clause after clause reads as a paraphrase of that page.
+     Link a source at its first use, and again only on a sentence whose figure,
+     date or quotation needs it (the claim gate checks those). */
+  const perUrl = new Map();
+  for (const l of extLinks) { const k = l.href.split('#')[0]; perUrl.set(k, (perUrl.get(k) || 0) + 1); }
+  const heavy = [...perUrl].filter(([, n]) => n > 4).sort((a, b) => b[1] - a[1]);
+  if (heavy.length) add('citation-repeats', isNew && heavy[0][1] > 8 ? 'FAIL' : 'WARN', `${heavy.map(([u, n]) => `${u} x${n}`).join(', ')} (more than 4 links to one page)`, heavy.map(([u]) => u));
+  /* The standard is a source for each claim, linked in the sentence that makes
+     it. The claim gate checks an unlinked sentence against the other links in
+     its paragraph, but it skips a paragraph that links no outside page at all,
+     so a year, a measured figure or a 20+ character quotation there is never
+     checked. Headings, lists and the pull-quote are left out; a table counts as
+     sourced when its cells, the paragraph that introduces it or the caption
+     under it link a page. Spelled-out numbers and decades are not counted. */
+  const factRe = /\b(?:1[0-9]{3}|20[0-9]{2})\b|\b\d[\d,.]*\s*(?:percent|%|miles?|km|kilomet(?:er|re)s?|met(?:er|re)s?|feet|foot|inch(?:es)?|years?|days?|hours?|minutes?|seconds?|million|billion|letters?|words?|degrees?|pounds?|kilograms?|kg|grams?|tons?|tonnes?)\b|"[^"]{20,}"/i;
+  const unlinkedFacts = [];
+  const linksOut = (q) => /\]\(https?:\/\//.test(q || '');
+  const paras = e.body.split(/\n\s*\n/);
+  // A summary table that only repeats figures given in sourced paragraphs is fine; one with a figure found nowhere else is not.
+  const sourcedText = paras.filter(linksOut).join('\n');
+  const tableFigures = (t) => [...new Set((t.replace(/^\|[-| :]+\|$/gm, '').match(/\b\d[\d,.]*\b/g) || []).map((x) => x.replace(/[.,]+$/, '')).filter((x) => x.length > 1))];
+  paras.forEach((para, i) => {
+    const p = para.trim();
+    if (/^\|/.test(p)) {
+      if (!linksOut(p) && !linksOut(paras[i - 1]) && !linksOut(paras[i + 1]) && factRe.test(p)) {
+        const unsourced = tableFigures(p).filter((x) => !sourcedText.includes(x));
+        if (unsourced.length) unlinkedFacts.push(`table: ${p.split('\n')[0]} (${unsourced.join(', ')})`);
+      }
+      return;
+    }
+    if (!p || /^(?:#|>|[-*+] |\d+\. )/.test(p) || linksOut(p)) return;
+    for (const s of sentences(p)) if (factRe.test(s)) unlinkedFacts.push(s);
+  });
+  /* A closing paragraph that restates one figure is common and harmless; three or
+     more in a new entry means a whole paragraph went out unsourced. */
+  if (unlinkedFacts.length) add('unlinked-figures', isNew && unlinkedFacts.length >= 3 ? 'FAIL' : 'WARN', `${plural(unlinkedFacts.length, 'sentence', 'sentences')} with a year, figure or quotation in a paragraph that links no source, so the claim gate never checks them; link each to the page that supports it: ${unlinkedFacts.slice(0, 3).map((s) => `"${plainMd(s).slice(0, 80)}"`).join(' | ')}`);
+  else add('unlinked-figures', 'PASS', 'no year, figure or quotation sits in a paragraph without a source link');
 
   /* Near-duplicates elsewhere in the corpus: cannibalisation early warning. */
   if (opts.dupes !== false) {
@@ -515,9 +638,15 @@ function gateEntry(e, corpus, mode, opts = {}) {
       const h = parseFrontmatter(head).fm;
       if (isNew) add('field-lock', 'WARN', 'this entry is already committed; an edit to it is an optimize pass: use --mode=existing');
       else {
-        const moved = ['pubDate', 'filecode', 'category'].filter((k) => String(h[k] ?? '') !== String(fm[k] ?? ''));
+        /* The one allowed move: a backdated pubDate corrected to the day the
+           file first entered git, which is a correction of fact. */
+        /* Same window as the backdate check: the first-commit day, local or UTC. */
+        const corrected = String(h.pubDate ?? '') !== String(fm.pubDate ?? '') && Boolean(added) &&
+          String(fm.pubDate) <= added.local && String(fm.pubDate) >= added.utc && String(h.pubDate) < String(fm.pubDate);
+        const moved = ['pubDate', 'filecode', 'category'].filter((k) => String(h[k] ?? '') !== String(fm[k] ?? '') && !(k === 'pubDate' && corrected));
+        if (corrected) add('field-lock', 'WARN', `pubDate ${h.pubDate} -> ${fm.pubDate}: a backdated filing corrected to its first-publication date (log it on the corrections page)`);
         if (moved.length) add('field-lock', 'FAIL', `locked field(s) changed since HEAD: ${moved.map((k) => `${k} ${h[k]} -> ${fm[k]}`).join(', ')}`, moved);
-        else add('field-lock', 'PASS', 'slug, pubDate, filecode and category match HEAD');
+        else add('field-lock', 'PASS', corrected ? 'slug, filecode and category match HEAD' : 'slug, pubDate, filecode and category match HEAD');
         if (String(h.featured ?? false) !== String(fm.featured ?? false)) add('field-lock', 'WARN', `featured changed (${h.featured} -> ${fm.featured}): the operator's call`);
         if (String(h.updatedDate ?? '') !== String(fm.updatedDate ?? '')) add('freshness', 'WARN', `updatedDate ${h.updatedDate || '(none)'} -> ${fm.updatedDate || '(none)'}: only when new sourced content ships, never for links, schema, title or de-slop edits`);
       }

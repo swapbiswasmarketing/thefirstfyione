@@ -1,74 +1,82 @@
 ---
 title: "How Long Is a Moment? It Used to Be Exactly 90 Seconds"
-description: "A moment feels like a vague amount of time, but medieval timekeepers gave it an exact length: 90 seconds. Here is who measured it, and how it lost its clock."
+description: "Bede's Reckoning of Time, written in 725, split the hour into 40 moments, each 90 seconds of a modern hour. In Roger Bacon's computus the moment kept its size."
 pubDate: 2026-08-28
+updatedDate: 2026-10-31
 category: "history"
-readingTime: "4 min read"
 filecode: "FYI-010"
-almanac: "Bacon's writings subdivide the moment into 12 ounces of 47 atoms each."
+almanac: "For Bede a minute was a tenth of an hour, six of our minutes."
 featured: false
 faqs:
-  - q: "How long is a moment exactly?"
-    a: "In medieval timekeeping a moment was 90 seconds: one fortieth of a solar hour. Modern English has dropped the number, so today a moment just means a short, unspecified stretch of time."
   - q: "Where does the word moment come from?"
-    a: "From the Latin momentum, meaning movement. The name described the movement of the sun's shadow across a sundial, which covered 40 moments in every solar hour."
-  - q: "Why was a medieval moment 90 seconds?"
-    a: "Because the hour was divided into 40 moments, and a solar hour averaged out to about 60 modern minutes. Medieval hours were one twelfth of the time between sunrise and sunset, so a moment stretched in summer and shrank in winter; 90 seconds is the average."
-  - q: "When did the moment stop being a real unit?"
-    a: "In the late 13th century, when mechanical clocks and base-60 minutes and seconds replaced sundial time. The word survived; the measurement did not."
-  - q: "What is the shortest moment the brain can register?"
-    a: "MIT researchers found people can correctly identify an image shown for just 13 milliseconds, so the perceptual floor of a moment is far shorter than a blink."
+    a: "From the Latin momentum, a movement, built on the verb moveo, to move. Bede said the calculators named the moments from the swiftest motion of the stars."
+  - q: "Was a medieval minute the same as ours?"
+    a: "It depended on who was counting. For Bede a minute was a tenth of an hour, six of our minutes. The sixty-minute hour belonged to the astronomers, and Roger Bacon set it apart from the computists' points, minutes, parts and moments in the 1260s."
+  - q: "What was the smallest unit of time in the Middle Ages?"
+    a: "The atom, the time that cannot be divided. A tract attributed to Alcuin counted 564 atoms to the moment, and Roger Bacon put 22,560 in an hour, about 0.16 seconds each."
 ---
 
-"Just a moment" is one of the few polite phrases in English that used to be a unit of measurement. For centuries, a moment was not a vague sliver of time. It was 90 seconds, and a monk with a sundial could show you exactly where one ended.
+"Just a moment" is one of the few polite phrases in English that used to be a unit of measurement. For centuries a moment was a fixed fraction of the hour, and a monk in Northumbria wrote down which fraction.
 
 ## How long is a moment?
 
-In medieval timekeeping, a moment was **90 seconds**: one fortieth of a solar hour. The earliest known record of the unit comes from the writings of the **Venerable Bede**, an English monk working in the 8th century. Modern usage has dropped the number entirely, which is why "give me a moment" now buys anything from three seconds to half an hour.
+A medieval moment was **one fortieth of an hour**, which comes to **90 seconds** of a modern hour. Bede set out the scale in the third chapter of [The Reckoning of Time](https://la.wikisource.org/wiki/De_ratione_temporum): "Recipit autem hora IV punctos, X minuta, XV partes, XL momenta", an hour receives four points, ten minutes, fifteen parts or forty moments. English kept the word and ignored the number, as Bede says many writers already did, so a request for a moment now promises no particular length at all.
 
-But the real story is how that number was made, and what it was made of.
+## Bede wrote the scale down for Easter arithmetic
 
-## The monk who put a number on it
+The Reckoning of Time is a Latin treatise [written by the Northumbrian monk Bede in 725](https://en.wikipedia.org/wiki/The_Reckoning_of_Time), and its business was computus, the arithmetic of [when Easter should fall](/blog/why-does-easter-change-every-year/). That work needed names for small stretches of time, so its third chapter defines them.
 
-Bede spent much of his life on a problem that sounds simple and is not: figuring out exactly [when Easter should fall](/blog/why-does-easter-change-every-year/). That calculation, called computus, forced medieval scholars to become obsessive about slicing time into ever-smaller named pieces.
+Bede had already given the same scale in his short De temporibus ("[Constat autem hora quatuor punctis, decem minutis, quindecim partibus, XL momentis](https://la.wikisource.org/wiki/De_temporibus_(Beda))"), which Robert Steele, the editor of Roger Bacon's computus, dated to 704 and called ["the earliest formal statement of the medieval system we have"](https://archive.org/details/p6p7operahactenu00baco/page/n323/mode/1up). Its units do not line up with ours. For Bede a minute was [a tenth of an hour](https://la.wikisource.org/wiki/De_temporibus_(Beda)), six of our minutes, and a part was four.
 
-Bede's system carved the hour into a full set of subdivisions: **4 puncta, 10 minuta, 15 partes, or 40 momenta**. The momentum, the moment, was among the finest practical cuts, the smallest span a working timekeeper could actually point to.
+## Bede tied the name to the stars, not the sundial
 
-The name itself gives the method away. *Momentum* is Latin for movement, because what was being measured was literally a movement: the creep of a shadow across the face of a sundial. Forty of those creeps made an hour.
+The Latin noun [momentum means a movement](https://en.wiktionary.org/wiki/momentum#Latin), from the verb moveo, to move. Which movement is another matter. Wikipedia's article describes the unit by a sundial, saying [the movement of a shadow on a sundial covered 40 moments](https://en.wikipedia.org/wiki/Moment_(unit)) in a solar hour.
 
-## A ruler made of sunlight
+Bede gave a different account, and he was candid that the names were a convention. "Non enim hae divisiones temporum naturales, sed videntur esse conductivae", he wrote in [the same chapter](https://la.wikisource.org/wiki/De_ratione_temporum): these divisions are not natural but agreed upon. The calculators took the point from "a parvo puncti transcensu, qui fit in horologio", the small passing of a point on the dial, and the moments from the sky: "Porro momenta a motu siderum celerrimo nuncupantes", they named the moments from the swiftest motion of the stars.
 
-Here is where the medieval moment gets strange to modern eyes. A solar hour was defined as **one twelfth of the time between sunrise and sunset**, and that span changes all year.
+So the shadow on the dial belongs to the point, the quarter-hour. Steele adds that ["points were observed from the movement of the shadow on a dial"](https://archive.org/details/p6p7operahactenu00baco/page/n323/mode/1up), while Bede tied the moment's name to the heavens.
 
-> In midsummer a moment ran long. In midwinter it ran short. Time itself breathed with the seasons, and nobody involved found that strange.
+## The hours stretched with the seasons
 
-A June day in England is roughly twice as long as a December one, so its hours, and therefore its moments, were roughly twice as long too. The 90-second figure is an average across the year, the point around which every moment stretched or shrank. A unit of time that would not hold still is a fair summary of the entire era before clocks.
+The everyday hour was not fixed. Bede defined the hour as the twelfth part of the day, so summer days had to be filled with longer hours and winter days with shorter ones: ["aestivos necesse est dies longioribus, brumales vero brevioribus horis includi"](https://la.wikisource.org/wiki/De_ratione_temporum). He also knew the other option, equal hours, which gave a winter day fewer of them and a summer day more.
 
-## Smaller than a moment
+Roger Bacon, whose computus Steele dates to [1263 to 1265](https://archive.org/details/p6p7operahactenu00baco/page/n31/mode/1up), worked an example. The day of the winter solstice was [given eight equal hours](https://archive.org/details/p6p7operahactenu00baco/page/n80/mode/1up), so each of its twelve seasonal hours held 10 parts instead of 15. That is a 40-minute hour, while the long night that followed ran on 80-minute hours of 20 parts each.
 
-Five centuries after Bede, scholars including **Roger Bacon** were still using his system, and had pushed it further down. Bacon's writings subdivide the moment into **12 ounces of 47 atoms each**. Yes, ounces of time, and an "atom" in the original Greek sense: the piece that cannot be cut again.
+The parts kept their size and only their number changed, because the hour Bacon's computists divided into points, minutes, parts and moments was [the twenty-fourth part of a natural day](https://archive.org/details/p6p7operahactenu00baco/page/n121/mode/1up).
 
-| Unit | Per hour | Roughly |
+> On Bacon's winter-solstice day a seasonal hour held only 10 parts, but the parts and the moments kept their size: in his computus the moment stayed a fortieth of the equal hour, 90 seconds winter and summer.
+
+## The numbered ounces and atoms came later
+
+Steele wrote that "the use of the word atom as the smallest conceivable part of time was known to Isidore and others", but that ["no definite numerical relation was ever expressed before the tract"](https://archive.org/details/p6p7operahactenu00baco/page/n324/mode/1up) on the moon's course "attributed to Alcuin, but perhaps later", which counted **564 atoms to the moment**. He found Rabanus Maurus using ostents and atoms [in 820](https://archive.org/details/p6p7operahactenu00baco/page/n324/mode/1up), at 376 atoms to the ostent.
+
+Bacon's computus uses the same atom: the hour holds 60 ostents of 376 atoms each, [22,560 atoms in all](https://archive.org/details/p6p7operahactenu00baco/page/n121/mode/1up), or about 0.16 seconds apiece, and no ounce appears among his units. Wikipedia's article says that by Bacon's time the moment was [further subdivided into 12 ounces of 47 atoms](https://en.wikipedia.org/wiki/Moment_(unit)) each. That scheme appears in the rhyming Massa Compoti of Alexander de Villa Dei, [dated by Steele to 1200](https://archive.org/details/p6p7operahactenu00baco/page/n25/mode/1up) and printed in the same volume, which calls the ounce [the twelfth part of a moment](https://archive.org/details/p6p7operahactenu00baco/page/n316/mode/1up) and gives it twice twenty atoms and seven.
+
+The table combines Bede's scale down to the moment, Alexander's ounce and the atom of Rabanus and Bacon, though Bacon himself counted [five points to the hour](https://archive.org/details/p6p7operahactenu00baco/page/n81/mode/1up), not four.
+
+| Unit | Per hour | Of a 60-minute hour |
 |---|---|---|
-| Punctum | 4 | 15 minutes |
-| Minutum | 10 | 6 minutes |
-| Pars | 15 | 4 minutes |
-| Momentum | 40 | 90 seconds |
-| Uncia | 480 | 7.5 seconds |
-| Atomus | 22,560 | 0.16 seconds |
+| Punctum (point) | 4 | 15 minutes |
+| Minutum (minute) | 10 | 6 minutes |
+| Pars (part) | 15 | 4 minutes |
+| Momentum (moment) | 40 | 90 seconds |
+| Uncia (ounce) | 480 | 7.5 seconds |
+| Atomus (atom) | 22,560 | about 0.16 seconds |
 
-One honest caveat: these were scholars' units, built for calendar math and astronomy. No baker ever promised bread in two momenta. The moment lived in manuscripts, not marketplaces, which is partly why it slipped away unnoticed. Words can live entirely on the page like that, which is how English ended up with [a collective noun for ravens, set in type in 1486 to fill blank pages](/blog/what-is-a-group-of-ravens-called/).
+Of the astrologers' even finer scale that Bede reports, Steele wrote that ["no such divisions could ever have been used in observation"](https://archive.org/details/p6p7operahactenu00baco/page/n324/mode/1up). In practice the moment was the smallest division, and Steele found that fortieth of an hour [preserved in medieval law](https://archive.org/details/p6p7operahactenu00baco/page/n323/mode/1up): in Bracton's treatise, taken from Accursius.
 
-## The clock that killed it
+## The 60-minute hour is older than the clock
 
-In the late 13th century, the mechanical clock arrived in Europe, and with it a different idea: hours of **equal length**, all year round, divided on a base-60 system into the minutes and seconds we still use. A gear train does not care when the sun rises.
+The 60-minute hour was already in Bacon's book, in another trade's hands. He wrote that astronomers split the equal hour [into 60 parts called minutes](https://archive.org/details/p6p7operahactenu00baco/page/n81/mode/1up), while computists used points, minutes, parts and moments. Steele described that sexagesimal division, in the thirteenth century, as ["an introduction from Arabic astronomy"](https://archive.org/details/p6p7operahactenu00baco/page/n323/mode/1up).
 
-Against that, a seasonal, sundial-based unit had no future. The moment lost the standards war and was demoted from measurement to figure of speech - though standards can also outlast their reason entirely, the way [the ridges on modern coins](/blog/why-coins-have-ridges/) still guard silver that left in 1965. It is the opposite fate of [the QWERTY keyboard](/blog/why-the-keyboard-is-qwerty/), which outlived the machine it was built around; the moment's machine outlived it. The word itself carried on regardless, the way [we still say "bless you"](/blog/why-we-say-bless-you/) centuries after anyone remembered why.
+The mechanical clock arrived [in about the year 1300](https://www.medievalists.net/2025/11/medieval-time-candles-sundials-clocks-and-stars/), and NIST says large ones appeared [in the towers of several large Italian cities](https://www.nist.gov/pml/time-and-frequency-division/popular-links/walk-through-time/walk-through-time-revolution) in the first half of the 14th century. Their verge-and-foliot escapements had a rate that was, in NIST's words, ["difficult to regulate"](https://www.nist.gov/pml/time-and-frequency-division/popular-links/walk-through-time/walk-through-time-revolution). Christiaan Huygens's pendulum clock of 1656 erred by less than a minute a day, which NIST calls ["the first time such accuracy had been achieved"](https://www.nist.gov/pml/time-and-frequency-division/popular-links/walk-through-time/walk-through-time-revolution).
 
-## How long is a moment now?
+Only after that did the minute hand become standard. Willis Milham, an astronomy professor at Williams College, wrote in 1923 that between 1680 and 1690 ["the minute hand which had formerly been the exception now became the rule"](https://archive.org/details/timetimekeepersi00milhuoft/page/n173/mode/1up), and that the second hand came "a little later, when the accuracy warranted".
 
-Officially, no length at all. But if the old moment had a surveyor's answer, the modern one has a neuroscientist's. Researchers at MIT found that people can correctly identify an image they saw for just **13 milliseconds**, far faster than the roughly 100 milliseconds scientists had previously assumed the brain needed. The perceptual floor of "a moment" is thinner than a single frame of film, and [your brain runs at that speed all day](/blog/why-your-brain-sees-faces/) without telling you.
+Equal hours spread slowly too. The scholar Ken Mondschein writes that the seasonal hours continued for centuries, and that tower clocks used faces with [eccentric gearing](https://www.medievalists.net/2025/11/medieval-time-candles-sundials-clocks-and-stars/) to show them alongside the equal hours.
 
-So the word now spans everything from 13 thousandths of a second to "whenever the customer service agent returns." Bede would not approve.
+## The loose moment is as old as the exact one
 
-The next time someone asks for just a moment, you are technically owed 90 seconds, give or take a season, on the authority of an 8th-century monk and his sundial. Whether they honor the full fortieth of an hour is between them and Bede. Strictly FYI.
+Bede ends the chapter on the atom, "atomum Graece, hoc est, indivisibile sive insectibile", and quotes Paul's "in atomo, in ictu oculi" from [the same text](https://la.wikisource.org/wiki/De_ratione_temporum). The King James Bible renders that line as ["In a moment, in the twinkling of an eye"](https://en.wikisource.org/wiki/Bible_(King_James)/1_Corinthians). Then, in the chapter that fixes the moment at a fortieth of an hour, Bede notes that very many writers ignore the distinction and call the briefest span, the time it takes an eyelid to move, "nunc momentum, nunc punctum, nunc atomum", now a moment, now a point, now an atom.
+
+So the next time someone asks for just a moment, you are owed 90 seconds, by the reckoning of a Northumbrian monk who already knew that many writers used the word loosely. Strictly FYI.

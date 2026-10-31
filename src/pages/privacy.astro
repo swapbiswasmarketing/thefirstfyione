@@ -19,18 +19,21 @@ import { pageCard } from "../lib/og";
    so the page cannot describe a tag the site does not run, or miss one it does,
    as long as every new tag in the GTM container also gets a line here
    (see CONSENT.md). */
-const lastUpdated = "October 17, 2026";
+const lastUpdated = "October 31, 2026";
 
 const url = `${SITE_URL}/privacy/`;
+/* The advertising disclosure follows adsenseLive, not adsServing: a site that is
+   enrolled in AdSense says how ads and their cookies will work before the first
+   ad runs, and says plainly whether any ad code runs yet. */
 const tools = [
-  `Google Analytics${clarityEnabled ? " and Microsoft Clarity" : ""} via Tag Manager`,
-  ...(adsenseLive && adsServing ? ["Google AdSense ads"] : []),
+  `Google Analytics${clarityEnabled ? " and Microsoft Clarity" : ""}`,
+  ...(adsenseLive ? [adsServing ? "Google AdSense" : "AdSense once ads run"] : []),
   "Vercel logs",
 ];
-const description = `What Strictly FYI collects: ${tools.join(", ")}, and what changes in the EEA, UK and Switzerland.`;
+const description = `What Strictly FYI collects: ${tools.join(", ")}, and what changes in the EEA, the UK and Switzerland.`;
 const mail = `mailto:${contactEmail}`;
-const tags = adsenseLive && adsServing ? "analytics and advertising tags" : "analytics tags";
 const adsOn = adsenseLive && adsServing;
+const tags = adsOn ? "analytics and advertising tags" : "analytics tags";
 ---
 
 <Layout
@@ -46,7 +49,7 @@ const adsOn = adsenseLive && adsServing;
       <p class="pv-kicker">The fine print &middot; Last updated {lastUpdated}</p>
       <h1 class="pv-title">Privacy</h1>
       <p class="pv-dek">
-        Strictly FYI is a reading site. It has no accounts and no comments{adsOn ? "" : " and no ads"}, and it
+        Strictly FYI is a reading site. It has no accounts and no comments{adsenseLive ? "" : " and no ads"}, and it
         sets no cookies of its own. What is collected comes from the hosting logs and the {tags} described
         below{contactLive ? ", and from any email you send" : ""}.
       </p>
@@ -107,15 +110,27 @@ const adsOn = adsenseLive && adsServing;
         )}
       </section>
 
-      {adsOn && (
+      {adsenseLive && (
         <section>
           <h2>Advertising</h2>
           <p>
-            Ads on this site are served by Google AdSense. Google and its partners use cookies to show ads, including
-            ads based on your earlier visits to this and other websites, and to measure them. You can turn off
-            personalised ads in Google's <a href="https://myadcenter.google.com/">My Ad Center</a>, and opt out of
-            other companies' interest-based ads at <a href="https://www.aboutads.info/choices/">aboutads.info</a>.
-            How Google uses this data is set out in
+            {adsOn
+              ? "Ads on this site are served by Google AdSense."
+              : "Strictly FYI has applied to show ads served by Google AdSense. No ads are shown yet; once they are, the following applies."}{" "}
+            Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this website
+            or to other websites. Google's use of advertising cookies enables it and its partners to serve ads to you
+            based on your visits to this site and other sites on the internet. Google and other ad vendors may place
+            and read cookies in your browser, or use web beacons and your IP address, to collect information when ads
+            are served.
+          </p>
+          <p>
+            You can opt out of personalised advertising in Google's
+            <a href="https://www.google.com/settings/ads">Ads Settings</a>, also reachable through
+            <a href="https://myadcenter.google.com/">My Ad Center</a>. Ads may also come from third-party vendors and
+            ad networks that Google certifies, which Google lists under
+            <a href="https://support.google.com/adsense/answer/94149">vendors certified for third-party ads</a>; you can
+            opt out of many vendors' use of cookies for personalised advertising at
+            <a href="https://www.aboutads.info/choices/">aboutads.info</a>. How Google uses this data is set out in
             <a href="https://policies.google.com/technologies/ads">How Google uses cookies in advertising</a>. No ads
             run on the search, error or privacy pages.
           </p>

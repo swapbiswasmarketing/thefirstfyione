@@ -40,7 +40,6 @@ export type CardSpec = FrameSpec | FrontSpec;
 /* The archive as the cards print it. Built once per build in src/lib/og.ts. */
 export interface Summary {
   vol: string;
-  no: number;
   latest: string;
   onFile: number;
   counts: Record<string, number>;
@@ -66,6 +65,10 @@ export const PAGE_KEYS: string[] = [
   "search",
   "privacy",
   "notfound",
+  "standards",
+  "contact",
+  "terms",
+  "corrections",
   ...cats.map((c) => `topic-${c.key}`),
 ];
 
@@ -106,10 +109,18 @@ export function pageSpec(key: string, s: Summary): CardSpec {
       return frame("Privacy notice", "What is collected, and why.", "", 104);
     case "notfound":
       return frame(`Error 404 ${DOT} Not on file`, "This one is not in the archive.", "", 96);
+    case "standards":
+      return frame("Editorial standards", "How every entry is checked.", "Sources, fact-checks, AI and corrections", 96);
+    case "contact":
+      return frame("Contact", "Write to Strictly FYI.", "Corrections, questions and privacy requests", 104);
+    case "terms":
+      return frame("The fine print", "Terms of use.", "", 112);
+    case "corrections":
+      return frame("Corrections", "What we got wrong, and fixed.", "", 96);
     default:
       return {
         kind: "front",
-        dateline: [`Vol. ${s.vol} ${DOT} No. ${s.no}`, `Last filed ${s.latest}`, onFile].map((p) => p.toUpperCase()),
+        dateline: [`Vol. ${s.vol}`, `Last filed ${s.latest}`, onFile].map((p) => p.toUpperCase()),
         tagline: TAGLINE,
       };
   }

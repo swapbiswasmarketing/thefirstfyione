@@ -8,8 +8,6 @@ import {
   deptHref,
   fmtDay,
   fmtDate,
-  contactEmail,
-  contactLive,
   newsletterLive,
   adsenseClient,
   adsenseLive,
@@ -66,6 +64,12 @@ const {
   ads = true,
 } = Astro.props;
 const adsOn = adsenseLive && adsServing && ads;
+/* AdSense serves ads to readers in the EEA, the UK and Switzerland only through a
+   Google-certified consent message; turning ads on without it would break both
+   the policy and the privacy page. Publish the message in AdSense first. */
+if (adsenseLive && adsServing && !consentMessage) {
+  throw new Error("src/data/site.ts: adsServing = true needs consentMessage = true (publish Google's European regulations message in AdSense > Privacy & messaging first)");
+}
 
 const site = new URL(SITE_URL);
 const path = Astro.url.pathname;
@@ -244,17 +248,14 @@ const speculationRules = JSON.stringify({
         <div class="colophon-top">
           <p class="imprint">
             <span class="imprint-name">Strictly FYI</span> is set in Playfair Display, Newsreader &amp; Space Mono.
-            Composed in Astro. Printed on the web since MMXXVI: edition No. {ed.no}, {ed.onFile} entries on file.
+            Composed in Astro. Printed on the web since MMXXVI.
             <br />Interesting things, strictly for your information.
           </p>
           <nav class="colophon-nav" aria-label="Footer">
             <a href="/blog/">Read</a> &middot; <a href="/topics/">Topics</a> &middot; <a href="/search/">Search</a> &middot;
-            <a href="/about/">About</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/rss.xml">RSS</a>
-            {contactLive && (
-              <>
-                {" "}&middot; <a href={`mailto:${contactEmail}`}>Contact</a>
-              </>
-            )}
+            <a href="/about/">About</a> &middot; <a href="/how-we-work/">How we work</a> &middot;
+            <a href="/corrections/">Corrections</a> &middot; <a href="/contact/">Contact</a> &middot;
+            <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/rss.xml">RSS</a>
             {consentMessage && (
               <span data-consent-ui hidden>
                 {" "}&middot; <button type="button" class="consent-link">Privacy and cookie settings</button>
@@ -382,8 +383,10 @@ const speculationRules = JSON.stringify({
         .colophon-nav a:hover, .depts a:hover { background: var(--hl); color: var(--ink); }
       }
       @media (max-width: 720px) {
-        .colophon { --cv-size: 20.5rem; /* measured 328px at 390 */ }
+        .colophon { --cv-size: 22.5rem; /* about 360px at 390 with the taller nav rows */ }
         .colophon-feet { flex-direction: column; align-items: flex-start; gap: 0.45rem; }
+        /* Ten links wrap onto several rows on a phone: 2.6 keeps rows 24px apart (WCAG 2.5.8), as .depts does. */
+        .colophon-nav { line-height: 2.6; }
       }
     </style>
 

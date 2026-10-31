@@ -119,6 +119,9 @@ const xShare = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUr
 const fbShare = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
 const liShare = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
 const correctionHref = `mailto:${contactEmail}?subject=${encodeURIComponent(`Correction: ${filecode} ${title}`)}`;
+/* The disclosure line under every entry says how it was made. It claims a
+   check against linked sources only when the entry links any. */
+const hasSources = /\]\(https?:\/\/(?!(?:www\.)?strictly\.fyi)/i.test(post.body ?? "");
 const deptLink = deptTotal > 1 ? `See all ${deptTotal} ${section} entries` : `See the ${section} department`;
 
 /* A neighbour that already made See also is listed once, up there. */
@@ -172,7 +175,7 @@ const newerLink = newer && !seen.has(newer.id) ? newer : undefined;
       <p class="entry-dek">{description}</p>
 
       <div class="byline" data-pagefind-ignore>
-        <span class="byline-by">By <span class="byline-name">Strictly FYI</span></span>
+        <span class="byline-by">By <a class="byline-name" href="/about/#who">Strictly FYI</a></span>
         <span class="leader" aria-hidden="true"></span>
         <time datetime={published}>{fmtLong(pub)}</time>
         {revised && upd && (
@@ -203,7 +206,7 @@ const newerLink = newer && !seen.has(newer.id) ? newer : undefined;
 
         {faqs.length > 0 ? (
           <section class="faq" aria-labelledby="entry-faq-head">
-            <h2 class="faq-head" id="entry-faq-head" data-pagefind-ignore>Queries on file</h2>
+            <h2 class="faq-head" id="entry-faq-head" data-pagefind-ignore>Questions readers ask</h2>
             {faqs.map((f, i) => (
               <details class="faq-item" id={`q-${i + 1}`}>
                 <summary>{f.q}</summary>
@@ -213,11 +216,19 @@ const newerLink = newer && !seen.has(newer.id) ? newer : undefined;
           </section>
         ) : null}
 
-        {contactLive && (
-          <p class="corrections" data-pagefind-ignore>
-            Spotted an error? <a href={correctionHref}>Write to the corrections desk</a>.
+        <div class="corrections" data-pagefind-ignore>
+          <p>
+            {hasSources
+              ? "Drafted with AI assistance, then checked against the sources linked above."
+              : "Drafted with AI assistance. This early entry predates our sourcing standard and is being rebuilt to it."}{" "}
+            <a href="/how-we-work/">How we work</a> explains the process.
           </p>
-        )}
+          <p>
+            Spotted an error?{" "}
+            {contactLive ? <a href={correctionHref}>Write to us</a> : <a href="/contact/">Tell us</a>}. Fixes are
+            listed in the <a href="/corrections/">corrections log</a>.
+          </p>
+        </div>
 
         <div class="share" role="group" aria-labelledby="entry-share-label" data-pagefind-ignore>
           <span class="share-label" id="entry-share-label">Pass it on</span>
@@ -381,7 +392,7 @@ const newerLink = newer && !seen.has(newer.id) ? newer : undefined;
     color: var(--ink-faint); margin-top: 1.6rem;
     padding: 0.7rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule);
   }
-  .byline-name { color: var(--ink); }
+  .byline-name { color: var(--ink); text-decoration: none; transition: background var(--t-hover) var(--ease-out); }
   .byline-upd { background: var(--hl); color: var(--ink); padding: 0.1rem 0.35rem; }
   .leader { flex: 1; min-width: 1.5rem; border-bottom: 1px dotted var(--rule-mid); transform: translateY(-0.25em); }
 
@@ -601,6 +612,7 @@ const newerLink = newer && !seen.has(newer.id) ? newer : undefined;
     font-family: var(--serif); font-style: italic; font-size: 1.02rem; line-height: 1.5;
     color: var(--ink-soft); margin-top: 1.6rem;
   }
+  .corrections p + p { margin-top: 0.35rem; }
   .corrections a {
     color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px;
     text-underline-offset: 0.16em; text-decoration-color: var(--rule-mid);
@@ -742,6 +754,7 @@ const newerLink = newer && !seen.has(newer.id) ? newer : undefined;
     .prose :global(a):hover { background: var(--hl); text-decoration-color: var(--ink); }
     .prose :global(.sec-link):hover { background: var(--hl); color: var(--ink); }
     .corrections a:hover { background: var(--hl); text-decoration-color: var(--ink); }
+    .byline-name:hover { background: var(--hl); }
     .share-btn:hover { background: var(--hl); color: var(--ink); }
     .faq-item summary:hover { color: #000; }
     .keep-row:hover, .dn:hover { background: color-mix(in srgb, var(--hl) 14%, transparent); }

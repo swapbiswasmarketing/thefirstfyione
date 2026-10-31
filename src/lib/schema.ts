@@ -2,7 +2,7 @@
    with a stable @id, and every page emits a single @graph that points at it by
    reference instead of repeating it. Strictly FYI has no personal byline, so
    there is no Person anywhere, by design. */
-import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, cats } from "../data/site";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, cats, contactEmail, contactLive } from "../data/site";
 import type { Entry } from "./entries";
 
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -29,7 +29,16 @@ export const organization: Node = {
   },
   image: { "@id": LOGO_ID },
   foundingDate: "2026",
-  publishingPrinciples: `${SITE_URL}/about/#house-rules`,
+  /* The standards page says who answers for the entries, how AI is used and how
+     claims are checked; the corrections section and the contact page are the
+     policies a reader can act on. */
+  publishingPrinciples: `${SITE_URL}/how-we-work/`,
+  ethicsPolicy: `${SITE_URL}/how-we-work/#independence`,
+  correctionsPolicy: `${SITE_URL}/how-we-work/#corrections`,
+  actionableFeedbackPolicy: `${SITE_URL}/contact/`,
+  ...(contactLive
+    ? { contactPoint: { "@type": "ContactPoint", contactType: "editorial", email: contactEmail, url: `${SITE_URL}/contact/` } }
+    : {}),
 };
 
 export const website: Node = {

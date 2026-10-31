@@ -17,8 +17,19 @@ export const byFiled = (a: Entry, b: Entry) =>
   fileNo(b) - fileNo(a) ||
   (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 
+/* Scheduled publishing. An entry dated after the build is a draft waiting for
+   its day: it is left out of every page, feed, card, sitemap and search index
+   until a build runs on or after that date (.github/workflows/daily-publish.yml
+   rebuilds production on each day an entry is due). pubDate is UTC midnight, so
+   an entry dated today is published by any build today, and its pubDate is the
+   true day it went live. */
+/* Set once by astro.config.mjs for the whole build; the fallback covers tools
+   that load this module without the config. */
+const BUILD_TIME = Number(process.env.STRICTLY_BUILD_TIME) || Date.now();
+export const isPublished = (p: Entry) => p.data.pubDate.valueOf() <= BUILD_TIME;
+
 export async function getEntries(): Promise<Entry[]> {
-  return (await getCollection("blog")).sort(byFiled);
+  return (await getCollection("blog")).filter(isPublished).sort(byFiled);
 }
 
 export const entryHref = (p: Entry) => `/blog/${p.id}/`;
@@ -66,14 +77,6 @@ export function openingParagraph(p: Entry): string {
   return block ? stripMd(block) : "";
 }
 
-/* Almost every title is a question. The interrogative is its natural index. */
-export const ASK_WORDS = ["why", "what", "how", "where", "when"] as const;
-export type AskWord = (typeof ASK_WORDS)[number] | "other";
-export function askWord(title: string): AskWord {
-  const w = title.trim().split(/\s+/)[0]?.toLowerCase() ?? "";
-  return (ASK_WORDS as readonly string[]).includes(w) ? (w as AskWord) : "other";
-}
-
 export function deptCounts(entries: Entry[]): Record<string, number> {
   const counts: Record<string, number> = {};
   for (const p of entries) counts[p.data.category] = (counts[p.data.category] ?? 0) + 1;
@@ -90,21 +93,19 @@ export function toRoman(n: number): string {
   return out || "I";
 }
 
-/* The edition is derived from the archive itself, never typed: each distinct
-   filing date is one number, and the volume counts calendar years since the
-   first entry. Pass entries in filed order. */
+/* The volume and the latest filing date, derived from the archive itself, never
+   typed: the volume counts calendar years since the first entry. Pass entries in
+   filed order. (The edition number and per-edition counts are gone: printed on
+   the front page, they advertised batch publishing.) */
 export function edition(entries: Entry[]) {
   const days = [...new Set(entries.map((p) => p.data.pubDate.valueOf()))].sort((a, b) => a - b);
   const latestDay = days[days.length - 1] ?? 0;
   const latest = new Date(latestDay);
   const first = new Date(days[0] ?? 0);
   return {
-    no: days.length,
     vol: toRoman(latest.getUTCFullYear() - first.getUTCFullYear() + 1),
     latest,
-    inEdition: entries.filter((p) => p.data.pubDate.valueOf() === latestDay).length,
     onFile: entries.length,
-    questions: entries.reduce((n, p) => n + (p.data.faqs?.length ?? 0), 0),
   };
 }
 
@@ -116,13 +117,6 @@ const LINK_RE = /\]\(\/blog\/([a-z0-9-]+)\/?(?:#[^)\s]*)?\)/g;
 
 export function outLinks(p: Entry): Set<string> {
   return new Set([...(p.body ?? "").matchAll(LINK_RE)].map((m) => m[1]).filter((id) => id !== p.id));
-}
-
-export function inboundCounts(entries: Entry[]): Map<string, number> {
-  const ids = new Set(entries.map((p) => p.id));
-  const counts = new Map<string, number>(entries.map((p) => [p.id, 0]));
-  for (const p of entries) for (const t of outLinks(p)) if (ids.has(t)) counts.set(t, (counts.get(t) ?? 0) + 1);
-  return counts;
 }
 
 /* Function words plus the generic title words this corpus repeats everywhere. */
@@ -146,13 +140,17 @@ export interface Related {
   reason: "cites-this" | "linked" | "co-cited" | "dept" | "terms" | "filed";
 }
 
-/* Scores every pair once and returns the n best next reads for each entry.
-   Weights: same department +3; the candidate links to this entry +4; this
-   entry links to the candidate +2; +1.5 per entry both of them cite; +1 per
-   entry that cites both; plus the summed rarity (idf) of shared title, dek
-   and slug terms. Ties fall back to filed order. If every pick shares the
-   department and a linked cross-department candidate exists, it takes the
-   last slot. O(n^2): call it once per build, from getStaticPaths. */
+/* Scores every pair once and returns up to n next reads for each entry.
+   A candidate qualifies only on a topical signal: a link either way, a shared
+   citation, a core slug word in common, or two title words in common. Same
+   department alone never qualifies. Weights: same department +3; the candidate
+   links to this entry +4; this entry links to the candidate +2; +1.5 per entry
+   both of them cite; +1 per entry that cites both; +2 per shared slug word and
+   +1 per shared title word; plus the summed rarity (idf) of shared title, dek
+   and slug terms. Ties fall back to filed order. An entry with no qualifying
+   candidate gets no See also block. If every pick shares the department and a
+   cross-department candidate scores 4 or more, it takes the last slot.
+   O(n^2): call it once per build, from getStaticPaths. */
 export function buildRelated(entries: Entry[], n = 3): Map<string, Related[]> {
   const N = entries.length;
   const out = new Map(entries.map((p) => [p.id, outLinks(p)]));
@@ -164,13 +162,43 @@ export function buildRelated(entries: Entry[], n = 3): Map<string, Related[]> {
       const words = `${p.data.title} ${p.data.description} ${p.id.replace(/-/g, " ")}`
         .split(/\s+/)
         .map(norm)
-        .filter((w) => w.length >= 4 && !STOP.has(w));
+        /* Bare numbers are left out: two entries that both mention 1996 are not
+           about the same thing. */
+        .filter((w) => w.length >= 4 && !STOP.has(w) && !/^\d+$/.test(w));
       return [p.id, new Set(words)];
     })
   );
   const df = new Map<string, number>();
   for (const set of terms.values()) for (const t of set) df.set(t, (df.get(t) ?? 0) + 1);
   const dfCap = Math.max(6, Math.round(N * 0.05));
+  /* Relatedness is decided on topic words; the full term score above only ranks
+     the candidates that pass. The slug holds the question's core words ("cats",
+     "reproduce", "brain"), so one shared slug word is a strong signal; title
+     words are looser ("queen" can appear in two unrelated titles), so they need
+     two in common. Descriptions add filler ("around", "often") and are left out.
+     The question forms titles share ("When was X invented?", "Why is it called
+     X?") name a genre, not a topic, and three-letter words count, since "cat",
+     "bee" and "eel" are topics. */
+  const FORM = new Set(["invented", "called", "mean", "come", "stand", "made", "work", "name", "really", "actually", "happen", "exactly", "first", "need", "happened"]);
+  const topicWords = (s: string) =>
+    new Set(s.split(/\s+/).map(norm).filter((w) => w.length >= 3 && !STOP.has(w) && !FORM.has(w) && !/^\d+$/.test(w)));
+  const slugTerms = new Map(entries.map((p) => [p.id, topicWords(p.id.replace(/-/g, " "))]));
+  const titleTerms = new Map(entries.map((p) => [p.id, topicWords(p.data.title)]));
+  /* Counted over titles and slugs only, with a looser cap, so a real cluster
+     such as the five cat entries still links up. */
+  const topicDf = new Map<string, number>();
+  for (const p of entries) {
+    for (const t of new Set([...slugTerms.get(p.id)!, ...titleTerms.get(p.id)!])) topicDf.set(t, (topicDf.get(t) ?? 0) + 1);
+  }
+  const topicCap = Math.max(8, Math.round(N * 0.1));
+  const sharedIn = (a: Set<string>, b: Set<string>) => {
+    let n = 0;
+    for (const t of a) {
+      const d = topicDf.get(t) ?? 0;
+      if (d >= 2 && d <= topicCap && b.has(t)) n++;
+    }
+    return n;
+  };
 
   const order = new Map(entries.slice().sort(byFiled).map((p, i) => [p.id, i]));
   const result = new Map<string, Related[]>();
@@ -200,6 +228,15 @@ export function buildRelated(entries: Entry[], n = 3): Map<string, Related[]> {
         if (d >= 2 && d <= dfCap && terms.get(b.id)!.has(t)) ts += Math.log(N / d);
       }
       if (ts) { s += ts; parts.push(["terms", ts]); }
+      const sharedSlug = sharedIn(slugTerms.get(a.id)!, slugTerms.get(b.id)!);
+      const sharedTitle = sharedIn(titleTerms.get(a.id)!, titleTerms.get(b.id)!);
+      if (sharedSlug || sharedTitle) { s += 2 * sharedSlug + sharedTitle; parts.push(["terms", 2 * sharedSlug + sharedTitle + ts]); }
+      /* Sharing a department is not enough on its own: a pick needs a real
+         topical signal (a link between the two entries, a core slug word in
+         common, or two title words in common) plus a minimum score. A page then
+         shows fewer picks, or none, rather than filler that reads as random. */
+      const topical = sharedSlug > 0 || sharedTitle >= 2 || cc > 0 || cb > 0 || bOut.has(a.id) || aOut.has(b.id);
+      if (!topical || s < 3.5) continue;
       const reason = parts.length ? parts.sort((x, y) => y[1] - x[1])[0][0] : "filed";
       scored.push({ entry: b, score: s, reason });
     }

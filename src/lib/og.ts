@@ -20,7 +20,19 @@ export interface Card {
   type: string; /* MIME type, e.g. image/png */
 }
 
-export type PageCardKey = "home" | "archive" | "about" | "topics" | "search" | "privacy" | "notfound" | `topic-${string}`;
+export type PageCardKey =
+  | "home"
+  | "archive"
+  | "about"
+  | "topics"
+  | "search"
+  | "privacy"
+  | "notfound"
+  | "standards"
+  | "contact"
+  | "terms"
+  | "corrections"
+  | `topic-${string}`;
 
 const FILE = { width: 1200, height: 630, type: "image/png" };
 
@@ -31,7 +43,6 @@ const all = await getEntries();
 const ed = edition(all);
 const summary: Summary = {
   vol: ed.vol,
-  no: ed.no,
   latest: fmtDate(ed.latest),
   onFile: ed.onFile,
   counts: deptCounts(all),

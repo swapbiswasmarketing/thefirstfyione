@@ -15,7 +15,7 @@
  *   flags: --floor=N (inbound floor, default 2)  --suggest (host suggestions for every entry at the floor)
  *          --quiet (totals only)  --json
  *
- * Exit codes: 0 = no orphan, broken link or self-link | 1 = at least one | 2 = tooling error.
+ * Exit codes: 0 = no broken link or self-link (orphans are reported) | 1 = at least one | 2 = tooling error.
  * Last line: "LINK AUDIT: PASS" or "LINK AUDIT: FAIL" (also FAIL on exit 2).
  * With --json the output is one JSON document whose result field is the verdict.
  */
@@ -160,7 +160,11 @@ function suggest(slug, n = 5) {
 }
 
 /* ---------------------------------------------------------------- output */
-const fail = orphans.length || broken.length || selfs.length;
+/* An entry with no body links pointing at it is still linked from See also,
+   its department page and the archive, so an orphan is reported, never a
+   failure: the fix is never a sentence bolted onto another entry to carry a
+   link. Broken links and self-links still fail. */
+const fail = broken.length || selfs.length;
 const pct = (a, b) => (b ? `${((a / b) * 100).toFixed(1)}%` : '0%');
 const flagsOf = (x) => [
   x.in.size === 0 ? 'ORPHAN' : x.in.size < FLOOR ? 'BELOW-FLOOR' : '',

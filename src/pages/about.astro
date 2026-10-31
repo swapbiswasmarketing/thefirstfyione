@@ -14,7 +14,7 @@ const principles = [
   {
     n: "02",
     t: "Actually true",
-    d: "We chase the real explanation, not the fun-sounding myth. If something is disputed or simplified, we say so in the entry.",
+    d: "We chase the real explanation, not the fun-sounding myth, and we link the sources behind what we say so you can check them. If something is disputed or simplified, we say so in the entry.",
   },
   {
     n: "03",
@@ -86,16 +86,37 @@ const correctionHref = `mailto:${contactEmail}?subject=${encodeURIComponent("Cor
           or stretched into an endless article to sell you something at the bottom.
         </p>
         <p>
-          <strong>Strictly FYI is the antidote.</strong> We pick things that are provably
-          fascinating: the chemistry that makes honey immortal, the disaster that rounded every
-          airplane window, the reason your brain sees faces in electrical outlets. We tell you the
-          real story, plainly, and then we get out of your way.
+          <strong>Strictly FYI is the antidote.</strong> We pick questions whose real answer beats the
+          one you usually hear: why <a href="/blog/what-does-sos-stand-for/">SOS never stood for
+          anything</a>, why <a href="/blog/what-is-the-longest-word-in-the-world/">the longest word in
+          the world depends on who is counting</a>, and how <a href="/blog/where-does-santa-live/">a
+          magazine page from 1866 put Santa's home at the North Pole</a>. We tell you the real story,
+          plainly, with the sources linked, and then we get out of your way.
         </p>
         <blockquote>The name says it all: interesting things, strictly for your information.</blockquote>
         <p>
           No hot takes, no outrage, no algorithm bait. Just the small, sturdy pleasure of learning
           something true and thinking, <em>huh, I'm glad I know that now.</em>
         </p>
+      </div>
+    </section>
+
+    <section class="corr" id="who" aria-labelledby="who-head">
+      <h2 class="rules-head" id="who-head">Who makes it &middot; And how</h2>
+      <div class="corr-body">
+        <p class="corr-lede">An independent publication, drafted with AI and checked against its sources.</p>
+        <div class="corr-col">
+          <p>
+            Strictly FYI is an independent publication. Entries carry its name rather than a personal byline,
+            and the publication answers for every one of them. It takes no sponsorship and runs no affiliate links.
+          </p>
+          <p>
+            Entries are researched and drafted with AI tools, then checked against the pages they cite, by a
+            fact-checking pass and by a script that tests quotations and figures against those pages. A person sets
+            the rules, decides what is published, and handles corrections. <a href="/how-we-work/">How we work</a>
+            describes each step and when each check began.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -120,13 +141,14 @@ const correctionHref = `mailto:${contactEmail}?subject=${encodeURIComponent("Cor
         <p class="corr-lede">Errors are fixed in the entry itself, and the entry is marked Updated.</p>
         <div class="corr-col">
           <p>
-            When an entry gets something wrong, the text is corrected where the error was, and the
-            dateline under the headline shows the date of the fix.
+            When an entry gets a fact wrong, the text is corrected where the error was, the dateline
+            under the headline shows the date of the fix, and the change is listed in the
+            <a href="/corrections/">corrections log</a>.
           </p>
           {contactLive && (
             <p>
-              To report one, write to the corrections desk at <a href={correctionHref}>{contactEmail}</a>,
-              or use the link at the end of any entry. Name the entry, say what is wrong, and include a
+              To report one, write to <a href={correctionHref}>{contactEmail}</a> or use the
+              <a href="/contact/">contact page</a>. Name the entry, say what is wrong, and include a
               source that shows it.
             </p>
           )}
@@ -252,7 +274,7 @@ const correctionHref = `mailto:${contactEmail}?subject=${encodeURIComponent("Cor
     max-width: 35.2rem;
   }
   .corr-col p + p { margin-top: 0.8rem; }
-  .corr-col a {
+  .corr-col a, .ab-col a {
     color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px;
     text-underline-offset: 0.16em; text-decoration-color: var(--rule-mid);
     transition: background var(--t-hover) var(--ease-out), text-decoration-color var(--t-hover) var(--ease-out);
@@ -278,7 +300,7 @@ const correctionHref = `mailto:${contactEmail}?subject=${encodeURIComponent("Cor
   /* -------- HOVER (gated) -------- */
   @media (hover: hover) and (pointer: fine) {
     .crumbs a:hover { background: var(--hl); color: var(--ink); }
-    .corr-col a:hover { background: var(--hl); text-decoration-color: var(--ink); }
+    .corr-col a:hover, .ab-col a:hover { background: var(--hl); text-decoration-color: var(--ink); }
   }
 
   /* -------- RESPONSIVE -------- */

@@ -291,7 +291,8 @@ function plan(url) {
   let m;
   if (!h) return { skip: 'not a URL' };
   if (SEARCH_HOSTS.test(h) || /^books\.google\./.test(h)) return { skip: 'a search engine or Google page; never fetched (check it by hand)' };
-  if (/\/search\/?\?|[?&](q|query)=/.test(url) && !/archive\.org\/details/.test(url)) return { skip: 'a search-results URL; cite the item, not the search' };
+  // The American Heritage Dictionary has no other item URL: each entry lives at /word/search.html?q=<headword>.
+  if (/\/search\/?\?|[?&](q|query)=/.test(url) && !/archive\.org\/details|ahdictionary\.com\/word\/search\.html\?q=/.test(url)) return { skip: 'a search-results URL; cite the item, not the search' };
   if (WALLS.test(h)) return { skip: 'bot wall: this host answers scripts with HTTP 403 (read it in a browser or with kane-cli)', wall: true };
   if (/\.pdf($|[?#])/i.test(url) && !/archive\.org\/download\//.test(url)) return { skip: 'a PDF; not parsed (check it by hand)' };
   if ((m = url.match(/^https?:\/\/(?:www\.)?archive\.org\/(?:details|stream|download)\/([^/?#]+)/i))) return { archive: m[1], ocr: true };
@@ -569,7 +570,7 @@ function verdict(c, pages) {
 
 /* VERIFICATION_LEDGER.md: claims verified by hand where no script can reach.
    Line format, under a "## <slug>" heading:
-   - "<claim text>" | <cited URL> | <BOT_WALL|LENDING_ONLY|PDF|PAYWALL|OCR_FUZZY|JS_RENDERED|DERIVED> | <how verified> | <YYYY-MM-DD> */
+   - "<claim text>" | <cited URL> | <BOT_WALL|LENDING_ONLY|PDF|PAYWALL|OCR_FUZZY|JS_RENDERED|DERIVED|PAGINATED> | <how verified> | <YYYY-MM-DD> */
 function loadLedger() {
   const f = path.join(ROOT, 'VERIFICATION_LEDGER.md');
   const map = new Map();

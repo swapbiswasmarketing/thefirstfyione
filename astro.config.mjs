@@ -67,6 +67,11 @@ const LINKS_REV = rev(rehypeExternalLinks.toString());
    deploy step (scripts/indexnow-deploy.mjs) diffs these same dates against the live sitemap, so a wrong one
    misleads both readers at once. */
 const BLOG_DIR = new URL('./src/content/blog/', import.meta.url);
+/* One clock for the whole build: the config fixes the build time once, and
+   src/lib/entries.ts reads the same value, so a build that runs across midnight
+   UTC cannot publish an entry the sitemap does not date. */
+process.env.STRICTLY_BUILD_TIME ||= String(Date.now());
+const BUILD_DAY = new Date(Number(process.env.STRICTLY_BUILD_TIME)).toISOString().slice(0, 10);
 const LASTMOD = new Map();
 const NEWEST = new Map();
 for (const file of readdirSync(BLOG_DIR).filter((f) => f.endsWith('.md'))) {
@@ -79,6 +84,9 @@ for (const file of readdirSync(BLOG_DIR).filter((f) => f.endsWith('.md'))) {
   };
   const pub = day(field('pubDate'));
   const upd = day(field('updatedDate'));
+  /* A scheduled entry (pubDate after today, UTC) is not built yet, so it
+     neither gets a sitemap date nor moves the hubs' newest date. */
+  if (pub && pub > BUILD_DAY) continue;
   const date = upd && (!pub || upd > pub) ? upd : pub;
   if (!date) continue;
   const slug = field('slug') || file.slice(0, -3).toLowerCase();

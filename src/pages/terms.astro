@@ -1,0 +1,103 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { contactEmail, contactLive, adsenseLive, SITE_URL } from "../data/site";
+import { pageNode } from "../lib/schema";
+import { pageCard } from "../lib/og";
+
+/* Bump by hand whenever a section changes meaning. */
+const lastUpdated = "October 31, 2026";
+
+const url = `${SITE_URL}/terms/`;
+const description =
+  "The terms for using strictly.fyi: entries are general information, not professional advice; quote fairly with a link; outside links are not ours.";
+---
+
+<Layout
+  title="Terms of use - Strictly FYI"
+  description={description}
+  card={pageCard("terms")}
+  contentGroup="About"
+  schema={[pageNode("WebPage", url, "Terms of use", description)]}
+>
+  <article class="doc wrap">
+    <header>
+      <p class="doc-kicker">The fine print &middot; <span class="nowrap">Last updated {lastUpdated}</span></p>
+      <h1 class="doc-title">Terms of use</h1>
+      <p class="doc-dek">
+        The short version: read freely, quote fairly, check the sources, and do not treat an explainer as
+        professional advice.
+      </p>
+    </header>
+
+    <div class="doc-body">
+      <section>
+        <h2>Who these terms are with</h2>
+        <p>
+          strictly.fyi is published by Strictly FYI, an independent publication. By using the site you accept these
+          terms. If you do not accept them, please do not use the site.
+        </p>
+      </section>
+
+      <section>
+        <h2>General information, not advice</h2>
+        <p>
+          Entries explain how things work and where things come from. They are general information, not medical,
+          legal, financial or safety advice, and nothing here replaces a professional who knows your situation.
+        </p>
+      </section>
+
+      <section>
+        <h2>Accuracy</h2>
+        <p>
+          Entries are checked against the sources they link, as described in <a href="/how-we-work/">How we
+          work</a>, which also explains how AI tools are used to draft them. Sources can be wrong and so can we,
+          so the site is provided as it is, without warranties of any kind, and Strictly FYI is not liable for
+          decisions made on the strength of it. When an error is found it is corrected in public, in the entry and in
+          the <a href="/corrections/">corrections log</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Copyright and quoting</h2>
+        <p>
+          The text and design of Strictly FYI are copyright &copy; 2026 Strictly FYI. You are welcome to quote a
+          short passage with a link back to the entry it came from. Republishing whole entries, or large parts of
+          them, needs written permission. Quotations from other works belong to their owners and appear here for
+          commentary and reference.
+        </p>
+      </section>
+
+      <section>
+        <h2>Links to other sites</h2>
+        <p>
+          Entries link to outside sources so that you can check them. Those sites are not run by Strictly FYI, which
+          does not control what they publish, and a link is not an endorsement of everything on the page it opens.
+        </p>
+      </section>
+
+      {adsenseLive && (
+        <section>
+          <h2>Advertising</h2>
+          <p>
+            The site may show ads served by Google AdSense. An ad is not an endorsement by Strictly FYI. How ad data
+            is handled is set out on the <a href="/privacy/">privacy page</a>.
+          </p>
+        </section>
+      )}
+
+      <section>
+        <h2>Changes and contact</h2>
+        <p>
+          These terms may change; the date at the top shows the current version.
+          {contactLive ? (
+            <>
+              {" "}Questions about them can go to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+            </>
+          ) : (
+            " Questions about them can go through the contact page."
+          )}
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>

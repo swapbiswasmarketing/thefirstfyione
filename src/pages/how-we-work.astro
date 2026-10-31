@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { contactEmail, contactLive, adsenseLive, SITE_URL } from "../data/site";
+import { getEntries } from "../lib/entries";
+import { pageNode } from "../lib/schema";
+import { pageCard } from "../lib/og";
+
+/* The editorial standards page: who answers for the entries, how a question is
+   picked, how an entry is drafted with AI and checked, the sourcing standard,
+   and how corrections work. Every sentence describes the real process
+   (.claude/commands/new-entry.md, the gate scripts, VERIFICATION_LEDGER.md)
+   and nothing more: say "most" where it is most, and name the date a check
+   began. Change this page in the same commit that changes the process, and
+   bump lastUpdated. */
+const lastUpdated = "October 31, 2026";
+
+/* Counted, not asserted: how many entries link no outside source at all. The
+   sourcing paragraph reports the number instead of promising what the archive
+   does not yet do. */
+const linksSources = (body = "") => /\]\(https?:\/\/(?!(?:www\.)?strictly\.fyi)/i.test(body);
+const unsourced = (await getEntries()).filter((p) => !linksSources(p.body)).length;
+
+const url = `${SITE_URL}/how-we-work/`;
+const description =
+  "How Strictly FYI picks questions, drafts entries with AI assistance, checks them against the sources they link, and corrects its mistakes in public.";
+---
+
+<Layout
+  title="How we work - Strictly FYI"
+  description={description}
+  card={pageCard("standards")}
+  contentGroup="About"
+  schema={[pageNode("WebPage", url, "How we work", description, { about: { "@id": `${SITE_URL}/#organization` } })]}
+>
+  <article class="doc wrap">
+    <header>
+      <p class="doc-kicker">Editorial standards &middot; <span class="nowrap">Last updated {lastUpdated}</span></p>
+      <h1 class="doc-title">How we work</h1>
+      <p class="doc-dek">
+        Strictly FYI answers one question per entry and links the sources behind what it says. This page explains
+        how entries are chosen, drafted, checked and corrected, including where AI is used.
+      </p>
+    </header>
+
+    <div class="doc-body">
+      <section id="who">
+        <h2>Who is behind Strictly FYI</h2>
+        <p>
+          Strictly FYI is an independent publication. Entries carry the publication's name instead of a personal
+          byline, and the publication answers for every one of them: what it covers, what it says, and how quickly
+          it fixes a mistake. It takes no sponsorship, publishes no sponsored content and runs no affiliate links.
+          {contactLive && (
+            <>
+              {" "}You can reach it at <a href={`mailto:${contactEmail}`}>{contactEmail}</a> or through the
+              <a href="/contact/">contact page</a>.
+            </>
+          )}
+        </p>
+      </section>
+
+      <section id="choosing">
+        <h2>How a question is chosen</h2>
+        <p>
+          A question becomes an entry only when there is more to tell than the one-line answer: a popular story the
+          evidence does not support, a primary source most explainers skip, or a mechanism that is usually explained
+          wrong. When the honest answer is that nobody knows, the entry says so. Search data helps show which
+          questions people are actually asking.
+        </p>
+      </section>
+
+      <section id="ai">
+        <h2>How an entry is made, and where AI comes in</h2>
+        <p>
+          Strictly FYI uses AI tools to research and draft its entries. We say so plainly because you should know how
+          what you are reading was made. A new entry goes through four stages:
+        </p>
+        <ol>
+          <li>
+            <strong>Drafting.</strong> An AI model drafts the entry to a written house standard: answer the question
+            early, attach a source to each claim at the point where it is made, and label myths and disputes as what
+            they are.
+          </li>
+          <li>
+            <strong>Checking against the sources.</strong> Every page the draft cites is opened again and compared,
+            claim by claim, with what the entry says; anything a source does not support is corrected or cut. Most
+            entries also get a second check from a separate AI reviewer, instructed to look for errors rather than to
+            approve the draft.
+          </li>
+          <li>
+            <strong>Automated checks.</strong> A script fetches the cited pages it can reach and tests that
+            quotations, and any figure written into a link, actually appear on them; it also checks links, dates and
+            formatting. Pages a script cannot read, such as some books, scanned newspapers and sites that block
+            scripts, are read directly instead, and the hardest of those checks are recorded, claim by claim, in an
+            internal verification log.
+            These script checks began in October 2026, and older entries are re-checked as they come up for review.
+          </li>
+          <li>
+            <strong>Publication.</strong> A person sets the house rules, decides which entries are published, and
+            handles every correction.
+          </li>
+        </ol>
+        <p>
+          AI lets a small publication read far more sources per entry than it otherwise could. It also makes
+          confident mistakes, which is why the standard is a source for each claim that you can follow and check.
+        </p>
+      </section>
+
+      <section id="sources">
+        <h2>Sources</h2>
+        <p>
+          The standard is a source for each claim, linked in the sentence that makes it. We prefer primary sources:
+          the original paper, the archive scan, the official record, the newspaper of the day. Encyclopedias are used
+          for settled facts and as a map to the sources behind them.
+        </p>
+        <p>
+          {unsourced === 0
+            ? "The earliest entries went out before this standard was set, and they have since been rebuilt to it. Where a later paragraph repeats a figure, or works one out from sourced figures, it may not link the source again; the source is linked where the figure first appears."
+            : `${unsourced} of the earliest entries went out before this standard was set and do not meet it yet. They are being rebuilt to it, and each will show an Updated date when its sources are in.`}
+        </p>
+      </section>
+
+      <section id="disputes">
+        <h2>Myths, disputes and uncertainty</h2>
+        <p>
+          When a popular explanation is wrong, the entry says who repeats it and what the evidence shows instead.
+          When historians or scientists disagree, the entry sets out the main positions and says which has the
+          stronger evidence, instead of picking the better story.
+        </p>
+      </section>
+
+      <section id="health">
+        <h2>Health and safety topics</h2>
+        <p>
+          A few entries touch on the body or on food safety. They are held to the same sourcing standard, with health
+          authorities or peer-reviewed research as the sources, and they explain how things work. They are general
+          information, not medical advice: for anything about your own health, ask a doctor or a pharmacist. The
+          <a href="/terms/">terms of use</a> say more.
+        </p>
+      </section>
+
+      <section id="corrections">
+        <h2>Corrections and updates</h2>
+        <p>
+          When an entry is wrong, it is corrected in place, its dateline shows the date of the fix as Updated, and
+          the change is listed in the <a href="/corrections/">corrections log</a>. Dates are never moved for wording,
+          formatting or link changes, so an Updated date always means the facts or the sources changed.
+        </p>
+        <p>
+          In October 2026 the earliest entries were rebuilt and a number of recent ones were checked again against
+          their sources. Every error that review found is in the corrections log, including errors in entries only days
+          old. Figures made more precise and facts moved to better sources are not errors, so they are not listed.
+        </p>
+        <p>
+          To report an error, use the <a href="/contact/">contact page</a>. Name the entry, say what is wrong, and
+          include a source that shows it.
+        </p>
+      </section>
+
+      <section id="independence">
+        <h2>Independence{adsenseLive ? " and advertising" : ""}</h2>
+        <p>
+          No entry is sponsored, and nothing on the site is an affiliate link.
+          {adsenseLive &&
+            " The site may show ads served by Google AdSense. Advertisers have no say over what is covered or what an entry concludes."}
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>

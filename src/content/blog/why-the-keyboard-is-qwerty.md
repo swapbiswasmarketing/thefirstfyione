@@ -1,73 +1,81 @@
 ---
 title: "Why Is the Keyboard QWERTY and Not ABC?"
-description: "Why is the keyboard not in alphabetical order? The QWERTY layout is 150 years old, it was never designed to slow you down, and historians still argue about where it came from."
-pubDate: 2026-07-20
+description: "QWERTY began in 1868 as a piano-style alphabetical keyboard and was reshuffled until 1882 for telegraph buyers, Remington and a patent dodge, not to slow typists."
+pubDate: 2026-07-27
+updatedDate: 2026-10-31
 category: "tech"
-readingTime: "5 min read"
 filecode: "FYI-007"
 almanac: "Every letter in the word TYPEWRITER appears on the top row."
 featured: false
 faqs:
-  - q: "Why is the keyboard QWERTY and not alphabetical?"
-    a: "QWERTY came out of the first commercially successful typewriter in the 1870s. The letters were rearranged so that frequently paired letters would not sit next to each other on the machine, which reduced jamming. It stuck because everyone had already learned it."
   - q: "Was QWERTY designed to slow typists down?"
-    a: "No. That is the most repeated claim about QWERTY and there is no evidence for it. The goal was to keep the typebars from clashing, not to slow the human. Sholes was selling a machine that worked, and a slow typewriter is a bad product."
+    a: "There is no evidence for it. The Yasuokas call the idea nonsense, because the early keyboard was developed for telegraph operators copying Morse, who had to keep pace with the sender. Even the mainstream account says the aim was to stop typebars clashing, not to slow fingers."
+  - q: "Is the Dvorak keyboard faster than QWERTY?"
+    a: "Not by much, on the evidence. The 1944 Navy study behind the big claims was, by Earle Strong's account, run by Dvorak himself, and Strong's own 1956 study concluded that retraining on Dvorak would never pay for itself. A simulation by Donald Norman and David Rumelhart put Dvorak only about 5 percent faster for expert typists."
   - q: "Who invented the QWERTY keyboard?"
-    a: "Christopher Latham Sholes, working in Milwaukee with Carlos Glidden and Samuel Soule, developed the typewriter that carried the layout. Remington began manufacturing it in 1873, which put QWERTY on desks worldwide."
-  - q: "Is the Dvorak keyboard actually faster than QWERTY?"
-    a: "Less clearly than its reputation suggests. The most-cited study favouring Dvorak was run by Dvorak himself, and later reviews found the advantage much smaller than claimed. For most people the gain would not repay the months of retraining."
+    a: "No single person finished it. Christopher Latham Sholes, Carlos Glidden and Samuel W. Soule patented a typewriter in 1868, and in the Yasuokas' reconstruction the layout was then reworked for telegraph customers, by Remington's mechanics, by Sholes again, and in 1882 by the sales firm Wyckoff, Seamans & Benedict."
 ---
 
-Look down at your keyboard. The letters are in an order that makes no sense: Q, W, E, R, T, Y. Not alphabetical, not grouped by how often you use them, not arranged for your fingers. It is the single most-used interface in your life, and its layout looks like someone spilled the alphabet.
+Look down at your keyboard. The letters are in an order that makes no sense: Q, W, E, R, T, Y. Not alphabetical, not grouped by how often you use them, not arranged for your fingers. It is one of the most-handled objects in your life, and its layout looks like someone spilled the alphabet.
 
-There is a reason, it is about 150 years old, and almost everything people confidently tell you about it is wrong.
+There is a reason, it is about 150 years old, and a good deal of what people confidently say about it is wrong.
 
-## It starts with a machine that jammed
+## Why is the keyboard QWERTY and not ABC?
 
-In 1868, a Milwaukee printer named **Christopher Latham Sholes**, working with Carlos Glidden and Samuel Soule, patented a writing machine. Early versions had the letters in something close to alphabetical order across two rows. Remington began manufacturing the design in 1873, and by the time it reached desks the layout had shuffled into something very close to what you are looking at now.
+The keyboard started out alphabetical and was rearranged a few letters at a time between 1868 and 1882. One detailed reconstruction, by two researchers in Kyoto, has it changed first for telegraph customers, then as a compromise between inventor and manufacturer, and finally to get around old patents. By the 1890s so many typists had learned the result that changing it cost more than keeping it. **Nobody designed QWERTY in one sitting**, and nobody designed it to slow you down.
 
-The problem Sholes was solving was mechanical. On those early typewriters, each key swung a metal arm called a **typebar** up to strike the paper at a single shared point. If you hit two neighbouring keys in quick succession, their typebars could collide and lock together, and the typist had to stop and untangle them by hand.
+## QWERTY began on a piano-style keyboard
 
-> The fix was to look at which letters people actually type back to back, and then move those pairs apart on the machine, so the arms swinging up would approach from different angles instead of the same one.
+In 1868 three Milwaukee men, **Christopher Latham Sholes**, Carlos Glidden and Samuel W. Soule, received [US patent 79,265](https://patents.google.com/patent/US79265A/en) for an improved type-writing machine with a keyboard "similar to the keyboard of a piano." One early customer was a telegraph school: an advertisement in the Saint Joseph Herald of November 21, 1868, [transcribed by the researcher Koichi Yasuoka](https://yasuoka.blogspot.com/2006/09/porters-telegraph-collegeno.html), has Porter's Telegraph College in Chicago promising that "By touching keys like a Piano this machine produces letters faster than the most rapid penman."
 
-That is why the layout looks scrambled. It is not scrambled by letter. It is arranged by **pairs of letters**, which is invisible unless you know to look for it. Connectors carry the same kind of buried reasoning - [the plug that only goes in one way up](/blog/why-is-usb-not-reversible/) has four contacts in a single row, and one row can only meet its match one way.
+Yasuoka notes that this was Sholes's second model, with [a piano-like two-row keyboard](https://yasuoka.blogspot.com/2006/09/porters-telegraph-collegeno.html) of **twenty-eight keys**, enough for the capital letters, a comma and a period, and no numerals. Behind the keys sat the part that caused the trouble. [The patent](https://patents.google.com/patent/US79265A/en) describes steel "type bars or hammers," one for each character, pivoted around the rim of a brass ring with the letters cut on their inner ends, so that every bar swung up to "strike against the central point."
+
+[The economist Paul David, writing in 1985](https://www.jstor.org/stable/1805621), calls Sholes "the fifty-second man to invent the typewriter" and says the machine's printing point sat under the paper carriage, out of the typist's sight, while its typebars tended "to clash and jam if struck in rapid succession." In his account a jammed bar went unnoticed, because every following stroke hammered the same letter onto the page until someone lifted the carriage, and Sholes kept rearranging the original alphabetical keys by trial and error to make clashes rarer.
+
+## The textbook answer is about letter pairs
+
+The standard explanation grows out of that defect. In the version [Stan Liebowitz and Stephen Margolis summarized in 1990](https://doi.org/10.1086/467198), Sholes "arranged his keyboard so that the keys most likely to be struck in close succession were approaching the type point from opposite sides of the machine."
+
+Two researchers tested that account against the machines in ["On the Prehistory of QWERTY"](http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/publications/PreQWERTY.html), a 2011 paper in ZINBUN, the bulletin of Kyoto University's humanities institute. [Koichi Yasuoka of Kyoto University and Motoko Yasuoka of Kyoto University of Foreign Studies](https://doi.org/10.14989/139379) examined surviving Sholes & Glidden machines and found TH, the most common English letter pair counting both orders, **180 degrees** apart in the ring of typebars, but ER, the second most common, just **16 degrees** apart. Their verdict on how well the ring matches the keyboard is "Somewhat ad hoc."
 
 ## The "designed to slow you down" story is wrong
 
 You have probably heard that QWERTY was deliberately designed to slow typists down, because they were typing faster than the machine could handle.
 
-It is a great story and there is no evidence for it. It also does not survive five seconds of thinking about the business. Sholes was trying to sell typewriters against pen and ink. A machine advertised as slower than the competition is not a product.
+There is no evidence for it. [The Yasuokas' abstract](http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/publications/PreQWERTY.html) answers the claim "To slow down the operator." with a flat "It's nonsense." and says the early keyboard "was developed for Morse receivers." In the body of the paper they spell out why that matters: a receiver taking down Morse has to keep pace with the sender, and a keyboard built to slow him down would leave him behind.
 
-The distinction matters and it is small: the goal was to stop **typebars** from clashing, not to stop **fingers** from moving. Separating common letter pairs does both at once, so the two explanations look identical from the outside. Only one of them was the intention.
+It also fails as business. [The 1868 advertisement](https://yasuoka.blogspot.com/2006/09/porters-telegraph-collegeno.html) sold the machine as faster than a pen, and a typewriter sold as slower than the competition is not a product. Even the mainstream version aims at the machine: the worry was typebars clashing, not fingers moving.
 
-## Where historians actually disagree
+## A Kyoto study traces early changes to telegraph customers
 
-Here is the part that gets left out of the usual telling. The jamming explanation is the mainstream account, but it is not unchallenged.
+In the Yasuokas' account, the college's principal, Edward Payson Porter, wanted numerals for taking down Morse, and Harrington and Craig of the American Telegraph Works, who promised to buy several machines, asked for many improvements, the keyboard among them. One example is a single letter. In American Morse, the code used on United States lines, Z was easily confused with the commoner pair SE, and a receiver could not always tell which had arrived until the next letters came in, so S "ought to be placed near by both Z and E," [they argue](https://doi.org/10.14989/139379), and on your keyboard it is.
 
-Researchers **Koichi Yasuoka and Motoko Yasuoka** of Kyoto University published a study of the layout's development arguing that the standard story does not fit the documentary record. Their case is that some of the earliest heavy users of these machines were **telegraph operators** transcribing Morse code as it arrived, and that the layout was shaped by the demands of that work rather than purely by typebar geometry. American Morse, built on the landline telegraph's codes, had quirks of its own: in it three dashes make the figure 5, so in 1910 American operators logged [the distress call SOS](/blog/what-does-sos-stand-for/) as S5S. Telegraph lines were carrying more than Morse by then: from 1865, three years before Sholes's patent, a commercial service between Paris and Lyon was [sending handwriting by wire](/blog/when-was-the-fax-machine-invented/).
+That is an inference, and the paper marks it as the authors' opinion. It is a reading of where the letters ended up, not a quotation from Sholes or his customers.
 
-Look at the evidence in the layout itself and it gets murky:
+The later shuffles were no tidier. Remington's mechanics reworked the keyboard, and Sholes had Y moved beside T, the arrangement in his [US patent 207,559](https://patents.google.com/patent/US207559A/en) of 1878. The modern form arrived in 1882, when the sales firm Wyckoff, Seamans & Benedict moved M next to N and swapped C and X [to evade older patents](https://doi.org/10.14989/139379), producing the layout you are looking at.
 
-- The letters **Z** and **S** sit oddly given how often the pairing appears when transcribing Morse, where the two characters are easy to confuse until the next signal arrives.
-- The order shifted repeatedly through the early 1870s, which is hard to square with a single clean engineering fix.
-- Sholes left no clear written account explaining his reasoning, which is why there is room to argue at all.
+> In [the Yasuokas' own summary](http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/publications/PreQWERTY.html), the layout "accidentally grew into QWERTY among the different requirements."
 
-The honest position: the layout was shaped by the mechanical and commercial pressures of the 1870s, and the exact weighting of those pressures is still debated. Anyone who tells you the origin is settled is skipping a real argument.
+Their paper is a careful reconstruction from patents, letters, advertisements and surviving machines, but it is one paper, and its account of what the telegraph customers wanted rests partly on inference.
 
-## The famous top-row trick
+## The top-row trick has a source, and a rebuttal
 
-One detail almost always comes up: every letter in the word **TYPEWRITER** appears on the top row. The usual claim is that this was arranged so salesmen could rattle off the product name quickly during a demonstration.
+Every letter in the word TYPEWRITER appears on the top row, all ten of them. The popular claim is that this was arranged so salesmen could rattle off the product name during a demonstration.
 
-Treat that one gently. It is repeated everywhere and documented nowhere. Given how many times the layout changed, a nine-letter coincidence is entirely plausible, and a good story tends to outlive the check on whether it is true - the same reflex that keeps [the Illuminati on the dollar bill](/blog/illuminati-on-the-dollar-bill/) decades after the dates stopped adding up.
+The story appears in [David's paper](https://www.jstor.org/stable/1805621), which says that after E. Remington & Sons took on the machine in March 1873, its mechanics moved R into the slot of the period key, which "assembled into one row all the letters which a salesman would need to impress customers."
 
-## So why are we still using it?
+[The Yasuokas reply](https://doi.org/10.14989/139379) that the brand name had already been settled as "Sholes & Glidden Type-Writer" before R was swapped in, and ask "Why wasn't SHOLES on one row? How about GLIDDEN?" They add that the machine was demonstrated by taking down Morse or dictation, not by pecking out its name. The salesman tale stays unproven.
 
-Because switching is expensive and being right is not enough.
+## Switching was always the expensive part
 
-**August Dvorak** patented a rival layout in 1936, putting the most common letters under the strongest fingers on the home row. On paper it is clearly better designed. The most-quoted study showing large speed gains was run by Dvorak himself, and later reviewers, notably in a 1990 analysis titled *The Fable of the Keys*, found the real advantage far smaller than the legend.
+**August Dvorak** and William L. Dealey filed a rival layout in 1932 and received [US patent 2,040,248](https://patents.google.com/patent/US2040248A/en) in 1936. On its own terms it does well. Donald Norman and David Rumelhart, in a passage [Liebowitz and Margolis](https://doi.org/10.1086/467198) quote, note that on Dvorak "67% of the typing is done on the home row," yet their simulation of expert typists found Dvorak "only about 5% faster" than QWERTY.
 
-Even if Dvorak were meaningfully faster, it would not matter much. Every keyboard, every typing class, every muscle memory in every pair of hands is QWERTY. The cost of moving is paid by each person individually and the benefit only arrives if everyone moves together, which is why the market never does.
+The bigger claims came from a wartime study. [David repeated](https://www.jstor.org/stable/1805621) that Navy experiments in the 1940s showed Dvorak would repay the cost of retraining "within the first ten days of their subsequent full-time employment." Liebowitz and Margolis obtained the 1944 Navy report, found that it "does not state who conducted the study," and cited the Penn State professor Earle Strong's report that the experiments "were conducted by Dr. Dvorak," [who owned the patent](https://doi.org/10.1086/467198).
 
-Standards usually die with their machines; QWERTY is the rare one that did not. The medieval unit of time called [the moment went the other way](/blog/how-long-is-a-moment/) - the mechanical clock arrived and erased it within a couple of generations.
+Strong ran his own test for the General Services Administration in 1956. His ten retrained typists needed well over twenty-five days of four-hour sessions just to regain their old speed, and he [concluded](https://doi.org/10.1086/467198) that Dvorak training "would never be able to amortize its costs," though Liebowitz and Margolis concede that a test on experienced typists cannot say how beginners would fare.
 
-So the keyboard under your hands is a solution to a mechanical problem that has not existed since typebars did, preserved because 150 years of people already learned it. The letters are not in a sensible order. They are in the order that won. Strictly FYI.
+David's account of how QWERTY stuck does not depend on Dvorak being faster, although Liebowitz and Margolis challenge that account too. [His paper](https://www.jstor.org/stable/1805621) says touch typing arrived late in the 1880s on Remington's QWERTY and names three forces that had locked the industry in by the mid-1890s: "technical interrelatedness, economies of scale, and quasi-irreversibility of investment." Typists learned the keyboard the machines had, and offices bought the machines typists knew.
+
+QWERTY then moved to the Teletype in the 1910s, [the Yasuokas note](http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/publications/PreQWERTY.html), and the Teletype became a computer terminal.
+
+So the layout under your hands began on a piano-style machine sold to a telegraph school, was rearranged by factory mechanics and a patent dodge, and has outlived every typebar it was built around. The letters are in the order that won. Strictly FYI.

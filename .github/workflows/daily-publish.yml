@@ -1,0 +1,59 @@
+# Daily publish: scheduled entries go live on their own day.
+#
+# An entry whose pubDate is in the future is hidden from every page, feed and
+# sitemap until a build runs on or after that date (src/lib/entries.ts). This
+# job checks each morning whether any entry is dated today (UTC) and, if one is,
+# triggers a production rebuild through a Vercel Deploy Hook. Days with nothing
+# due cost nothing.
+#
+# One-time setup by the site owner:
+#   1. Vercel: Project > Settings > Git > Deploy Hooks. Create a hook for the
+#      main branch and copy its URL.
+#   2. GitHub: this repository > Settings > Secrets and variables > Actions >
+#      New repository secret, named VERCEL_DEPLOY_HOOK_URL, value = that URL.
+# Until the secret exists, the job logs a notice and does nothing.
+
+name: Daily publish
+
+on:
+  schedule:
+    - cron: "20 0 * * *" # 00:20 UTC, just after the UTC date changes
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Today or yesterday: GitHub sometimes delays or drops a scheduled run, so
+      # a missed day is caught up the next morning. A rebuild with nothing new
+      # changes nothing on the site.
+      - name: Is any entry dated today or yesterday (UTC)?
+        id: due
+        run: |
+          today="$(date -u +%F)"
+          yesterday="$(date -u -d 'yesterday' +%F)"
+          due="$(grep -lE "^pubDate:[[:space:]]*[\"']?(${today}|${yesterday})[\"']?[[:space:]]*(#.*)?$" src/content/blog/*.md || true)"
+          if [ -n "$due" ]; then
+            echo "Due (${yesterday} or ${today}):"
+            echo "$due"
+            echo "due=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "Nothing dated ${yesterday} or ${today}; no rebuild needed."
+            echo "due=no" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger the Vercel production rebuild
+        if: steps.due.outputs.due == 'yes'
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::notice::VERCEL_DEPLOY_HOOK_URL is not set, so nothing was rebuilt. See the setup notes at the top of this file."
+            exit 0
+          fi
+          curl --fail --silent --show-error --request POST "$HOOK"

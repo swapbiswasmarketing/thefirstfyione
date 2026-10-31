@@ -1,77 +1,80 @@
 ---
-title: "Why Do People Say Xmas? The X Is Greek and 900 Years Old"
-description: "Why do people say Xmas? The X is the Greek letter chi, the first letter of Christos, and English scribes were writing Christmas that way by about 1100."
+title: "Why Do People Say Xmas? A Greek X, Nearly 1,000 Years Old"
+description: "The X in Xmas is the Greek letter chi, the first letter of Christos. English scribes used it as shorthand for Christ by the 11th century, long before advertising."
 pubDate: 2026-09-03
+updatedDate: 2026-10-31
 category: "culture"
-readingTime: "4 min read"
 filecode: "FYI-039"
 almanac: "Coleridge wrote Xmas in 1801, Byron in 1811, Lewis Carroll in 1864, and Oliver Wendell Holmes Jr. in a letter in 1923."
 featured: false
 faqs:
-  - q: "What does the X in Xmas actually stand for?"
-    a: "It stands for the Greek letter chi, which is the first letter of Christos, the Greek word that became Christ in English. Chi happens to be shaped like a Latin X, so English writers used X and Xp as shorthand for the name Christ."
   - q: "How old is the abbreviation Xmas?"
-    a: "The X standing in for Christ in English is recorded from around 1100. The compound spellings came later: X'temmas is attested in 1551 and Xmas itself in the eighteenth century."
-  - q: "Did advertisers invent Xmas to save space?"
-    a: "No. The abbreviation was in use in English manuscripts and dictionaries centuries before modern advertising. Merriam-Webster's Dictionary of English Usage does note that modern use is largely limited to advertisements, headlines and banners, and that the association with commerce has done nothing for the spelling's reputation."
+    a: "The X standing in for Christ in English is recorded by the middle of the 11th century, when a copy of the Anglo-Saxon Chronicle wrote Christmas as Xpes maesse in its entry for 1021. The compound spellings came later: X'temmas is dated to 1551 and Xmas itself to the eighteenth century."
   - q: "Is it disrespectful for a Christian to write Xmas?"
     a: "The letter itself carries no disrespect, since it is the Greek initial of Christ and the same chi opens the Chi-Rho, the early Christian monogram made from the first two letters of Christos. Many Christians still dislike the spelling, and Lifeway Research found 42 percent say it is offensive, so the courtesy question is separate from the etymology."
   - q: "How should Xmas be pronounced?"
-    a: "It was written as an abbreviation for a word still spoken as Christmas, so reading it aloud as Christmas is the historical practice. The spelling pronunciation EKS-mas exists and is the recent development, and the lexicographer Eric Partridge objected to it far more strongly than to the written form."
+    a: "Merriam-Webster lists KRIS-mas first and gives EKS-mas only as an alternative. The lexicographer Eric Partridge called the written form barely allowable and the spoken Exmas intolerable."
 ---
 
-Somebody says it every December, and they mean it: Xmas is what happens when the Christ gets taken out of Christmas. The X reads as a blank where a name should be, an advertiser's economy that saves four letters on a shop sign.
+Somebody says it every December, and they mean it: Xmas is what happens when the Christ gets taken out of Christmas. The X reads as a blank where a name should be, an advertiser's economy that saves five letters on a shop sign.
 
-The complaint is sincere. It is also about eight centuries younger than the spelling it objects to, and the people who started that spelling were Christian scribes handling a name they treated as sacred.
+The complaint is sincere. It is also centuries younger than the spelling it objects to, and the people who started that spelling were Christian scribes handling a name they treated as sacred.
 
 ## Why do people say Xmas?
 
-Because the X is not the English letter X. It is the Greek letter **chi**, the first letter of **Christos**, the Greek word that became Christ in English. English writers were using X and Xp as shorthand for Christ by around **1100**, so the spelling carries the name in Greek rather than deleting it.
+Because the X is not the English letter X. It is the Greek letter **chi**, the initial of **Christos**, the Greek word that became Christ in English. English scribes were using [Xp as shorthand for Christ](https://archive.org/details/twoofsaxonchron01earl) by the middle of the **11th century**, so the spelling carries the name in Greek rather than deleting it.
 
-The [Online Etymology Dictionary](https://www.etymonline.com/word/x) dates the letter to "early 12c. as an abbreviation of 'Christ'", and its [entry for Xmas](https://www.etymonline.com/word/Xmas) is exact about the mechanism: the Latin X and the Greek chi look identical and sound nothing alike, and the whole abbreviation rides on that accident of shape. A letter can also stand in for a shape and no word, which is the whole story of [the T in T-shirt](/blog/what-does-the-t-in-t-shirt-stand-for/): laid flat, the garment's body and sleeves make a capital T. Chi is the 22nd letter of the Greek alphabet and represents a *kh* sound.
+[Merriam-Webster's etymology](https://www.merriam-webster.com/dictionary/Xmas) gives the X as a symbol for Christ "from the Greek letter chi (X), initial of Christos". The Greek capital chi and the Roman X look the same, and the whole shorthand rides on that shared shape.
+
+An early English example is a death notice. In the [Anglo-Saxon Chronicle's entry for 1021](https://archive.org/details/twoofsaxonchron01earl), Bishop Aelfgar, "se aelmesfulla", dies "on Xpes maesse uhtan", which [James Ingram's 1823 translation](https://www.gutenberg.org/cache/epub/657/pg657-images.html) renders as "the morning of Christmas day". That wording survives in the Worcester copy of the Chronicle, which [appears to have been written in the middle of the 11th century](https://en.wikipedia.org/wiki/Anglo-Saxon_Chronicle). As the [BBC put it in 2004](https://news.bbc.co.uk/2/hi/uk_news/magazine/4097755.stm), "Before Xmas, there was XPmas": Inge Milfull, an assistant editor of etymology at the Oxford English Dictionary, had found references in the Chronicle "as far back as 1021".
 
 ## The X worked on every word built on Christ's name
 
-Christmas was never the special case. Hugh Rawson, writing on [Cambridge's dictionary blog](https://dictionaryblog.cambridge.org/2011/12/19/merry-xmas/), lists **Xtian** for Christian, **Xtianity** for Christianity, **Xpher** for Christopher, **Xene** for Christine and **Xtina** for Christina. The [collected documentary record](https://en.wikipedia.org/wiki/Xmas) adds **Xpian** as a rarer form of Christian, and reports the Oxford English Dictionary citing X- and Xp- for Christ- as early as **1485** and Xtianity from **1634**.
+Christmas was never the special case. Hugh Rawson, writing on [Cambridge's dictionary blog](https://dictionaryblog.cambridge.org/2011/12/19/merry-xmas/) in 2011, lists **Xpen** for christen, **Xtian** for Christian, **Xtianity** for Christianity, **Xpher** for Christopher, **Xene** for Christine and **Xtina** for Christina, and says X and XP had stood for Christ "for about a thousand years".
 
-Those forms were not the work of people cutting corners on a sacred word. *Merriam-Webster's Dictionary of English Usage* records that most of the evidence for these words comes from "educated Englishmen who knew their Greek."
+The X seems to have come from learned hands. Bill Purdue, an Open University historian, told the [BBC](https://news.bbc.co.uk/2/hi/uk_news/magazine/4097755.stm) that Xmas "would first seem to be an abbreviation used by clerics with a good knowledge of ancient languages."
 
-## A paper trail that starts on a battlefield
+## A paper trail that runs through a battlefield
 
 | Date | What was written |
 |---|---|
-| 28 October 312 | Chi-Rho, chi laid over rho, carried at the Milvian Bridge |
-| around 1100 | X for Christ in English, in the Anglo-Saxon Chronicle |
-| 1485 | X- and Xp- standing for Christ- |
+| 28 October 312 | A Chi-Rho sign, chi laid over rho, marked on Constantine's shields at the Milvian Bridge |
+| mid-11th century | Xpes maesse for Christmas, in a copy of the Anglo-Saxon Chronicle's annal for 1021 |
 | 1551 | X'temmas |
-| 1634 | Xtianity |
-| 1721 | Xmas, per the Oxford English Dictionary third edition |
+| 1721 | Xmas, per Merriam-Webster |
 | 1800 | "Xmas. Christmas." listed among common abbreviations in Boston |
+| 1801 | Xmas in a letter by Coleridge |
 
-The [Chi-Rho](https://en.wikipedia.org/wiki/Christogram) is chi superimposed on rho, the first two letters of Christos. Lactantius records Constantine being told to mark the sign on his soldiers' shields before the [Battle of the Milvian Bridge](https://en.wikipedia.org/wiki/Battle_of_the_Milvian_Bridge) on **28 October 312**. When it moved onto the labarum, the emperor's own military standard, is less settled: Eusebius describes that standard in the later wars against Licinius, and the [record for the labarum](https://en.wikipedia.org/wiki/Labarum) shows little evidence of use before 317.
+The Chi-Rho, in the words of the [Catholic Encyclopedia](https://www.newadvent.org/cathen/10488a.htm), is "the abbreviation of Christ's name formed by combining the first two letters of the Greek form", chi and rho. [Lactantius](https://www.newadvent.org/fathers/0705.htm) writes that Constantine "was directed in a dream to cause the heavenly sign to be delineated on the shields of his soldiers" before the [Battle of the Milvian Bridge](https://en.wikipedia.org/wiki/Battle_of_the_Milvian_Bridge) on **28 October 312**.
 
-At the modern end of the chain, the fifth American edition of William Perry's *Royal Standard English Dictionary*, printed in Boston in 1800, listed "Xmas. Christmas." in its table of common abbreviations. The first date for the modern spelling is unsettled: two sources reading the same dictionary give **1721** and **1755**, with Rawson taking the later figure and the Wikipedia entry citing the OED's third edition for the earlier one. They agree on 1551 for X'temmas. An abbreviation leans on a word readers already know, which is how Thomas Nast could letter [Santa's town as "SANTA CLAUSSVILLE N.P." in 1866](/blog/where-does-santa-live/) and leave readers to supply the North Pole.
+When the sign moved onto the labarum, the emperor's own military standard, is less settled. [Eusebius](https://www.newadvent.org/fathers/25021.htm) describes that standard with "the letter P being intersected by X in its centre", and in the [later war against Licinius](https://www.newadvent.org/fathers/25022.htm) has Constantine sending it wherever his forces were "hard pressed". A 1971 biography of Constantine found [little evidence for its use before 317](https://en.wikipedia.org/wiki/Labarum).
 
-## Shortening a sacred name was a sign of respect
+At the modern end of the chain, the fifth American edition of William Perry's *Royal Standard English Dictionary*, printed in Boston in 1800, listed ["Xmas. Christmas."](https://en.wikipedia.org/wiki/Xmas) among its common abbreviations. [Merriam-Webster](https://www.merriam-webster.com/dictionary/Xmas) dates Xmas itself to **1721**. That is earlier than the **1755** that [Rawson](https://dictionaryblog.cambridge.org/2011/12/19/merry-xmas/) took from the Oxford English Dictionary in 2011, when he also dated X'temmas to **1551**.
 
-The habit those scribes were following has a name. [Nomina sacra](https://en.wikipedia.org/wiki/Nomina_sacra) is the contraction of divine names and titles in Greek biblical manuscripts, written with an overline across the letters that were kept. Bruce Metzger counted **15 words** treated this way, among them God, Lord, Jesus, Christ, Spirit, Cross and Savior, and the practice shows up consistently in the earliest surviving Christian writings, from around the second century.
+## Shortening a sacred name: reverence or saving space
 
-> The contraction was an act of reverence rather than a purely practical space-saving device. Scribes used it in manuscripts where they avoided shortening far commoner words, and they wrote the shortened sacred name with generous spacing around it.
+The Christian habit of shortening sacred names is much older than English. The textual scholar [Bruce Metzger](https://archive.org/details/manuscriptsofgre0000metz) explains that Christian scribes "developed a system of contractions for certain sacred words", the nomina sacra, which "eventually came to include fifteen such terms", among them the Greek words for God, Lord, Jesus, Christ, Spirit, Cross and Savior. To mark one, [Metzger](https://archive.org/details/manuscriptsofgre0000metz) writes, "the scribe would place a horizontal line above the contraction."
 
-The reason a practice exists is often not the reason a modern reader assumes, [the same way the point of nailing iron to a horse's foot is not the one most people guess](/blog/why-do-horses-need-shoes/). The X was a marker of respect for a name too important to spell out casually.
+The [nomina sacra](https://en.wikipedia.org/wiki/Nomina_sacra) are already used consistently in the earliest extant Christian writings, from around the second century, which implies the practice was older still.
+
+> On Larry Hurtado's reading, the contraction was an act of reverence rather than a purely practical space-saving device. Scribes used it in manuscripts where they avoided shortening far commoner words, and they wrote the shortened sacred name itself with generous spacing.
+
+Hurtado, a New Testament scholar, rests that reading on early scribes who [contracted the sacred names](https://en.wikipedia.org/wiki/Nomina_sacra) while passing up the ordinary abbreviation for a word as frequent as *and*, though later copyists abbreviated such words mechanically, sacred use or not. Milfull, the OED etymologist, allowed for religious motives too, but told the [BBC](https://news.bbc.co.uk/2/hi/uk_news/magazine/4097755.stm): "Parchment was expensive so anything that would save space would be welcome."
 
 ## The crossing-out story is folklore, and it runs backwards
 
-Rawson calls the belief that Xmas "takes the Christ out of Christmas" a misapprehension, and puts it down to not knowing where the abbreviation came from. Origin stories get attached to old habits after the fact, [much as the plague explanation for saying bless you after a sneeze cannot actually be sourced](/blog/why-we-say-bless-you/).
+[Rawson](https://dictionaryblog.cambridge.org/2011/12/19/merry-xmas/) calls the belief that Xmas "takes the Christ out of Christmas" a misapprehension, and puts it down to not knowing where the abbreviation came from.
 
-The dates settle the direction of travel. Coleridge wrote Xmas in 1801, Byron in 1811, Lewis Carroll in 1864, and Oliver Wendell Holmes Jr. in a letter in 1923. None of them appears to have thought it needed defending. The objection that arrived afterwards was a matter of taste before it was a matter of theology: *The American Heritage Dictionary of the English Language*, quoted by Rawson, judged that "in spite of a long and respectable history, today Xmas is offensive to many, perhaps because of its associations with advertising."
+The dates settle the direction of travel. [Coleridge](https://news.bbc.co.uk/2/hi/uk_news/magazine/4097755.stm) wrote Xmas in 1801, [Byron](https://www.gutenberg.org/cache/epub/9921/pg9921-images.html) in 1811, [Lewis Carroll in 1864, and Oliver Wendell Holmes Jr. in a letter in 1923](https://en.wikipedia.org/wiki/Xmas). None of them appears to have thought it needed defending: Byron's was a letter to his half-sister Augusta Leigh, asking whether she could visit ["between this and Xmas"](https://www.gutenberg.org/cache/epub/9921/pg9921-images.html).
 
-The offence is real even where the etymology is not. [Lifeway Research reported in December 2018](https://research.lifeway.com/2018/12/12/why-x-mas-actually-keeps-christ-in-christmas/) that **42 percent** of Christians say it is offensive when people say X-mas instead of Christmas, though that page does not publish the sample behind the figure.
+The objection that arrived afterwards was often a matter of taste: *The American Heritage Dictionary of the English Language*, [quoted by Rawson](https://dictionaryblog.cambridge.org/2011/12/19/merry-xmas/), judged that "In spite of a long and respectable history, today Xmas is offensive to many, perhaps because of its associations with advertising."
 
-## Saying EKS-mas out loud is the one modern part
+The offence is real even though the etymology does not support it. [Lifeway Research reported in December 2018](https://research.lifeway.com/2018/12/12/why-x-mas-actually-keeps-christ-in-christmas/) that **42 percent** of Christians say it is offensive when people say X-mas instead of Christmas, in a [survey of 1,004 Americans](https://research.lifeway.com/2018/12/11/survey-finds-americans-want-more-christ-this-christmas/) in which 33 percent of all respondents said the same. The same [Lifeway article](https://research.lifeway.com/2018/12/12/why-x-mas-actually-keeps-christ-in-christmas/) quotes the theologian R.C. Sproul on the other side: "from its origin, it has meant no disrespect."
 
-Here the critics have a point the history supports. Xmas and its older variants began as **handwriting** abbreviations for a word still spoken as Christmas, so the spelling pronunciation EKS-mas is the piece of this that is actually new. Newer abbreviations get the same argument over sound: the inventor of the [GIF](/blog/what-does-gif-stand-for/), Steve Wilhite, insisted on jif, while 65.6 percent of developers in Stack Overflow's 2017 survey chose the hard g.
+## Saying EKS-mas out loud reads the Greek letter as English
 
-The British lexicographer Eric Partridge drew that line himself in *Usage and Abusage*, calling Xmas "barely allowable in its common use in writing and printing" and "intolerable in the pronunciation, Exmas." A written shorthand outliving the explanation for it is ordinary enough, and [the disputed radio code behind a nickname for the police](/blog/why-are-police-called-12/) has the same shape.
+Here the critics have a point. [Merriam-Webster](https://www.merriam-webster.com/dictionary/Xmas) gives KRIS-mas as the pronunciation and lists EKS-mas only as an alternative, and EKS-mas is what you get when the Greek letter is read as an English one.
 
-Xmas is the member of that shorthand family you still see on a card. Xtian, Xtianity, Xpher and Xene fell out of ordinary English and survive in old letters and dictionaries of usage, which leaves the last one standing on its own, carrying a Greek letter that hardly anybody reading it can still identify. On the documentary evidence, the complaint about the spelling is an argument with a medieval scribe's mark of respect. Strictly FYI.
+The British lexicographer Eric Partridge drew that line himself in [*Usage and Abusage*](https://archive.org/details/dli.ernet.504835), calling Xmas "barely allowable in its common use in writing and printing" and "intolerable in the pronunciation, Exmas."
+
+Xmas is the member of the X shorthand family you still see on a card, carrying a Greek letter that its critics read as a blank. On the documentary evidence, the complaint about the spelling is an argument with a scribal habit nearly a thousand years old, which may have begun as a mark of reverence. Strictly FYI.

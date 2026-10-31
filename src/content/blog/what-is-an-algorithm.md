@@ -1,22 +1,19 @@
 ---
 title: "What Is an Algorithm? The Word Began as a Man's Name"
-description: "What is an algorithm? A finite set of exact steps that solves a problem. The word began as the Latin spelling of al-Khwarizmi, a ninth-century Baghdad scholar."
-pubDate: 2026-10-25
+description: "An algorithm is a finite set of exact steps that solves a problem. The word began as the Latin spelling of al-Khwarizmi, a ninth-century Baghdad scholar."
+pubDate: 2026-10-26
+updatedDate: 2026-10-31
 category: "tech"
 filecode: "FYI-123"
 almanac: "Anyone who blames 'the algorithm' is naming a scholar of ninth-century Baghdad."
 featured: false
 faqs:
-  - q: "What is another word for algorithm?"
-    a: "Procedure, method, process, routine and recipe are the closest everyday words. Donald Knuth wrote in The Art of Computer Programming that the modern meaning is quite similar to recipe, process, method, technique, procedure, routine and rigmarole, except that algorithm 'connotes something just a little different', which he spells out as five features, starting with finiteness and definiteness."
   - q: "What does algorithm mean on social media?"
     a: "On social media, the algorithm means the ranking systems that choose which posts each person sees and in what order, using signals such as that person's activity and history of interacting with an account. Instagram has said it does not have a singular algorithm but uses a variety of algorithms, classifiers and processes, with its own for each part of the app, such as Feed, Stories, Explore and Reels."
   - q: "Who invented the algorithm?"
-    a: "No one person did. The word comes from al-Khwarizmi, a scholar in ninth-century Baghdad whose book on Hindu-Arabic numerals reached Europe in Latin, but step-by-step methods are far older: a Sumerian clay tablet from about 2500 BC describes a division method, and Euclid's procedure for the greatest common divisor of two numbers appears in his Elements, from about 300 BC."
+    a: "No one person did. The word comes from al-Khwarizmi, a scholar in ninth-century Baghdad whose book on Hindu-Arabic numerals reached Europe in Latin, but step-by-step methods are far older: Euclid's procedure for the greatest common divisor of two numbers appears in his Elements."
   - q: "Is a recipe an algorithm?"
     a: "Loosely, yes: Merriam-Webster says the word applies as well to the steps for making a pizza as to computer data analysis. By Donald Knuth's stricter definition, a recipe has finiteness, input and output but lacks definiteness, because an instruction such as 'Add a dash of salt' is not exact enough for a computer to follow."
-  - q: "What are the most common types of algorithms?"
-    a: "Algorithms are classified in more than one way. By design, common types include brute-force search, divide and conquer, backtracking and randomized algorithms, while optimization problems, which look for the best answer, add dynamic programming and greedy methods. By how they are carried out, algorithms can be recursive or iterative, serial or parallel, and exact or approximate."
 ---
 
 Eight leaves of parchment in Cambridge University Library begin "Dixit algorizmi," Latin for "Algorizmi said," and inside the [opening D](https://cudl.lib.cam.ac.uk/view/MS-II-00006-00005/215) an animal's head sprouts foliage and flowers. The leaves hold the first half of an arithmetic book in a 13th-century copy, and the [library's description](https://cudl.lib.cam.ac.uk/view/MS-II-00006-00005/1) says the Latin text survives in only one other manuscript, in New York, while the Arabic original is lost.
@@ -25,11 +22,11 @@ Algorizmi was al-Khwarizmi, a scholar in ninth-century Baghdad. In the later Mid
 
 ## What is an algorithm?
 
-An algorithm is **a finite list of exact, step-by-step instructions** for solving a problem or completing a task, turning a given input into a result. Long division, the moves that solve a Rubik's Cube and the code that ranks a social media feed are all algorithms. Computers run them, but the idea needs no computer.
+An algorithm is **a finite list of exact, step-by-step instructions** for solving a problem or completing a task. Long division, the moves that solve a Rubik's Cube and the code that ranks a social media feed are all algorithms. Computers run them, but the idea needs no computer.
 
-The [Dictionary of Algorithms and Data Structures](https://xlinux.nist.gov/dads/HTML/algorithm.html) at the US National Institute of Standards and Technology keeps its definition short: a set of computable steps that achieves a desired result. [Merriam-Webster](https://www.merriam-webster.com/dictionary/algorithm) notes that the word fits the steps for making a pizza as well as it fits computer data analysis.
+The [Dictionary of Algorithms and Data Structures](https://xlinux.nist.gov/dads/HTML/algorithm.html) at the US National Institute of Standards and Technology keeps its definition short: a computable set of steps for achieving a desired result. [Merriam-Webster](https://www.merriam-webster.com/dictionary/algorithm) notes that the word fits the steps for making a pizza as well as it fits computer data analysis.
 
-The LZW method that compresses the images in a [GIF file](/blog/what-does-gif-stand-for/) is an algorithm. So is the column addition taught in school, which is close to what the word first meant.
+The column addition taught in school is an algorithm too, and it is close to what the word first meant.
 
 ## A recipe fails Donald Knuth's test of definiteness
 
@@ -43,21 +40,23 @@ The computer scientist Donald Knuth sets a stricter bar in [The Art of Computer 
 | Output | It has "one or more outputs," with "a specified relation to the inputs" |
 | Effectiveness | Its operations are basic enough to be done, in principle, "exactly and in a finite length of time by someone using pencil and paper" |
 
-Knuth tested the kitchen comparison himself. A recipe, he allowed, has finiteness, input "(eggs, flour, etc.)" and output "(TV dinner, etc.)," but "it notoriously lacks definiteness," he wrote in the [same section](https://archive.org/details/artofcomputerpro0001knut_l0h13rdedition), and his example of an indefinite instruction is "Add a dash of salt." Instructions like "toss lightly until mixture is crumbly" are fine for a trained chef, he goes on in [the same passage](https://archive.org/details/artofcomputerpro0001knut_l0h13rdedition), "but an algorithm must be specified to such a degree that even a computer can follow the directions." One Naples writer's recipe for pizza would fail sooner, since once the dough is stretched it tells the cook to [put on it whatever comes into your head](/blog/who-invented-pizza/).
+Knuth tested the kitchen comparison himself. A recipe, he allowed, has finiteness, input "(eggs, flour, etc.)" and output "(TV dinner, etc.)," but "it notoriously lacks definiteness," he [wrote](https://archive.org/details/artofcomputerpro0001knut_l0h13rdedition), and his example of an indefinite instruction is "Add a dash of salt." Instructions like "toss lightly until mixture is crumbly" are fine for a trained chef, he goes on, "but an algorithm must be specified to such a degree that even a computer can follow the directions."
 
 ## The name belonged to a scholar at Baghdad's House of Wisdom
 
 Al-Khwarizmi was born about **780** and died about **850**, according to the [MacTutor History of Mathematics archive](https://mathshistory.st-andrews.ac.uk/Biographies/Al-Khwarizmi/) at the University of St Andrews, which counts him and his colleagues the Banu Musa among the scholars at the House of Wisdom in Baghdad. His name means "the Khwarizmian," the [American Heritage Dictionary](https://ahdictionary.com/word/search.html?q=algorithm) explains, after Khwarizm, a region near the Aral Sea in south-central Asia.
 
-Two of his books left words in English. His treatise on equations, *Hisab al-jabr w'al-muqabala*, "gives us the word algebra," [MacTutor](https://mathshistory.st-andrews.ac.uk/Biographies/Al-Khwarizmi/) says. His book on Hindu-Arabic numerals was written around **825**, by the reckoning of both the [NIST dictionary](https://xlinux.nist.gov/dads/HTML/algorithm.html) and [Wikipedia's history of the word](https://en.wikipedia.org/wiki/Algorithm).
+Whether he was born there is less certain. [MacTutor](https://mathshistory.st-andrews.ac.uk/Biographies/Al-Khwarizmi/) gives his birthplace only as "possibly Baghdad" and reports a dispute over al-Qutrubbulli, an epithet that appears beside his name in the historian al-Tabari. The scholar G J Toomer read it as a sign that he came from a district near Baghdad and that perhaps only his ancestors came from Khwarizm, while R Rashed argues that an early copy dropped the letter wa, so the words really name two men, al-Khwarizmi and al-Majusi al-Qutrubbulli.
 
-The numerals were Indian before they were Arabic: the [American Heritage Dictionary's word history](https://ahdictionary.com/word/search.html?q=algorithm) says the digits and the methods for using them were developed in ancient India, and that Europeans learned them from Arabic texts by mathematicians across the Muslim world. Like [alcohol](/blog/why-is-alcohol-called-spirits/), algorism reached English from Arabic by way of Medieval Latin, where [Merriam-Webster](https://www.merriam-webster.com/dictionary/algorithm) gives its form as *algorismus*.
+Two of his books left words in English. His treatise on equations, *Hisab al-jabr w'al-muqabala*, "gives us the word algebra," [MacTutor](https://mathshistory.st-andrews.ac.uk/Biographies/Al-Khwarizmi/) says. His book of arithmetic rules dates from about **825**, by the reckoning of the [NIST dictionary](https://xlinux.nist.gov/dads/HTML/algorithm.html). [MacTutor](https://mathshistory.st-andrews.ac.uk/Biographies/Al-Khwarizmi/) describes it as a treatise on Hindu-Arabic numerals and notes that only a Latin translation survives, much changed from the Arabic original, whose very title is unknown.
+
+The numerals were Indian before they were Arabic: the [American Heritage Dictionary's word history](https://ahdictionary.com/word/search.html?q=algorithm) says the digits and the methods for using them were developed in ancient India, and that Europeans learned them from Arabic texts by mathematicians across the Muslim world. Algorism reached English from Arabic by way of Medieval Latin and Old French, and [Merriam-Webster](https://www.merriam-webster.com/dictionary/algorithm) gives the Latin form as *algorismus*.
 
 ## Algorism meant working sums with the new numerals
 
 *A New English Dictionary on Historical Principles*, the work that became the Oxford English Dictionary, defined *algorism* in its [first volume of 1888](https://archive.org/details/oed01arch/page/n241/mode/1up) as "The Arabic, or decimal system of numeration; hence, arithmetic." During the Middle Ages, Knuth writes in [The Art of Computer Programming](https://archive.org/details/artofcomputerpro0001knut_l0h13rdedition), "abacists computed on the abacus and algorists computed by algorism."
 
-Chaucer used the popular form, augrim, in the Miller's Tale, where the Oxford student Nicholas keeps an astronomy book, an astrolabe and a set of counting stones on the shelves at the head of his bed, and the line in [Walter Skeat's edition](https://www.gutenberg.org/ebooks/22120) reads "His augrim-stones layen faire a-part." Skeat's [glossary](https://www.gutenberg.org/ebooks/43097) explains augrim-stones as "stones or counters for calculating."
+English had two forms of the word, the [1888 dictionary](https://archive.org/details/oed01arch/page/n240/mode/1up) explains: a popular augrim and a learned algorism. Chaucer used the popular one in the Miller's Tale, where the Oxford student Nicholas keeps an astronomy book, an astrolabe and a set of counting stones on the shelves at the head of his bed, and the line in [Walter Skeat's edition](https://www.gutenberg.org/ebooks/22120) reads "His augrim-stones layen faire a-part." Skeat's [glossary](https://www.gutenberg.org/ebooks/43097) explains augrim-stones as "stones or counters for calculating."
 
 A cipher in algorism was the figure zero, and by extension "a 'mere cipher,' a dummy," the [1888 dictionary](https://archive.org/details/oed01arch/page/n241/mode/1up) says, quoting a line of 1399 on the cipher that "noteth a place, and no thing availith": it holds a place and is worth nothing.
 
@@ -69,13 +68,13 @@ The [1888 dictionary](https://archive.org/details/oed01arch/page/n240/mode/1up) 
 
 > "Algorithm, erron. refashioning of ALGORISM." - *A New English Dictionary on Historical Principles*, volume 1, 1888
 
-The abbreviation erron. stands for erroneous. The new spelling still meant the numerals, too: among the [dictionary's quotations](https://archive.org/details/oed01arch/page/n241/mode/1up) is one from the Royal Society's *Philosophical Transactions* of **1699**, "The Algorithm or Numeral Figures now in use."
+The dictionary's [list of abbreviations](https://archive.org/details/oed01arch/page/n23/mode/1up) expands erron. as erroneous. The new spelling still meant the numerals, too: among the [dictionary's quotations](https://archive.org/details/oed01arch/page/n241/mode/1up) is one from the Royal Society's *Philosophical Transactions* of **1699**, "The Algorithm or Numeral Figures now in use."
 
-[Merriam-Webster](https://www.merriam-webster.com/dictionary/algorithm) dates the word's first known use for a step-by-step procedure to 1811, and the [American Heritage Dictionary](https://ahdictionary.com/word/search.html?q=algorithm) says that as computing machines developed in the twentieth century, algorithm was adopted as a convenient word for the procedures they run. Even so, in **1957**, a year after an IBM engineer coined [the byte](/blog/what-is-a-byte/), Webster's New World Dictionary had no entry for algorithm, only "the older form 'algorism' with its ancient meaning," Knuth notes in [The Art of Computer Programming](https://archive.org/details/artofcomputerpro0001knut_l0h13rdedition).
+[Merriam-Webster](https://www.merriam-webster.com/dictionary/algorithm) dates the word's first known use for a step-by-step procedure to 1811, and the [American Heritage Dictionary](https://ahdictionary.com/word/search.html?q=algorithm) says that as computing machines developed in the twentieth century, algorithm was adopted as a convenient word for a recursive mathematical procedure, "the computer's stock-in-trade." Even so, in **1957**, Webster's New World Dictionary had no entry for algorithm, only "the older form 'algorism' with its ancient meaning," Knuth notes in [The Art of Computer Programming](https://archive.org/details/artofcomputerpro0001knut_l0h13rdedition).
 
 ## Euclid's method is far older than the name
 
-Euclid, who taught at Alexandria and lived from about 325 to about 265 BC by [MacTutor's estimate](https://mathshistory.st-andrews.ac.uk/Biographies/Euclid/), set out a procedure in Book VII of the [Elements](https://mathcs.clarku.edu/~djoyce/java/elements/bookVII/propVII2.html) for finding the greatest common measure of two numbers: the smaller is "continually subtracted" from the larger until what is left measures the one before it. [Clark University's online edition](https://mathcs.clarku.edu/~djoyce/java/elements/bookVII/propVII2.html) works it for 3009 and 884:
+Euclid, who taught at Alexandria and lived from about 325 to about 265 BC by [MacTutor's estimate](https://mathshistory.st-andrews.ac.uk/Biographies/Euclid/), set out a procedure in Book VII of the [Elements](https://mathcs.clarku.edu/~djoyce/java/elements/bookVII/propVII2.html) for finding the greatest common measure of two numbers: the smaller is "continually subtracted" from the larger until what is left measures the one before it. [David Joyce's online edition at Clark University](https://mathcs.clarku.edu/~djoyce/java/elements/bookVII/propVII2.html) works it for 3009 and 884:
 
 1. Subtract 884 from 3009 three times, leaving 357.
 2. Subtract 357 from 884 twice, leaving 170.

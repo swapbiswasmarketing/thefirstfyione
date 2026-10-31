@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { SITE_URL, fmtLong } from "../data/site";
+import { corrections } from "../data/corrections";
+import { getEntries, entryHref } from "../lib/entries";
+import { pageNode } from "../lib/schema";
+import { pageCard } from "../lib/og";
+
+const url = `${SITE_URL}/corrections/`;
+const description =
+  "Every correction of fact made to a Strictly FYI entry since the log began in October 2026: what the entry said, what it says now, and the date of the fix.";
+
+/* A slug that matches no entry is a typo in src/data/corrections.ts: fail the
+   build rather than print a dead link. */
+const bySlug = new Map((await getEntries()).map((p) => [p.id, p]));
+const rows = [...corrections]
+  .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
+  .map((c) => ({
+    ...c,
+    day: new Date(`${c.date}T00:00:00Z`),
+    linked: c.entries.map((slug) => {
+      const p = bySlug.get(slug);
+      if (!p) throw new Error(`corrections.ts: no entry "${slug}"`);
+      return p;
+    }),
+  }));
+---
+
+<Layout
+  title="Corrections - Strictly FYI"
+  description={description}
+  card={pageCard("corrections")}
+  contentGroup="About"
+  schema={[pageNode("WebPage", url, "Corrections", description)]}
+>
+  <article class="doc wrap">
+    <header>
+      <p class="doc-kicker">Corrections log &middot; {rows.length} {rows.length === 1 ? "correction" : "corrections"}</p>
+      <h1 class="doc-title">Corrections</h1>
+      <p class="doc-dek">
+        When Strictly FYI gets a fact wrong, the entry is fixed in place, its dateline is marked Updated, and the
+        correction is listed here, newest first.
+      </p>
+    </header>
+
+    <div class="doc-body">
+      <section>
+        <p>
+          The log began on October 31, 2026, when the earliest entries were rebuilt to the current sourcing standard;
+          its first rows record what that review corrected. Only corrections of fact are listed. Changes to wording,
+          formatting or links are not, and they never move an entry's dates. An entry can also show an Updated date
+          because new sourced material was added without correcting anything; those updates are not listed here. The process is set out in
+          <a href="/how-we-work/#corrections">How we work</a>. To report an error, use the
+          <a href="/contact/">contact page</a>.
+        </p>
+      </section>
+
+      {rows.map((c) => (
+        <section class="corr-row">
+          <h2><time datetime={c.date}>{fmtLong(c.day)}</time></h2>
+          {/* data-corrected lets scripts/check-dist.mjs confirm each listed
+              entry shows an Updated date on or after the fix, as promised. */}
+          <ul class="corr-entries">
+            {c.linked.map((p) => (
+              <li><a href={entryHref(p)} data-corrected={c.date}><span class="corr-fc">{p.data.filecode}</span> {p.data.title}</a></li>
+            ))}
+          </ul>
+          <p><strong>What was wrong.</strong> {c.wrong}</p>
+          <p><strong>What it says now.</strong> {c.fixed}</p>
+        </section>
+      ))}
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .corr-row h2 { font-family: var(--mono); font-weight: 400; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+  .corr-entries { list-style: none; padding-left: 0 !important; }
+  .corr-entries li { font-size: 1rem !important; margin: 0 0 0.3rem !important; }
+  .corr-fc { font-family: var(--mono); font-size: 0.78em; letter-spacing: 0.04em; white-space: nowrap; }
+  .corr-row strong { font-weight: 600; color: var(--ink); }
+</style>

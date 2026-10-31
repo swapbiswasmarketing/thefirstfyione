@@ -69,6 +69,7 @@ const CHECKS = {
   'own-host': 'an absolute own-site URL that is not https://www.strictly.fyi',
   'analytics': 'analytics outside the GTM contract (gtag.js, a Clarity snippet, a missing or doubled container, consent after GTM)',
   'entry-missing': 'an entry file has no built page',
+  'corrections-updated': 'an entry listed on /corrections/ does not show an Updated date on or after the fix',
   'rss': 'a feed item link does not resolve to a built entry',
   'robots': 'robots.txt is missing its sitemap or points at a missing file',
   /* WARN */
@@ -612,7 +613,32 @@ if (smFiles.length) {
 const blogDir = path.join(ROOT, 'src', 'content', 'blog');
 if (fs.existsSync(blogDir)) {
   const slugs = fs.readdirSync(blogDir).filter((f) => /\.md$/i.test(f)).map((f) => f.replace(/\.md$/i, ''));
-  for (const s of slugs) if (!fileSet.has(`blog/${s}/index.html`)) fail('entry-missing', `/blog/${s}/`, `src/content/blog/${s}.md has no built page`);
+  /* Scheduled publishing (src/lib/entries.ts): an entry dated after the build
+     day is not built yet, by design. One dated today may have missed a build
+     that ran just before midnight UTC, so it only warns. */
+  const today = new Date().toISOString().slice(0, 10);
+  const pubOf = (s) => (fs.readFileSync(path.join(blogDir, `${s}.md`), 'utf8').match(/^pubDate:[ \t]*["']?(\d{4}-\d{2}-\d{2})/m) || [])[1] || '';
+  for (const s of slugs) {
+    if (fileSet.has(`blog/${s}/index.html`)) continue;
+    const pub = pubOf(s);
+    if (pub > today) continue;
+    if (pub === today) warn('entry-missing', `/blog/${s}/`, `src/content/blog/${s}.md is dated today and was not built (a build before midnight UTC?)`);
+    else fail('entry-missing', `/blog/${s}/`, `src/content/blog/${s}.md has no built page`);
+  }
+
+  /* The corrections log promises that a corrected entry's dateline shows the fix
+     as Updated. Every entry it lists (data-corrected="YYYY-MM-DD") must carry a
+     dateModified on or after that day. */
+  const corr = pages.find((p) => p.url === '/corrections/');
+  if (corr) {
+    const dayOf = (s) => { const d = new Date(s); return Number.isNaN(d.valueOf()) ? '' : d.toISOString().slice(0, 10); };
+    for (const m of read(corr.rel).matchAll(/<a\b[^>]*\bhref="(\/blog\/[^"]+\/)"[^>]*\bdata-corrected="(\d{4}-\d{2}-\d{2})"/g)) {
+      const entry = pages.find((p) => p.url === m[1]);
+      if (!entry) { fail('corrections-updated', m[1], 'listed on /corrections/ but not built'); continue; }
+      const mod = dayOf(entry.modified);
+      if (!mod || mod < m[2]) fail('corrections-updated', m[1], `corrected ${m[2]} on /corrections/, but its dateModified is ${mod || 'missing'}: set updatedDate to the fix date`);
+    }
+  }
   const known = new Set(slugs);
   for (const p of pages) if (isEntryUrl(p.url) && !known.has(p.url.split('/')[2])) warn('stale-page', p.url, 'built entry page with no src/content/blog file');
 } else warn('setup', '(site)', 'src/content/blog not found; the entry coverage check did not run');
