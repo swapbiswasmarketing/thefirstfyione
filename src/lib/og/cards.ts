@@ -161,6 +161,69 @@ async function front(spec: FrontSpec): Promise<El> {
   );
 }
 
+/* The profile banner for the brand's social accounts, 3:1 (X shows 1500x500,
+   Bluesky 3000x1000): the front card's dateline, nameplate and tagline at
+   banner proportions. Both platforms lay the round avatar over the lower left,
+   so the tagline and domain sit right, and the nameplate is held in from the
+   edges because X crops a little off the sides on narrow screens. Drawn at
+   1500 units and scaled by k. */
+async function banner(spec: FrontSpec, width: number): Promise<El> {
+  const k = width / 1500;
+  const padX = 64 * k;
+  const size = Math.floor(((width - 2 * padX) * 0.8) / (await nameplateEm()));
+  return h(
+    "div",
+    {
+      width,
+      height: Math.round(width / 3),
+      display: "flex",
+      flexDirection: "column",
+      backgroundColor: C.paper,
+      padding: `${38 * k}px ${padX}px ${36 * k}px`,
+      color: C.ink,
+    },
+    h(
+      "div",
+      { display: "flex", justifyContent: "space-between", paddingBottom: 11 * k, borderBottom: `${Math.round(k)}px solid ${C.ink}` },
+      ...spec.dateline.map((p) => text(LABEL, EAR_SIZE * k, C.inkFaint, p))
+    ),
+    h("div", { display: "flex", flexGrow: 1, alignItems: "center", justifyContent: "center", paddingTop: 6 * k }, await nameplate(size)),
+    thickThin({}, k),
+    h(
+      "div",
+      { display: "flex", justifyContent: "flex-end", alignItems: "flex-end", paddingTop: 18 * k },
+      text(NOTE, 36 * k, C.inkSoft, spec.tagline),
+      text(DOMAIN, 19 * k, C.ink, "strictly.fyi", { marginLeft: 30 * k, paddingBottom: 5 * k })
+    )
+  );
+}
+
+export async function renderBanner(spec: FrontSpec, width: number): Promise<Uint8Array<ArrayBuffer>> {
+  return toPng(await banner(spec, width), width, Math.round(width / 3));
+}
+
+/* The nameplate alone at 5:1 on a transparent ground: the logo above the text
+   of Google's consent message, which asks for about 5:1 and under 150 KB. */
+async function wordmark(width: number): Promise<El> {
+  const size = Math.floor((width * 0.92) / (await nameplateEm()));
+  return h(
+    "div",
+    {
+      width,
+      height: Math.round(width / 5),
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      paddingBottom: opticalLift(size, size),
+    },
+    await nameplate(size)
+  );
+}
+
+export async function renderWordmark(width: number): Promise<Uint8Array<ArrayBuffer>> {
+  return toPng(await wordmark(width), width, Math.round(width / 5));
+}
+
 export async function cardNode(spec: CardSpec): Promise<El> {
   return spec.kind === "front" ? front(spec) : frame(spec);
 }

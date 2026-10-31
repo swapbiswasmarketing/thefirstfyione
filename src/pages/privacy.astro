@@ -146,7 +146,9 @@ const tags = adsOn ? "analytics and advertising tags" : "analytics tags";
             cookies and reads none on your device; Google's tags may still send a cookieless signal with no
             identifier, which Google uses only for aggregate measurement.
             {clarityEnabled &&
-              " Microsoft Clarity runs in its no-consent mode there: it sets no cookies and gives each page view its own identifier, so one visit is not linked to the next."}
+              (consentMessage
+                ? " Microsoft Clarity loads only if you accept storage for analytics."
+                : " Microsoft Clarity does not load there at all.")}
             {consentMessage
               ? " Google's consent message asks whether you accept cookies for ads and measurement. You can change your answer at any time with Privacy and cookie settings at the foot of every page."
               : " There is no consent banner: storage stays off in these regions instead of asking."}

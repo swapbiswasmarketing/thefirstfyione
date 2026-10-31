@@ -92,9 +92,12 @@ export const adsServing = false;
 
 /* Google's consent message for the EEA, the UK and Switzerland (AdSense >
    Privacy & messaging > European regulations), the certified CMP AdSense needs
-   to serve ads there. Set true once that message is published: the consent
-   default then waits up to 500ms for its answer, the footer offers a "Privacy
-   and cookie settings" link that reopens it, and the privacy page describes it. */
+   to serve ads there. The message for strictly.fyi is published (CONSENT.md has
+   its settings), but Google serves it only through the AdSense loader, so no
+   reader sees it until adsServing is true. Set this true in the same change as
+   adsServing: the consent default then waits up to 500ms for its answer, the
+   footer offers a "Privacy and cookie settings" link that reopens it, and the
+   privacy page describes it. */
 export const consentMessage = false;
 
 /* Newsletter. The numeric Kit form ID, digits only. The form posts straight to
