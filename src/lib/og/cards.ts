@@ -304,3 +304,164 @@ function glyph(side: number): El {
 
 export const renderGlyph = (side: number) => toPng(glyph(side), side, side);
 export const glyphSvg = (side: number) => toSvg(glyph(side), side, side);
+
+/* Social slides at 4:5 (1080x1350), which Instagram's feed shows whole and X
+   shows tall: a cover with the entry's question and its answer on the
+   highlighter, body slides of one idea each, and an end slide that sends
+   readers to the entry. scripts/make-social-cards.mjs draws them; the site
+   never does. */
+export const SLIDE_W = 1080;
+export const SLIDE_H = 1350;
+const SPAD = { top: 76, x: 76, bottom: 64 };
+const SINNER = SLIDE_W - 2 * SPAD.x;
+
+export interface CoverSpec {
+  kicker: string;
+  question: string;
+  /* The part of the title after the question, set on the highlighter. */
+  answer?: string;
+  /* Right side of the footer, beside the domain. May be empty. */
+  foot: string;
+}
+export interface SlideSpec {
+  head?: string;
+  body: string;
+  /* "2 / 6", beside the nameplate. */
+  page: string;
+  kicker: string;
+}
+export interface EndSpec {
+  kicker: string;
+  page: string;
+}
+
+/* Body text set greedily at the largest size whose lines fit the box. Slide
+   bodies run to 40 words, past what fitText's exhaustive search is for. */
+async function wrapFit(s: string, face: Face, o: { width: number; height: number; lineHeight: number; maxSize: number; minSize: number }) {
+  const words = s.trim().split(/\s+/);
+  const [x, xx, ...ws] = await measure(["x", "x x", ...words], face);
+  const space = xx - 2 * x;
+  let best = { size: o.minSize, lines: [] as string[] };
+  for (let size = o.maxSize; size >= o.minSize; size -= 2) {
+    const lines: string[] = [];
+    let line: string[] = [];
+    let w = 0;
+    words.forEach((word, i) => {
+      const add = (line.length ? space : 0) + ws[i];
+      if (line.length && (w + add) * size > o.width) {
+        lines.push(line.join(" "));
+        line = [word];
+        w = ws[i];
+      } else {
+        line.push(word);
+        w += add;
+      }
+    });
+    if (line.length) lines.push(line.join(" "));
+    best = { size, lines };
+    if (lines.length * o.lineHeight * size <= o.height) break;
+  }
+  return best;
+}
+
+const slidePage = (...kids: El[]) =>
+  h(
+    "div",
+    {
+      width: SLIDE_W,
+      height: SLIDE_H,
+      display: "flex",
+      flexDirection: "column",
+      backgroundColor: C.paper,
+      padding: `${SPAD.top}px ${SPAD.x}px ${SPAD.bottom}px`,
+      color: C.ink,
+    },
+    ...kids
+  );
+
+async function slideHead(ear: string): Promise<El> {
+  const plate = 46;
+  const earLift = belowBaseline(PLATE.family, 1) * plate - belowBaseline(LABEL.family, 1) * 20;
+  return h(
+    "div",
+    { display: "flex", flexDirection: "column" },
+    h("div", { display: "flex", justifyContent: "space-between", alignItems: "flex-end" }, await nameplate(plate), text(LABEL, 20, C.inkFaint, ear, { paddingBottom: earLift })),
+    thickThin({ marginTop: 14 }, 1.2)
+  );
+}
+
+const slideFoot = (right: string) =>
+  h(
+    "div",
+    { display: "flex", justifyContent: "space-between", alignItems: "flex-end", borderTop: `1px solid ${C.ink}`, paddingTop: 16 },
+    text(DOMAIN, 24, C.ink, "strictly.fyi"),
+    text(LABEL, 20, C.inkFaint, right)
+  );
+
+const setLines = (ls: string[], size: number, lh: number) =>
+  h("div", { display: "flex", flexDirection: "column", fontSize: size, lineHeight: lh, color: C.ink, ...faceStyle(HEAD) }, ...ls.map((l) => h("div", { display: "flex", whiteSpace: "pre" }, l)));
+
+async function cover(spec: CoverSpec): Promise<El> {
+  const lh = 1.04;
+  const alh = 1.12;
+  const q = await fitText(spec.question, HEAD, { width: SINNER, height: spec.answer ? 600 : 760, lineHeight: lh, maxSize: 124, minSize: 72, maxLines: 5 });
+  const a = spec.answer
+    ? await fitText(spec.answer, HEAD, { width: SINNER, height: 260, lineHeight: alh, maxSize: Math.min(q.size, 104), minSize: 56, maxLines: 2, tail: 2 * BAND_HEAD.pad })
+    : undefined;
+  return slidePage(
+    await slideHead("A FIELD GUIDE TO THE FASCINATING"),
+    h(
+      "div",
+      { display: "flex", flexDirection: "column", flexGrow: 1, justifyContent: "center" },
+      text(KICK, 26, C.inkSoft, spec.kicker, { marginBottom: 40 }),
+      setLines(q.lines, q.size, lh),
+      ...(a
+        ? [
+            h(
+              "div",
+              { display: "flex", flexDirection: "column", alignItems: "flex-start", marginTop: 0.45 * a.size, fontSize: a.size, lineHeight: alh, color: C.ink, ...faceStyle(HEAD) },
+              ...a.lines.map((l) => marked(l, a.size, HEAD.family, alh, BAND_HEAD, { marginLeft: BAND_HEAD.pad * a.size }))
+            ),
+          ]
+        : [])
+    ),
+    slideFoot(spec.foot)
+  );
+}
+
+async function bodySlide(spec: SlideSpec): Promise<El> {
+  const lh = 1.2;
+  const body = await wrapFit(spec.body, HEAD, { width: SINNER, height: spec.head ? 780 : 860, lineHeight: lh, maxSize: 76, minSize: 44 });
+  return slidePage(
+    await slideHead(spec.page),
+    h(
+      "div",
+      { display: "flex", flexDirection: "column", flexGrow: 1, justifyContent: "center" },
+      ...(spec.head ? [text(KICK, 26, C.inkSoft, spec.head.toUpperCase(), { marginBottom: 40 })] : []),
+      setLines(body.lines, body.size, lh)
+    ),
+    slideFoot(spec.kicker)
+  );
+}
+
+async function endSlide(spec: EndSpec): Promise<El> {
+  const size = 104;
+  const plateW = size * (await nameplateEm());
+  return slidePage(
+    h("div", { display: "flex", justifyContent: "flex-end" }, text(LABEL, 20, C.inkFaint, spec.page)),
+    h(
+      "div",
+      { display: "flex", flexDirection: "column", flexGrow: 1, justifyContent: "center", alignItems: "center" },
+      await nameplate(size),
+      thickThin({ marginTop: 22, width: plateW }, 1.6),
+      text(NOTE, 48, C.inkSoft, "Every source is linked in the full entry.", { marginTop: 56, lineHeight: 1.2 }),
+      text(DOMAIN, 50, C.ink, "strictly.fyi", { marginTop: 40 }),
+      text(LABEL, 24, C.inkFaint, "LINK IN BIO", { marginTop: 18 })
+    ),
+    slideFoot(spec.kicker)
+  );
+}
+
+export const renderCover = async (spec: CoverSpec) => toPng(await cover(spec), SLIDE_W, SLIDE_H);
+export const renderSlide = async (spec: SlideSpec) => toPng(await bodySlide(spec), SLIDE_W, SLIDE_H);
+export const renderEnd = async (spec: EndSpec) => toPng(await endSlide(spec), SLIDE_W, SLIDE_H);

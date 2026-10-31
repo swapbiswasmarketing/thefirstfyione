@@ -21,3 +21,6 @@ dist/
 Thumbs.db
 *.log
 .vercel
+
+# Social images, rebuilt by node scripts/make-social-cards.mjs
+brand/social/cards/

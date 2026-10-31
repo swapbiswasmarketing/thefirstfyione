@@ -1,0 +1,362 @@
+[
+  {
+    "date": "2026-11-01",
+    "slug": "did-daylight-saving-start-for-farmers",
+    "queries": [
+      "(\"daylight saving\" OR \"fall back\" OR \"clocks go back\" OR \"time change\") lang:en min_faves:200 -filter:replies",
+      "(\"daylight saving\" OR \"DST\") (farmers OR farming OR farm) lang:en min_faves:50 -filter:replies"
+    ],
+    "replies": [
+      "Farmers opposed it from its first US season. Agrarian interests led the fight that repealed national daylight saving in 1919, over Wilson's veto. It began as a 1916 German wartime fuel measure.",
+      "Benjamin Franklin gets credit too, but his 1784 letter never moves a clock. It proposes ringing every church bell at sunrise and, if that fails, firing cannon in every street."
+    ]
+  },
+  {
+    "date": "2026-11-02",
+    "slug": "why-were-the-catacombs-built",
+    "queries": [
+      "(\"All Souls Day\" OR \"All Souls' Day\" OR \"Dia de los Muertos\") (bones OR skulls OR cemetery OR catacombs) lang:en min_faves:50 -filter:replies",
+      "(catacombs OR catacombes) (paris OR rome OR christians) lang:en min_faves:100 -filter:replies"
+    ],
+    "replies": [
+      "The hiding story has no Roman evidence. In 257 the prefect of Egypt barred a bishop from entering \"the so called cemeteries\", so the Roman state knew where they were.",
+      "The Paris catacombs began as quarries. In 1774, three hundred metres of a road dropped into the tunnels, and from 1810 to 1814 an inspector stacked the bones into walls of femurs and skulls."
+    ]
+  },
+  {
+    "date": "2026-11-03",
+    "slug": "how-do-planes-fly",
+    "queries": [
+      "(\"how planes fly\" OR \"how do planes fly\" OR \"how planes stay in the air\") lang:en min_faves:100 -filter:replies",
+      "(Bernoulli OR \"equal transit\") (wing OR lift OR airplane OR plane) lang:en min_faves:50 -filter:replies"
+    ],
+    "replies": [
+      "The air over the top does not wait for the air below. In a Cambridge wind-tunnel film it reaches the back edge first. NASA calls the equal transit story \"the most popular incorrect theory of lift\".",
+      "Paper planes with flat wings fly, and NASA notes inverted flight is common at air shows. Wings stay up by turning air downward. Double the speed and the lift quadruples."
+    ]
+  },
+  {
+    "date": "2026-11-04",
+    "slug": "what-came-first-the-chicken-or-the-egg",
+    "queries": [
+      "(\"chicken or the egg\" OR \"chicken and the egg\") lang:en min_faves:200 -filter:replies",
+      "(\"chicken came first\" OR \"egg came first\") lang:en min_faves:50 -filter:replies"
+    ],
+    "replies": [
+      "The 2010 study said to prove the chicken came first was a computer model of an eggshell protein turning calcium carbonate into calcite. It dated nothing and examined no fossils. The egg came first.",
+      "The chicken is young: the first unambiguous domestic chicken bones date to about 1650 to 1250 BCE, in Thailand. Amniotes were leaving footprints probably more than 354 million years ago."
+    ]
+  },
+  {
+    "date": "2026-11-05",
+    "slug": "why-the-keyboard-is-qwerty",
+    "queries": [
+      "QWERTY (\"slow down\" OR \"slow typists\" OR jam OR jamming) lang:en min_faves:50 -filter:replies",
+      "(QWERTY OR \"keyboard layout\" OR Dvorak) lang:en min_faves:200 -filter:replies"
+    ],
+    "replies": [
+      "No evidence supports the slow-down story. Kyoto researchers say the early keyboard was built for telegraph operators taking down Morse at the sender's pace. It was advertised as faster than a pen.",
+      "QWERTY began in 1868 as a piano-style keyboard with alphabetical keys. The last shuffle came in 1882, when a sales firm moved M next to N and swapped C and X to evade older patents."
+    ]
+  },
+  {
+    "date": "2026-11-06",
+    "slug": "why-do-flies-rub-their-hands",
+    "queries": [
+      "(fly OR flies OR housefly) (\"rubbing its hands\" OR \"rub their hands\" OR \"rubbing their hands\" OR \"rubs its hands\") lang:en min_faves:50 -filter:replies",
+      "(\"taste with their feet\" OR \"house fly\" OR housefly OR \"fruit fly\") lang:en min_faves:200 -filter:replies"
+    ],
+    "replies": [
+      "No scheme involved. Flies rub their legs together to clean them, and those legs carry much of their sense of taste and all of their grip. Dust-covered fruit flies clean their eyes first.",
+      "A fly's feet double as taste organs: a fruit fly has approximately 250 taste bristles on its mouthparts and legs. One walking across your plate has already sampled it."
+    ]
+  },
+  {
+    "date": "2026-11-07",
+    "slug": "why-do-cats-like-boxes",
+    "queries": [
+      "(cat OR cats) (\"cardboard box\" OR \"empty box\" OR \"amazon box\" OR \"in a box\") lang:en min_faves:500 -filter:replies",
+      "(\"cat square\" OR catsquare OR \"cats sit in squares\" OR \"why do cats like boxes\") lang:en min_faves:50 -filter:replies"
+    ],
+    "replies": [
+      "The evidence that cats like boxes for warmth is thin. The best-tested reason is hiding: in two Dutch shelter trials, newly arrived cats given a hiding box settled days sooner than cats without one.",
+      "In a 2021 study, four pet cats sat inside an illusory square made of four Pac-Man shapes taped to the floor, seven times in all. A real square outline drew cats eight times."
+    ]
+  },
+  {
+    "date": "2026-11-08",
+    "slug": "where-do-hamsters-come-from",
+    "queries": [
+      "(hamster OR hamsters) lang:en min_faves:500 -filter:replies",
+      "(\"syrian hamster\" OR \"golden hamster\" OR \"where do hamsters come from\") lang:en min_faves:50 -filter:replies"
+    ],
+    "replies": [
+      "The Aaron Abrahams version names the wrong finder. The accounts from Jerusalem credit Israel Aharoni, a biologist, who had the litter dug out of a wheat field near Aleppo in 1930.",
+      "Nearly every golden hamster in a cage descends from a brother and sister mated in Jerusalem in 1930. Wild ones are listed as Endangered, and are trapped or poisoned as crop pests."
+    ]
+  },
+  {
+    "date": "2026-11-09",
+    "slug": "what-does-am-stand-for",
+    "queries": [
+      "(\"12am\" OR \"12 am\" OR \"12pm\" OR \"12 pm\") (noon OR midnight) lang:en min_faves:100 -filter:replies",
+      "(\"ante meridiem\" OR \"post meridiem\" OR \"is noon am or pm\" OR \"is 12am midnight\") lang:en min_faves:50 -filter:replies"
+    ],
+    "replies": [
+      "Noon is 12 p.m. only by convention. The US federal style manual called noon 12 a.m. in its 2000 edition and reversed it in 2008. NIST says 12 a.m. and 12 p.m. \"are ambiguous and should not be used.\"",
+      "The word noon once meant 3 p.m., the ninth hour from sunrise, in Old English. The shift toward midday began in the 12th century and seems to have been complete by the 14th."
+    ]
+  },
+  {
+    "date": "2026-11-10",
+    "slug": "why-are-veins-blue",
+    "queries": [
+      "(\"veins are blue\" OR \"blue blood\" OR \"deoxygenated blood\" OR \"why are veins blue\") lang:en min_faves:100 -filter:replies",
+      "(\"blood is blue\" OR \"blood is never blue\" OR \"blood is always red\") lang:en min_faves:50 -filter:replies"
+    ],
+    "replies": [
+      "Human blood is red at every oxygen level: bright red with oxygen, dark red without. Veins read blue because the skin over them returns less red light than the skin beside them.",
+      "The common fix, that blue light bounces off the blood, fails too. A 2026 study of artificial veins in synthetic skin found more red light than blue coming back from above the vein."
+    ]
+  },
+  {
+    "date": "2026-11-11",
+    "slug": "why-do-we-celebrate-veterans-day",
+    "queries": [
+      "(\"Veterans Day\" OR \"Armistice Day\") (history OR \"November 11\" OR \"11th hour\") lang:en min_faves:200 -filter:replies",
+      "(\"happy Veterans Day\" OR \"thank a veteran\" OR \"thank you veterans\") lang:en min_faves:500 -filter:replies"
+    ],
+    "replies": [
+      "Memorial Day honors those who died in service. Veterans Day honors everyone who served honorably, and the VA says it is largely intended to thank living veterans.",
+      "For seven years the federal Veterans Day was in October. The first \"was observed with much confusion on October 25, 1971.\" It went back to November 11 in 1978."
+    ]
+  },
+  {
+    "date": "2026-11-12",
+    "slug": "what-was-einsteins-iq",
+    "queries": [
+      "(\"Einstein's IQ\" OR \"Einstein IQ\" OR \"IQ of 160\") lang:en min_faves:100 -filter:replies",
+      "(\"higher IQ than Einstein\" OR \"smarter than Einstein\" OR \"IQ higher than Einstein\") lang:en min_faves:200 -filter:replies"
+    ],
+    "replies": [
+      "There is no record that Einstein ever took an IQ test. The famous 160 has no test behind it, and published figures for him run from 150 to 207.",
+      "In 1962 Popular Mechanics called Einstein a man \"who never took an intelligence test\" and, in the same parenthesis, gave his estimated IQ as 207."
+    ]
+  },
+  {
+    "date": "2026-11-13",
+    "slug": "illuminati-on-the-dollar-bill",
+    "queries": [
+      "(Illuminati (dollar OR \"dollar bill\" OR pyramid OR \"all seeing eye\")) lang:en min_faves:100 -filter:replies",
+      "(\"Friday the 13th\" (unlucky OR superstition OR thirteen)) lang:en min_faves:500 -filter:replies"
+    ],
+    "replies": [
+      "The eye and pyramid come from the Great Seal of 1782 and reached the dollar in 1935. The Bavarian Illuminati used an owl and was outlawed by 1785.",
+      "The thirteen steps on the dollar's pyramid are a tradition. The official 1782 description of the Great Seal sets no number of steps."
+    ]
+  },
+  {
+    "date": "2026-11-14",
+    "slug": "why-do-hyenas-laugh",
+    "queries": [
+      "(\"hyena laugh\" OR \"hyenas laughing\" OR \"laughing hyena\" OR \"hyenas laugh\") lang:en min_faves:100 -filter:replies",
+      "(hyena OR hyenas) (wildlife OR safari OR \"Lion King\") lang:en min_faves:300 -filter:replies"
+    ],
+    "replies": [
+      "The giggle is not amusement. Researchers read it as submission and frustration, often from a hyena kept off a kill by higher-ranking clanmates.",
+      "A hyena's giggle can carry clues to its age. In one study, mean pitch ran from about 650 Hz at two years old to under 450 Hz at twenty, roughly 30 percent lower."
+    ]
+  },
+  {
+    "date": "2026-11-15",
+    "slug": "why-is-it-called-an-em-dash",
+    "queries": [
+      "(\"em dash\" OR \"em dashes\" OR \"em-dash\") lang:en min_faves:200 -filter:replies",
+      "(\"em dash\" OR \"em dashes\") (AI OR ChatGPT OR chatbot) lang:en min_faves:100 -filter:replies"
+    ],
+    "replies": [
+      "Em dash rates vary by model. A March 2026 preprint found none at all in Meta's Llama models and 10.62 per 1,000 words for GPT-4.1, so the habit belongs to particular models.",
+      "The em is a unit, not a letter. A 1919 printing primer put it plainly: \"a 12-point em is 12 points deep and 12 points wide.\" The em dash was cast one em wide."
+    ]
+  },
+  {
+    "date": "2026-11-16",
+    "slug": "when-was-the-fax-machine-invented",
+    "queries": [
+      "(\"fax machine\" OR \"send a fax\" OR \"faxing\") lang:en min_faves:200 -filter:replies",
+      "(\"fax machine\" OR \"fax machines\") (invented OR history OR 1980s OR old) lang:en min_faves:50 -filter:replies"
+    ],
+    "replies": [
+      "The fax is older than the phone. Alexander Bain patented one in 1843, and Paris was faxing Lyon in 1865, 11 years before Bell patented the telephone.",
+      "Bain's 1843 design recorded type as dots: a clock-driven pendulum swept a spring across wires pressed against type, and current marked damp paper soaked in prussiate of potash and nitrate of soda."
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "slug": "why-we-only-see-one-side-of-the-moon",
+    "queries": [
+      "(\"dark side of the moon\" OR \"far side of the moon\") lang:en min_faves:200 -filter:replies",
+      "(moon OR \"the moon\") (\"same side\" OR \"one side\" OR \"tidally locked\" OR \"doesn't rotate\") lang:en min_faves:100 -filter:replies"
+    ],
+    "replies": [
+      "The far side is not dark. It gets as much sunlight as the near side. As a name for the far side, dark meant unknown rather than unlit.",
+      "The Moon does spin. It rotates once in exactly the time it takes to orbit Earth, roughly 27.3 days. A Moon that had stopped rotating would show us every side once a month."
+    ]
+  },
+  {
+    "date": "2026-11-18",
+    "slug": "how-is-gold-formed",
+    "queries": [
+      "(\"neutron star\" OR \"neutron stars\" OR kilonova) gold lang:en min_faves:100 -filter:replies",
+      "(gold (\"comes from\" OR \"made in\" OR formed)) (space OR stars OR supernova OR supernovae) lang:en min_faves:200 -filter:replies"
+    ],
+    "replies": [
+      "Supernovae were long credited, yet \"no one has ever seen a supernova create r-process elements.\" A 2017 neutron-star merger was seen glowing with fresh heavy elements.",
+      "More than 99% of Earth's gold lies in the core, under about 3,000 km of solid rock. Most of the gold near the surface is thought to have arrived later, on meteorites."
+    ]
+  },
+  {
+    "date": "2026-11-19",
+    "slug": "why-is-it-called-a-poop-deck",
+    "queries": [
+      "(\"World Toilet Day\" OR #WorldToiletDay) lang:en min_faves:50 -filter:replies",
+      "(\"poop deck\" OR \"the head\" (ship OR sailors OR navy)) lang:en min_faves:100 -filter:replies"
+    ],
+    "replies": [
+      "The deck takes its name from the poop, an old word for a ship's stern, recorded in English by 1489. The crew's toilets were at the bow.",
+      "On USS Constitution the crew's head was four or six holes cut in a plank overhanging the water at the bow. The captain had a private privy in a quarter gallery at the stern."
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "slug": "when-was-bluetooth-invented",
+    "queries": [
+      "(Bluetooth (named OR name OR Viking OR Harald OR runes)) lang:en min_faves:100 -filter:replies",
+      "(\"Hedy Lamarr\" (Bluetooth OR WiFi OR \"frequency hopping\")) lang:en min_faves:100 -filter:replies"
+    ],
+    "replies": [
+      "Lamarr and George Antheil's 1942 patent did use frequency hopping, but a 1908 book had already described it. Bluetooth itself was designed at Ericsson from 1994.",
+      "Bluetooth was meant to be called PAN, the winner of a 4-1 vote. PAN could not be trademarked, and the backup, RadioWire, had not been searched in time."
+    ]
+  },
+  {
+    "date": "2026-11-21",
+    "slug": "how-are-tvs-measured",
+    "queries": [
+      "(\"World Television Day\" OR \"#WorldTelevisionDay\") lang:en min_faves:100 -filter:replies",
+      "(\"measured diagonally\" OR \"TV size\" OR \"65 inch TV\" OR \"75 inch TV\") lang:en min_faves:200 -filter:replies"
+    ],
+    "replies": [
+      "The biggest-number motive is unproven, and the diagonal was already the industry habit in 1966. That year a US rule made width the default, and the diagonal needed a label until 2019.",
+      "For 52 and a half years, a US federal rule said a TV's size, unless the seller said otherwise, meant the width of its picture. The diagonal was allowed only with a label attached."
+    ]
+  },
+  {
+    "date": "2026-11-22",
+    "slug": "why-do-whales-explode",
+    "queries": [
+      "(\"exploding whale\" OR \"whale exploded\" OR \"whale explosion\") lang:en min_faves:100 -filter:replies",
+      "(\"dead whale\" OR \"beached whale\" OR \"whale carcass\") lang:en min_faves:200 -filter:replies"
+    ],
+    "replies": [
+      "Gas does build up inside a dead whale, mostly carbon dioxide from gut bacteria. But most documented bursts were set off by people blowing up, cutting into or trucking the whale.",
+      "Oregon's 1970 whale had help: twenty 50-pound cases of explosives. A three-foot chunk crushed the roof of a 1969 Oldsmobile, and the Highway Division's insurer paid the owner its full retail value."
+    ]
+  },
+  {
+    "date": "2026-11-23",
+    "slug": "what-is-the-biggest-number",
+    "queries": [
+      "(\"Fibonacci Day\" OR \"#FibonacciDay\") lang:en min_faves:100 -filter:replies",
+      "(\"biggest number\" OR \"largest number\" OR \"Graham's number\" OR \"TREE(3)\" OR \"googolplex\") lang:en min_faves:200 -filter:replies"
+    ],
+    "replies": [
+      "Infinity is not a number that counting can reach, so it does not win. Add 1 to any number, however huge, and the result is bigger. Even infinite collections come in sizes, as Georg Cantor showed.",
+      "Graham's number is a tower of 3s that nobody can write out in ordinary digits, yet its final digits are known. They end in 4195387. Describing it takes 64 layers of arrow notation."
+    ]
+  },
+  {
+    "date": "2026-11-24",
+    "slug": "when-did-the-mayflower-land",
+    "queries": [
+      "(\"Plymouth Rock\" OR \"Pilgrims landed\" OR \"the first Thanksgiving\") lang:en min_faves:200 -filter:replies",
+      "(\"Mayflower\" OR \"the Pilgrims\") (Thanksgiving OR \"Cape Cod\" OR 1620) lang:en min_faves:100 -filter:replies"
+    ],
+    "replies": [
+      "The two accounts of the landing written by people who were there mention no rock. The rock was pointed out about 1741 by Thomas Faunce, a church elder in his nineties, citing his father.",
+      "The Mayflower landed twice. It anchored at Cape Cod on 11 November 1620, and a boat party walked into Plymouth a month later, on 11 December. Both are Old Style dates."
+    ]
+  },
+  {
+    "date": "2026-11-25",
+    "slug": "what-is-a-group-of-turkeys-called",
+    "queries": [
+      "(\"group of turkeys\" OR \"rafter of turkeys\" OR \"flock of turkeys\" OR \"gang of turkeys\") lang:en min_faves:50 -filter:replies",
+      "(\"wild turkeys\" OR \"wild turkey\" OR \"Thanksgiving turkey\") lang:en min_faves:200 -filter:replies"
+    ],
+    "replies": [
+      "Flock is the usual word, in print by 1657. Rafter has not been traced in print before a 1908 bird book, and gang, the hunters' word, was in print by 1709.",
+      "An 1821 article in the Baltimore farm paper American Farmer recommended raising turkeys on tobacco farms to eat the worms, with the gang driven over every part of the field."
+    ]
+  },
+  {
+    "date": "2026-11-26",
+    "slug": "why-does-turkey-make-you-sleepy",
+    "queries": [
+      "(\"turkey coma\" OR \"tryptophan\" OR \"food coma\") lang:en min_faves:100 -filter:replies",
+      "(\"Happy Thanksgiving\" OR \"Thanksgiving dinner\") (sleepy OR nap OR tired) lang:en min_faves:200 -filter:replies"
+    ],
+    "replies": [
+      "Turkey breast has about as much tryptophan as chicken breast, and parmesan has more. In rats, protein diets raised blood tryptophan without changing brain tryptophan.",
+      "In a 1998 study, people were measurably sleepier 1.5 hours after a meal than before it, whether the meal was rich in fat or carbohydrate. Turkey is not special."
+    ]
+  },
+  {
+    "date": "2026-11-27",
+    "slug": "why-is-it-called-a-flea-market",
+    "queries": [
+      "(\"Black Friday\" OR \"#BlackFriday\") (thrift OR thrifting OR \"flea market\" OR secondhand OR vintage) lang:en min_faves:100 -filter:replies",
+      "(\"flea market\" OR \"flea markets\" OR \"flea market find\") lang:en min_faves:100 -filter:replies"
+    ],
+    "replies": [
+      "The flee story has less evidence behind it. The earliest known English example, from 1887, is a letter about a Copenhagen market of old clothes and rags: \"Perhaps the fleas had killed it.\"",
+      "In July 1891 the Yorkshire Evening Post reported that at a Paris flea market an old woman had cut open a secondhand mattress and found 14,000 francs in gold."
+    ]
+  },
+  {
+    "date": "2026-11-28",
+    "slug": "why-are-cats-afraid-of-cucumbers",
+    "queries": [
+      "(\"cats and cucumbers\" OR \"cat cucumber\" OR \"cucumber prank\" OR \"cats afraid of cucumbers\") lang:en min_faves:50 -filter:replies",
+      "(\"my cat\" OR \"cats are\" OR \"cat behavior\") (scared OR afraid OR startled OR snake) lang:en min_faves:300 -filter:replies"
+    ],
+    "replies": [
+      "The snake theory is unverified. Cornell's cat behavior expert says cats have no natural fear of snakes and many hunt them, and the snake-sensitive neurons were found in monkeys.",
+      "In southwest Western Australia, six of 358 feral and stray cats whose stomach contents were analyzed had eaten venomous snakes. The youngest was only 10 months old."
+    ]
+  },
+  {
+    "date": "2026-11-29",
+    "slug": "why-do-people-say-xmas",
+    "queries": [
+      "(\"Christ out of Christmas\" OR \"Christ in Christmas\" OR \"Xmas\") lang:en min_faves:100 -filter:replies",
+      "(\"First Sunday of Advent\" OR \"Advent begins\" OR \"#Advent\") lang:en min_faves:100 -filter:replies"
+    ],
+    "replies": [
+      "The X is the Greek letter chi, the first letter of Christos. English scribes used it as shorthand for Christ by the 11th century, so the spelling carries the name in Greek.",
+      "Byron wrote Xmas in an 1811 letter to his half-sister Augusta Leigh, asking whether she could visit \"between this and Xmas\". Coleridge had written it in 1801."
+    ]
+  },
+  {
+    "date": "2026-11-30",
+    "slug": "what-is-a-cookie-on-a-website",
+    "queries": [
+      "(\"Cyber Monday\" OR \"#CyberMonday\") (cart OR checkout OR \"online shopping\") lang:en min_faves:200 -filter:replies",
+      "(\"accept cookies\" OR \"cookie banner\" OR \"cookie pop-up\" OR \"third-party cookies\") lang:en min_faves:100 -filter:replies"
+    ],
+    "replies": [
+      "Cross-site tracking was not the design. Cookies went back only to the server that set them. Ad networks later used third-party cookies, set by embedded ads, to track browsers across sites.",
+      "The original Netscape cookie spec's worked example is an order: CUSTOMER=WILE_E_COYOTE, then PART_NUMBER=ROCKET_LAUNCHER_0001, then SHIPPING=FEDEX."
+    ]
+  }
+]
