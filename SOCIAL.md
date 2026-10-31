@@ -9,7 +9,7 @@ How Strictly FYI appears on social platforms: which accounts, what the profiles 
 | X | `@strictlyfyi` | https://x.com/strictlyfyi |
 | Bluesky | `@strictly.fyi` (sign up as `strictlyfyi.bsky.social`, then switch, see below) | https://bsky.app/profile/strictly.fyi |
 
-Both handles were free on 2026-10-31. Sign up with the site's contact address. Display name on both: `Strictly FYI`. A sign-up through "Continue with Google" copies the Google account's personal name into the profile, so change the name to `Strictly FYI` before the first post. Turn on two-factor authentication on both.
+Both accounts were created on 2026-10-31 with the site's contact address, and both profiles were set up the same day with the copy and images below. The Bluesky account's DID is `did:plc:3cun4nqezggfgy52i5o3ncqi`; the DID stays the same if the handle ever changes. Display name on both: `Strictly FYI`. A sign-up through "Continue with Google" copies the Google account's personal name into the profile, so check the name before the first post. Turn on two-factor authentication on both.
 
 ## Profile copy
 
@@ -17,11 +17,9 @@ X bio (157 of 160 characters), website field `https://www.strictly.fyi`, no loca
 
 > One question per entry, answered from the sources and linked to them. Science, history, tech, culture and everyday curiosities. Mistakes corrected in public.
 
-Bluesky description (209 of 256; Bluesky has no website field, so the domain ends the description):
+Bluesky description (195 of 256), with `https://www.strictly.fyi` in the profile's Links field, titled `strictly.fyi`:
 
 > A field guide to the fascinating. Each entry answers one question in science, history, tech, culture or everyday life, and links the sources behind what it says. Mistakes are corrected in public.
->
-> strictly.fyi
 
 Pinned post on both (its sentences are the ones /how-we-work/ uses):
 
@@ -56,10 +54,6 @@ The DNS route works too (a TXT record `_atproto` with the value `did=did:plc:...
 - **Post only what the entry says.** The almanac line went through the same checks as the entry, so quote it as it is. No new claims, no paraphrase from memory, no engagement bait.
 - **Corrections:** when an entry is corrected and the error is in a post, reply to that post with the correction and a link to https://www.strictly.fyi/corrections/.
 
-## On the site, once the accounts exist
+## On the site
 
-In one change, with the profile URLs from the table above:
-
-1. `src/lib/schema.ts`: add both URLs as `sameAs` on the Organization node, so search engines tie the accounts to the publication.
-2. `src/layouts/Layout.astro`: add `<meta name="twitter:site" content="@strictlyfyi" />` beside the other `twitter:` tags.
-3. The colophon: links to both profiles.
+The accounts live in one place, `socialProfiles` and `xHandle` in `src/data/site.ts`. From there they become the Organization's `sameAs` in `src/lib/schema.ts`, so search engines tie the accounts to the publication; the `twitter:site` tag in `src/layouts/Layout.astro`; and `rel="me"` links in the colophon. A new account is one line there, plus its row in the table above.

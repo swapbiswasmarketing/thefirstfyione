@@ -13,6 +13,8 @@ import {
   adsenseLive,
   adsServing,
   consentMessage,
+  socialProfiles,
+  xHandle,
   SITE_URL,
   SITE_NAME,
   SITE_DESCRIPTION,
@@ -193,6 +195,7 @@ const speculationRules = JSON.stringify({
     {type === "article" && section && <meta property="article:section" content={section} />}
 
     <meta name="twitter:card" content="summary_large_image" />
+    {xHandle && <meta name="twitter:site" content={xHandle} />}
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
@@ -256,6 +259,11 @@ const speculationRules = JSON.stringify({
             <a href="/about/">About</a> &middot; <a href="/how-we-work/">How we work</a> &middot;
             <a href="/corrections/">Corrections</a> &middot; <a href="/contact/">Contact</a> &middot;
             <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/rss.xml">RSS</a>
+            {socialProfiles.map((p) => (
+              <>
+                {" "}&middot; <a href={p.url} rel="me">{p.name}</a>
+              </>
+            ))}
             {consentMessage && (
               <span data-consent-ui hidden>
                 {" "}&middot; <button type="button" class="consent-link">Privacy and cookie settings</button>

@@ -13,6 +13,15 @@ export const SITE_DESCRIPTION =
 export const contactEmail = "swapbiswas.marketing@gmail.com";
 export const contactLive = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmail);
 
+/* The publication's own accounts (SOCIAL.md). They feed the Organization's
+   sameAs, the colophon links and, for X, the twitter:site tag. The Bluesky
+   handle is the domain itself, proved by public/.well-known/atproto-did. */
+export const socialProfiles = [
+  { name: "Bluesky", url: "https://bsky.app/profile/strictly.fyi" },
+  { name: "X", url: "https://x.com/strictlyfyi" },
+];
+export const xHandle = "@strictlyfyi";
+
 export const catLabel: Record<string, string> = {
   science: "Science",
   history: "History",
