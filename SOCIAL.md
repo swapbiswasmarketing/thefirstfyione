@@ -47,6 +47,12 @@ Both platforms lay the round avatar over the banner's lower left, so the banner 
 
 The DNS route works too (a TXT record `_atproto` with the value `did=did:plc:...` at name.com), but the file keeps it in the repo.
 
+## Scheduling
+
+- **The queue:** `brand/social/schedule.json`, one item a day: `date`, `slug`, `text` (at most 240 characters, plain ASCII, no URL) and `url`. The same text goes to both platforms. Every text is checked claim by claim against its entry before it is scheduled, and its dates are the only outside facts it may carry (Veterans Day, Thanksgiving and the like).
+- **Bluesky:** `.github/workflows/social-bluesky.yml` runs `scripts/post-bluesky.mjs` every day at 14:30 UTC (9:30 a.m. in New York in winter, 8 p.m. in India) and posts the day's item with a link card built from the entry's own og tags. It needs the repository secret `BLUESKY_APP_PASSWORD`: an app password from Bluesky's Settings > Privacy and security > App passwords, never the account password. A rerun never posts the same text twice. Test it from the Actions tab: a manual run is a dry run unless told otherwise.
+- **X:** scheduled in X's own composer (Schedule post) for 20:00 India time, which is 14:30 UTC, with the entry's link after the text so X shows the card. X lists them under Unsent posts > Scheduled. To change one, edit or delete it there, and change `schedule.json` to match.
+
 ## Posting
 
 - **A new entry:** on the day it goes live, post its `almanac` line and its link on both accounts. The link card shows the entry's title and card image, so the post needs nothing else.

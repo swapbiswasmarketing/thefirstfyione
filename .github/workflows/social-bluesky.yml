@@ -1,0 +1,50 @@
+# Bluesky daily post: the day's item from brand/social/schedule.json goes out
+# as @strictly.fyi with a link card for the entry. X posts are scheduled in X's
+# own composer instead. SOCIAL.md has the setup and the posting rules.
+#
+# One-time setup by the site owner:
+#   1. Bluesky: Settings > Privacy and security > App passwords > Add, named
+#      "github-scheduler". Copy it once; Bluesky will not show it again.
+#   2. GitHub: this repository > Settings > Secrets and variables > Actions >
+#      New repository secret, named BLUESKY_APP_PASSWORD, value = that password.
+# Without the secret, a day with a scheduled item fails with a notice saying so.
+# Run it by hand from the Actions tab: dry_run (the default) prints the post
+# without sending it.
+
+name: Bluesky daily post
+
+on:
+  schedule:
+    - cron: "30 14 * * *" # 14:30 UTC: 9:30 a.m. in New York in winter, 8 p.m. in India
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date to post, YYYY-MM-DD (blank: today in UTC)"
+        required: false
+      dry_run:
+        description: "Print the post without sending it"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: social-bluesky
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Post the day's item
+        env:
+          BLUESKY_HANDLE: strictly.fyi
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          DATE: ${{ inputs.date }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
+        run: node scripts/post-bluesky.mjs
