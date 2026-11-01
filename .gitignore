@@ -22,5 +22,6 @@ Thumbs.db
 *.log
 .vercel
 
-# Social images, rebuilt by node scripts/make-social-cards.mjs
-brand/social/cards/
+# Instagram slides, rebuilt by node scripts/make-social-cards.mjs. The X cards
+# stay in git because the X Action attaches them.
+brand/social/cards/instagram/

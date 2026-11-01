@@ -1,0 +1,63 @@
+# X daily posts: the day's main post and the weekday second post from
+# brand/social/x-plan.json go out as @strictlyfyi through X's official API.
+# Scheduling through the API is allowed; driving the x.com website with a
+# script or browser agent is not. SOCIAL.md has the plan and the rules.
+#
+# One-time setup by the site owner:
+#   1. console.x.com, signed in as @strictlyfyi: create the developer
+#      account and an app, add a little pay-per-use credit (a post costs
+#      $0.015), set the app's permission to "Read and write", then on the
+#      app's Keys and tokens tab copy the API Key and Secret and generate the
+#      Access Token and Secret (generate them after setting the permission).
+#   2. GitHub: this repository > Settings > Secrets and variables > Actions >
+#      four repository secrets: X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN,
+#      X_ACCESS_TOKEN_SECRET.
+# Without the keys a run posts nothing and says so. Run it by hand from the
+# Actions tab: dry_run (the default) signs in and prints the post.
+
+name: X daily post
+
+on:
+  schedule:
+    - cron: "30 15 * * *" # 15:30 UTC: 21:00 in India, 10:30 a.m. in New York in winter
+    - cron: "0 18 * * 1-5" # 18:00 UTC: 23:30 in India, the weekday second post
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date to post, YYYY-MM-DD (blank: today in UTC)"
+        required: false
+      slot:
+        description: "Which post"
+        type: choice
+        options: [main, second]
+        default: main
+      dry_run:
+        description: "Print the post without sending it"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: social-x
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Post the day's item
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          DATE: ${{ inputs.date }}
+          SLOT: ${{ github.event_name == 'workflow_dispatch' && inputs.slot || (github.event.schedule == '0 18 * * 1-5' && 'second' || 'main') }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
+        run: node scripts/post-x.mjs

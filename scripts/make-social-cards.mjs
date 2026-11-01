@@ -5,9 +5,11 @@
 
    Needs Node 23.6 or later. Reads brand/social/schedule.json and, when it
    exists, brand/social/instagram.json (the checked carousel words). Writes
-   into brand/social/cards/, which git ignores, since a rerun rebuilds it:
-     x/<date>-<slug>.png             the image on that day's X post
-     instagram/<date>-<slug>/NN.png  the carousel: cover, slides, end
+   into brand/social/cards/:
+     x/<date>-<slug>.png             the image on that day's X post; kept in
+                                     git, because the X Action attaches it
+     instagram/<date>-<slug>/NN.png  the carousel: cover, slides, end; git
+                                     ignores these, since a rerun rebuilds them
    SOCIAL.md says how each is used. */
 import fs from "node:fs";
 import path from "node:path";
