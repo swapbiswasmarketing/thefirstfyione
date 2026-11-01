@@ -10,10 +10,13 @@
                                      git, because the X Action attaches it
      instagram/<date>-<slug>/NN.png  the carousel: cover, slides, end; git
                                      ignores these, since a rerun rebuilds them
+   and the same carousel as JPEG into public/social/ig/<date>/NN.jpg, which the
+   site serves: Instagram's publishing API takes only JPEGs, by public URL.
    SOCIAL.md says how each is used. */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import sharp from "sharp";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 /* The card engine resolves its fonts from the working directory. */
@@ -44,6 +47,14 @@ const write = (rel, data) => {
   return data.length;
 };
 const pad = (n) => String(n).padStart(2, "0");
+/* The cards are RGBA PNGs; flatten onto the paper colour before the JPEG. */
+const writeJpeg = async (date, n, png) => {
+  const file = path.join(root, "public", "social", "ig", date, `${pad(n)}.jpg`);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const jpg = await sharp(Buffer.from(png)).flatten({ background: "#f6f3ec" }).jpeg({ quality: 86, mozjpeg: true }).toBuffer();
+  fs.writeFileSync(file, jpg);
+  return jpg.length;
+};
 
 for (const it of items) {
   if (only && it.date !== only) continue;
@@ -61,10 +72,13 @@ for (const it of items) {
     bytes += write(`x/${name}/${i + 1}.png`, Buffer.from(await renderSlide({ head: s.head, body: s.body, page: `${i + 1} / ${multi.length}`, kicker })));
   const total = post ? post.slides.length + 2 : 0;
   if (post) {
-    bytes += write(`instagram/${name}/01.png`, Buffer.from(await renderCover({ ...cover, foot: "SWIPE" })));
-    for (const [i, s] of post.slides.entries())
-      bytes += write(`instagram/${name}/${pad(i + 2)}.png`, Buffer.from(await renderSlide({ head: s.head, body: s.body, page: `${i + 2} / ${total}`, kicker })));
-    bytes += write(`instagram/${name}/${pad(total)}.png`, Buffer.from(await renderEnd({ kicker, page: `${total} / ${total}` })));
+    const slides = [await renderCover({ ...cover, foot: "SWIPE" })];
+    for (const [i, s] of post.slides.entries()) slides.push(await renderSlide({ head: s.head, body: s.body, page: `${i + 2} / ${total}`, kicker }));
+    slides.push(await renderEnd({ kicker, page: `${total} / ${total}` }));
+    for (const [i, png] of slides.entries()) {
+      bytes += write(`instagram/${name}/${pad(i + 1)}.png`, Buffer.from(png));
+      bytes += await writeJpeg(it.date, i + 1, png);
+    }
   }
   console.log(`${name}  ${post ? `x + ${total} slides` : "x"}  ${bytes} bytes`);
 }

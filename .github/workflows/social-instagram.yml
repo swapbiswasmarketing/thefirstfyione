@@ -1,0 +1,53 @@
+# Instagram daily carousel: the day's carousel from brand/social/instagram.json
+# goes out through Instagram's official API, free of charge. Posting through the
+# API is allowed; automating instagram.com is not. SOCIAL.md has the plan.
+#
+# One-time setup by the site owner:
+#   1. developers.facebook.com/apps: Create App, use case "Other", app type
+#      "Business". Add the Instagram product and open "API setup with
+#      Instagram login". Add the strictly.fyi Instagram account (it must be a
+#      public professional account) and log in to it when asked.
+#   2. Next to the account, click "Generate token" and copy it. It is valid
+#      for 60 days: generate a new one before then and replace the secret.
+#   3. GitHub: this repository > Settings > Secrets and variables > Actions >
+#      New repository secret, named IG_ACCESS_TOKEN.
+# Without the token a run posts nothing and says so. Run it by hand from the
+# Actions tab: dry_run (the default) signs in, checks that every slide is
+# live on the site, and prints the carousel.
+
+name: Instagram daily carousel
+
+on:
+  schedule:
+    - cron: "0 17 * * *" # 17:00 UTC: 22:30 in India, noon in New York in winter
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date to post, YYYY-MM-DD (blank: today in UTC)"
+        required: false
+      dry_run:
+        description: "Print the carousel without posting it"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: social-instagram
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Post the day's carousel
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          DATE: ${{ inputs.date }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
+        run: node scripts/post-instagram.mjs

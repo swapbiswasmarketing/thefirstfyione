@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { fmtLong } from "../data/site";
+import { getEntries, entryHref } from "../lib/entries";
+import { pageCard } from "../lib/og";
+import kit from "../../brand/social/instagram.json";
+
+/* The link in the Instagram bio. Each carousel there answers one entry here,
+   so this page lists them, newest first. A list of links is thin by
+   definition, so it is noindex (and so kept out of the sitemap). A slug that
+   matches no entry is a typo in brand/social/instagram.json: fail the build
+   rather than print a dead link. Posts dated after today in India are hidden
+   in the browser, since the carousel for a date goes out that evening. */
+const bySlug = new Map((await getEntries()).map((p) => [p.id, p]));
+const rows = [...kit]
+  .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
+  .map((k) => {
+    const p = bySlug.get(k.slug);
+    if (!p) throw new Error(`instagram.json: no entry "${k.slug}"`);
+    return { date: k.date, day: new Date(`${k.date}T00:00:00Z`), p };
+  });
+const hideFuture =
+  `(function(){try{var d=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Kolkata"}).format(new Date());` +
+  `document.querySelectorAll("[data-ig-date]").forEach(function(li){if(li.getAttribute("data-ig-date")>d)li.hidden=true})}catch(e){}})();`;
+---
+
+<Layout
+  title="From Instagram - Strictly FYI"
+  description="The Strictly FYI entries behind each Instagram carousel, newest first, with every source linked."
+  card={pageCard("home")}
+  noindex
+  ads={false}
+>
+  <article class="doc wrap">
+    <header>
+      <p class="doc-kicker">From Instagram &middot; @strictly.fyi</p>
+      <h1 class="doc-title">The entries behind the posts</h1>
+      <p class="doc-dek">
+        Every carousel on Instagram comes from one entry here, where each fact is linked to its source. Newest first.
+      </p>
+    </header>
+
+    <div class="doc-body">
+      <ul class="ig-list">
+        {rows.map((r) => (
+          <li data-ig-date={r.date}>
+            <time datetime={r.date}>{fmtLong(r.day)}</time>
+            <a href={entryHref(r.p)}><span class="ig-fc">{r.p.data.filecode}</span> {r.p.data.title}</a>
+          </li>
+        ))}
+      </ul>
+      <script is:inline set:html={hideFuture}></script>
+      <p>
+        Spotted an error in a post? The <a href="/corrections/">corrections log</a> lists every fix, and the
+        <a href="/contact/">contact page</a> takes reports.
+      </p>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .ig-list { list-style: none; padding-left: 0 !important; }
+  .ig-list li { display: flex; flex-direction: column; gap: 0.15rem; margin: 0 0 1rem !important; font-size: 1rem !important; }
+  .ig-list time { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+  .ig-fc { font-family: var(--mono); font-size: 0.78em; letter-spacing: 0.04em; white-space: nowrap; }
+</style>
