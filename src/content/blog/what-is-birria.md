@@ -1,7 +1,7 @@
 ---
 title: "Birria: Jalisco Goat Stew With a Name Nobody Has Pinned Down"
 description: "Birria is goat or lamb from Jalisco, cooked in a chile adobo and served with its consomme. Tijuana switched it to beef, and Los Angeles turned the tacos red."
-pubDate: 2026-11-13
+pubDate: 2026-11-01
 category: "culture"
 filecode: "FYI-151"
 almanac: "The Real Academia Espanola files birria, the Mexican dish, under the same headword as an everyday Spanish put-down."

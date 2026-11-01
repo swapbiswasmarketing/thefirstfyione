@@ -1,7 +1,7 @@
 ---
 title: "Why We Yawn Is Still Disputed. Oxygen Was Ruled Out in 1987"
 description: "Why we yawn is argued by two camps. One says a yawn cools the brain, and a cold neck pack beat a warm one at curbing the urge; the other says yawns are social."
-pubDate: 2026-11-11
+pubDate: 2026-11-01
 category: "science"
 filecode: "FYI-150"
 almanac: "Breathing pure oxygen or CO2-rich air had no significant effect on yawning in Provine's 1987 study, even though both raised the breathing rate."

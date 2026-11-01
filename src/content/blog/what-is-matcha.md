@@ -1,7 +1,7 @@
 ---
 title: "Matcha: The Whisked Tea Japan Kept and China Let Go"
 description: "Matcha is shade-grown Japanese green tea, milled to powder and whisked. The whisking came from Song China with the monk Eisai and faded there after 1391."
-pubDate: 2026-11-02
+pubDate: 2026-11-01
 category: "everyday"
 filecode: "FYI-146"
 almanac: "Huizong, the Song emperor whose Treatise on Tea described the whisked powdered tea behind matcha, wanted its froth as white as snow."

@@ -1,7 +1,7 @@
 ---
 title: "Why Do Dogs Eat Grass? Aristotle's Answer Failed a Survey"
 description: "Most dogs eat grass as a normal habit, not a sign of sickness: of 1,571 plant-eating dogs in a survey published in 2008, fewer than 1 in 10 often looked ill first."
-pubDate: 2026-12-07
+pubDate: 2026-11-01
 category: "curiosity"
 filecode: "FYI-161"
 almanac: "In a 2008 study of 1,571 plant-eating dogs, only 9% were reported to frequently appear ill and only 22% to frequently vomit afterwards."

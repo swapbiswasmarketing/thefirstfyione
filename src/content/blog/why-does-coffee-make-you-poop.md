@@ -1,7 +1,7 @@
 ---
 title: "Why Does Coffee Make You Poop? Decaf Does It Too"
 description: "Coffee can make you poop by setting the colon contracting within four minutes, yet in a Sheffield survey published in 1990 only 29 percent of students felt the urge."
-pubDate: 2026-12-14
+pubDate: 2026-11-01
 category: "everyday"
 filecode: "FYI-164"
 almanac: "After colon surgery in Vilnius, patients given decaffeinated coffee had a first bowel movement sooner than those given caffeinated coffee or water."

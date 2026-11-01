@@ -1,7 +1,7 @@
 ---
 title: "The Light Bulb Worked in Newcastle Before Menlo Park"
 description: "Practical light bulbs arrived in 1879 from two men working apart: Joseph Swan showed a working lamp in Newcastle that winter, and Edison's team caught up in October."
-pubDate: 2026-11-06
+pubDate: 2026-11-01
 category: "tech"
 filecode: "FYI-148"
 almanac: "Edison's patent was an improvement on electric lamps, not the invention of them."

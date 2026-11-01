@@ -1,7 +1,7 @@
 ---
 title: "How Old Santa Is Depends on Where You Start Counting"
 description: "How old is Santa? Counted from St. Nicholas, born around AD 270, he is about 1,750 years old. Counted from a New York newspaper of 1773, he is over 250."
-pubDate: 2026-11-09
+pubDate: 2026-11-01
 category: "history"
 filecode: "FYI-149"
 almanac: "Santa's American name turns up in a New York newspaper of December 1773."

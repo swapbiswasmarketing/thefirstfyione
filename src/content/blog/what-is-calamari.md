@@ -1,7 +1,7 @@
 ---
 title: "Calamari Is Squid, With a Name From the Italian for Inkwell"
 description: "Calamari is squid, often the body cut into rings and fried. Its name goes back to a Latin word for a pen, and a 2013 radio test found pig bung can pass for it."
-pubDate: 2026-11-20
+pubDate: 2026-11-01
 category: "everyday"
 filecode: "FYI-154"
 almanac: "Calamaro, the Italian word for squid, is a regional variant of calamaio, the word for an inkwell."

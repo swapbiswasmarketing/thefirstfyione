@@ -1,7 +1,7 @@
 ---
 title: "How Diamonds Are Made From Mantle Carbon, Not Squeezed Coal"
 description: "Nearly all mined diamonds grew about 150 km or more down in the mantle, mostly before land plants existed. General Electric's first claimed lab diamond was natural."
-pubDate: 2026-12-11
+pubDate: 2026-11-01
 category: "science"
 filecode: "FYI-163"
 almanac: "Garnets sealed inside diamonds from 90-million-year-old southern African kimberlites gave model ages of 3,200 to 3,300 million years."

@@ -1,7 +1,7 @@
 ---
 title: "Chess Came Out of India With No Inventor Anyone Can Name"
 description: "Nobody knows who invented chess. It came out of India by the 6th century AD; the kings and sages given the credit are legends, and one real man was a mistake."
-pubDate: 2026-12-09
+pubDate: 2026-11-01
 category: "history"
 filecode: "FYI-162"
 almanac: "In Islamic and early European chess, the queen could only reach an adjacent diagonal square, and a bishop could reach only 8 squares in a whole game."

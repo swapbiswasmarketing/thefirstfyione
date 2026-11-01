@@ -1,7 +1,7 @@
 ---
 title: "Snakes Can Hear Sound in the Air, Not Just the Ground"
 description: "No eardrum, no outer ear, yet snakes can hear: the inner ear is wired to the jawbone, and in a 2023 study death adders avoided a sound the floor sensor missed."
-pubDate: 2026-12-25
+pubDate: 2026-11-01
 category: "curiosity"
 filecode: "FYI-169"
 almanac: "A python registers a sound in the air by the vibration it sets up in the head, and vibration is the sense it does well."

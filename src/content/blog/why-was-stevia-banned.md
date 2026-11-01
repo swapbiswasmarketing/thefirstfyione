@@ -1,7 +1,7 @@
 ---
 title: "Why Was Stevia Banned? The Leaf Still Is, as a Sweetener"
 description: "Stevia was banned in the US as an unapproved food additive, seized in 1984 and held at the border from 1991. Purified extracts got in from 2008. The leaf did not."
-pubDate: 2026-11-18
+pubDate: 2026-11-01
 category: "history"
 filecode: "FYI-153"
 almanac: "In 1998, an FDA warning letter told Stevita that the books it stocked and its website \"rendered the product adulterated.\""

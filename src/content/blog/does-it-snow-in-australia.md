@@ -1,7 +1,7 @@
 ---
 title: "Snow in Australia, From the Alps to Uluru and the Tropics"
 description: "It snows in Australia every winter, on high country about half the size of the Swiss Alps it was said to beat, and rare falls have reached the tropics and Uluru."
-pubDate: 2026-11-16
+pubDate: 2026-11-01
 category: "curiosity"
 filecode: "FYI-152"
 almanac: "Uluru stands in the dry middle of the continent, a long way from any ski slope, and in the winter of 1997 it had snow on it."

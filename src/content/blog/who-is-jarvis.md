@@ -1,7 +1,7 @@
 ---
 title: "Who Is JARVIS? His Acronym Once Said Really, Not Rather"
 description: "JARVIS is Tony Stark's AI, but the name first belonged to Edwin Jarvis, a butler from a 1964 Captain America story, decades before a novel spelled out the acronym."
-pubDate: 2026-11-03
+pubDate: 2026-11-01
 category: "culture"
 filecode: "FYI-171"
 almanac: "Edwin Jarvis, the butler Tony Stark's AI is named for, was introduced in a Captain America story in 1964, not in an Iron Man one."
@@ -66,6 +66,6 @@ In episode 2, after the bounty hunter Paladin's adamantium rounds leave the Star
 
 Bettany, who had not seen D'Arcy since they made Master and Commander, told TheWrap: ["It was so nice to get to work with him again, and then he was gone too soon."](https://www.thewrap.com/creative-content/tv-shows/visionquest-jarvis-dead-paul-bettany-reaction/) The Tab's recap puts the outcome plainly: JARVIS is [dead following the events of VisionQuest episode 2](https://thetab.com/filmshrine/2026/10/14/visionquest-episode-1-2-ending-is-jarvis-dead-paul-bettany-teases-marvel-future/).
 
-Episode 3, "Reboot," names the man JARVIS was modeled on. In [ComicBookMovie's recap](https://comicbookmovie.com/tv/marvel/vision/visionquest-episode-3-recap-vision-needs-a-reboot-as-a-new-killer-emerges---spoilers-a230539), FRIDAY tells Ultron that most of Tony Stark's AI creations were modeled after real people, herself and [E.D.I.T.H., the AI in Tony's glasses](/blog/who-is-edith-marks/) included. JARVIS, [The Direct's recap](https://thedirect.com/article/visionquest-episodes-friday-edith-ai-real-mcu-characters) adds, was modeled after Edwin Jarvis, the Stark family butler.
+Episode 3, "Reboot," names the man JARVIS was modeled on. In [ComicBookMovie's recap](https://comicbookmovie.com/tv/marvel/vision/visionquest-episode-3-recap-vision-needs-a-reboot-as-a-new-killer-emerges---spoilers-a230539), [FRIDAY](/blog/who-is-friday/) tells Ultron that most of Tony Stark's AI creations were modeled after real people, herself and [E.D.I.T.H., the AI in Tony's glasses](/blog/who-is-edith-marks/) included. JARVIS, [The Direct's recap](https://thedirect.com/article/visionquest-episodes-friday-edith-ai-real-mcu-characters) adds, was modeled after Edwin Jarvis, the Stark family butler.
 
 The name JARVIS belonged to a butler in a Captain America story decades before a novel fitted six words to its letters, and the retelling has since swapped one of them, Really, for Rather. Now the actor who played the butler has played the AI too. Strictly FYI.

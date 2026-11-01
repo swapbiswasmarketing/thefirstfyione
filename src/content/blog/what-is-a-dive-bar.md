@@ -1,7 +1,7 @@
 ---
 title: "Dive Bar: 1860s Slang for a Low Den, Now a Compliment"
 description: "A dive bar is an unpretentious, usually cheap bar for regulars. The word began as 1860s American slang for a low den, often a cellar, and later turned into praise."
-pubDate: 2026-12-18
+pubDate: 2026-11-01
 category: "culture"
 filecode: "FYI-166"
 almanac: "In the New York detective parlance of 1872, every foul place is a dive, whether it be a cellar or garret, or neither."

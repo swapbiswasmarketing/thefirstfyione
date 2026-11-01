@@ -1,7 +1,7 @@
 ---
 title: "Chainsaws Were Invented to Cut Bone. Trees Came Much Later"
 description: "The first chainsaws were invented by two Scottish doctors in the 1780s, as hand-pulled saws for opening the pelvis in blocked births and cutting out diseased bone."
-pubDate: 2026-11-25
+pubDate: 2026-11-01
 category: "tech"
 filecode: "FYI-156"
 almanac: "The chainsaw began in the late 18th century as a hand-pulled surgical saw for cutting bone deep inside the body."

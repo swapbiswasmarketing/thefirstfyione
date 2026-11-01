@@ -1,7 +1,7 @@
 ---
 title: "Who Is Krampus, and How Pagan Is He Really?"
 description: "Krampus is the horned devil who walks with St. Nicholas on December 5. A 1912 folklorist called his heathen origin evident, then admitted it was hard to trace."
-pubDate: 2026-11-04
+pubDate: 2026-11-01
 category: "culture"
 filecode: "FYI-147"
 almanac: "Krampus Is an Evil Man was the title of a leaflet that Dr. Ernst Kotbauer, head of Vienna's kindergarten system, put out in 1953."

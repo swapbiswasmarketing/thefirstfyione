@@ -1,7 +1,7 @@
 ---
 title: "Why Does the Tequila Worm Only Turn Up in Mezcal?"
 description: "The tequila worm is a moth caterpillar bottled only in some mezcals: Mexico's mezcal standard names it as a flavoring, and the tequila standard never mentions it."
-pubDate: 2026-12-02
+pubDate: 2026-11-01
 category: "curiosity"
 filecode: "FYI-159"
 almanac: "The worms from 21 commercial mezcals in a 2023 DNA study all turned out to be one moth, the agave redworm."

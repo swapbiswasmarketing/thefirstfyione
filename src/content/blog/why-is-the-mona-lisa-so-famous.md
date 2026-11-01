@@ -1,7 +1,7 @@
 ---
 title: "The Mona Lisa Became World-Famous While Its Wall Stood Empty"
 description: "The Mona Lisa was admired from Leonardo's day, but it became a household name in 1911, when a glazier who had worked at the Louvre carried it off and the hunt began."
-pubDate: 2026-11-27
+pubDate: 2026-11-01
 category: "history"
 filecode: "FYI-157"
 almanac: "The man jailed for stealing the Mona Lisa was one of the workmen the Louvre had hired to protect it."

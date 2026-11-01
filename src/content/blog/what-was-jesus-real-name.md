@@ -1,7 +1,7 @@
 ---
 title: "Jesus's Real Name Was Probably Yeshua. Joshua Bore It Too"
 description: "Jesus's real name was most likely Yeshua, a short form of Yehoshua, or Joshua. Greek made it Iesous, Latin Iesus, and the 1611 King James Bible still printed Iesus."
-pubDate: 2026-12-23
+pubDate: 2026-11-01
 category: "history"
 filecode: "FYI-168"
 almanac: "In Hebrews 4:8 the King James Bible prints Jesus, and the man it means is Joshua, the successor of Moses."

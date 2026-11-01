@@ -26,8 +26,8 @@ In The Direct's recap of **episode 3, "Reboot,"** FRIDAY tells her roommates tha
 
 | Stark AI | Based on, per The Direct's recap |
 |---|---|
-| JARVIS | **Edwin Jarvis**, the Stark family butler |
-| FRIDAY | **Allison Hogan**, Howard Stark's office assistant, who helped raise Tony |
+| [JARVIS](/blog/who-is-jarvis/) | **Edwin Jarvis**, the Stark family butler |
+| [FRIDAY](/blog/who-is-friday/) | **Allison Hogan**, Howard Stark's office assistant, who helped raise Tony |
 | E.D.I.T.H. | **Edith Marks**, a test pilot who worked for Howard Stark |
 | Dum-E and U | Nobody |
 

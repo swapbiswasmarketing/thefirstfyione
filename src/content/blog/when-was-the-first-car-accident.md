@@ -1,7 +1,7 @@
 ---
 title: "The First Car Accident Ran on Steam, Years Before Benz"
 description: "Mary Ward, killed by a steam carriage in Ireland in 1869, is usually counted as the first car death, though a Scottish steam coach had killed passengers in 1834."
-pubDate: 2026-12-16
+pubDate: 2026-11-01
 category: "tech"
 filecode: "FYI-165"
 almanac: "Mary Ward, usually counted as the first person killed by a car, fell from a steam carriage at walking pace in 1869, 17 years before Benz's patent."

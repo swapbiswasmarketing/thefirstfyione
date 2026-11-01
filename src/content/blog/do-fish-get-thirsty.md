@@ -1,7 +1,7 @@
 ---
 title: "Do Fish Get Thirsty? Eels Kept Drinking With No Forebrain"
 description: "Fish do not seem to get thirsty as people do: sea fish swallow seawater by reflex, and freshwater fish soak up water through their gills and barely drink."
-pubDate: 2026-11-23
+pubDate: 2026-11-01
 category: "science"
 filecode: "FYI-155"
 almanac: "Eels with the whole forebrain removed still drank when they were moved into seawater, a 1972 study found."

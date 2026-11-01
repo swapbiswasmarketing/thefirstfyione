@@ -1,7 +1,7 @@
 ---
 title: "Boba: Tapioca Pearls Named After a Hong Kong Movie Star"
 description: "Boba pearls are usually cassava starch and brown sugar. Two Taiwanese teahouses claiming the drink spent ten years in court until a judge ruled anyone could make it."
-pubDate: 2026-11-30
+pubDate: 2026-11-01
 category: "everyday"
 filecode: "FYI-158"
 almanac: "By most accounts, the word boba was coined by a hawker in Tainan who borrowed the nickname of the Hong Kong movie star Amy Yip."

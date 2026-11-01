@@ -1,7 +1,7 @@
 ---
 title: "Achilles Fell to Paris and Apollo. Homer Never Names a Heel"
 description: "Homer only foretells who killed Achilles. The ankle arrow, the dip in the Styx and the tendon's name came centuries later, and two chronicles drop the arrow."
-pubDate: 2026-12-04
+pubDate: 2026-11-01
 category: "culture"
 filecode: "FYI-160"
 almanac: "The story that Thetis dipped the infant Achilles in the Styx first appears in the Achilleid of Statius, a Roman poet of the late 1st century AD."

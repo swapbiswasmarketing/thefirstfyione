@@ -1,7 +1,7 @@
 ---
 title: "Marvel's FRIDAY: Modeled on the Woman Who Helped Raise Tony"
 description: "In Marvel's films FRIDAY replaced JARVIS in 2015. VisionQuest recaps say Tony Stark's AI was modeled on Allison Hogan, the assistant who helped raise him."
-pubDate: 2026-11-05
+pubDate: 2026-11-01
 category: "culture"
 filecode: "FYI-172"
 almanac: "FRIDAY, the AI Tony Stark picked from a set of data cards, turns out in VisionQuest to be modeled on his father's girl Friday, Allison Hogan."

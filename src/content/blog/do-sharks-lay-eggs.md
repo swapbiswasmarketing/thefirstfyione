@@ -1,7 +1,7 @@
 ---
 title: "Do Sharks Lay Eggs? Some Hatch Pups That Have No Father"
 description: "Most sharks bear live young and some lay eggs in cases called mermaid's purses, but inside a sand tiger mother the two largest embryos eat the rest of the litter."
-pubDate: 2026-12-21
+pubDate: 2026-11-01
 category: "science"
 filecode: "FYI-167"
 almanac: "Inside one whale shark caught off eastern Taiwan in 1995 were 304 embryos, some still in egg cases and others hatched and swimming free."
