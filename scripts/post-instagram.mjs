@@ -68,7 +68,7 @@ async function main() {
   if (caption.length > 2200) return die(`${DATE}: caption is ${caption.length} characters, over 2,200`);
   const alts = [
     cover(kit.slug, kit.cover?.teaser),
-    ...kit.slides.map((s) => (s.head ? `${s.head}: ${s.body}` : s.body)),
+    ...kit.slides.map((s) => (s.head ? `${s.head}. ${s.body}` : s.body)),
     "Strictly FYI. Every source is linked in the full entry at strictly.fyi, through the link in bio.",
   ];
   const slides = alts.map((alt, i) => ({ url: `${SITE}/social/ig/${DATE}/${pad(i + 1)}.jpg`, alt }));
