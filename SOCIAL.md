@@ -65,9 +65,19 @@ From the research of 2026-11-01: `reports/X content engagement playbook.md`, wit
 - **Accuracy.** Sourcing protects the account rather than growing it: a Community Note cuts a post's reposts by 46% once attached. Take every claim from the checked entry and correct in public.
 - **Measure** every Sunday: median impressions per post, engagement rate, new followers, how the account's own replies do, and its health (the graduated-access notice, a logged-out search for the handle).
 
+## What works on Instagram
+
+From the research of 2026-11-01: `reports/Instagram content engagement playbook.md`, with its notes in `research_notes/Instagram content engagement playbook/`. Read those before researching Instagram again; Meta says its signals "change frequently", so re-check its system cards (transparency.meta.com/features/explaining-ranking/) each month. The report's 30-day plan (carousels daily at 22:30 IST, eight narrated Reels as a same-entry test, Buffer Free as the scheduler) is a proposal until the owner adopts it.
+
+- **Hard rules.** No browser automation of instagram.com or Meta Business Suite: Instagram's Terms forbid automated access. Post by hand, through the app's own scheduler, or through an app on Instagram's official API (Buffer, or one of our own). Since 30 April 2026, accounts that mainly repost other people's photos, carousels or reels lose recommendations; borders, watermarks and credits do not make a repost original. Never post AI-generated or colourised "historical" images; label any synthetic voice. No engagement bait, and that includes "save this for later".
+- **What reaches strangers.** Feed and Stories rank only followed accounts, so a new account's views come from Reels, Explore and suggested posts. Those reward posts nobody skips in the first seconds, watch time, sends per reach (Adam Mosseri's main signal for non-followers) and follows; suggested Feed posts are also scored by a language model on how informative they are.
+- **Format.** Carousels lead engagement per account reached (Buffer 2025: 6.9%, single images 4.4%, Reels 3.3%) and saves; Reels lead unique reach (about 29% more people). An unswiped carousel is often shown again from slide 2, so slide 2 must never show a myth without its correction. Reels of 45-60 seconds did best; reels that are mostly text are held back.
+- **Captions and tags.** The hook in the first two lines, the topic word in it for search; three or four targeted hashtags (the cap is five; generic ones like #history or #science add nothing); links only in the bio (up to five).
+- **Measure** every Sunday, on posts at least three days old: median reach per carousel, engagement per reach, sends per reach, followers and follows per 1,000 reached, Reels' 3-second hold and watch time, and Account Status.
+
 ## Instagram
 
-Not created yet. Suggested: handle `@strictly.fyi` (Instagram allows the dot; `@strictlyfyi` if it is taken), display name `Strictly FYI`, a professional account, the avatar above, `https://www.strictly.fyi` as the link, and this bio (135 of 150 characters):
+Created by the owner on 2026-11-01 (handle to confirm in the table above). Suggested: handle `@strictly.fyi` (Instagram allows the dot; `@strictlyfyi` if it is taken), display name `Strictly FYI`, a professional account, the avatar above, `https://www.strictly.fyi` as the link, and this bio (135 of 150 characters):
 
 > One question per entry, answered from the sources and linked to them. Science, history, tech and culture. Mistakes corrected in public.
 
