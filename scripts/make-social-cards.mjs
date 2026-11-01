@@ -26,6 +26,9 @@ const only = process.argv[2];
 const items = JSON.parse(fs.readFileSync(path.join(social, "schedule.json"), "utf8"));
 const igFile = path.join(social, "instagram.json");
 const ig = fs.existsSync(igFile) ? Object.fromEntries(JSON.parse(fs.readFileSync(igFile, "utf8")).map((p) => [p.date, p])) : {};
+/* x-plan.json names the days whose X post carries several slides instead of the title card. */
+const planFile = path.join(social, "x-plan.json");
+const xplan = fs.existsSync(planFile) ? Object.fromEntries(JSON.parse(fs.readFileSync(planFile, "utf8")).map((d) => [d.date, d])) : {};
 
 const front = (slug) => {
   const md = fs.readFileSync(path.join(root, "src", "content", "blog", `${slug}.md`), "utf8");
@@ -51,6 +54,9 @@ for (const it of items) {
   /* A title with no answer after its question borrows the carousel's checked teaser. */
   const cover = { kicker, question, answer: answer || post?.cover?.teaser || undefined };
   let bytes = write(`x/${name}.png`, Buffer.from(await renderCover({ ...cover, foot: "" })));
+  const multi = xplan[it.date]?.format === "images" ? xplan[it.date].slides : [];
+  for (const [i, s] of multi.entries())
+    bytes += write(`x/${name}/${i + 1}.png`, Buffer.from(await renderSlide({ head: s.head, body: s.body, page: `${i + 1} / ${multi.length}`, kicker })));
   const total = post ? post.slides.length + 2 : 0;
   if (post) {
     bytes += write(`instagram/${name}/01.png`, Buffer.from(await renderCover({ ...cover, foot: "SWIPE" })));
